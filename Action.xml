@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Action" parallel="none">
+    <test name="Test version  fr " >
+        <parameter name="myName" value="true"/>
+        <parameter name="excludegroups" value="Comma"/>
+        <parameter name="groups" value="Comma"/>
+        <parameter name="language" value="fr-FR"/>
+        <parameter name="browsername" value="CHROME"/>
+        <classes>
+            <class name="com.saphir.platforme.ActionRunner"></class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
