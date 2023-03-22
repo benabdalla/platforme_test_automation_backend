@@ -5,7 +5,6 @@ import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.moduleAction.models.ReportingModel;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

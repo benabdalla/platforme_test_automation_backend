@@ -36,7 +36,7 @@ public class CustomStrategy implements ParallelExecutionConfiguration, ParallelE
         return 60;
     }
 
-    @Override
+
     public Predicate<? super ForkJoinPool> getSaturatePredicate() {
         return (ForkJoinPool p) -> true;
     }

@@ -1,12 +1,11 @@
 package com.saphir.platforme.entity;
 
-import jakarta.persistence.*;
-
-import java.util.Date;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "action")
-public class Action {
+public class Action implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long numFiche;

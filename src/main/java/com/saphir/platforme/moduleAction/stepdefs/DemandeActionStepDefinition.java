@@ -9,7 +9,6 @@ import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.origine;

@@ -9,13 +9,14 @@ import com.saphir.platforme.moduleAction.pages.ModeleActionPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+import javax.annotation.PostConstruct;
 
 import static org.testng.Assert.assertTrue;
 

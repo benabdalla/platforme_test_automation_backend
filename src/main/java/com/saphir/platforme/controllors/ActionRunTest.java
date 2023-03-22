@@ -16,6 +16,7 @@ import org.testng.xml.XmlSuite;
 @RestController
 @RequestMapping("/test/")
 public class ActionRunTest {
+
     @GetMapping("/{id}")
     public void findById(@PathVariable long id) throws Exception {
         System.err.println("tesssssst" + id);

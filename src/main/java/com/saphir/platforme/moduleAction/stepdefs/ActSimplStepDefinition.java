@@ -1,12 +1,10 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
-import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import com.saphir.platforme.moduleAction.models.ActSimplModel;
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
+
+import javax.annotation.PostConstruct;
 
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.fgRespSuivi;
 
