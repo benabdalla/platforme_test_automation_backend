@@ -3,6 +3,8 @@ package com.saphir.platforme;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ContextConfiguration;
 
 
 @CucumberOptions(
@@ -16,7 +18,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
         dryRun = false
 )
-@SpringBootTest
+@ContextConfiguration
+@ComponentScan("classpath:cucumber.glue")
 public class ActionRunner extends AbstractTestNGCucumberTests {
 
 }
