@@ -1,9 +1,11 @@
-package com.saphir.platforme.configuration;
+package com.saphir.platforme.config;
 
 import com.saphir.platforme.utils.ScreenshotUtil;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.springframework.context.ApplicationContext;
 
@@ -13,6 +15,7 @@ public class CucumberHooks {
 
 
     private ApplicationContext applicationContext;
+
 
     @AfterStep
     public void afterStep(Scenario scenario){

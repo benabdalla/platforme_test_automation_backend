@@ -21,7 +21,6 @@ public class Setup {
 	/**
 	 * Call Browser
 	 */
-	@Before
 	public static void setup() throws IOException, InterruptedException {
 		System.err.println("Browser name in @BeforeClass is" + browsername);
 		browsername="CHROME";
@@ -46,7 +45,7 @@ public class Setup {
 
 
 
-@After
+
 	public void tearDown(Scenario scenario) throws InterruptedException {
 		int i = 0;
 		String screenshotName = "";

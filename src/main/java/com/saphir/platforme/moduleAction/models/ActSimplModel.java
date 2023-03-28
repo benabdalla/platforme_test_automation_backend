@@ -95,7 +95,7 @@ driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton30")).click();
 	 }
 	 public static void DateSuivi(WebDriver driver) throws Exception {
 		   
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(600));
+		    WebDriverWait wait = new WebDriverWait(driver, 60);
 	        wait.until(ExpectedConditions.elementToBeClickable(ActSimplPage.DelaiSuiviId));
 	        ActSimplPage.DelaiSuiviId.click();
 	        JavascriptExecutor executor=(JavascriptExecutor)driver;

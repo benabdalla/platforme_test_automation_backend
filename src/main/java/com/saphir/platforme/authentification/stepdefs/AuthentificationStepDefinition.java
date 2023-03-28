@@ -5,6 +5,7 @@ package com.saphir.platforme.authentification.stepdefs;
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
 
+import com.saphir.platforme.page.WebDriverRun;
 import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.And;
@@ -32,19 +33,24 @@ public class AuthentificationStepDefinition  {
 
 
 
-    WebDriver driver;
+ static    WebDriver driver;
+    @Autowired
+    WebDriverRun driverRun;
 
-    // @PostConstruct
-    public AuthentificationStepDefinition() {
-        driver = Setup.driver;
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        PageFactory.initElements(driver, AuthentificationPage.class);
-      //  PageFactory.initElements(this.driver, this);
-     //   driver.manage().window().maximize();
-    }
+
+//    public AuthentificationStepDefinition() {
+//        driver = Setup.driver;
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        PageFactory.initElements(driver, AuthentificationPage.class);
+//      //  PageFactory.initElements(this.driver, this);
+//     //   driver.manage().window().maximize();
+//    }
 
     @Given("^Ouvrir le site QualiProWeb$")
     public void ouvrirQualiProWeb() throws Throwable {
+        driver =driverRun.getWebDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+     PageFactory.initElements(driver, AuthentificationPage.class);
 
         ExcelUtils.setExcelFile(Path, "Input");
         lan="fr";

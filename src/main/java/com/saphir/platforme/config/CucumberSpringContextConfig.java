@@ -1,7 +1,9 @@
-package com.saphir.platforme.configuration;
+package com.saphir.platforme.config;
 
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+
+
 
 @CucumberContextConfiguration
 @SpringBootTest

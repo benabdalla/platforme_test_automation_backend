@@ -22,19 +22,28 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.surefire.version>3.0.0-M8</maven.surefire.version>
-		<selenium.version>4.8.0</selenium.version>
+		<!--		<selenium.version>4.8.0</selenium.version>-->
+		<selenium.version>3.141.59</selenium.version>
+
 		<junit.jupiter.version>5.9.2</junit.jupiter.version>
 		<junit.platform.version>1.9.2</junit.platform.version>
 		<testng.version>7.7.1</testng.version>
 		<lombok.version>1.18.24</lombok.version>
 		<cucumber.version>7.10.1</cucumber.version>
 		<mssql-jdbc.version>9.4.1.jre16</mssql-jdbc.version>
+		<webdrivermanager.version>4.3.1</webdrivermanager.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>${webdrivermanager.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-commons</artifactId>

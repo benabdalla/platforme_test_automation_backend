@@ -273,7 +273,7 @@ public class DemandeActionModel {
     }
 
     public static void valider_Demande(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
         Cpt_agenda = DemandeActionPage.CompteurID.getText();
         //DemandeActionPage.BoutonValideID.click();
@@ -435,7 +435,7 @@ public class DemandeActionModel {
         //DemandeActionPage.HomeID.click();
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", DemandeActionPage.HomeID);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(600));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
         System.out.println("compteur1 : " + DemandeActionPage.CompteurID.getText());
         if (Integer.parseInt(DemandeActionPage.CompteurID.getText()) == compteur + 1) {

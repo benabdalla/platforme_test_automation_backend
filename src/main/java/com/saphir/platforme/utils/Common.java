@@ -723,14 +723,14 @@ public class Common {
      * Wait Element to be visible
      */
     public static void waitElement(WebDriver driver, By by) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
 
     public static void waitAndClick(WebDriver driver, WebElement element) {
         // Create a WebDriverWait object
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
 
         // Use the wait object to wait for the element to be present and visible
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -742,7 +742,7 @@ public class Common {
 
     public static void waitAndSend(WebDriver driver, WebElement element, String conetent) {
         // Create a WebDriverWait object
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
 
         // Use the wait object to wait for the element to be present and visible
         wait.until(ExpectedConditions.visibilityOf(element));

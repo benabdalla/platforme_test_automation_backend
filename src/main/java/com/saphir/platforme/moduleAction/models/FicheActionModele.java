@@ -797,7 +797,7 @@ public class FicheActionModele {
     }
 
     public static void cliqueAgenda(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOf(FicheActionPage.agendatActionId));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.agendatActionId);
