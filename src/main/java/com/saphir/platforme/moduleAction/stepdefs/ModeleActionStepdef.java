@@ -1,22 +1,21 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
-import com.saphir.platforme.moduleAction.models.ModeleActionModel;
-import com.saphir.platforme.utils.Common;
+import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
+import com.saphir.platforme.moduleAction.models.ModeleActionModel;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.moduleAction.pages.ModeleActionPage;
+import com.saphir.platforme.utils.Common;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
@@ -25,27 +24,22 @@ public class ModeleActionStepdef {
     private static String Path = "src/main/resources/testData/TestData.xlsx";
 
     public static String lan;
-    public static int row=0;
-    public  static  String module="";
-    @Autowired
-    protected WebDriver driver;
+    public static int row = 0;
+    public static String module = "";
 
-    @Autowired
-    protected WebDriverWait wait;
+    public WebDriver driver;
 
-    @Autowired
-    protected JavascriptExecutor javascriptExecutor;
-
-
-    @PostConstruct
-    private void init() {
-        PageFactory.initElements(this.driver, this);
-    }
-    //private static String Path = "resources/testData/TestData.xlsx";
 
     private Common common = new Common();
     public String Num_Modele;
 
+    @PostConstruct
+    public void init() {
+
+        driver = WebDriverConfig.driver;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        PageFactory.initElements(driver, ModeleActionPage.class);
+    }
 
     @When("^Consulter Modèle Action$")
     public void Consulter_Modèle_Action() throws Throwable {

@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @Profile("!remote") // to avoid loading for remote runs
 public class WebDriverConfig {
-
+public static WebDriver driver;
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "edge")
     public WebDriver edgeDriver() {
@@ -38,7 +38,8 @@ public class WebDriverConfig {
 
         if (System.getenv("CLOUD_RUN_FLAG") == null) {
             WebDriverManager.chromedriver().setup();
-           return new ChromeDriver();
+            driver=new ChromeDriver();
+           return driver;
         } else {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();

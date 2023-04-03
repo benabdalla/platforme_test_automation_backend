@@ -1,9 +1,9 @@
 package com.saphir.platforme.repository;
 
-import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Parametrage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
-public interface ActionRepository extends JpaRepository<Action, Long> {
+public interface ParametreRepository extends JpaRepository<Parametrage,Long> {
 }

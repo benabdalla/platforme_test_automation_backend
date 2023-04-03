@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/3/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Mar 28 14:38:01 WAT 2023</td>
+<td>Started on:</td><td>Sun Apr 02 12:23:00 WAT 2023</td>
 </tr>
-<tr><td>Total time:</td><td>57 seconds (57748 ms)</td>
+<tr><td>Total time:</td><td>6 seconds (6357 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,9 +77,9 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -146,17 +146,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -170,19 +172,16 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
-... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1651672965", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1651672965'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1761627425", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1761627425'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -278,17 +277,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -302,28 +303,20 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
 </pre></div></td>
-<td>17</td>
-<td>com.saphir.platforme.ActionRunner@77e8d312</td></tr>
+<td>0</td>
+<td>com.saphir.platforme.ActionRunner@2a15b06c</td></tr>
 <tr>
 <td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -390,17 +383,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -414,19 +409,16 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
-... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1558963923", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1558963923'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2041587524", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2041587524'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -522,17 +514,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -546,28 +540,20 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
 </pre></div></td>
-<td>22</td>
-<td>com.saphir.platforme.ActionRunner@77e8d312</td></tr>
+<td>5</td>
+<td>com.saphir.platforme.ActionRunner@2a15b06c</td></tr>
 <tr>
 <td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+<td><div><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -634,17 +620,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -658,19 +646,16 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
-... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace74690056", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace74690056'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [saisir {string} action filaile] defined at &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile(java.lang.String)&apos;.
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1867872794", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1867872794'><pre>io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
 It appears there was a problem with the step definition.
-The converted arguments types were (java.lang.String)
+The converted arguments types were ()
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
 	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
@@ -766,17 +751,19 @@ The converted arguments types were (java.lang.String)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
+Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
 	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
 	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
 	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
 	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
 	... 93 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition&apos;: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1270)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Unsatisfied dependency expressed through field &apos;serviceAction&apos;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:356)
 	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
@@ -790,23 +777,15 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
 	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
 	... 97 more
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition]: Constructor threw exception; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1262)
-	... 111 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;this.driver&quot; is null
-	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.&lt;init&gt;(FicheActionStepDefinition.java:59)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;com.saphir.platforme.service.ActionService&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1646)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1166)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 113 more
 </pre></div></td>
-<td>17</td>
-<td>com.saphir.platforme.ActionRunner@77e8d312</td></tr>
+<td>0</td>
+<td>com.saphir.platforme.ActionRunner@2a15b06c</td></tr>
 </table><p>
 </body>
 </html>

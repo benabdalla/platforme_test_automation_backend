@@ -1,13 +1,15 @@
 package com.saphir.platforme.authentification.stepdefs;
 
 
-
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
-
+import com.saphir.platforme.config.WebDriverConfig;
+import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Parametrage;
 import com.saphir.platforme.page.WebDriverRun;
+import com.saphir.platforme.service.ParametrageService;
+import com.saphir.platforme.service.ActionService;
 import com.saphir.platforme.utils.ExcelUtils;
-import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,6 +19,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.saphir.platforme.moduleAction.stepdefs.ReportingStepDef.lan;
@@ -32,31 +37,42 @@ public class AuthentificationStepDefinition  {
     public String module = "Action";
 
 
-
- static    WebDriver driver;
     @Autowired
     WebDriverRun driverRun;
+    @Autowired
 
-
-//    public AuthentificationStepDefinition() {
-//        driver = Setup.driver;
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        PageFactory.initElements(driver, AuthentificationPage.class);
-//      //  PageFactory.initElements(this.driver, this);
-//     //   driver.manage().window().maximize();
-//    }
+    WebDriverConfig webDriverConfig;
+    WebDriver driver;
+//    @Autowired
+//    ActionService serviceAction;
+    public static List<Action> actionList;
+    public static List<Parametrage> parametrageList;
+    @Autowired
+    ParametrageService parametrageService;
+    @Autowired
+    ActionService actionService;
+    @PostConstruct
+    public void init() {
+        driver = WebDriverConfig.driver;
+        //driverRun.getWebDriver();
+      //  actionList = serviceAction.getAllAction();
+        parametrageList=parametrageService.getAllParametere();
+        System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        PageFactory.initElements(driver, AuthentificationPage.class);
+        //PageFactory.initElements(this.driver, this);
+    }
 
     @Given("^Ouvrir le site QualiProWeb$")
     public void ouvrirQualiProWeb() throws Throwable {
-        driver =driverRun.getWebDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-     PageFactory.initElements(driver, AuthentificationPage.class);
+
 
         ExcelUtils.setExcelFile(Path, "Input");
-        lan="fr";
+        lan = parametrageList.get(0).getVerssion();
         //	logger.info("Begin : Ouvrir l'application QualiProWeb ");
-        System.err.println("site = " + ExcelUtils.getCellData(1, 0));
-        driver.get(ExcelUtils.getCellData(1, 0));
+        System.err.println("site = " + parametrageList.get(0).getUrl());
+        //ExcelUtils.getCellData(1, 0)
+        driver.get(parametrageList.get(0).getUrl());
         Thread.sleep(1000L);
         System.out.println("lang :  " + lan);
         Cookie cookie = new Cookie("lan", lan);
@@ -108,7 +124,7 @@ public class AuthentificationStepDefinition  {
     @When("^Connecter en tant que (\\d+) de l (\\d+) du \"([^\"]*)\"$")
     public void connecter_en_tant_que_de_l_du(int arg1, int arg2, String arg3) throws Throwable {
         row = arg2;
-        AuthentificationModel.Changer_Compte(arg3, arg1, arg2, driver);
+                    //AuthentificationModel.Changer_Compte(arg3, arg1, arg2, driver);
         module = arg3;
     }
 

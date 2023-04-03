@@ -1,6 +1,7 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
+import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.moduleAction.models.ActSimplModel;
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import io.cucumber.java.en.Then;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.TimeUnit;
 
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.fgRespSuivi;
 
@@ -36,24 +38,27 @@ public class ActSimplStepDefinition {
 	protected JavascriptExecutor javascriptExecutor;
 
 
+	public String numActSim;
+	public static int seulRespo = 0;
+	public static String actionSimpl = "";
+
 
 	@PostConstruct
-	private void init() {
-		PageFactory.initElements(this.driver, this);
+	public void init() {
+		driver = WebDriverConfig.driver;
+
+		driver = WebDriverConfig.driver;
+
+
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		PageFactory.initElements(driver, ActSimplPage.class);
+
 	}
-	public  String numActSim;
-	public static  int seulRespo=0;
-	public static String actionSimpl="";
-	
-
-	
-
-
-
 
 	@When("cliquer sur action simplifiée {string} parametrage")
 	public void cliquer_sur_action_simplifiée_parametrage(String string) throws InterruptedException {
-      actionSimpl=string;
+		actionSimpl = string;
+
 
 	}
 	@When("cliquer sur action simplifiée {string}")

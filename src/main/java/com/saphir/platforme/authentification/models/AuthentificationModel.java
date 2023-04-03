@@ -3,23 +3,45 @@ package com.saphir.platforme.authentification.models;
 
 
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
+
+import com.saphir.platforme.dto.ConnexionDTO;
+import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Parametrage;
+import com.saphir.platforme.service.ActionService;
+import com.saphir.platforme.service.AuthentificationQualipro;
+import com.saphir.platforme.service.ParametrageService;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.lan;
 
 
-
+@Component
 public class AuthentificationModel {
 
 
+
+//    public static List<Action> actionList;
+//    public static List<Parametrage> parametrageList;
+//    @Autowired
+//    ParametrageService parametrageService;
+//    @Autowired
+//    ActionService actionService;
+//    @Autowired
+//    AuthentificationQualipro authentificationQualipro;
+//    List<ConnexionDTO> connexionDTOList;
 
     /* Public methods */
     private static String Path = "src/main/resources/testData/TestData.xlsx";
 
 
+//AuthentificationQualipro authentificationQualipro;
 
     public static  void ouvrirQualiProWeb(WebDriver driver) throws Throwable {
         ExcelUtils.setExcelFile(Path, "Input");
@@ -96,9 +118,13 @@ JavascriptExecutor jse=(JavascriptExecutor)driver;
         Thread.sleep(5000L);
     }
 
-    public static void Changer_Compte(String module, int col, int row, WebDriver driver) throws Exception {
+    public static void Changer_Compte(String module, String col, int row, WebDriver driver) throws Exception {
+
+
+
         ExcelUtils.setExcelFile(Path, module);
-        String username = ExcelUtils.getCellData(row, col);
+        String username ="test";
+                //ExcelUtils.getCellData(row, col);
         System.err.println("user name  is   :  " +username);
         if (!(username.equals(""))) {
             ExcelUtils.setExcelFile(Path, "Input");

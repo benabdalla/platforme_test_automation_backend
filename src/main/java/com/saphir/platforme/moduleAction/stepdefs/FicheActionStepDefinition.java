@@ -3,6 +3,7 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
+import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
@@ -20,6 +21,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -54,8 +56,10 @@ public class FicheActionStepDefinition {
     public static String lan;
     public static String module = "";
 
-    public FicheActionStepDefinition () {
-        driver = Setup.driver;
+    @PostConstruct
+    public void init() {
+
+        driver = WebDriverConfig.driver;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);

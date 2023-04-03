@@ -2,11 +2,10 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
-
+import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.moduleAction.models.DemandeActionModel;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
-
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -14,7 +13,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,24 +28,24 @@ public class DemandeActionStepDefinition {
     private static String Path = "src/main/resources/testData/TestData.xlsx";
 
     public static String lan;
-    public static int row=0;
-    public  static  String module="";
+    public static int row = 0;
+    public static String module = "";
     @Autowired
     protected WebDriver driver;
-
-    @Autowired
-    protected WebDriverWait wait;
-
-    @Autowired
-    protected JavascriptExecutor javascriptExecutor;
-
-
-    @PostConstruct
-    private void init() {
-        PageFactory.initElements(this.driver, this);
-    }
     public String NewUser = "TESTAUTO2";
     String Demandeur, NACTION;
+
+    @PostConstruct
+    public void init() {
+
+        driver = WebDriverConfig.driver;
+
+
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        PageFactory.initElements(driver, DemandeActionPage.class);
+        PageFactory.initElements(driver, FicheActionPage.class);
+
+    }
 
 
     @When("^saisir (\\d+) demande action$")

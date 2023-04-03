@@ -36,6 +36,7 @@ Feature: Qualipro- Test fiche Action
 
   @FicheActionDetaille
   Scenario Outline: Creation fiche Action
+
     Given Ouvrir le site QualiProWeb
     When Connecter en tant que <declencheur> de l <exemple> du <module>
     And saisir <Filaile> action filaile
@@ -76,10 +77,10 @@ Feature: Qualipro- Test fiche Action
     When cliquer sur valider sous action
     Then sous action ajouté a la liste des sous actions
     Examples:
-      | exemple |  | Filaile     | declencheur | module   | RespRealise | respSuivi   |
-      | 1       |  | "Group"     | 26          | "Action" | "Filiale 2" | "Filiale 2" |
-      | 2       |  | "Filiale 1" | 26          | "Action" | "Filiale 1" | "Filiale 2" |
-      | 3       |  | "Filiale 2" | 26          | "Action" | "Filiale 2" | "Filiale 2" |
+      | exemple |  | Filaile     | declencheur   | module   | RespRealise | respSuivi   |
+      | 1       |  | "Group"     | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
+      | 2       |  | "Filiale 1" | "declencheur" | "Action" | "Filiale 1" | "Filiale 2" |
+      | 3       |  | "Filiale 2" | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
 
 
   @RealisationetSuiviAction

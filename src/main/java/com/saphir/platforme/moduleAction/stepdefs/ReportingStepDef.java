@@ -1,8 +1,11 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
+import com.saphir.platforme.config.WebDriverConfig;
+import com.saphir.platforme.moduleAction.models.ReportingModel;
+import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.moduleAction.pages.ReportingPage;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
-import com.saphir.platforme.moduleAction.models.ReportingModel;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -10,8 +13,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -25,20 +26,18 @@ public class ReportingStepDef {
     public static String lan;
     public static int row=0;
     public  static  String module="";
-    @Autowired
-    protected WebDriver driver;
 
-    @Autowired
-    protected WebDriverWait wait;
+    public WebDriver driver;
 
-    @Autowired
-    protected JavascriptExecutor javascriptExecutor;
 
 
 
     @PostConstruct
     private void init() {
-        PageFactory.initElements(this.driver, this);
+        driver = WebDriverConfig.driver;
+        PageFactory.initElements(driver, FicheActionPage.class);
+        // PageFactory.initElements(driver, PageSommerAgenda.class);
+        PageFactory.initElements(driver, ReportingPage.class);
     }
 
 
