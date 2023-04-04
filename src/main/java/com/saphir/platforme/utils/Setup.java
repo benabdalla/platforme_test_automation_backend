@@ -21,7 +21,8 @@ public class Setup {
 	/**
 	 * Call Browser
 	 */
-	public static void setup() throws IOException, InterruptedException {
+	@Before
+	public void before(io.cucumber.java.Scenario scenario) throws IOException, InterruptedException {
 		System.err.println("Browser name in @BeforeClass is" + browsername);
 		browsername="CHROME";
 		if(browsername.equals("CHROME")) {
@@ -38,15 +39,16 @@ public class Setup {
 		}
 		//driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
 		//System.out.println("driver manager Started");
-		driver = driverManager.getDriver();
+		 driver = driverManager.getDriver();
+
 		//System.out.println("Get driver Started");
 
 	}
 
 
 
-
-	public void tearDown(Scenario scenario) throws InterruptedException {
+@After
+	public void after(io.cucumber.java.Scenario scenario) throws InterruptedException {
 		int i = 0;
 		String screenshotName = "";
 

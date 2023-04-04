@@ -5,7 +5,7 @@ Feature: Qualipro- Test fiche Action
   @ParemétrageFicheActionDetaille
   Scenario Outline: Creation fiche Action
     Given Ouvrir le site QualiProWeb
-    When Connecter en tant que <declencheur> de l <exemple> du <module>
+    When Connecter en tant que <declencheur> de l <exemple> du <module> action
     And saisir <Filaile> action filaile
     And saisir <exemple> action
     And consulter  source d'action
@@ -38,7 +38,7 @@ Feature: Qualipro- Test fiche Action
   Scenario Outline: Creation fiche Action
 
     Given Ouvrir le site QualiProWeb
-    When Connecter en tant que <declencheur> de l <exemple> du <module>
+    When Connecter en tant que <declencheur> de l <exemple> du <module> action
     And saisir <Filaile> action filaile
     When Consulter Action
     And cliquer sur ajouter Action détaillée

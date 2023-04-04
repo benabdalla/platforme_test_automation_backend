@@ -4,12 +4,21 @@ package com.saphir.platforme.moduleAction.stepdefs;
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
 import com.saphir.platforme.config.WebDriverConfig;
-import com.saphir.platforme.utils.Common;
-import com.saphir.platforme.utils.ExcelUtils;
+import com.saphir.platforme.dto.ConnexionDTO;
+import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Parametrage;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.page.WebDriverRun;
+import com.saphir.platforme.service.ActionService;
+import com.saphir.platforme.service.AuthentificationQualipro;
+import com.saphir.platforme.service.ParametrageService;
+import com.saphir.platforme.service.UtilisateurService;
+import com.saphir.platforme.utils.Common;
+import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.utils.Setup;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.StepDefinitionAnnotations;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +28,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +46,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
-
 public class FicheActionStepDefinition {
 
     public String NumAction = "";
@@ -52,17 +61,43 @@ public class FicheActionStepDefinition {
     private static String Path = "src/main/resources/testData/TestData.xlsx";
 
 
-    public WebDriver driver;
+    public static WebDriver driver;
     public static String lan;
     public static String module = "";
 
+
+    @Autowired
+    ActionService actionService;
+    List<ConnexionDTO> connexionDTOList;
+    @Autowired
+    UtilisateurService utilisateurService;
+
     @PostConstruct
     public void init() {
+     //   Setup setup =new Setup();
 
-        driver = WebDriverConfig.driver;
+        driver=Setup.driver;
+      //  driver = WebDriverConfig.driver;
+       // connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
+        System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);
+
+    }
+    @When("Connecter en tant que {string} de l {int} du {string} action")
+    public void connecter_en_tant_que_de_l_du_action(String string, Integer int1, String string2) throws Exception {
+
+      //  System.err.println("login  :  " + connexionDTOList.get(0).getLogin());
+     //   System.err.println("password  :  " + connexionDTOList.get(0).getPassword());
+
+//        AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
+//        AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
+        AuthentificationModel.saisirLogin("MO");
+        AuthentificationModel.saisirPW("MO");
+        AuthentificationModel.clickOuvrirSession(driver);
+        // }
+        Thread.sleep(5000L);
     }
 
 
@@ -272,6 +307,7 @@ public class FicheActionStepDefinition {
     public void saisir_action(int arg1) throws Throwable {
         row = arg1;
     }
+
 
     @And("saisir {string} action filaile")
     public void saisir_action_filaile(String string) throws InterruptedException {

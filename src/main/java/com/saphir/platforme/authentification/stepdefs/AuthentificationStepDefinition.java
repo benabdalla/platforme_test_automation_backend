@@ -3,13 +3,19 @@ package com.saphir.platforme.authentification.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
+import com.saphir.platforme.config.CucumberHooks;
 import com.saphir.platforme.config.WebDriverConfig;
+import com.saphir.platforme.dto.ConnexionDTO;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.entity.Parametrage;
+import com.saphir.platforme.entity.UtilisateurQualipro;
 import com.saphir.platforme.page.WebDriverRun;
+import com.saphir.platforme.service.AuthentificationQualipro;
 import com.saphir.platforme.service.ParametrageService;
 import com.saphir.platforme.service.ActionService;
+import com.saphir.platforme.service.UtilisateurService;
 import com.saphir.platforme.utils.ExcelUtils;
+import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,6 +27,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -35,32 +42,20 @@ public class AuthentificationStepDefinition  {
 
     public int row = 1;
     public String module = "Action";
-
-
-    @Autowired
-    WebDriverRun driverRun;
-    @Autowired
-
-    WebDriverConfig webDriverConfig;
-    WebDriver driver;
-//    @Autowired
-//    ActionService serviceAction;
-    public static List<Action> actionList;
+    static  WebDriver driver;
     public static List<Parametrage> parametrageList;
     @Autowired
     ParametrageService parametrageService;
-    @Autowired
-    ActionService actionService;
+
     @PostConstruct
-    public void init() {
-        driver = WebDriverConfig.driver;
-        //driverRun.getWebDriver();
-      //  actionList = serviceAction.getAllAction();
+    public void init() throws IOException, InterruptedException {
+//        Setup setup =new Setup();
+//       driver=setup.setup("CHROME");
+        driver=Setup.driver;
         parametrageList=parametrageService.getAllParametere();
-        System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
-        //PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(this.driver, this);
     }
 
     @Given("^Ouvrir le site QualiProWeb$")
@@ -89,10 +84,10 @@ public class AuthentificationStepDefinition  {
     @When("^saisir Login et PW$")
     public void saisirLoginPW() throws Throwable {
         //logger.info("saisi login et mot de passe");
-        AuthentificationModel.saisirLogin(1, 2);
+       // AuthentificationModel.saisirLogin(1, 2);
 
         Thread.sleep(200L);
-        AuthentificationModel.saisirPW(1, 3);
+      //  AuthentificationModel.saisirPW(1, 3);
         Thread.sleep(200L);
 
     }
@@ -122,10 +117,28 @@ public class AuthentificationStepDefinition  {
     }
 
     @When("^Connecter en tant que (\\d+) de l (\\d+) du \"([^\"]*)\"$")
-    public void connecter_en_tant_que_de_l_du(int arg1, int arg2, String arg3) throws Throwable {
-        row = arg2;
-                    //AuthentificationModel.Changer_Compte(arg3, arg1, arg2, driver);
-        module = arg3;
+    public void connecter_en_tant_que_de_l_du(String arg1, int arg2, String arg3) throws Throwable {
+//        row = arg2;
+//       // ExcelUtils.setExcelFile(Path, module);
+//        String username ="test";
+//        //ExcelUtils.getCellData(row, col);
+//       //=authentificationQualipro.connextionParModule(arg3,arg1,arg2);
+//        System.err.println("login  :  " +connexionDTOList.get(0).getLogin());
+//        System.err.println("password  :  " +connexionDTOList.get(0).getPassword());
+//
+////        System.err.println("user name  is   :  " +username);
+////        if (!(username.equals(""))) {
+////            ExcelUtils.setExcelFile(Path, "Input");
+////            int RowNum = ExcelUtils.GetLigneData(username);
+//            //System.out.println("num ligne"+RowNum);
+//            AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
+//            AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
+//            AuthentificationModel.clickOuvrirSession(driver);
+//       // }
+//        Thread.sleep(5000L);
+//
+//                    //AuthentificationModel.Changer_Compte(arg3, arg1, arg2, driver);
+//        module = arg3;
     }
 
     @And("^changer la langue en anglais$")

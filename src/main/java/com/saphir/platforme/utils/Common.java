@@ -471,8 +471,8 @@ public class Common {
         ExcelUtils.setExcelFile(Path, "Input");
         int RowNum = ExcelUtils.GetLigneData(username);
         System.out.println("num ligne" + RowNum);
-        AuthentificationModel.saisirLogin(RowNum, 2);
-        AuthentificationModel.saisirPW(RowNum, 3);
+       // AuthentificationModel.saisirLogin(RowNum, 2);
+       // AuthentificationModel.saisirPW(RowNum, 3);
         AuthentificationModel.clickOuvrirSession(driver);
         Thread.sleep(2000L);
     }

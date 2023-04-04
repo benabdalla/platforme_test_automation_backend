@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface UtilisateurQualiproRepository extends JpaRepository<UtilisateurQualipro,Long> {
-    List<ConnexionDTO> findByName(String name);
+    List<ConnexionDTO> findByNameEquals(String name);
 
 }

@@ -9,27 +9,38 @@ import java.util.List;
 
 @Service
 public class AuthentificationQualipro {
-//    @Autowired
-//    ActionService actionService;
-//    @Autowired
-//    UtilisateurService utilisateurService;
-//    List<Action> actionList;
-//
-//    public List<ConnexionDTO> connextionParModule(String module, String respo, int row) {
-//        String name = null;
-//        if (module.equals("Action")) {
-//            actionList = actionService.getAllAction();
-////            name = switch (respo) {
-////                case "declencheur" -> actionList.get(row).getDechlencheur();
-////                case "RespoReal" -> actionList.get(row).getRespSuivi();
-////                case "Respoclot" -> actionList.get(row).getResptraitement();
-////                case "RespoSuivi" -> actionList.get(row).getRespcloture();
-////                default -> throw new IllegalStateException("Invalid day: " + respo);
-////            };
-//
-//        }
-//
-//        return utilisateurService.getLoginPaswword(name);
-//    }
+    @Autowired
+    ActionService actionService;
+    @Autowired
+    UtilisateurService utilisateurService;
+    List<Action> actionList;
+
+    public List<ConnexionDTO> connextionParModule(String module, String respo, int row) {
+        String name = null;
+        if (module.equals("Action")) {
+            actionList = actionService.getAllAction();
+            switch (respo) {
+                case "declencheur":
+                    name = actionList.get(row).getDechlencheur();
+                    break;
+                case "RespoReal":
+                    name = actionList.get(row).getRespSuivi();
+                    break;
+                case "Respoclot":
+                    name = actionList.get(row).getResptraitement();
+                    break;
+                case "RespoSuivi":
+                    name = actionList.get(row).getRespcloture();
+                    break;
+                default:
+                    System.out.println("Invalid day: " + respo);
+                    break;
+            }
+            ;
+
+        }
+
+        return utilisateurService.getLoginPaswword(name);
+    }
 
 }

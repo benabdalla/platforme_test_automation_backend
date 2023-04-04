@@ -12,9 +12,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 @Configuration
-@Profile("!remote") // to avoid loading for remote runs
+@Profile("!remote")
+@Component// to avoid loading for remote runs
 public class WebDriverConfig {
 public static WebDriver driver;
     @Bean
@@ -45,7 +47,9 @@ public static WebDriver driver;
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--headless");
-            return new ChromeDriver(options = options);
+            driver=new ChromeDriver(options = options);
+            return driver;
+            //return new ChromeDriver(options = options);
         }
     }
 

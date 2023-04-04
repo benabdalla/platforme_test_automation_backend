@@ -1,25 +1,13 @@
 package com.saphir.platforme.authentification.models;
 
 
-
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
-
-import com.saphir.platforme.dto.ConnexionDTO;
-import com.saphir.platforme.entity.Action;
-import com.saphir.platforme.entity.Parametrage;
-import com.saphir.platforme.service.ActionService;
-import com.saphir.platforme.service.AuthentificationQualipro;
-import com.saphir.platforme.service.ParametrageService;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
-import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.lan;
 
 
 @Component
@@ -44,26 +32,26 @@ public class AuthentificationModel {
 //AuthentificationQualipro authentificationQualipro;
 
     public static  void ouvrirQualiProWeb(WebDriver driver) throws Throwable {
-        ExcelUtils.setExcelFile(Path, "Input");
-        lan="fr";
-        //	logger.info("Begin : Ouvrir l'application QualiProWeb ");
-        System.err.println("site = " + ExcelUtils.getCellData(1, 0));
-        driver.get(ExcelUtils.getCellData(1, 0));
-        Thread.sleep(1000L);
-        System.out.println("lang :  " + lan);
-        Cookie cookie = new Cookie("lan", lan);
-        driver.manage().addCookie(cookie);
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        String txt="document.cookie=\'lan="+lan+"\'";
-        jse.executeScript(txt);
-        System.out.println(driver.manage().getCookieNamed("lan").getValue());
+//        ExcelUtils.setExcelFile(Path, "Input");
+//        lan="fr";
+//        //	logger.info("Begin : Ouvrir l'application QualiProWeb ");
+//        System.err.println("site = " + ExcelUtils.getCellData(1, 0));
+//        driver.get(ExcelUtils.getCellData(1, 0));
+//        Thread.sleep(1000L);
+//        System.out.println("lang :  " + lan);
+//        Cookie cookie = new Cookie("lan", lan);
+//        driver.manage().addCookie(cookie);
+//        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        String txt="document.cookie=\'lan="+lan+"\'";
+//        jse.executeScript(txt);
+//        System.out.println(driver.manage().getCookieNamed("lan").getValue());
     }
 
-    public static void saisirLogin(int RowNum, int RowCol) throws Exception {
+    public static void saisirLogin(String login) throws Exception {
         Thread.sleep(500);
-        ExcelUtils.setExcelFile(Path, "Input");
-        String login = ExcelUtils.getCellData(RowNum, RowCol);
-        System.err.println("login " + ExcelUtils.getCellData(RowNum, RowCol));
+//        ExcelUtils.setExcelFile(Path, "Input");
+        // String login = ExcelUtils.getCellData(RowNum, RowCol);
+        System.err.println("login " + login);
         Thread.sleep(500);
 
         AuthentificationPage.loginID.sendKeys(login);
@@ -82,10 +70,10 @@ public class AuthentificationModel {
 
     }
 
-    public static void saisirPW(int RowNum, int RowCol) throws Exception {
-        ExcelUtils.setExcelFile(Path, "Input");
-        String password = ExcelUtils.getCellData(RowNum, RowCol);
-        System.err.println("password " + ExcelUtils.getCellData(RowNum, RowCol));
+    public static void saisirPW(String password) throws Exception {
+//        ExcelUtils.setExcelFile(Path, "Input");
+//        String password = ExcelUtils.getCellData(RowNum, RowCol);
+        System.err.println("password " + password);
         Thread.sleep(500);
         AuthentificationPage.motDePasse.sendKeys(password);
 //        JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -111,8 +99,8 @@ JavascriptExecutor jse=(JavascriptExecutor)driver;
         //String NewUser="nada";
         int RowNum = ExcelUtils.GetLigneData(username);
         System.out.println("num ligne " + RowNum);
-        saisirLogin(RowNum, 2);
-        saisirPW(RowNum, 3);
+        //saisirLogin(RowNum, 2);
+       // saisirPW(RowNum, 3);
         Thread.sleep(2000L);
         clickOuvrirSession(driver);
         Thread.sleep(5000L);
@@ -130,8 +118,8 @@ JavascriptExecutor jse=(JavascriptExecutor)driver;
             ExcelUtils.setExcelFile(Path, "Input");
             int RowNum = ExcelUtils.GetLigneData(username);
             //System.out.println("num ligne"+RowNum);
-            saisirLogin(RowNum, 2);
-            saisirPW(RowNum, 3);
+            //saisirLogin(RowNum, 2);
+          //  saisirPW(RowNum, 3);
             clickOuvrirSession(driver);
         }
         Thread.sleep(5000L);
