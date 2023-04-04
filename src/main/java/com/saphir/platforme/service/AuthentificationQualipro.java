@@ -2,6 +2,7 @@ package com.saphir.platforme.service;
 
 import com.saphir.platforme.dto.ConnexionDTO;
 import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.UtilisateurQualipro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class AuthentificationQualipro {
     UtilisateurService utilisateurService;
     List<Action> actionList;
 
-    public List<ConnexionDTO> connextionParModule(String module, String respo, int row) {
+    public List<UtilisateurQualipro> connextionParModule(String module, String respo, int row) {
         String name = null;
         if (module.equals("Action")) {
             actionList = actionService.getAllAction();

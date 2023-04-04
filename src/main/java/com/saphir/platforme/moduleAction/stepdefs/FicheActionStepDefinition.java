@@ -7,12 +7,12 @@ import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.dto.ConnexionDTO;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.entity.Parametrage;
+import com.saphir.platforme.entity.UtilisateurQualipro;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.page.WebDriverRun;
 import com.saphir.platforme.service.ActionService;
-import com.saphir.platforme.service.AuthentificationQualipro;
-import com.saphir.platforme.service.ParametrageService;
+
 import com.saphir.platforme.service.UtilisateurService;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
@@ -68,7 +68,7 @@ public class FicheActionStepDefinition {
 
     @Autowired
     ActionService actionService;
-    List<ConnexionDTO> connexionDTOList;
+    List<UtilisateurQualipro> connexionDTOList;
     @Autowired
     UtilisateurService utilisateurService;
 
@@ -78,7 +78,7 @@ public class FicheActionStepDefinition {
 
         driver=Setup.driver;
       //  driver = WebDriverConfig.driver;
-       // connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
+        connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
         System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
@@ -91,10 +91,10 @@ public class FicheActionStepDefinition {
       //  System.err.println("login  :  " + connexionDTOList.get(0).getLogin());
      //   System.err.println("password  :  " + connexionDTOList.get(0).getPassword());
 
-//        AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
-//        AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
-        AuthentificationModel.saisirLogin("MO");
-        AuthentificationModel.saisirPW("MO");
+        AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
+        AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
+//        AuthentificationModel.saisirLogin("MO");
+//        AuthentificationModel.saisirPW("MO");
         AuthentificationModel.clickOuvrirSession(driver);
         // }
         Thread.sleep(5000L);
