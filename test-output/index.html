@@ -140,104 +140,12 @@
                   </a> <!-- runScenario("Creation fiche Action", "Qualipro- Test fiche Action") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Creation fiche Action","Qualipro- Test fiche Action")</span>
-                  <div class="stack-trace">io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
-It appears there was a problem with the step definition.
-The converted arguments types were ()
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:85)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:57)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
-	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
-	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
-	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
-	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
-	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
-	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.saphir.platforme.controllors.ActionRunTest.findById(ActionRunTest.java:44)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
-	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
-	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
-	... 89 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:374)
-	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:233)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1273)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1234)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:494)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:349)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:342)
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1172)
-	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
-	... 93 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.init(AuthentificationStepDefinition.java:51)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
-	... 109 more
-... Removed 33 stack frames
+                  <div class="stack-trace">java.lang.IllegalArgumentException: Required attributes are not set or any non-null attribute set to null
+	at org.openqa.selenium.Cookie.validate(Cookie.java:167)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.addCookie(RemoteWebDriver.java:681)
+	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:59)
+	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/Action.feature:40)
+
 </div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
@@ -249,17 +157,12 @@ Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.seleni
                   </a> <!-- runScenario("Creation fiche Action", "Qualipro- Test fiche Action") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Creation fiche Action","Qualipro- Test fiche Action")</span>
-                  <div class="stack-trace">io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
-It appears there was a problem with the step definition.
-The converted arguments types were ()
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:85)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:57)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+                  <div class="stack-trace">io.cucumber.core.backend.CucumberBackendException: No test instance
+	at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+	at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+	at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+	at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
 	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
 	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
 	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
@@ -267,7 +170,7 @@ The converted arguments types were ()
 	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
 	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.saphir.platforme.controllors.ActionRunTest.findById(ActionRunTest.java:44)
+	at com.saphir.platforme.controllors.ActionRunTest.findById(ActionRunTest.java:78)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
@@ -284,14 +187,6 @@ The converted arguments types were ()
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
@@ -314,39 +209,20 @@ The converted arguments types were ()
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
-	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
-	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
-	... 89 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:374)
-	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:233)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1273)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1234)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:494)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:349)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:342)
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1172)
-	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
-	... 93 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.init(AuthentificationStepDefinition.java:51)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
-	... 109 more
-... Removed 33 stack frames
+	Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+		at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+		... 79 more
+	Caused by: java.lang.IllegalStateException: No test instance
+		at org.springframework.util.Assert.state(Assert.java:76)
+		at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+		at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+		... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+	at org.springframework.util.Assert.state(Assert.java:76)
+	at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+	at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+	... 79 more
+... Removed 29 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
@@ -358,17 +234,12 @@ Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.seleni
                   </a> <!-- runScenario("Creation fiche Action", "Qualipro- Test fiche Action") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Creation fiche Action","Qualipro- Test fiche Action")</span>
-                  <div class="stack-trace">io.cucumber.core.exception.CucumberException: Could not invoke step [^Ouvrir le site QualiProWeb$] defined at &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb()&apos;.
-It appears there was a problem with the step definition.
-The converted arguments types were ()
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotInvokeStep(PickleStepDefinitionMatch.java:130)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:65)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:85)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:57)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+                  <div class="stack-trace">io.cucumber.core.backend.CucumberBackendException: No test instance
+	at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+	at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+	at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+	at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
 	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
 	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
 	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
@@ -376,7 +247,7 @@ The converted arguments types were ()
 	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
 	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.saphir.platforme.controllors.ActionRunTest.findById(ActionRunTest.java:44)
+	at com.saphir.platforme.controllors.ActionRunTest.findById(ActionRunTest.java:78)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
@@ -393,14 +264,6 @@ The converted arguments types were ()
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
@@ -423,39 +286,20 @@ The converted arguments types were ()
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: io.cucumber.core.backend.CucumberBackendException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:136)
-	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
-	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
-	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
-	... 89 more
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition&apos;: Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:374)
-	at io.cucumber.spring.CucumberScenarioScope.get(CucumberScenarioScope.java:13)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:233)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1273)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1234)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:494)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:349)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:342)
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1172)
-	at io.cucumber.spring.TestContextAdaptor.getInstance(TestContextAdaptor.java:232)
-	at io.cucumber.spring.SpringFactory.getInstance(SpringFactory.java:134)
-	... 93 more
-Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.manage()&quot; because &quot;com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.driver&quot; is null
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.init(AuthentificationStepDefinition.java:51)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
-	... 109 more
-... Removed 33 stack frames
+	Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+		at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+		... 79 more
+	Caused by: java.lang.IllegalStateException: No test instance
+		at org.springframework.util.Assert.state(Assert.java:76)
+		at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+		at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+		... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+	at org.springframework.util.Assert.state(Assert.java:76)
+	at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+	at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+	... 79 more
+... Removed 29 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
@@ -565,20 +409,20 @@ data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.saphir.platforme.ActionRunner')
-data.setCell(0, 3, 3025);
+data.setCell(0, 3, 86473);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'runScenario')
 data.setCell(1, 2, 'com.saphir.platforme.ActionRunner')
-data.setCell(1, 3, 172);
+data.setCell(1, 3, 6);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'runScenario')
 data.setCell(2, 2, 'com.saphir.platforme.ActionRunner')
-data.setCell(2, 3, 138);
+data.setCell(2, 3, 2);
 window.suiteTableData['Action']= { tableData: data, tableDiv: 'times-div-Action'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Action">
               </div> <!-- times-div-Action -->
             </div> <!-- times-div -->
@@ -645,30 +489,30 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.saphir.platforme.ActionRunner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@53e57c6e)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@410752e8)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("Creation fiche Action", "Qualipro- Test fiche Action")</span>
-                <span class="method-start">760 ms</span>
+                <span class="method-start">8917 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("Creation fiche Action", "Qualipro- Test fiche Action")</span>
-                <span class="method-start">3787 ms</span>
+                <span class="method-start">95390 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("Creation fiche Action", "Qualipro- Test fiche Action")</span>
-                <span class="method-start">3959 ms</span>
+                <span class="method-start">95396 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">4098 ms</span>
+                <span class="method-start">95399 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

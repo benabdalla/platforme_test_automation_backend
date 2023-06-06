@@ -25,13 +25,13 @@ public class RemoteWebDriverConfig {
 
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "firefox")
-    public WebDriver remoteFirefoxDriver(){
+    public WebDriver remoteFirefoxDriver() {
         return new RemoteWebDriver(this.url, DesiredCapabilities.firefox());
     }
 
     @Bean
     @ConditionalOnMissingBean // to catch invalid browser values
-    public WebDriver remoteChromeDriver(){
+    public WebDriver remoteChromeDriver() {
         return new RemoteWebDriver(this.url, DesiredCapabilities.chrome());
     }
 

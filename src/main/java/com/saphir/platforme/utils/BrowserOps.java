@@ -31,8 +31,8 @@ public class BrowserOps {
         logPrefs.enable(LogType.DRIVER, Level.ALL);
 
         firefoxOptions
-            .setProfile(firefoxProfile)
-            .setCapability("moz:loggingPrefs", logPrefs);
+                .setProfile(firefoxProfile)
+                .setCapability("moz:loggingPrefs", logPrefs);
         return firefoxOptions;
     }
 }

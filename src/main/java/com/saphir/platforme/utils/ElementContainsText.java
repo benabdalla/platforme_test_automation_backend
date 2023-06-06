@@ -10,7 +10,7 @@ import java.util.Objects;
 //Custom Expected Condition Class
 public class ElementContainsText implements ExpectedCondition<Boolean> {
     private final String textToFind;
-    private final By     by;
+    private final By by;
 
     //Constructor (Set the given values)
     public ElementContainsText(final By by, final String textToFind) {
@@ -23,13 +23,13 @@ public class ElementContainsText implements ExpectedCondition<Boolean> {
     public Boolean apply(WebDriver webDriver) {
         //Find the element with given By method (By CSS, XPath, Name, etc.)
         WebElement element = Objects
-            .requireNonNull(webDriver)
-            .findElement(this.by);
+                .requireNonNull(webDriver)
+                .findElement(this.by);
 
         //Check that the element contains given text?
         return element
-            .getText()
-            .contains(this.textToFind);
+                .getText()
+                .contains(this.textToFind);
     }
 
     //This is for log message. I override it because when test fails, it will give us a meaningful message.

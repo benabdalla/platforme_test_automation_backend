@@ -25,14 +25,13 @@ import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefiniti
 
 @Test
 public class DemandeActionStepDefinition {
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
-
     public static String lan;
     public static int row = 0;
     public static String module = "";
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
+    public String NewUser = "TESTAUTO2";
     @Autowired
     protected WebDriver driver;
-    public String NewUser = "TESTAUTO2";
     String Demandeur, NACTION;
 
     @PostConstruct
@@ -287,8 +286,8 @@ public class DemandeActionStepDefinition {
         System.out.println("Size : " + sizecol);
         //postion  de  status  de  demande action
         int pos = 0;
-        for (int i = 1; i < sizecol-1; i++) {
-            String NameCol = DemandeActionPage.TableDemandeID.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1p\"]/thead/tr/th["+ i +"]")).getText();
+        for (int i = 1; i < sizecol - 1; i++) {
+            String NameCol = DemandeActionPage.TableDemandeID.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1p\"]/thead/tr/th[" + i + "]")).getText();
             System.out.println("Name colomun : " + NameCol);
             if (NameCol.equals("Statut") || NameCol.equals("Status")) {
                 pos = i;
@@ -300,7 +299,7 @@ public class DemandeActionStepDefinition {
         WebElement cellIneed = tableRow.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1p\"]/tbody/tr/td[" + pos + "]"));
 
         String verifDesignation = cellIneed.getText();
-        int   posNumAct=pos+1;
+        int posNumAct = pos + 1;
         WebElement cellIneed1 = tableRow.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1p\"]/tbody/tr[1]/td[" + posNumAct + "]"));
         NACTION = cellIneed1.getText();
         Thread.sleep(1000L);
@@ -309,7 +308,7 @@ public class DemandeActionStepDefinition {
         if ((verifDesignation.equals("DEMANDE VALIDEE")) || (verifDesignation.equals("Request approved"))) {
             Assert.assertTrue(true);
         } else {
-            Assert.assertTrue(false);
+            Assert.fail();
         }
 
     }

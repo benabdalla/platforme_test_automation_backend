@@ -3,22 +3,17 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
-import com.saphir.platforme.config.WebDriverConfig;
-import com.saphir.platforme.dto.ConnexionDTO;
+import com.saphir.platforme.controllors.ActionRunTest;
 import com.saphir.platforme.entity.Action;
-import com.saphir.platforme.entity.Parametrage;
-import com.saphir.platforme.entity.UtilisateurQualipro;
+import com.saphir.platforme.entity.Utilisateur;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
-import com.saphir.platforme.page.WebDriverRun;
 import com.saphir.platforme.service.ActionService;
-
 import com.saphir.platforme.service.UtilisateurService;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.utils.Setup;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.StepDefinitionAnnotations;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -45,54 +40,53 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
+
 public class FicheActionStepDefinition {
 
-    public String NumAction = "";
-    public String taux;
-    public String filaile = "";
-    private boolean Etatcloture;
     public static int row;
     public static String origine = "";
-    private Common common = new Common();
     public static String fgRespReal = "";
     public static String fgRespSuivi = "";
-
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
-
-
     public static WebDriver driver;
     public static String lan;
     public static String module = "";
-
-
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
+    public String NumAction = "";
+    public String taux;
+    public String filaile = "";
+    Action action;
     @Autowired
     ActionService actionService;
-    List<UtilisateurQualipro> connexionDTOList;
+    List<Utilisateur> connexionDTOList;
     @Autowired
     UtilisateurService utilisateurService;
+    private boolean Etatcloture;
+    private final Common common = new Common();
 
     @PostConstruct
     public void init() {
-     //   Setup setup =new Setup();
+        //   Setup setup =new Setup();
 
-        driver=Setup.driver;
-      //  driver = WebDriverConfig.driver;
-        connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
-        System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
+        driver = Setup.driver;
+        //  driver = WebDriverConfig.driver;
+        //  connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
+        //   System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);
 
     }
+
     @When("Connecter en tant que {string} de l {int} du {string} action")
     public void connecter_en_tant_que_de_l_du_action(String string, Integer int1, String string2) throws Exception {
 
-      //  System.err.println("login  :  " + connexionDTOList.get(0).getLogin());
-     //   System.err.println("password  :  " + connexionDTOList.get(0).getPassword());
+        //  System.err.println("login  :  " + connexionDTOList.get(0).getLogin());
+        //   System.err.println("password  :  " + connexionDTOList.get(0).getPassword());
 
-        AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
-        AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
+        //   AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
+        //AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
 //        AuthentificationModel.saisirLogin("MO");
 //        AuthentificationModel.saisirPW("MO");
         AuthentificationModel.clickOuvrirSession(driver);
@@ -307,6 +301,16 @@ public class FicheActionStepDefinition {
     public void saisir_action(int arg1) throws Throwable {
         row = arg1;
     }
+    @When("Connecter en tant declencheur que de  action")
+    public void connecter_en_tant_declencheur_que_de_action() throws Exception {
+      action=  ActionRunTest.action;
+        AuthentificationModel.saisirLogin(action.getDechlencheur().getLogin());
+
+
+        Thread.sleep(200L);
+        AuthentificationModel.saisirPW(action.getDechlencheur().getPassword());
+
+    }
 
 
     @And("saisir {string} action filaile")
@@ -440,10 +444,10 @@ public class FicheActionStepDefinition {
         executor.executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(500L);
         executor.executeScript("arguments[0].click()", element);
-		/*Actions action = new Actions(driver);
-		action.moveToElement(FicheActionPage.btnValiderActionId).perform();
-		Thread.sleep(500L);
-		FicheActionModele.validerAjout();*/
+        /*Actions action = new Actions(driver);
+        action.moveToElement(FicheActionPage.btnValiderActionId).perform();
+        Thread.sleep(500L);
+        FicheActionModele.validerAjout();*/
         Thread.sleep(500L);
     }
 
@@ -459,7 +463,7 @@ public class FicheActionStepDefinition {
         Common.Exporter_visibilité("Fiche Action:" + Num);
         Common.Exporter_champ_A_masquer("Fiche Action: " + Num);
 
-        assertTrue(!Num.equals(""));
+        assertFalse(Num.equals(""));
         NumAction = Num;
         ExcelUtils.setExcelFile(Path, "Action");
         ExcelUtils.setCellData1(Num, row, 7, Path, "Action");
@@ -481,12 +485,12 @@ public class FicheActionStepDefinition {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", element);
         Thread.sleep(500L);
-		/*element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_Span1"));
-		Actions action = new Actions(driver);
-		action.moveToElement(element).perform();
-		executor = (JavascriptExecutor)driver;
-	    executor.executeScript("arguments[0].click()", element);
-	    //FicheActionPage.palnActionXpath.click();*/
+        /*element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_Span1"));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+        executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click()", element);
+        //FicheActionPage.palnActionXpath.click();*/
         Thread.sleep(500L);
         // driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadioButtonList3_1")).click();
         // driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadioButtonList3_1")).click();
@@ -502,12 +506,12 @@ public class FicheActionStepDefinition {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", element);
         Thread.sleep(500L);
-		/*element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_Span1"));
-		Actions action = new Actions(driver);
-		action.moveToElement(element).perform();
-		executor = (JavascriptExecutor)driver;
-	    executor.executeScript("arguments[0].click()", element);
-	    //FicheActionPage.palnActionXpath.click();*/
+        /*element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_Span1"));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+        executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click()", element);
+        //FicheActionPage.palnActionXpath.click();*/
         Thread.sleep(500L);
         // driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadioButtonList3_1")).click();
         // driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadioButtonList3_1")).click();
@@ -683,7 +687,7 @@ public class FicheActionStepDefinition {
         System.err.println("Number for  Action plan   is   :  " + numSousAct);
         List<WebElement> Elements = FicheActionPage.gridActionRealisation.findElements(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr"));
         System.out.println("size of  list  is  " + Elements.size());
-        Assert.assertTrue(Elements.size() == numSousAct, " elm 1 =" + Elements.size() + " : elem 2 = " + numSousAct);
+        Assert.assertEquals(numSousAct, Elements.size(), " elm 1 =" + Elements.size() + " : elem 2 = " + numSousAct);
         String desagnition = FicheActionPage.gridActionRealisation.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr[" + numSousAct + "]/td[4]")).getText();
         String priorite = FicheActionPage.gridActionRealisation.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr[" + numSousAct + "]/td[5]")).getText();
         String gravite = FicheActionPage.gridActionRealisation.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr[" + numSousAct + "]/td[6]")).getText();
@@ -711,7 +715,7 @@ public class FicheActionStepDefinition {
         System.err.println("Number for  Action plan   is   :  " + numSousAct);
         List<WebElement> Elements = FicheActionPage.wGridSousActSeulRespo.findElements(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5\"]/tbody/tr"));
         System.out.println("size of  list  is  " + Elements.size());
-        Assert.assertTrue(Elements.size() == numSousAct, " elm 1 =" + Elements.size() + " : elem 2 = " + numSousAct);
+        Assert.assertEquals(numSousAct, Elements.size(), " elm 1 =" + Elements.size() + " : elem 2 = " + numSousAct);
         String desagnition = FicheActionPage.wGridSousActSeulRespo.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5\"]/tbody/tr[" + numSousAct + "]/td[4]")).getText();
         String priorite = FicheActionPage.wGridSousActSeulRespo.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5\"]/tbody/tr[" + numSousAct + "]/td[5]")).getText();
         String gravite = FicheActionPage.wGridSousActSeulRespo.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5\"]/tbody/tr[" + numSousAct + "]/td[6]")).getText();
@@ -739,7 +743,7 @@ public class FicheActionStepDefinition {
     public void sous_action_ajouté_a_la_liste_des_sous_actions() throws Throwable {
         String numSousAct = FicheActionPage.desgSousActionModeleAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[2]")).findElement(By.tagName("a")).getText();
         System.err.println("numSousAct =" + numSousAct);
-        Assert.assertTrue(numSousAct.equals("1"));
+        Assert.assertEquals(numSousAct, "1");
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Liste_sous_actions"))).perform();
         driver.findElement(By.id("ctl00_ContentPlaceHolder1_Liste_sous_actions")).click();
@@ -838,7 +842,6 @@ public class FicheActionStepDefinition {
             Thread.sleep(1000L);
             //add click by rahma
             driver.findElement(By.id("spandetail")).click();
-            ;
             Thread.sleep(1000L);
 
 
@@ -846,9 +849,9 @@ public class FicheActionStepDefinition {
             try {
                 element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_coutpre"));
                 element.isDisplayed();
-			/*Actions action = new Actions(driver);
-			action.moveToElement(element);
-			action.perform();*/
+            /*Actions action = new Actions(driver);
+            action.moveToElement(element);
+            action.perform();*/
                 JavascriptExecutor js2 = (JavascriptExecutor) driver;
                 js2.executeScript("arguments[0].scrollIntoView(true);", element);
 
@@ -1234,7 +1237,7 @@ public class FicheActionStepDefinition {
     @Then("^Exporter tracabilite$")
     public void exporter_tracabilite() throws Throwable {
 
-        File folder = new File(String.valueOf("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement"));
+        File folder = new File("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement");
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             System.out.println("file name  : " + file.getName());
@@ -1290,26 +1293,26 @@ public class FicheActionStepDefinition {
         executor1.executeScript("arguments[0].click();", FicheActionPage.wexp);
 
         //driver.findElement(By.tagName("table")).findElement(By.tagName("tbody")).findElement(By.tagName("tr")).findElement(By.tagName("td")).findElement(By.tagName("nobr")).findElement(By.tagName("a")).click();
-	/*	Screen s = new Screen();
-		Screen s1 = new Screen();
-		Screen s2 = new Screen();
-		Screen s3 = new Screen();
-		Thread.sleep(1000);
-	
+    /*	Screen s = new Screen();
+        Screen s1 = new Screen();
+        Screen s2 = new Screen();
+        Screen s3 = new Screen();
+        Thread.sleep(1000);
 
-		try {
-			Pattern pattern = new Pattern("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\imgs\\Exporter_PV_reunion.PNG");
-			Pattern pattern1 = new Pattern("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\imgs\\combo_exporter_pv_reunion.PNG");
-			Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
-			Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
-			s1.click(pattern1);
-			s2.click(pattern2);
-			s3.click(pattern3);
-			Thread.sleep(4000);
-			
-		} catch (FindFailed e) {
-			e.printStackTrace();
-		}*/
+
+        try {
+            Pattern pattern = new Pattern("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\imgs\\Exporter_PV_reunion.PNG");
+            Pattern pattern1 = new Pattern("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\imgs\\combo_exporter_pv_reunion.PNG");
+            Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
+            Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
+            s1.click(pattern1);
+            s2.click(pattern2);
+            s3.click(pattern3);
+            Thread.sleep(4000);
+
+        } catch (FindFailed e) {
+            e.printStackTrace();
+        }*/
         Runtime.getRuntime().exec("E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Scripts\\EnregistrerFichier.exe");
         Thread.sleep(4000);
     }
@@ -1425,8 +1428,8 @@ public class FicheActionStepDefinition {
         for (int i = 0; i < informations.size(); i++) {
             int j = i + 1;
             System.out.println("l'information " + j + ":" + informations.get(i));
-            System.out.println("Existe: " + common.ExisteWord(path, informations.get(i)));
-            assertTrue(common.ExisteWord(path, informations.get(i)));
+            System.out.println("Existe: " + Common.ExisteWord(path, informations.get(i)));
+            assertTrue(Common.ExisteWord(path, informations.get(i)));
         }
         driver.navigate().back();
 
@@ -1685,17 +1688,17 @@ public class FicheActionStepDefinition {
     @When("^saisir filtre reporting$")
     public void saisir_filtre_reporting() throws Throwable {
         //Object obj=FicheActionPage.class.newInstance();
-		/*FicheActionPage pageclass = FicheActionPage.class.newInstance();
-		for (Field field : FicheActionPage.class.getDeclaredFields())
-		{
-			System.out.println(field.getName());
-			System.out.println(field.get(pageclass));
-		}*/
+        /*FicheActionPage pageclass = FicheActionPage.class.newInstance();
+        for (Field field : FicheActionPage.class.getDeclaredFields())
+        {
+            System.out.println(field.getName());
+            System.out.println(field.get(pageclass));
+        }*/
         FicheActionModele.initializer_filtre_Bilan_action(1);
 
         Iterator<Map.Entry<String, String>> iterator = FicheActionModele.filtre_repor.entrySet().iterator();
         while (iterator.hasNext()) {
-            Map.Entry mapentry = (Map.Entry) iterator.next();
+            Map.Entry mapentry = iterator.next();
             System.out.print("element  :  " + mapentry.getKey().toString());
             System.out.println("contune  :  " + mapentry.getValue().toString());
             Common.remplir_filtre_by_id(driver, mapentry.getKey().toString(), mapentry.getValue().toString());
@@ -1797,45 +1800,45 @@ public class FicheActionStepDefinition {
 
     @Then("^Exporter les données$")
     public void exporter_les_données() throws Throwable {
-	
-		/*JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
-		String currentFrame = (String) jsExecutor.executeScript("return self.name");
-		System.out.println(currentFrame);
-		 List<WebElement> elements =driver.findElements(By.tagName("table"));
-		 System.out.println(elements.size());
-		 int i=0;
-		 while(i<elements.size())
-		 {
-			 String id = elements.get(i).getAttribute("id");
-			 System.out.println(id);
-			 if(id.contains("bobjid_1560876287447_dialog")) 
-			 {
-				 System.out.println("yes");
-				 WebElement td=elements.get(i).findElement(By.id("td_dialog_bobjid_1560874207391_dialog"));
-				 System.out.println(td.getAttribute("id"));
-			 }
-			 i++;
-		 }*/
+
+        /*JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
+        String currentFrame = (String) jsExecutor.executeScript("return self.name");
+        System.out.println(currentFrame);
+         List<WebElement> elements =driver.findElements(By.tagName("table"));
+         System.out.println(elements.size());
+         int i=0;
+         while(i<elements.size())
+         {
+             String id = elements.get(i).getAttribute("id");
+             System.out.println(id);
+             if(id.contains("bobjid_1560876287447_dialog"))
+             {
+                 System.out.println("yes");
+                 WebElement td=elements.get(i).findElement(By.id("td_dialog_bobjid_1560874207391_dialog"));
+                 System.out.println(td.getAttribute("id"));
+             }
+             i++;
+         }*/
         //WebElement table= driver.findElement(By.id("bobjid_1560874207391_dialog"));
         //WebElement td=table.findElement(By.id("td_dialog_bobjid_1560874207391_dialog"));
         //System.out.println(td.getAttribute("id"));
-		
-	/*	 Screen s = new Screen();
-			Screen s1 = new Screen();
-			Screen s2 = new Screen();
-			Screen s3 = new Screen();
-			try {
-				Pattern pattern  = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
-				Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
-				Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
-				Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
-				s.click(pattern);
-				s1.click(pattern1);
-				s2.click(pattern2);
-				s3.click(pattern3);
-			} catch (FindFailed e) {
-				e.printStackTrace();
-			}*/
+
+    /*	 Screen s = new Screen();
+            Screen s1 = new Screen();
+            Screen s2 = new Screen();
+            Screen s3 = new Screen();
+            try {
+                Pattern pattern  = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
+                Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
+                Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
+                Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
+                s.click(pattern);
+                s1.click(pattern1);
+                s2.click(pattern2);
+                s3.click(pattern3);
+            } catch (FindFailed e) {
+                e.printStackTrace();
+            }*/
         //  JavascriptExecutor executor = (JavascriptExecutor)driver;
         // executor.executeScript("arguments[0].click();",FicheActionPage.wexport );
         //  driver.findElement(By.linkText("Exporter")).click();
@@ -2094,4 +2097,4 @@ public class FicheActionStepDefinition {
 
 }
 
-	
+

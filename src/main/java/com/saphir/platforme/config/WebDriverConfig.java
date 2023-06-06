@@ -1,6 +1,5 @@
 package com.saphir.platforme.config;
 
-import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +17,8 @@ import org.springframework.stereotype.Component;
 @Profile("!remote")
 @Component// to avoid loading for remote runs
 public class WebDriverConfig {
-public static WebDriver driver;
+    public static WebDriver driver;
+
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "edge")
     public WebDriver edgeDriver() {
@@ -40,14 +40,14 @@ public static WebDriver driver;
 
         if (System.getenv("CLOUD_RUN_FLAG") == null) {
             WebDriverManager.chromedriver().setup();
-            driver=new ChromeDriver();
-           return driver;
+            driver = new ChromeDriver();
+            return driver;
         } else {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--headless");
-            driver=new ChromeDriver(options = options);
+            driver = new ChromeDriver(options = options);
             return driver;
             //return new ChromeDriver(options = options);
         }

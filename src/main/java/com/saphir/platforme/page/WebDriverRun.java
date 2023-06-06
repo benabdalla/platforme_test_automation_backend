@@ -10,12 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 public class WebDriverRun extends Base {
 
 
-
     @Value("${application.url}")
     private String url;
 
     //launch website
-    public WebDriver getWebDriver(){
+    public WebDriver getWebDriver() {
         //this.driver.get(url);
         return driver;
     }

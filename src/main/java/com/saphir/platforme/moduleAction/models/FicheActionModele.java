@@ -2,7 +2,6 @@ package com.saphir.platforme.moduleAction.models;
 
 
 import com.github.javafaker.Faker;
-
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.moduleAction.stepdefs.ActSimplStepDefinition;
@@ -10,25 +9,23 @@ import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
 
 public class FicheActionModele {
 
-    //private static String Path = "resources/testData/TestData2.xlsx";
-    static int i = 1;
     public static List<String> informations = new ArrayList<String>();
     public static HashMap<String, String> filtre_repor = new HashMap<>();
-    private static String Path = "resources/testData/TestData.xlsx";
+    //private static String Path = "resources/testData/TestData2.xlsx";
+    static int i = 1;
+    private static final String Path = "resources/testData/TestData.xlsx";
 
 
     public static void consulter_types_d_action(WebDriver driver) throws Exception {
@@ -54,14 +51,14 @@ public class FicheActionModele {
         Thread.sleep(2000);
 
         if (!ActSimplStepDefinition.actionSimpl.equals("")) {
-            String st = "Type Action Simplifier Auto" + LocalDateTime.now().toString();
+            String st = "Type Action Simplifier Auto" + LocalDateTime.now();
             ExcelUtils.setExcelFile(Path, "ActSimpl");
             ExcelUtils.setCellData1(st, row, 4, Path, "ActSimpl");
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wchekSimptype.click();
 
         } else {
-            String st = "Type Action Auto" + LocalDateTime.now().toString();
+            String st = "Type Action Auto" + LocalDateTime.now();
             ExcelUtils.setExcelFile(Path, "Action");
             ExcelUtils.setCellData1(st, row, 1, Path, "Action");
             FicheActionPage.wsaitype.sendKeys(st);
@@ -101,10 +98,10 @@ public class FicheActionModele {
             String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
             if (cookie1.getValue().equals("en-US")) {
                 Assert.assertEquals("Yes", acttionSimpl);
-                Assert.assertTrue(cause.equals("No"));
+                Assert.assertEquals(cause, "No");
             } else {
                 Assert.assertEquals("OUI", acttionSimpl);
-                Assert.assertTrue(cause.equals("NON"));
+                Assert.assertEquals(cause, "NON");
 
             }
 
@@ -118,11 +115,11 @@ public class FicheActionModele {
             String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
             String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
             if (cookie1.getValue().equals("en-US")) {
-                Assert.assertTrue(acttionSimpl.equals("No"));
-                Assert.assertTrue(cause.equals("Yes"));
+                Assert.assertEquals(acttionSimpl, "No");
+                Assert.assertEquals(cause, "Yes");
             } else {
-                Assert.assertTrue(cause.equals("OUI"));
-                Assert.assertTrue(acttionSimpl.equals("NON"));
+                Assert.assertEquals(cause, "OUI");
+                Assert.assertEquals(acttionSimpl, "NON");
             }
 
 
@@ -156,7 +153,7 @@ public class FicheActionModele {
     public static void saisir_source_d_action(int row) throws Exception {
         Thread.sleep(2000);
         if (ActSimplStepDefinition.actionSimpl != "") {
-            String st = "Source Action Simplifier Auto" + LocalDateTime.now().toString();
+            String st = "Source Action Simplifier Auto" + LocalDateTime.now();
             ExcelUtils.setExcelFile(Path, "ActSimpl");
             ExcelUtils.setCellData1(st, row, 3, Path, "ActSimpl");
             FicheActionPage.wource.sendKeys(st);
@@ -164,7 +161,7 @@ public class FicheActionModele {
 
 
         } else {
-            String st = "Source Action Auto" + LocalDateTime.now().toString();
+            String st = "Source Action Auto" + LocalDateTime.now();
             ExcelUtils.setExcelFile(Path, "Action");
             ExcelUtils.setCellData1(st, row, 0, Path, "Action");
             FicheActionPage.wource.sendKeys(st);
@@ -197,16 +194,16 @@ public class FicheActionModele {
         if (ActSimplStepDefinition.actionSimpl != "") {
 
             if (cookie1.getValue().equals("en-US")) {
-                Assert.assertTrue(simplifier.equals("Yes"));
+                Assert.assertEquals(simplifier, "Yes");
             } else {
-                Assert.assertTrue(simplifier.equals("OUI"));
+                Assert.assertEquals(simplifier, "OUI");
             }
 
         } else {
             if (cookie1.getValue().equals("en-US")) {
-                Assert.assertTrue(simplifier.equals("No"));
+                Assert.assertEquals(simplifier, "No");
             } else {
-                Assert.assertTrue(simplifier.equals("NON"));
+                Assert.assertEquals(simplifier, "NON");
             }
         }
 
@@ -229,7 +226,7 @@ public class FicheActionModele {
 
     public static void saisir_type_de_causes(int row) throws Throwable {
         Thread.sleep(2000);
-        String st = "type de causes auto" + LocalDateTime.now().toString();
+        String st = "type de causes auto" + LocalDateTime.now();
         ExcelUtils.setExcelFile(Path, "Action");
         ExcelUtils.setCellData1(st, row, 9, Path, "Action");
         FicheActionPage.wtypecaus.sendKeys(st);
@@ -266,7 +263,7 @@ public class FicheActionModele {
     public static void saisir_priorité(int row) throws Throwable {
 
         Thread.sleep(2000);
-        String st = "Priorité" + LocalDateTime.now().toString();
+        String st = "Priorité" + LocalDateTime.now();
         ExcelUtils.setExcelFile(Path, "Action");
         ExcelUtils.setCellData1(st, row, 2, Path, "Action");
         FicheActionPage.wtypecaus.sendKeys(st);
@@ -303,7 +300,7 @@ public class FicheActionModele {
 
     public static void saisir_gravité(int row) throws Throwable {
         Thread.sleep(2000);
-        String st = "Gravité " + LocalDateTime.now().toString();
+        String st = "Gravité " + LocalDateTime.now();
         ExcelUtils.setExcelFile(Path, "Action");
         ExcelUtils.setCellData1(st, row, 3, Path, "Action");
         FicheActionPage.wsaitype.sendKeys(st);
@@ -369,7 +366,7 @@ public class FicheActionModele {
             String option_Selected = selected.getFirstSelectedOption().getText() + "33";
             System.out.println("option_Selected " + option_Selected);
 
-            Assert.assertTrue(option_Selected.equals(option_Selected));
+            Assert.assertEquals(option_Selected, option_Selected);
         } else {
             ExcelUtils.setExcelFile(Path, "ActSimpl");
             // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
@@ -379,7 +376,7 @@ public class FicheActionModele {
             informations.add(ExcelUtils.getCellData(row, 3));
 
             String option_Selected = selected.getFirstSelectedOption().getText();
-            Assert.assertTrue(option_Selected.equals(option_Selected));
+            Assert.assertEquals(option_Selected, option_Selected);
         }
 
 
@@ -410,18 +407,18 @@ public class FicheActionModele {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[1].value = arguments[0];", Sdate, FicheActionPage.calenrierId);
         Thread.sleep(500);
-		
-		
-		/*
-		FicheActionPage.calenrierId.click();
-		//JavascriptExecutor executor =(JavascriptExecutor)driver;
-		//executor.executeScript("arguments[0].click()", FicheActionPage.calenrierId);
-		FicheActionPage.choixDateId.click();
-		//executor.executeScript("arguments[0].click()", FicheActionPage.choixDateId);
-		String value=driver.findElement(By.id("ctl00_ContentPlaceHolder1_datcrea")).getAttribute("value");
-		System.out.println(value);
-		ExcelUtils.setExcelFile(Path, "Action");
-		ExcelUtils.setCellData1(value, row ,8 , Path) ;*/
+
+
+        /*
+        FicheActionPage.calenrierId.click();
+        //JavascriptExecutor executor =(JavascriptExecutor)driver;
+        //executor.executeScript("arguments[0].click()", FicheActionPage.calenrierId);
+        FicheActionPage.choixDateId.click();
+        //executor.executeScript("arguments[0].click()", FicheActionPage.choixDateId);
+        String value=driver.findElement(By.id("ctl00_ContentPlaceHolder1_datcrea")).getAttribute("value");
+        System.out.println(value);
+        ExcelUtils.setExcelFile(Path, "Action");
+        ExcelUtils.setCellData1(value, row ,8 , Path) ;*/
     }
 
     public static void origine_action(int row) {
@@ -798,7 +795,7 @@ public class FicheActionModele {
 
     public static void cliqueAgenda(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.visibilityOf(FicheActionPage.agendatActionId));
+        // wait.until(ExpectedConditions.visibilityOf(FicheActionPage.agendatActionId));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.agendatActionId);
         //FicheActionPage.agendatActionId.click();
@@ -970,7 +967,7 @@ public class FicheActionModele {
             String NumSousActSeulRespo = "";
 
             NumSousActSeulRespo = FicheActionPage.wGridSousActSeulRespo.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5_wrapper\"]/div[2]/div/table/tbody/tr/td[3]")).getText();
-            Assert.assertTrue(!NumSousActSeulRespo.equals(""));
+            Assert.assertFalse(NumSousActSeulRespo.equals(""));
         }
     }
 

@@ -10,157 +10,6 @@ import java.util.List;
 public class FicheActionPage {
 
 
-    /* Locators */ // optimisation de maintenance par déclaration de variable
-    public static List<String> Filtre_rep = new ArrayList<String>();
-    final static String MENU_ID = "ctl00_menuModal";
-    final static String HOME_ID = "ctl00_LinkButtonHome";
-    final static String ACTIONS_XPATH = "//*[@id=\"cssmenu15\"]/div/div/ul/li[2]/a";
-    final static String ACTION_XPATH = "//*[@id=\"cssmenu15\"]/div/div/ul/li[2]/ul/li[1]/a";
-    final static String BOUTTON_AJOUTER_ACTION_ID = "ctl00_ContentPlaceHolder1_Ajouter";
-    final static String BOUTTON_AJOUTER_DETAILLEE_ACTION_ID = "ctl00_ContentPlaceHolder1_AjactDet";
-    final static String btnEnrTReal = "ctl00_ContentPlaceHolder1_lb_enreg_real";
-    final static String tauxRealAg = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_ctl02_tb_taux\"]";
-    final static String BtnClot = "ctl00_ContentPlaceHolder1_Label126";
-
-    final static String btnVldTReal = "ctl00_ContentPlaceHolder1_LinkButton32";
-    final static String OBJET_XPATH = "ctl00_ContentPlaceHolder1_Liste_sous_actions";
-    final static String PLAN_ACTION_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel13_2Heading\"]/h4/a/span";
-
-    final static String ATT_MODELE_ID = "ctl00_ContentPlaceHolder1_LinkButton_Modele";
-    final static String RECH_MODELE_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView3_filter\"]/label/input";
-    final static String CHX_MODELE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView3\"]/tbody/tr/td[1]";
-    final static String APERCU_ID = "ctl00_ContentPlaceHolder1_Label150";
-
-
-    final static String SOURCE_ID = "ctl00_ContentPlaceHolder1_Listsource";
-    final static String Datecreation_Act_ID = "ctl00_ContentPlaceHolder1_Img8";
-    final static String agenda_creation_ID = "ctl00_ContentPlaceHolder1_CalendarExtender1_today";
-    final static String CALENDRIER_ID = "ctl00_ContentPlaceHolder1_datcrea";
-    final static String CHOIX_DATE_ID = "ctl00_ContentPlaceHolder1_CalendarExtender1_today";
-
-    final static String ORIGINE_ID = "ctl00_ContentPlaceHolder1_TextBox_Origine";
-    final static String AJT_PRDT_ID = "ctl00_ContentPlaceHolder1_Button1";
-    final static String CHX_PRDT_ID = "ctl00_ContentPlaceHolder1_GridPRODUIT";
-    final static String VLD_PRDT_ID = "ctl00_ContentPlaceHolder1_Label110";
-    final static String FERMER_PRDT_ID = "//*[@id=\"myModalRatproduit\"]/div/div/div[1]/button/span";
-
-    final static String AJT_TYP_CAUSE = "ctl00_ContentPlaceHolder1_LinkButton32";
-    final static String RECH_TYP_CAUSE = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView9_filter\"]/label/input";
-    final static String GRID_TYP_CAUSE = "ctl00_ContentPlaceHolder1_GridView9";
-    final static String VLD_TYP_CAUSE = "ctl00_ContentPlaceHolder1_Label200";
-    final static String FERMER_TYP_CAUSE = "//*[@id=\"myModalTypes8causes\"]/div/div/div[1]/button/span";
-
-    final static String Objectif_ID = "ctl00_ContentPlaceHolder1_TextBoxObj";
-    final static String REF_AUDIT_ID = "ctl00_ContentPlaceHolder1_DropDownList4";
-
-
-    final static String DESIGNATION_ID = "ctl00_ContentPlaceHolder1_desi";
-    final static String TYPE_ID = "ctl00_ContentPlaceHolder1_Listtype";
-    final static String DESCRIPTION_OBJET_ID = "ctl00_ContentPlaceHolder1_descrip";
-    final static String CAUSES_POSSIBLES_ID = "ctl00_ContentPlaceHolder1_cause";
-    final static String SITE_ID = "ctl00_ContentPlaceHolder1_Listsite";
-    final static String PROCESSUS_ID = "ctl00_ContentPlaceHolder1_lBProcessus_";
-    final static String ACTIVITE_ID = "ctl00_ContentPlaceHolder1_lBDomaine_";
-    final static String DIRECTION_ID = "ctl00_ContentPlaceHolder1_ListBox_Direction";
-    final static String service_ID = "ctl00_ContentPlaceHolder1_lBService_";
-
-    final static String Resp_cloture_ID = "ctl00_ContentPlaceHolder1_ListBox_cloture";
-    final static String BOUTTON_VALIDER_ID = "ctl00_ContentPlaceHolder1_LinkButton17_Valider";
-    final static String AGENDA_ACTION_ID = "ctl00_lb_act";
-    final static String AGENDA_ACTION2_ID = "//*[@id=\"ctl00_lb_act\"]/span";
-
-    final static String BOUTTON_AJOUTER_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_LinkButton3pm";
-    final static String DESIGNATION_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_TextBox5";
-    final static String RESPONSABLE_REALISATION_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_tb_respreal";
-    final static String RESPONSABLE_SUIVI_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_tb_respsv";
-    final static String DATE_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_Img13";
-    final static String CHOIX_DATE_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_CalendarExtender14_today";
-    final static String délais_suivi_ID = "ctl00_ContentPlaceHolder1_Img14";
-
-    final static String choix_délais_suivi_ID = "ctl00_ContentPlaceHolder1_CalendarExtender15_today";
-    final static String BOUTTON_VALIDER_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_LinkButton11";
-    final static String DESIGNATION_GRID_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_GridView1";
-
-    final static String GRAVITE_ID = "ctl00_ContentPlaceHolder1_DropDownList_Gravite";
-    final static String PRIORITE_ID = "ctl00_ContentPlaceHolder1_DropDownList_Priorite";
-    final static String COUT_PREV_SA_ID = "ctl00_ContentPlaceHolder1_TextBox10";
-    final static String RISQUE_ID = "ctl00_ContentPlaceHolder1_TextBox19";
-
-    final static String GRID_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_GridView1";
-    final static String ACTION_A_REALISATION_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel_actRealiser\"]/div[1]/h4/a/span";
-    final static String ACTION_A_CLOTURER_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel20\"]/div[1]/h4/a/span";
-    final static String ACTION_A_SUIVIRE_XPATH = "ctl00_ContentPlaceHolder1_num3";
-    final static String NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_textBoxNAct2";
-    final static String CHOIX_NUM_ACTION_A_REALISATION_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[1]";
-
-    final static String RECHERCHER_NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_LinkButton38";
-
-    final static String RECHERCHER_ACTION_A_CLOTURER_XPATH = "ctl00_ContentPlaceHolder1_GridView_Cloture_filter";
-
-    //*[@id="ctl00_ContentPlaceHolder1_GridView2_wrapper"]/div[1]/div[2]/div/label/input
-    //*[@id="ctl00_ContentPlaceHolder1_GridView_Cloture_wrapper"]/div[1]/div[2]/div/label/input
-
-    final static String TAUX_REALISATION_ID = "ctl00_ContentPlaceHolder1_Taux1";
-    final static String DEPENSES_ID = "ctl00_ContentPlaceHolder1_depen";
-    final static String COMMENTAIRE_ID = "ctl00_ContentPlaceHolder1_comm1";
-    final static String DATE_REALISATION_ID = "ctl00_ContentPlaceHolder1_Img6";
-    final static String CHOIX_DATE_REALISATION_ID = "ctl00_ContentPlaceHolder1_CalendarExtender5_today";
-    final static String SAISIE_D_REALISATION_ID = "ctl00_ContentPlaceHolder1_datrea";
-    final static String VALIDER_REALISATION_ID = "ctl00_ContentPlaceHolder1_LinkButton21";
-
-    final static String NUM_ACTION_A_SUIVRE_ID = "ctl00_ContentPlaceHolder1_textBoxNAct";
-    final static String CHOIX_NUM_ACTION_A_SUIVRE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView2\"]/tbody/tr/td[1]";
-    final static String RECHERCHER_NUM_ACTION_A_SUIVRE_ID = "ctl00_ContentPlaceHolder1_LinkButton36_Rechercher";
-
-    final static String TAUX_EFF_ID = "ctl00_ContentPlaceHolder1_Tauxeff2";
-    final static String RAPPORT_EFF_ID = "ctl00_ContentPlaceHolder1_reff2";
-    final static String VALIDER_SUIVI_ID = "ctl00_ContentPlaceHolder1_LinkButton7";
-
-    final static String CHOIX_ACTION_CLOTURER_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Cloture\"]/tbody/tr/td[1]";
-    final static String CLOTUREE_ID = "ctl00_ContentPlaceHolder1_RadioButtonList1_0";
-
-    final static String DATE_CLOTURE_ID = "ctl00_ContentPlaceHolder1_img3";
-
-    final static String CHOIX_DATE_CLOTURE_ID = "ctl00_ContentPlaceHolder1_CalendarExtender8_today";
-
-    final static String VALIDER_CLOTURE_ID = "ctl00_ContentPlaceHolder1_LinkButton44_suivi";
-    final static String RAPPORT_CLOTURE_ID = "ctl00_ContentPlaceHolder1_rapclot";
-
-    final static String RECH_FILT_ID = "ctl00_ContentPlaceHolder1_nacP";
-    final static String BTN_RECH_FILTRE_ID = "ctl00_ContentPlaceHolder1_Filtre_Rechercher";
-    final static String TABLE_FILTRE_ACTION_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1P\"]/tbody/tr/td[2]";
-
-    final static String AFFI_TX_REA_ID = "ctl00_ContentPlaceHolder1_tauxreal2";
-    final static String EDIT_TX_REA_ID = "ctl00_ContentPlaceHolder1_LinkButton2";
-    final static String CHX_SA_REA_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView4\"]/tbody/tr/td[1]";
-    final static String NOUV_TX_REA_ID = "ctl00_ContentPlaceHolder1_Trd1";
-    final static String NOUV_TX_REA_IDSmp = "ctl00_ContentPlaceHolder1_TextBox10dcfsd";
-
-    final static String COMM_NOUV_TX_ID = "ctl00_ContentPlaceHolder1_Tr2";
-    final static String COMM_NOUV_TX_IDsimp = "ctl00_ContentPlaceHolder1_Texyyy";
-
-    final static String VLD_NOUV_TAUX_REA_ID = "ctl00_ContentPlaceHolder1_LinkButton15";
-    final static String VLD_NOUV_TAUX_REA_IDsimp = "ctl00_ContentPlaceHolder1_Lindwfdv";
-    final static String QUTT_MOD_TX_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_juj\"]/span";
-    final static String VLD_RETOUR_ID = "ctl00_ContentPlaceHolder1_LinkButton7";
-    final static String QTT_RETOUR_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_LinkButton8\"]/span";
-    final static String QTT_RETOUR1_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_LinkButton22\"]/span";
-    final static String EXPORTER_ID = "IconImg_CrystalReportViewer1_toptoolbar_export";
-    final static String TRACABILITE_ID = "ctl00_ContentPlaceHolder1_Label154";
-    final static String CHX_APERCU_ID = "ctl00_ContentPlaceHolder1_type_report_1";
-    final static String VLD_Apercu_ID = "ctl00_ContentPlaceHolder1_LinkButton16";
-
-
-    final static String ACTION_A_REALISER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[1]";
-    final static String ACTION_A_SUIVRE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView2\"]/tbody/tr/td[1]";
-    final static String FILTRE_REALISE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_filter\"]/label/input";
-
-    final static String PNL_Intervenant_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_panelIntervHeading\"]/h4/a/span";
-    final static String AJT_INTER_ID = "ctl00_ContentPlaceHolder1_LinkButton6";
-    final static String RECH_INTER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView8_filter\"]/label/input";
-    final static String CHX_INTER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView8\"]/tbody/tr/td[1]";
-    final static String VLD_INTER_ID = "ctl00_ContentPlaceHolder1_LinkButton11";
-
     public final static String selec_source_id = "ctl00_ContentPlaceHolder1_ListBox_Source";
     public final static String selec_declencheur_id = "ctl00_ContentPlaceHolder1_ListBox_Decl";
     public final static String del_creation_1_id = "ctl00_ContentPlaceHolder1_TextBox_Creat1";
@@ -202,7 +51,6 @@ public class FicheActionPage {
     public final static String btn_group_pdt_id = "ctl00_ContentPlaceHolder1_R_groupe_3";
     public final static String btn_group_site_id = "ctl00_ContentPlaceHolder1_R_groupe_4";
     public final static String btn_group_resp_real_id = "ctl00_ContentPlaceHolder1_R_groupe_5";
-
     public final static String selec_Site_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_ListBox1";
     public final static String selec_Processus_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_ddlActivite";
     public final static String selec_Activité_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_lBDomaine_";
@@ -214,9 +62,6 @@ public class FicheActionPage {
     public final static String del_DateCreation2_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_TextBox3";
     public final static String del_DateRealisation1_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_TextBoxDate1";
     public final static String del_DateRealisation2_Action_Par_Resp_id = "ctl00_ContentPlaceHolder1_TextBoxDate2";
-
-    //Amira
-
     public final static String selec_Site_Action_Par_Personne_id = "ctl00_ContentPlaceHolder1_listboxSiteFiltre";
     public final static String selec_Processus_Action_Par_Personne_id = "ctl00_ContentPlaceHolder1_lBProcessus_";
     public final static String selec_Activité_Action_Par_Personne_id = "ctl00_ContentPlaceHolder1_lBDomaine_";
@@ -234,8 +79,10 @@ public class FicheActionPage {
     public final static String statutClot = "ctl00_ContentPlaceHolder1_GridView1P_ctl02_lb_cloture";
     public final static String btnAjout = "ctl00_ContentPlaceHolder1_Ajouter";
     public final static String exp = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td[2]/nobr/a";
-    public final static String examp = "ctl00_ContentPlaceHolder1_Label67";
 
+    //*[@id="ctl00_ContentPlaceHolder1_GridView2_wrapper"]/div[1]/div[2]/div/label/input
+    //*[@id="ctl00_ContentPlaceHolder1_GridView_Cloture_wrapper"]/div[1]/div[2]/div/label/input
+    public final static String examp = "ctl00_ContentPlaceHolder1_Label67";
     public final static String btnClosAct = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Cloture_wrapper\"]/div[2]/div/table/tbody/tr/td[1]";
     public final static String choixrept = "//td/div/table/tbody/tr/td/table/tbody/tr/td[2]/div";
     //td/div/table/tbody/tr/td/table/tbody/tr/td[2]/div
@@ -243,10 +90,126 @@ public class FicheActionPage {
     //div/table/tbody/tr/td[2]/table/tbody/tr/td/div/img
     public final static String selctRepo = "//tr[8]/td[2]/span";
     public final static String reporting = "ctl00_cssmenu12";
-
     public final static String actionrep = "//div[@id='menu_rep']/div/div/ul/li/ul/li[2]/a";
     public static final String reportingAct = "//div[@id='menu_rep']/div/div/ul/li/ul/li[2]/ul/li/a";
     public static final String export = "//a[contains(text(),'Exporter')]";
+    final static String MENU_ID = "ctl00_menuModal";
+    final static String HOME_ID = "ctl00_LinkButtonHome";
+    final static String ACTIONS_XPATH = "//*[@id=\"cssmenu15\"]/div/div/ul/li[2]/a";
+    final static String ACTION_XPATH = "//*[@id=\"cssmenu15\"]/div/div/ul/li[2]/ul/li[1]/a";
+    final static String BOUTTON_AJOUTER_ACTION_ID = "ctl00_ContentPlaceHolder1_Ajouter";
+    final static String BOUTTON_AJOUTER_DETAILLEE_ACTION_ID = "ctl00_ContentPlaceHolder1_AjactDet";
+    final static String btnEnrTReal = "ctl00_ContentPlaceHolder1_lb_enreg_real";
+    final static String tauxRealAg = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_ctl02_tb_taux\"]";
+    final static String BtnClot = "ctl00_ContentPlaceHolder1_Label126";
+    final static String btnVldTReal = "ctl00_ContentPlaceHolder1_LinkButton32";
+    final static String OBJET_XPATH = "ctl00_ContentPlaceHolder1_Liste_sous_actions";
+    final static String PLAN_ACTION_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel13_2Heading\"]/h4/a/span";
+    final static String ATT_MODELE_ID = "ctl00_ContentPlaceHolder1_LinkButton_Modele";
+    final static String RECH_MODELE_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView3_filter\"]/label/input";
+    final static String CHX_MODELE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView3\"]/tbody/tr/td[1]";
+    final static String APERCU_ID = "ctl00_ContentPlaceHolder1_Label150";
+    final static String SOURCE_ID = "ctl00_ContentPlaceHolder1_Listsource";
+    final static String Datecreation_Act_ID = "ctl00_ContentPlaceHolder1_Img8";
+    final static String agenda_creation_ID = "ctl00_ContentPlaceHolder1_CalendarExtender1_today";
+    final static String CALENDRIER_ID = "ctl00_ContentPlaceHolder1_datcrea";
+    final static String CHOIX_DATE_ID = "ctl00_ContentPlaceHolder1_CalendarExtender1_today";
+    final static String ORIGINE_ID = "ctl00_ContentPlaceHolder1_TextBox_Origine";
+    final static String AJT_PRDT_ID = "ctl00_ContentPlaceHolder1_Button1";
+    final static String CHX_PRDT_ID = "ctl00_ContentPlaceHolder1_GridPRODUIT";
+    final static String VLD_PRDT_ID = "ctl00_ContentPlaceHolder1_Label110";
+    final static String FERMER_PRDT_ID = "//*[@id=\"myModalRatproduit\"]/div/div/div[1]/button/span";
+    final static String AJT_TYP_CAUSE = "ctl00_ContentPlaceHolder1_LinkButton32";
+    final static String RECH_TYP_CAUSE = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView9_filter\"]/label/input";
+    final static String GRID_TYP_CAUSE = "ctl00_ContentPlaceHolder1_GridView9";
+    final static String VLD_TYP_CAUSE = "ctl00_ContentPlaceHolder1_Label200";
+    final static String FERMER_TYP_CAUSE = "//*[@id=\"myModalTypes8causes\"]/div/div/div[1]/button/span";
+    final static String Objectif_ID = "ctl00_ContentPlaceHolder1_TextBoxObj";
+    final static String REF_AUDIT_ID = "ctl00_ContentPlaceHolder1_DropDownList4";
+    final static String DESIGNATION_ID = "ctl00_ContentPlaceHolder1_desi";
+    final static String TYPE_ID = "ctl00_ContentPlaceHolder1_Listtype";
+    final static String DESCRIPTION_OBJET_ID = "ctl00_ContentPlaceHolder1_descrip";
+    final static String CAUSES_POSSIBLES_ID = "ctl00_ContentPlaceHolder1_cause";
+    final static String SITE_ID = "ctl00_ContentPlaceHolder1_Listsite";
+    final static String PROCESSUS_ID = "ctl00_ContentPlaceHolder1_lBProcessus_";
+    final static String ACTIVITE_ID = "ctl00_ContentPlaceHolder1_lBDomaine_";
+    final static String DIRECTION_ID = "ctl00_ContentPlaceHolder1_ListBox_Direction";
+    final static String service_ID = "ctl00_ContentPlaceHolder1_lBService_";
+    final static String Resp_cloture_ID = "ctl00_ContentPlaceHolder1_ListBox_cloture";
+    final static String BOUTTON_VALIDER_ID = "ctl00_ContentPlaceHolder1_LinkButton17_Valider";
+    final static String AGENDA_ACTION_ID = "ctl00_lb_act";
+    final static String AGENDA_ACTION2_ID = "//*[@id=\"ctl00_lb_act\"]/span";
+    final static String BOUTTON_AJOUTER_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_LinkButton3pm";
+    final static String DESIGNATION_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_TextBox5";
+    final static String RESPONSABLE_REALISATION_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_tb_respreal";
+    final static String RESPONSABLE_SUIVI_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_tb_respsv";
+    final static String DATE_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_Img13";
+    final static String CHOIX_DATE_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_CalendarExtender14_today";
+    final static String délais_suivi_ID = "ctl00_ContentPlaceHolder1_Img14";
+    final static String choix_délais_suivi_ID = "ctl00_ContentPlaceHolder1_CalendarExtender15_today";
+    final static String BOUTTON_VALIDER_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_LinkButton11";
+    final static String DESIGNATION_GRID_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_GridView1";
+    final static String GRAVITE_ID = "ctl00_ContentPlaceHolder1_DropDownList_Gravite";
+    final static String PRIORITE_ID = "ctl00_ContentPlaceHolder1_DropDownList_Priorite";
+    final static String COUT_PREV_SA_ID = "ctl00_ContentPlaceHolder1_TextBox10";
+    final static String RISQUE_ID = "ctl00_ContentPlaceHolder1_TextBox19";
+    final static String GRID_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_GridView1";
+    final static String ACTION_A_REALISATION_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel_actRealiser\"]/div[1]/h4/a/span";
+    final static String ACTION_A_CLOTURER_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_Panel20\"]/div[1]/h4/a/span";
+    final static String ACTION_A_SUIVIRE_XPATH = "ctl00_ContentPlaceHolder1_num3";
+    final static String NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_textBoxNAct2";
+    final static String CHOIX_NUM_ACTION_A_REALISATION_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[1]";
+    final static String RECHERCHER_NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_LinkButton38";
+    final static String RECHERCHER_ACTION_A_CLOTURER_XPATH = "ctl00_ContentPlaceHolder1_GridView_Cloture_filter";
+    final static String TAUX_REALISATION_ID = "ctl00_ContentPlaceHolder1_Taux1";
+    final static String DEPENSES_ID = "ctl00_ContentPlaceHolder1_depen";
+    final static String COMMENTAIRE_ID = "ctl00_ContentPlaceHolder1_comm1";
+    final static String DATE_REALISATION_ID = "ctl00_ContentPlaceHolder1_Img6";
+    final static String CHOIX_DATE_REALISATION_ID = "ctl00_ContentPlaceHolder1_CalendarExtender5_today";
+    final static String SAISIE_D_REALISATION_ID = "ctl00_ContentPlaceHolder1_datrea";
+    final static String VALIDER_REALISATION_ID = "ctl00_ContentPlaceHolder1_LinkButton21";
+    final static String NUM_ACTION_A_SUIVRE_ID = "ctl00_ContentPlaceHolder1_textBoxNAct";
+    final static String CHOIX_NUM_ACTION_A_SUIVRE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView2\"]/tbody/tr/td[1]";
+    final static String RECHERCHER_NUM_ACTION_A_SUIVRE_ID = "ctl00_ContentPlaceHolder1_LinkButton36_Rechercher";
+    final static String TAUX_EFF_ID = "ctl00_ContentPlaceHolder1_Tauxeff2";
+    final static String RAPPORT_EFF_ID = "ctl00_ContentPlaceHolder1_reff2";
+    final static String VALIDER_SUIVI_ID = "ctl00_ContentPlaceHolder1_LinkButton7";
+    final static String CHOIX_ACTION_CLOTURER_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Cloture\"]/tbody/tr/td[1]";
+    final static String CLOTUREE_ID = "ctl00_ContentPlaceHolder1_RadioButtonList1_0";
+    final static String DATE_CLOTURE_ID = "ctl00_ContentPlaceHolder1_img3";
+    final static String CHOIX_DATE_CLOTURE_ID = "ctl00_ContentPlaceHolder1_CalendarExtender8_today";
+    final static String VALIDER_CLOTURE_ID = "ctl00_ContentPlaceHolder1_LinkButton44_suivi";
+    final static String RAPPORT_CLOTURE_ID = "ctl00_ContentPlaceHolder1_rapclot";
+    final static String RECH_FILT_ID = "ctl00_ContentPlaceHolder1_nacP";
+    final static String BTN_RECH_FILTRE_ID = "ctl00_ContentPlaceHolder1_Filtre_Rechercher";
+    final static String TABLE_FILTRE_ACTION_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1P\"]/tbody/tr/td[2]";
+    final static String AFFI_TX_REA_ID = "ctl00_ContentPlaceHolder1_tauxreal2";
+
+    //Amira
+    final static String EDIT_TX_REA_ID = "ctl00_ContentPlaceHolder1_LinkButton2";
+    final static String CHX_SA_REA_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView4\"]/tbody/tr/td[1]";
+    final static String NOUV_TX_REA_ID = "ctl00_ContentPlaceHolder1_Trd1";
+    final static String NOUV_TX_REA_IDSmp = "ctl00_ContentPlaceHolder1_TextBox10dcfsd";
+    final static String COMM_NOUV_TX_ID = "ctl00_ContentPlaceHolder1_Tr2";
+    final static String COMM_NOUV_TX_IDsimp = "ctl00_ContentPlaceHolder1_Texyyy";
+    final static String VLD_NOUV_TAUX_REA_ID = "ctl00_ContentPlaceHolder1_LinkButton15";
+    final static String VLD_NOUV_TAUX_REA_IDsimp = "ctl00_ContentPlaceHolder1_Lindwfdv";
+    final static String QUTT_MOD_TX_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_juj\"]/span";
+    final static String VLD_RETOUR_ID = "ctl00_ContentPlaceHolder1_LinkButton7";
+    final static String QTT_RETOUR_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_LinkButton8\"]/span";
+    final static String QTT_RETOUR1_XPATH = "//*[@id=\"ctl00_ContentPlaceHolder1_LinkButton22\"]/span";
+    final static String EXPORTER_ID = "IconImg_CrystalReportViewer1_toptoolbar_export";
+    final static String TRACABILITE_ID = "ctl00_ContentPlaceHolder1_Label154";
+    final static String CHX_APERCU_ID = "ctl00_ContentPlaceHolder1_type_report_1";
+    final static String VLD_Apercu_ID = "ctl00_ContentPlaceHolder1_LinkButton16";
+    final static String ACTION_A_REALISER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[1]";
+    final static String ACTION_A_SUIVRE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView2\"]/tbody/tr/td[1]";
+    final static String FILTRE_REALISE_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_filter\"]/label/input";
+    final static String PNL_Intervenant_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_panelIntervHeading\"]/h4/a/span";
+    final static String AJT_INTER_ID = "ctl00_ContentPlaceHolder1_LinkButton6";
+    final static String RECH_INTER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView8_filter\"]/label/input";
+    final static String CHX_INTER_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView8\"]/tbody/tr/td[1]";
+    final static String VLD_INTER_ID = "ctl00_ContentPlaceHolder1_LinkButton11";
     static final String dateRel = "ctl00_ContentPlaceHolder1_Del";
     static final String dateSuiv = "ctl00_ContentPlaceHolder1_delsiuvie";
     static final String btnAjouSource = "ctl00_ContentPlaceHolder1_Ajouter_Ajouter";
@@ -259,7 +222,6 @@ public class FicheActionPage {
     static final String verfiSource = "//table[@id='ctl00_ContentPlaceHolder1_GridView1']/tbody/tr/td[2]";
     static final String Ajouttype = "ctl00_ContentPlaceHolder1_Ajouter";
     static final String saitype = "ctl00_ContentPlaceHolder1_TextBox2";
-
     static final String chekSimptype = "ctl00_ContentPlaceHolder1_ch_act_simp";
     static final String nancastype = "ctl00_ContentPlaceHolder1_Ch_analys_cause";
     static final String recheperson = "//div[@id='ctl00_ContentPlaceHolder1_GridView_Employe_filter']/label/input";
@@ -267,14 +229,13 @@ public class FicheActionPage {
     static final String recherchetype = "//div[@id='ctl00_ContentPlaceHolder1_GridView1_filter']/label/input";
     static final String tabtypeAct = "ctl00_ContentPlaceHolder1_GridView1";
     static final String validetpreson = "ctl00_ContentPlaceHolder1_LinkButton9";
-
     static final String SiteIdModele = "ctl00_ContentPlaceHolder1_ListsiteDivAffect";
     static final String processusIdModele = "ctl00_ContentPlaceHolder1_lBProcessus_DivAffect";
     static final String serveieIdModele = "ctl00_ContentPlaceHolder1_lBService_DivAffect";
     static final String activiteIdModele = "ctl00_ContentPlaceHolder1_lBDomaine_DivAffect";
     static final String directionIdModele = "ctl00_ContentPlaceHolder1_ListBox_DirectionDivAffect";
-
-
+    /* Locators */ // optimisation de maintenance par déclaration de variable
+    public static List<String> Filtre_rep = new ArrayList<String>();
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_ch_act_simp")
     public static WebElement wcheckBoxActionSimplifier;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_tb_respsv0")
@@ -513,7 +474,6 @@ public class FicheActionPage {
     public static WebElement UnSeulSelectresponsableSuviID;
 
 
-
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_TextBox39")
     public static WebElement winserResSuvi;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_TextBoxSearch_AutreEmpSeulRespSuiv")
@@ -528,7 +488,6 @@ public class FicheActionPage {
     public static WebElement wrecherSuvi;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_LinkButton61")
     public static WebElement wrecherSeulRespoSuvi;
-
 
 
     @FindBy(how = How.ID, using = RESPONSABLE_SUIVI_SOUS_ACTION_ID)

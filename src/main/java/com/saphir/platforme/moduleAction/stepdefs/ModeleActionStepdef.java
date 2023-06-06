@@ -21,17 +21,13 @@ import static org.testng.Assert.assertTrue;
 
 
 public class ModeleActionStepdef {
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
-
     public static String lan;
     public static int row = 0;
     public static String module = "";
-
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public WebDriver driver;
-
-
-    private Common common = new Common();
     public String Num_Modele;
+    private final Common common = new Common();
 
     @PostConstruct
     public void init() {
@@ -228,38 +224,38 @@ public class ModeleActionStepdef {
         ModeleActionModel.verifier_date_rea(driver);
         FicheActionModele.validerAjout(driver);
     }
-	
+
 /*	@When("^Exporter apercu action$")
-	public void Exporter_apercu_action() throws Throwable {
-		ModeleActionModel.apercu_action(driver);
-		FicheActionPage.ExporterId.click();
-		driver.findElement(By.id("IconImg_iconMenu_arrow_bobjid_1539360008730_dialog_combo")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.id("iconMenu_menu_bobjid_1539360008730_dialog_combo_text_bobjid_1539360008730_dialog_combo_it_17")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.id("theBttnbobjid_1539360008730_dialog_submitBtn")).click();
-		Thread.sleep(1000);
-		Screen s = new Screen();
-		Screen s1 = new Screen();
-		Screen s2 = new Screen();
-		Screen s3 = new Screen();
-		try {
-			Pattern pattern = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
-			Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
-			Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
-			Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
-			s.click(pattern);
-			s1.click(pattern1);
-			s2.click(pattern2);
-			s3.click(pattern3);
-			Thread.sleep(4000);
-			
-		} catch (FindFailed e) {
-			e.printStackTrace();
-		}
-		Runtime.getRuntime().exec("C:\\Qualipro_Auto\\AutomatisationTQualiPro_23\\AutomatisationTQualiPro_23\\resources\\Scripts\\EnregistrerFichier.exe");
-		Thread.sleep(3000);
-	}*/
+    public void Exporter_apercu_action() throws Throwable {
+        ModeleActionModel.apercu_action(driver);
+        FicheActionPage.ExporterId.click();
+        driver.findElement(By.id("IconImg_iconMenu_arrow_bobjid_1539360008730_dialog_combo")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("iconMenu_menu_bobjid_1539360008730_dialog_combo_text_bobjid_1539360008730_dialog_combo_it_17")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("theBttnbobjid_1539360008730_dialog_submitBtn")).click();
+        Thread.sleep(1000);
+        Screen s = new Screen();
+        Screen s1 = new Screen();
+        Screen s2 = new Screen();
+        Screen s3 = new Screen();
+        try {
+            Pattern pattern = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
+            Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
+            Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
+            Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
+            s.click(pattern);
+            s1.click(pattern1);
+            s2.click(pattern2);
+            s3.click(pattern3);
+            Thread.sleep(4000);
+
+        } catch (FindFailed e) {
+            e.printStackTrace();
+        }
+        Runtime.getRuntime().exec("C:\\Qualipro_Auto\\AutomatisationTQualiPro_23\\AutomatisationTQualiPro_23\\resources\\Scripts\\EnregistrerFichier.exe");
+        Thread.sleep(3000);
+    }*/
 
     @Then("^vérifier les données importés$")
     public void vérifier_si_tous_les_donneés_existe() throws Throwable {
@@ -273,8 +269,8 @@ public class ModeleActionStepdef {
         for (int i = 0; i < FicheActionModele.informations.size(); i++) {
             int j = i + 1;
             System.out.println("l'information " + j + ":" + FicheActionModele.informations.get(i));
-            System.out.println("Existe: " + common.ExisteWord(path, FicheActionModele.informations.get(i)));
-            assertTrue(common.ExisteWord(path, FicheActionModele.informations.get(i)));
+            System.out.println("Existe: " + Common.ExisteWord(path, FicheActionModele.informations.get(i)));
+            assertTrue(Common.ExisteWord(path, FicheActionModele.informations.get(i)));
         }
         driver.navigate().back();
     }

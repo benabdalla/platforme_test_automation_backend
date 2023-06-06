@@ -3,17 +3,8 @@ package com.saphir.platforme.authentification.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
-import com.saphir.platforme.config.CucumberHooks;
-import com.saphir.platforme.config.WebDriverConfig;
-import com.saphir.platforme.dto.ConnexionDTO;
-import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.entity.Parametrage;
-import com.saphir.platforme.entity.UtilisateurQualipro;
-import com.saphir.platforme.page.WebDriverRun;
-import com.saphir.platforme.service.AuthentificationQualipro;
 import com.saphir.platforme.service.ParametrageService;
-import com.saphir.platforme.service.ActionService;
-import com.saphir.platforme.service.UtilisateurService;
 import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.And;
@@ -34,16 +25,15 @@ import java.util.concurrent.TimeUnit;
 import static com.saphir.platforme.moduleAction.stepdefs.ReportingStepDef.lan;
 
 
-public class AuthentificationStepDefinition  {
+public class AuthentificationStepDefinition {
 
 
+    public static List<Parametrage> parametrageList;
+    static WebDriver driver;
     //	protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
-
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public int row = 1;
     public String module = "Action";
-    static  WebDriver driver;
-    public static List<Parametrage> parametrageList;
     @Autowired
     ParametrageService parametrageService;
 
@@ -51,29 +41,25 @@ public class AuthentificationStepDefinition  {
     public void init() throws IOException, InterruptedException {
 //        Setup setup =new Setup();
 //       driver=setup.setup("CHROME");
-        driver=Setup.driver;
-        parametrageList=parametrageService.getAllParametere();
+        driver = Setup.driver;
+        parametrageList = parametrageService.getAllParametere();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
-        PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @Given("^Ouvrir le site QualiProWeb$")
     public void ouvrirQualiProWeb() throws Throwable {
-
-
-        ExcelUtils.setExcelFile(Path, "Input");
-        lan = parametrageList.get(0).getVerssion();
-        //	logger.info("Begin : Ouvrir l'application QualiProWeb ");
-        System.err.println("site = " + parametrageList.get(0).getUrl());
-        //ExcelUtils.getCellData(1, 0)
-        driver.get(parametrageList.get(0).getUrl());
+         System.err.println("site = " + parametrageList.get(0).getUrl());
+        ExcelUtils.getCellData(1, 0);
+         driver.get(parametrageList.get(0).getUrl());
         Thread.sleep(1000L);
+        lan=parametrageList.get(0).getVerssion();
         System.out.println("lang :  " + lan);
         Cookie cookie = new Cookie("lan", lan);
         driver.manage().addCookie(cookie);
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        String txt="document.cookie=\'lan="+lan+"\'";
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        String txt = "document.cookie='lan=" + lan + "'";
         jse.executeScript(txt);
         System.out.println(driver.manage().getCookieNamed("lan").getValue());
 
@@ -83,12 +69,7 @@ public class AuthentificationStepDefinition  {
 
     @When("^saisir Login et PW$")
     public void saisirLoginPW() throws Throwable {
-        //logger.info("saisi login et mot de passe");
-       // AuthentificationModel.saisirLogin(1, 2);
 
-        Thread.sleep(200L);
-      //  AuthentificationModel.saisirPW(1, 3);
-        Thread.sleep(200L);
 
     }
 

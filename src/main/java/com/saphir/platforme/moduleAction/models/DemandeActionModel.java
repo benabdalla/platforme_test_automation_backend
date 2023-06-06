@@ -5,17 +5,14 @@ import com.github.javafaker.Faker;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.utils.Common;
-
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,11 +21,10 @@ import java.util.List;
 
 public class DemandeActionModel {
     public static String NumDemande;
-    /* Public methods */
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
     public static List<String> responsable;
     public static String Cpt_agenda;
-
+    /* Public methods */
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
 
     public static void consulter_Demande(WebDriver driver) throws Throwable {
 
@@ -274,13 +270,13 @@ public class DemandeActionModel {
 
     public static void valider_Demande(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
+        //wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
         Cpt_agenda = DemandeActionPage.CompteurID.getText();
         //DemandeActionPage.BoutonValideID.click();
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", DemandeActionPage.BoutonValideID);
         String NumDemanedeAction = driver.findElement(By.id("ctl00_ContentPlaceHolder1_nact")).getText();
-        Assert.assertTrue(!NumDemanedeAction.equals(""));
+        Assert.assertFalse(NumDemanedeAction.equals(""));
 
 
     }
@@ -436,7 +432,7 @@ public class DemandeActionModel {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", DemandeActionPage.HomeID);
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
+        //   wait.until(ExpectedConditions.visibilityOf(DemandeActionPage.CompteurID));
         System.out.println("compteur1 : " + DemandeActionPage.CompteurID.getText());
         if (Integer.parseInt(DemandeActionPage.CompteurID.getText()) == compteur + 1) {
             incrementation = true;
@@ -469,7 +465,7 @@ public class DemandeActionModel {
         executor.executeScript("arguments[0].click()", DemandeActionPage.MenuAgDaID);
         int sizeTab = FicheActionPage.wtabFGDemandAction.findElements(By.tagName("tr")).size();
         Thread.sleep(1000);
-        for (int i = 1; i <= sizeTab- 1; i++) {
+        for (int i = 1; i <= sizeTab - 1; i++) {
             Thread.sleep(1000);
             String fgr = FicheActionPage.wtabFGDemandAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionDemande\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
             System.err.println("f = " + origine + "  fgr = " + fgr);
@@ -495,10 +491,10 @@ public class DemandeActionModel {
         cellIneed1.click();
         Thread.sleep(1000L);
         //DemandeActionPage.ObjetMenuID.click();
-		/*executor.executeScript("arguments[0].click()", DemandeActionPage.ObjetMenuID);
-		Thread.sleep(1000L);
-		//DemandeActionPage.PlanMenuID.click();
-		executor.executeScript("arguments[0].click()", DemandeActionPage.PlanMenuID);*/
+        /*executor.executeScript("arguments[0].click()", DemandeActionPage.ObjetMenuID);
+        Thread.sleep(1000L);
+        //DemandeActionPage.PlanMenuID.click();
+        executor.executeScript("arguments[0].click()", DemandeActionPage.PlanMenuID);*/
     }
 
     public static String recuperer_current_reponsable() throws Exception {

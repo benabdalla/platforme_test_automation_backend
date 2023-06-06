@@ -5,8 +5,8 @@ Feature: Qualipro- Test fiche Action
   @ParemétrageFicheActionDetaille
   Scenario Outline: Creation fiche Action
     Given Ouvrir le site QualiProWeb
-    When Connecter en tant que <declencheur> de l <exemple> du <module> action
-    And saisir <Filaile> action filaile
+    When Connecter en tant declencheur que de  action
+    When cliquer sur ouvrir une session
     And saisir <exemple> action
     And consulter  source d'action
     And Ajouter   source d'action
@@ -38,7 +38,8 @@ Feature: Qualipro- Test fiche Action
   Scenario Outline: Creation fiche Action
 
     Given Ouvrir le site QualiProWeb
-    When Connecter en tant que <declencheur> de l <exemple> du <module> action
+    When Connecter en tant declencheur que de  action
+    When cliquer sur ouvrir une session
     And saisir <Filaile> action filaile
     When Consulter Action
     And cliquer sur ajouter Action détaillée
@@ -77,10 +78,10 @@ Feature: Qualipro- Test fiche Action
     When cliquer sur valider sous action
     Then sous action ajouté a la liste des sous actions
     Examples:
-      | exemple |  | Filaile     | declencheur   | module   | RespRealise | respSuivi   |
-      | 1       |  | "Group"     | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
-      | 2       |  | "Filiale 1" | "declencheur" | "Action" | "Filiale 1" | "Filiale 2" |
-      | 3       |  | "Filiale 2" | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
+      | exemple | Filaile     | declencheur   | module   | RespRealise | respSuivi   |
+      | 1       | "Group"     | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
+      | 2       | "Filiale 1" | "declencheur" | "Action" | "Filiale 1" | "Filiale 2" |
+      | 3       | "Filiale 2" | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
 
 
   @RealisationetSuiviAction
@@ -160,8 +161,8 @@ Feature: Qualipro- Test fiche Action
     And Vérifier les donnes de traçabilite
     Then delete file
     Examples:
-      | exemple |  | Filaile     | declencheur | module   |
-      | 1       |  | "Group"     | 26          | "Action" |
+      | exemple |  | Filaile | declencheur | module   |
+      | 1       |  | "Group" | 26          | "Action" |
 #      | 2       |  | "Filiale 1" | 26          | "Action" |
 #      | 3       |  | "Filiale 2" | 26          | "Action" |
 

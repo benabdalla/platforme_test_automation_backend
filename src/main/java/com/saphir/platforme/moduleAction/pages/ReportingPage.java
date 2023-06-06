@@ -45,11 +45,4 @@ public class ReportingPage {
     public static WebElement wAnnee;
 
 
-
-
-
-
-
-
-
 }

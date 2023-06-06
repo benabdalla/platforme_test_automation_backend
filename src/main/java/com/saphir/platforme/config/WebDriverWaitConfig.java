@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Lazy;
 public class WebDriverWaitConfig {
 
     @Value("${default.timeout:30}")
-    private  int timeout;
+    private int timeout;
 
     @Bean
     public WebDriverWait webDriverWait(WebDriver driver) {

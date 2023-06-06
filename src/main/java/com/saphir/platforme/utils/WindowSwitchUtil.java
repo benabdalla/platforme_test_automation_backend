@@ -4,6 +4,7 @@ package com.saphir.platforme.utils;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+
 public class WindowSwitchUtil {
     @Autowired
     private ApplicationContext ctx;
@@ -29,12 +30,12 @@ public class WindowSwitchUtil {
         WebDriver driver = this.ctx.getBean(WebDriver.class);
 
         String[] handles = driver
-            .getWindowHandles()
-            .toArray(new String[0]);
+                .getWindowHandles()
+                .toArray(new String[0]);
 
         driver
-            .switchTo()
-            .window(handles[index]);
+                .switchTo()
+                .window(handles[index]);
     }
 
 }

@@ -2,16 +2,10 @@ package com.saphir.platforme.utils;
 
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
-import com.saphir.platforme.authentification.models.AuthentificationModel;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -22,7 +16,6 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -31,7 +24,7 @@ import static org.testng.Assert.assertTrue;
 
 public class Common {
 
- //   protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
+    //   protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
 
 
 
@@ -40,7 +33,7 @@ public class Common {
      * created  by mootez
      * */
 
-    public static void verifiVisibilityChamp(WebDriver driver, String NomObeject, String Path) throws IOException{
+    public static void verifiVisibilityChamp(WebDriver driver, String NomObeject, String Path) throws IOException {
 //        JSONParser parser = new JSONParser();
 //        Object object = parser.parse(new FileReader(Path));
 //        JSONObject jasonObject = (JSONObject) object;
@@ -207,7 +200,7 @@ public class Common {
         for (int i = 0; i < NumberMot; i++) {
 
 
-         //   para = para + " " + RandomValue.randomString(taileMot);
+            //   para = para + " " + RandomValue.randomString(taileMot);
         }
         System.err.println(" comm : " + para);
         return para;
@@ -265,60 +258,6 @@ public class Common {
 
     }
 
-    public void scrollerPage() throws Throwable {
-
-        for (int second = 0; ; second++) {
-            if (second >= 60) {
-                break;
-            }
-           // ((JavascriptExecutor) AbstractPage.driver).executeScript("window.scrollBy(0,400)", "");
-
-        }
-    }
-
-    /**
-     * Scroll the page up when x is positive and y is negative and down when both
-     * are positive.
-     */
-    public void scrollToTop() {
-      //  JavascriptExecutor javascriptExecutor = (JavascriptExecutor) AbstractPage.driver;
-        //javascriptExecutor.executeScript("window.scrollTo(" + 0 + "," + 0 + ")", "");
-    }
-
-    // Go back
-    public void goBack() throws Throwable {
-
-        //AbstractPage.driver.navigate().back();
-    }
-
-    // Refresh browser
-    public void refreshBrowser() throws Throwable {
-
-     //   AbstractPage.driver.navigate().refresh();
-    }
-
-    /**
-     * Drag And Drop
-     */
-    public void DragAndDrop() {
-
-//        WebElement source = AbstractPage.driver.findElement(By.xpath(""));
-//        WebElement target = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions actions = new Actions(AbstractPage.driver);
-//        actions.dragAndDrop(source, target).perform();
-
-    }
-
-    public void TabHandling() {
-//
-//        String parentWindowsHandle = AbstractPage.driver.getWindowHandle();
-//        System.out.println("parentWindowsHandle" + parentWindowsHandle);
-//
-//        for (String childTab : AbstractPage.driver.getWindowHandles()) {
-//            AbstractPage.driver.switchTo().window(childTab);
-//        }
-    }
-
     /**
      *
      */
@@ -330,56 +269,6 @@ public class Common {
 //        fileInput2.click();
 //        AbstractPage.driver.findElement(By.cssSelector("")).sendKeys("path to file");
     }
-
-    /**
-     * handle alert pop-up
-     */
-
-    public void handleAlertPopUp() {
-
-//        String mainPage = AbstractPage.driver.getWindowHandle();
-//
-//        Alert alt = AbstractPage.driver.switchTo().alert(); // to move control to alert popup
-//
-//        alt.accept(); // to click on ok.
-//
-//        alt.dismiss(); // to click on cancel.
-//
-//        // Then move the control back to main web page-
-//
-//        AbstractPage.driver.switchTo().window(mainPage); // to switch back to main page.
-
-    }
-
-    /**
-     * right Click
-     */
-    public void rightClick() {
-
-//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions act = new Actions(AbstractPage.driver); // where driver is WebDriver type
-//
-//        act.moveToElement(wE).perform();
-//
-//        act.contextClick().perform();
-    }
-
-    /**
-     * Double Click
-     */
-
-    public void doubleClick() {
-//
-//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions act = new Actions(AbstractPage.driver);
-
-       // act.doubleClick(wE);
-    }
-
-    /**
-     *
-     * Calcul Taux
-     */
 
     /**
      * Vérifier si une information existe dans une fichier RTF
@@ -419,7 +308,7 @@ public class Common {
             //System.out.println("words = "+words);
             if (words.contains(word)) {
                 count++;
-                String newword = words.substring(words.indexOf(word) + word.length(), words.length());
+                String newword = words.substring(words.indexOf(word) + word.length());
                 if (newword.contains(word)) {
                     count++;
 
@@ -453,7 +342,7 @@ public class Common {
     public static String[] NbrFils(String path) {
 
         File file = new File(path);
-        String liste[] = file.list();
+        String[] liste = file.list();
         if (liste != null) {
             return liste;
         } else {
@@ -463,7 +352,6 @@ public class Common {
 
     }
 
-
     public static void Changer_Compte(String username, WebDriver driver) throws Exception {
 
         String Path = "resources/testData/TestData.xlsx";
@@ -471,8 +359,8 @@ public class Common {
         ExcelUtils.setExcelFile(Path, "Input");
         int RowNum = ExcelUtils.GetLigneData(username);
         System.out.println("num ligne" + RowNum);
-       // AuthentificationModel.saisirLogin(RowNum, 2);
-       // AuthentificationModel.saisirPW(RowNum, 3);
+        // AuthentificationModel.saisirLogin(RowNum, 2);
+        // AuthentificationModel.saisirPW(RowNum, 3);
         AuthentificationModel.clickOuvrirSession(driver);
         Thread.sleep(2000L);
     }
@@ -526,7 +414,7 @@ public class Common {
      * Tri un tableau (tri decroissant)
      */
 
-    public static void triBulleDecroissant(long tableau[]) {
+    public static void triBulleDecroissant(long[] tableau) {
         int longueur = tableau.length;
         long tampon = 0;
         boolean permut;
@@ -546,6 +434,11 @@ public class Common {
             }
         } while (permut);
     }
+
+    /**
+     *
+     * Calcul Taux
+     */
 
     /**
      * Tri des fichiers (tri decroissant)
@@ -598,27 +491,27 @@ public class Common {
         driver.findElement(By.id("IconImg_CrystalReportViewer1_toptoolbar_export")).click();
         Thread.sleep(500);
 
-	/*	Screen s = new Screen();
-		Screen s1 = new Screen();
-		Screen s2 = new Screen();
-		Screen s3 = new Screen();
-		try {
-			Pattern pattern = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
-			Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
-			Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
-			Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
-			s.click(pattern);
-			s1.click(pattern1);
-			s2.click(pattern2);
-			s3.click(pattern3);
-		} catch (FindFailed e) {
-			e.printStackTrace();
-		}*/
+    /*	Screen s = new Screen();
+        Screen s1 = new Screen();
+        Screen s2 = new Screen();
+        Screen s3 = new Screen();
+        try {
+            Pattern pattern = new Pattern("resources/imgs/Exporter_PV_reunion.PNG");
+            Pattern pattern1 = new Pattern("resources/imgs/combo_exporter_pv_reunion.PNG");
+            Pattern pattern2 = new Pattern("resources/imgs/Choix_combo_PV_reunion.PNG");
+            Pattern pattern3 = new Pattern("resources/imgs/Btn_exporter_PV_reunion.PNG");
+            s.click(pattern);
+            s1.click(pattern1);
+            s2.click(pattern2);
+            s3.click(pattern3);
+        } catch (FindFailed e) {
+            e.printStackTrace();
+        }*/
 
     }
 
     public static void remplir_filtre_by_id(WebDriver driver, String identifiant, String contenu)
-            throws BadLocationException, InterruptedException, Throwable {
+            throws Throwable {
         WebElement element = null;
         // try {
         // element=driver.findElement(By.xpath(identifiant));
@@ -678,21 +571,21 @@ public class Common {
 
                 }
             }
-				
-				
-				
 
-			/*	// System.out.println(identifiant + "je suis la");
-				Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(contenu);
-				String Sdate = new SimpleDateFormat("MM/dd/yyyy").format(date1);
-				System.out.println(Sdate);
-				try {
-					element.sendKeys(Sdate);
-				} catch (java.lang.NullPointerException e) {
 
-					System.out.println("is   null  element  ");
 
-				}*/
+
+            /*	// System.out.println(identifiant + "je suis la");
+                Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(contenu);
+                String Sdate = new SimpleDateFormat("MM/dd/yyyy").format(date1);
+                System.out.println(Sdate);
+                try {
+                    element.sendKeys(Sdate);
+                } catch (java.lang.NullPointerException e) {
+
+                    System.out.println("is   null  element  ");
+
+                }*/
             else {
                 // System.out.println(identifiant + "je suis labas");
                 try {
@@ -711,41 +604,31 @@ public class Common {
 
     }
 
-    /*
-     * Get the text content from a DOM-element found by given selector. Make sure
-     * the element you want to request the text from is interactable; otherwise you
-     * will get an empty string as return value. If the element is disabled or not
-     * visible and you still want to receive the text content use
-     * utilisateur=DemandeFormationPage.UtilisateurID.getAttribute("innerText");
-     */
-
     /**
      * Wait Element to be visible
      */
     public static void waitElement(WebDriver driver, By by) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
-
 
     public static void waitAndClick(WebDriver driver, WebElement element) {
         // Create a WebDriverWait object
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
         // Use the wait object to wait for the element to be present and visible
-        wait.until(ExpectedConditions.visibilityOf(element));
+        //wait.until(ExpectedConditions.visibilityOf(element));
 
         // Now you can interact with the element
         element.click();
     }
-
 
     public static void waitAndSend(WebDriver driver, WebElement element, String conetent) {
         // Create a WebDriverWait object
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
         // Use the wait object to wait for the element to be present and visible
-        wait.until(ExpectedConditions.visibilityOf(element));
+        //  wait.until(ExpectedConditions.visibilityOf(element));
 
         // Now you can interact with the element
         element.sendKeys(conetent);
@@ -857,6 +740,14 @@ public class Common {
 
     }
 
+    /*
+     * Get the text content from a DOM-element found by given selector. Make sure
+     * the element you want to request the text from is interactable; otherwise you
+     * will get an empty string as return value. If the element is disabled or not
+     * visible and you still want to receive the text content use
+     * utilisateur=DemandeFormationPage.UtilisateurID.getAttribute("innerText");
+     */
+
     public static String RenommerFichier1(String name, String file1, String file2) throws Throwable {
         String path = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement\\CrystalReportViewer1.rtf";
         String pathContext = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\apercu";
@@ -924,7 +815,6 @@ public class Common {
 
     }
 
-
     public static void Vérifier_données(String name, String num) throws Throwable {
         String path = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement\\CrystalReportViewer1.rtf";
         String pathContext = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\apercu";
@@ -983,7 +873,6 @@ public class Common {
 
     }
 
-
     public static double roundValue(double number) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String formattedNumber = decimalFormat.format(number);
@@ -994,9 +883,7 @@ public class Common {
     }
 
     public static boolean compareTowLargeString(String str1, String str2) {
-        StringBuilder st1 = new StringBuilder(str1);
-        StringBuilder st2 = new StringBuilder(str2);
-        return st2.toString().equals(st1.toString().toString());
+        return str2.equals(str1);
     }
 
     public static void viewAndClickElementJS(WebElement element, WebDriver driver) {
@@ -1027,17 +914,17 @@ public class Common {
         return value;
     }
 
-    public  static String getAttributeInput(String id,WebDriver driver) {
-        String js = "return document.querySelector("+id+").getAttribute('disabled')";
-        JavascriptExecutor js2 = (JavascriptExecutor) driver;
-        return js2.executeScript(js).toString();
-    }
-    public  static String getAttributeGeneral(String id,WebDriver driver,String attri) {
-        String js = "return document.querySelector("+id+").getAttribute('"+attri+"')";
+    public static String getAttributeInput(String id, WebDriver driver) {
+        String js = "return document.querySelector(" + id + ").getAttribute('disabled')";
         JavascriptExecutor js2 = (JavascriptExecutor) driver;
         return js2.executeScript(js).toString();
     }
 
+    public static String getAttributeGeneral(String id, WebDriver driver, String attri) {
+        String js = "return document.querySelector(" + id + ").getAttribute('" + attri + "')";
+        JavascriptExecutor js2 = (JavascriptExecutor) driver;
+        return js2.executeScript(js).toString();
+    }
 
     public static boolean verifyExperssion(String expression) {
         ScriptEngineManager manager = new ScriptEngineManager();
@@ -1051,6 +938,105 @@ public class Common {
         }
 
         return false;
+    }
+
+    public void scrollerPage() throws Throwable {
+
+        for (int second = 0; ; second++) {
+            if (second >= 60) {
+                break;
+            }
+            // ((JavascriptExecutor) AbstractPage.driver).executeScript("window.scrollBy(0,400)", "");
+
+        }
+    }
+
+    /**
+     * Scroll the page up when x is positive and y is negative and down when both
+     * are positive.
+     */
+    public void scrollToTop() {
+        //  JavascriptExecutor javascriptExecutor = (JavascriptExecutor) AbstractPage.driver;
+        //javascriptExecutor.executeScript("window.scrollTo(" + 0 + "," + 0 + ")", "");
+    }
+
+    // Go back
+    public void goBack() throws Throwable {
+
+        //AbstractPage.driver.navigate().back();
+    }
+
+    // Refresh browser
+    public void refreshBrowser() throws Throwable {
+
+        //   AbstractPage.driver.navigate().refresh();
+    }
+
+    /**
+     * Drag And Drop
+     */
+    public void DragAndDrop() {
+
+//        WebElement source = AbstractPage.driver.findElement(By.xpath(""));
+//        WebElement target = AbstractPage.driver.findElement(By.xpath(""));
+//        Actions actions = new Actions(AbstractPage.driver);
+//        actions.dragAndDrop(source, target).perform();
+
+    }
+
+    public void TabHandling() {
+//
+//        String parentWindowsHandle = AbstractPage.driver.getWindowHandle();
+//        System.out.println("parentWindowsHandle" + parentWindowsHandle);
+//
+//        for (String childTab : AbstractPage.driver.getWindowHandles()) {
+//            AbstractPage.driver.switchTo().window(childTab);
+//        }
+    }
+
+    /**
+     * handle alert pop-up
+     */
+
+    public void handleAlertPopUp() {
+
+//        String mainPage = AbstractPage.driver.getWindowHandle();
+//
+//        Alert alt = AbstractPage.driver.switchTo().alert(); // to move control to alert popup
+//
+//        alt.accept(); // to click on ok.
+//
+//        alt.dismiss(); // to click on cancel.
+//
+//        // Then move the control back to main web page-
+//
+//        AbstractPage.driver.switchTo().window(mainPage); // to switch back to main page.
+
+    }
+
+    /**
+     * right Click
+     */
+    public void rightClick() {
+
+//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
+//        Actions act = new Actions(AbstractPage.driver); // where driver is WebDriver type
+//
+//        act.moveToElement(wE).perform();
+//
+//        act.contextClick().perform();
+    }
+
+    /**
+     * Double Click
+     */
+
+    public void doubleClick() {
+//
+//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
+//        Actions act = new Actions(AbstractPage.driver);
+
+        // act.doubleClick(wE);
     }
 
 }

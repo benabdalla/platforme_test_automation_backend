@@ -1,16 +1,16 @@
 package com.saphir.platforme.utils;
 
 
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.FileCopyUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public class ScreenshotUtil {
     @Autowired
@@ -21,10 +21,10 @@ public class ScreenshotUtil {
 
     public void takeScreenShot(String testName) throws IOException {
         File sourceFile = this.ctx.getBean(TakesScreenshot.class).getScreenshotAs(OutputType.FILE);
-        FileCopyUtils.copy(sourceFile, this.path.resolve( testName + ".png").toFile());
+        FileCopyUtils.copy(sourceFile, this.path.resolve(testName + ".png").toFile());
     }
 
-    public byte[] getScreenshot(){
+    public byte[] getScreenshot() {
         return this.ctx.getBean(TakesScreenshot.class).getScreenshotAs(OutputType.BYTES);
     }
 

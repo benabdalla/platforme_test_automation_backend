@@ -3,16 +3,13 @@ package com.saphir.platforme.authentification.models;
 
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
 import com.saphir.platforme.utils.ExcelUtils;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
 
-
 @Component
 public class AuthentificationModel {
-
 
 
 //    public static List<Action> actionList;
@@ -26,12 +23,12 @@ public class AuthentificationModel {
 //    List<ConnexionDTO> connexionDTOList;
 
     /* Public methods */
-    private static String Path = "src/main/resources/testData/TestData.xlsx";
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
 
 
 //AuthentificationQualipro authentificationQualipro;
 
-    public static  void ouvrirQualiProWeb(WebDriver driver) throws Throwable {
+    public static void ouvrirQualiProWeb(WebDriver driver) throws Throwable {
 //        ExcelUtils.setExcelFile(Path, "Input");
 //        lan="fr";
 //        //	logger.info("Begin : Ouvrir l'application QualiProWeb ");
@@ -84,8 +81,8 @@ public class AuthentificationModel {
 
     public static void clickOuvrirSession(WebDriver driver) throws Exception {
 
-JavascriptExecutor jse=(JavascriptExecutor)driver;
-  jse.executeScript("arguments[0].click()", AuthentificationPage.Valider);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].click()", AuthentificationPage.Valider);
         //AuthentificationPage.Valider.click();
 
         Thread.sleep(5000L);
@@ -100,7 +97,7 @@ JavascriptExecutor jse=(JavascriptExecutor)driver;
         int RowNum = ExcelUtils.GetLigneData(username);
         System.out.println("num ligne " + RowNum);
         //saisirLogin(RowNum, 2);
-       // saisirPW(RowNum, 3);
+        // saisirPW(RowNum, 3);
         Thread.sleep(2000L);
         clickOuvrirSession(driver);
         Thread.sleep(5000L);
@@ -109,17 +106,16 @@ JavascriptExecutor jse=(JavascriptExecutor)driver;
     public static void Changer_Compte(String module, String col, int row, WebDriver driver) throws Exception {
 
 
-
         ExcelUtils.setExcelFile(Path, module);
-        String username ="test";
-                //ExcelUtils.getCellData(row, col);
-        System.err.println("user name  is   :  " +username);
+        String username = "test";
+        //ExcelUtils.getCellData(row, col);
+        System.err.println("user name  is   :  " + username);
         if (!(username.equals(""))) {
             ExcelUtils.setExcelFile(Path, "Input");
             int RowNum = ExcelUtils.GetLigneData(username);
             //System.out.println("num ligne"+RowNum);
             //saisirLogin(RowNum, 2);
-          //  saisirPW(RowNum, 3);
+            //  saisirPW(RowNum, 3);
             clickOuvrirSession(driver);
         }
         Thread.sleep(5000L);
