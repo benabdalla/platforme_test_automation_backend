@@ -1,13 +1,18 @@
 package com.saphir.platforme.utils;
 
 
+import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.repository.IActionRepository;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+
+import static com.saphir.platforme.controllors.ActionRunTest.action;
 
 
 public class Setup {
@@ -15,7 +20,8 @@ public class Setup {
     public static WebDriver driver;
     public static String browsername;
     static DriverManager driverManager;
-
+    @Autowired
+    IActionRepository iActionRepository;
 
     /**
      * Call Browser
@@ -47,6 +53,9 @@ public class Setup {
     public void after(io.cucumber.java.Scenario scenario) throws InterruptedException {
         int i = 0;
         String screenshotName = "";
+        Action actions;
+        actions = action;
+        iActionRepository.updateAction(actions);
 
         if (scenario.isFailed()) {
 //			i = i + 1;

@@ -20,6 +20,8 @@ public class Action implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idScenario;
     private int numFiche;
+//    private int etat;
+//    private String filiale;
     private String source;
     private String type;
     private String priorite;

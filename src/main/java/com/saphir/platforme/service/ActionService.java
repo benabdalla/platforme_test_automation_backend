@@ -6,6 +6,7 @@ import com.saphir.platforme.mapper.ActionMapper;
 import com.saphir.platforme.repository.ActionRepository;
 import com.saphir.platforme.repository.IActionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,8 +40,37 @@ public class ActionService implements IActionRepository {
 
     @Override
     public Action findActionByIDScenario(Long id) {
-       //Action scenarioAction =actionRepository.findById(id);
-       return actionRepository.findById(id).orElse(null);
+        //Action scenarioAction =actionRepository.findById(id);
+        return actionRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public ActionDto getActionByIDScenario(Long id) {
+        Action action = actionRepository.getById(id);
+        ActionDto actionDto = actionMapper.toDto(action);
+        return actionDto;
+
+    }
+
+    @Override
+    public ResponseEntity<Action> updateAction(Action action) {
+        //Action action = actionMapper.toEntity(actiondto);
+        if (actionRepository.existsById(action.getIdScenario())) {
+            actionRepository.save(action);
+        } else {
+            // Action not found, handle the error or throw an exception
+            throw new IllegalArgumentException("Action does not exist");
+        }
+        return ResponseEntity.ok(action);
+    }
+
+    @Override
+    public ResponseEntity<Action> deleteAction(Long idSceanrio) {
+        if (idSceanrio != null) {
+            actionRepository.deleteById(idSceanrio);
+        }
+        return ResponseEntity.ok().build();
+    }
+
 
 }

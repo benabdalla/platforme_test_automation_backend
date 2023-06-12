@@ -1,6 +1,6 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
-import com.saphir.platforme.config.WebDriverConfig;
+
 import com.saphir.platforme.moduleAction.models.ReportingModel;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.moduleAction.pages.ReportingPage;
@@ -30,7 +30,7 @@ public class ReportingStepDef {
 
     @PostConstruct
     private void init() {
-        driver = WebDriverConfig.driver;
+ //       driver = WebDriverConfig.driver;
         PageFactory.initElements(driver, FicheActionPage.class);
         // PageFactory.initElements(driver, PageSommerAgenda.class);
         PageFactory.initElements(driver, ReportingPage.class);

@@ -1,7 +1,6 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
-import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.moduleAction.models.ActSimplModel;
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import io.cucumber.java.en.Then;
@@ -39,10 +38,8 @@ public class ActSimplStepDefinition {
 
     @PostConstruct
     public void init() {
-        driver = WebDriverConfig.driver;
 
-        driver = WebDriverConfig.driver;
-
+      //  driver=Setup.driver;
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, ActSimplPage.class);

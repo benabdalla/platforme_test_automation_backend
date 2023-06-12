@@ -56,7 +56,7 @@ public class FicheActionStepDefinition {
     public String NumAction = "";
     public String taux;
     public String filaile = "";
-    Action action;
+    static Action action;
     @Autowired
     ActionService actionService;
     List<Utilisateur> connexionDTOList;
@@ -65,34 +65,32 @@ public class FicheActionStepDefinition {
     private boolean Etatcloture;
     private final Common common = new Common();
 
-    @PostConstruct
-    public void init() {
-        //   Setup setup =new Setup();
-
+//    @PostConstruct
+//    public void init() {
+//        driver = Setup.driver;
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        PageFactory.initElements(driver, AuthentificationPage.class);
+//        PageFactory.initElements(driver, FicheActionPage.class);
+//
+//    }
+    public FicheActionStepDefinition(){
         driver = Setup.driver;
-        //  driver = WebDriverConfig.driver;
-        //  connexionDTOList = utilisateurService.getLoginPaswword(actionService.getAllAction().get(0).getDechlencheur());
-        //   System.err.println("list  =" + actionService.getAllAction().get(0).getDechlencheur());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);
+    }
+
+    @When("Connecter en tant declencheur que de  action")
+    public void connecter_en_tant_declencheur_que_de_action() throws Exception {
+        action=  ActionRunTest.action;
+        AuthentificationModel.saisirLogin(action.getDechlencheur().getLogin());
+
+
+        Thread.sleep(200L);
+        AuthentificationModel.saisirPW(action.getDechlencheur().getPassword());
 
     }
 
-    @When("Connecter en tant que {string} de l {int} du {string} action")
-    public void connecter_en_tant_que_de_l_du_action(String string, Integer int1, String string2) throws Exception {
-
-        //  System.err.println("login  :  " + connexionDTOList.get(0).getLogin());
-        //   System.err.println("password  :  " + connexionDTOList.get(0).getPassword());
-
-        //   AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
-        //AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
-//        AuthentificationModel.saisirLogin("MO");
-//        AuthentificationModel.saisirPW("MO");
-        AuthentificationModel.clickOuvrirSession(driver);
-        // }
-        Thread.sleep(5000L);
-    }
 
 
     @Given("consulter  types d'action")
@@ -144,7 +142,7 @@ public class FicheActionStepDefinition {
 
     @Given("saisir   source d'action")
     public void saisir_source_d_action() throws Exception {
-        FicheActionModele.saisir_source_d_action(row);
+        FicheActionModele.saisir_source_d_action();
     }
 
 
@@ -301,16 +299,7 @@ public class FicheActionStepDefinition {
     public void saisir_action(int arg1) throws Throwable {
         row = arg1;
     }
-    @When("Connecter en tant declencheur que de  action")
-    public void connecter_en_tant_declencheur_que_de_action() throws Exception {
-      action=  ActionRunTest.action;
-        AuthentificationModel.saisirLogin(action.getDechlencheur().getLogin());
 
-
-        Thread.sleep(200L);
-        AuthentificationModel.saisirPW(action.getDechlencheur().getPassword());
-
-    }
 
 
     @And("saisir {string} action filaile")
@@ -341,7 +330,7 @@ public class FicheActionStepDefinition {
 
     @When("^Ajouter Source$")
     public void ajouter_Source() throws Throwable {
-        FicheActionModele.selectionnerSourceModeleAction(row, ActSimplStepDefinition.actionSimpl, driver);
+        FicheActionModele.selectionnerSourceModeleAction(ActSimplStepDefinition.actionSimpl, driver);
     }
 
     @When("^Saisir Date Création$")
@@ -465,8 +454,7 @@ public class FicheActionStepDefinition {
 
         assertFalse(Num.equals(""));
         NumAction = Num;
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(Num, row, 7, Path, "Action");
+       action.setNumFiche(Integer.parseInt(Num));
         Common.Exporter_numFiche(" num Action   " + Num);
 
     }

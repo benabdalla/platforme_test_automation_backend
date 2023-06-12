@@ -2,7 +2,7 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
-import com.saphir.platforme.config.WebDriverConfig;
+
 import com.saphir.platforme.moduleAction.models.DemandeActionModel;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
@@ -37,7 +37,7 @@ public class DemandeActionStepDefinition {
     @PostConstruct
     public void init() {
 
-        driver = WebDriverConfig.driver;
+    //    driver = WebDriverConfig.driver;
 
 
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

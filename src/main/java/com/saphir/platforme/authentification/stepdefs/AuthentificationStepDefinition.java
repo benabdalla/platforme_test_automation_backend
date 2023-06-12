@@ -3,6 +3,7 @@ package com.saphir.platforme.authentification.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
+import com.saphir.platforme.dto.ParametrageDto;
 import com.saphir.platforme.entity.Parametrage;
 import com.saphir.platforme.service.ParametrageService;
 import com.saphir.platforme.utils.ExcelUtils;
@@ -22,18 +23,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.saphir.platforme.moduleAction.stepdefs.ReportingStepDef.lan;
+
 
 
 public class AuthentificationStepDefinition {
 
 
-    public static List<Parametrage> parametrageList;
+    public static List<ParametrageDto> parametrageList;
     static WebDriver driver;
     //	protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
     private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public int row = 1;
     public String module = "Action";
+    public static  String  lan="";
     @Autowired
     ParametrageService parametrageService;
 
@@ -42,7 +44,7 @@ public class AuthentificationStepDefinition {
 //        Setup setup =new Setup();
 //       driver=setup.setup("CHROME");
         driver = Setup.driver;
-        parametrageList = parametrageService.getAllParametere();
+        parametrageList = parametrageService.getAllParametrage();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, this);

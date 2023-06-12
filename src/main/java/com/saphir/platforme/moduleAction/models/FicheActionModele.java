@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static com.saphir.platforme.controllors.ActionRunTest.action;
+
 
 public class FicheActionModele {
 
@@ -150,20 +152,18 @@ public class FicheActionModele {
 
     }
 
-    public static void saisir_source_d_action(int row) throws Exception {
+    public static void saisir_source_d_action() throws Exception {
         Thread.sleep(2000);
         if (ActSimplStepDefinition.actionSimpl != "") {
             String st = "Source Action Simplifier Auto" + LocalDateTime.now();
-            ExcelUtils.setExcelFile(Path, "ActSimpl");
-            ExcelUtils.setCellData1(st, row, 3, Path, "ActSimpl");
+            action.setSource(st);
             FicheActionPage.wource.sendKeys(st);
             FicheActionPage.wcheckBoxActionSimplifier.click();
 
 
         } else {
             String st = "Source Action Auto" + LocalDateTime.now();
-            ExcelUtils.setExcelFile(Path, "Action");
-            ExcelUtils.setCellData1(st, row, 0, Path, "Action");
+            action.setSource(st);
             FicheActionPage.wource.sendKeys(st);
 
         }
@@ -180,11 +180,11 @@ public class FicheActionModele {
     public static void verifier_source_d_action(int row, WebDriver driver) throws Exception {
         String st = "";
         if (ActSimplStepDefinition.actionSimpl != "") {
-            ExcelUtils.setExcelFile(Path, "ActSimpl");
-            st = ExcelUtils.getCellData1(row, 3);
+
+            st = action.getSource();
         } else {
             ExcelUtils.setExcelFile(Path, "Action");
-            st = ExcelUtils.getCellData1(row, 0);
+            st = action.getSource();
         }
         FicheActionPage.wrecherSource.sendKeys(st);
         FicheActionPage.wbtnrecherSource.click();
@@ -227,8 +227,7 @@ public class FicheActionModele {
     public static void saisir_type_de_causes(int row) throws Throwable {
         Thread.sleep(2000);
         String st = "type de causes auto" + LocalDateTime.now();
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(st, row, 9, Path, "Action");
+        action.setTypeCause(st);
         FicheActionPage.wtypecaus.sendKeys(st);
         FicheActionPage.btnValiderSousAction.click();
 
@@ -238,8 +237,7 @@ public class FicheActionModele {
 
     public static void verifier_type_de_causes(int row) throws Throwable {
         FicheActionPage.wretourSource.click();
-        ExcelUtils.setExcelFile(Path, "Action");
-        String st = ExcelUtils.getCellData1(row, 9);
+        String st = action.getTypeCause();
         FicheActionPage.wrecherchetype.sendKeys(st);
         Assert.assertEquals(FicheActionPage.gridActionRealisation.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText(), st);
 
@@ -264,8 +262,7 @@ public class FicheActionModele {
 
         Thread.sleep(2000);
         String st = "Priorité" + LocalDateTime.now();
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(st, row, 2, Path, "Action");
+        action.setPriorite(st);
         FicheActionPage.wtypecaus.sendKeys(st);
         FicheActionPage.btnValiderSousAction.click();
 
@@ -277,7 +274,7 @@ public class FicheActionModele {
         FicheActionPage.wretourSource.click();
 
         ExcelUtils.setExcelFile(Path, "Action");
-        String st = ExcelUtils.getCellData1(row, 2);
+        String st = action.getPriorite();
         FicheActionPage.wrecherchetype.sendKeys(st);
         Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
 
@@ -301,8 +298,7 @@ public class FicheActionModele {
     public static void saisir_gravité(int row) throws Throwable {
         Thread.sleep(2000);
         String st = "Gravité " + LocalDateTime.now();
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(st, row, 3, Path, "Action");
+        action.setGravite(st);
         FicheActionPage.wsaitype.sendKeys(st);
         FicheActionPage.wValidSource.click();
 
@@ -311,8 +307,7 @@ public class FicheActionModele {
 
     public static void verifier_gravité(int row) throws Throwable {
         FicheActionPage.wretourSource.click();
-        ExcelUtils.setExcelFile(Path, "Action");
-        String st = ExcelUtils.getCellData1(row, 3);
+        String st = action.getGravite();
         FicheActionPage.wrecherchetype.sendKeys(st);
         Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
 
@@ -345,35 +340,33 @@ public class FicheActionModele {
         Common.Exporter_champ_A_masquer("Nouvelle Fiche Action");
     }
 
-    public static void selectionnerSourceModeleAction(int row, String actionSimpl, WebDriver driver) throws Throwable {
+    public static void selectionnerSourceModeleAction( String actionSimpl, WebDriver driver) throws Throwable {
 
 
         // Select select = new Select(FicheActionPage.sourceId);
         //	select.selectByValue("84");
         WebElement select = FicheActionPage.sourceId;
         Select selected = new Select(FicheActionPage.sourceId);
-        System.out.println("Row " + row);
 
-        informations.add(ExcelUtils.getCellData(row, 0));
+
+        informations.add(action.getSource());
         if (actionSimpl == "") {
-            ExcelUtils.setExcelFile(Path, "Action");
-            //  select.selectByVisibleText(ExcelUtils.getCellData(row, 0).trim());
-            String source = ExcelUtils.getCellData(row, 0).trim();
-            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
+            String source =action.getSource();
+//String  getValSource =Common.getValueSelected(select,source);
+            selected.selectByVisibleText(source);
+            informations.add(action.getSource());
 
-            informations.add(ExcelUtils.getCellData(row, 0));
-
-            String option_Selected = selected.getFirstSelectedOption().getText() + "33";
+            String option_Selected = action.getSource();;
             System.out.println("option_Selected " + option_Selected);
 
             Assert.assertEquals(option_Selected, option_Selected);
         } else {
             ExcelUtils.setExcelFile(Path, "ActSimpl");
             // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
-            String source = ExcelUtils.getCellData(row, 3).trim();
+            String source =action.getSource().trim();
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
 
-            informations.add(ExcelUtils.getCellData(row, 3));
+            informations.add(action.getSource());
 
             String option_Selected = selected.getFirstSelectedOption().getText();
             Assert.assertEquals(option_Selected, option_Selected);
@@ -427,7 +420,7 @@ public class FicheActionModele {
             Select select = new Select(FicheActionPage.ORIGINEId);
             ExcelUtils.setExcelFile(Path, "Input");
             //ExcelUtils.setCellData1(st, row, 1, Path,"Action");
-            String employer = ExcelUtils.getCellData1(row, 1);
+            String employer = action.getDechlencheur().getName();
             System.err.println("Employee  is   :   " + employer);
             select.selectByVisibleText(employer);
             Common.Exporter_champ_A_masquer("le champ origine action est visible");
@@ -445,7 +438,7 @@ public class FicheActionModele {
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click()", FicheActionPage.AjtProdId);
             Thread.sleep(1000);
-            driver.findElement(By.id("ctl00_ContentPlaceHolder1_TextBox34")).sendKeys("PRODUIT AUTO");
+            driver.findElement(By.id("ctl00_ContentPlaceHolder1_TextBox34")).sendKeys(action.getProduit());
             driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton90")).click();
             executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click()", FicheActionPage.ChxProdId.findElement(By.xpath("//*[@id=\"myModalRatproduit\"]/div/div/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[1]")).findElement(By.tagName("input")));
@@ -471,7 +464,7 @@ public class FicheActionModele {
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click()", FicheActionPage.AjtTypCauseId);
             Thread.sleep(1000);
-            FicheActionPage.RechTypCauseId.sendKeys(ExcelUtils.getCellData(row, 9));
+            FicheActionPage.RechTypCauseId.sendKeys(action.getTypeCause());
             FicheActionPage.GridTypCauseId.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView9\"]/tbody/tr/td[1]")).findElement(By.tagName("input")).click();
             Thread.sleep(1000);
             //FicheActionPage.VldTypCauseId.click();
@@ -498,7 +491,7 @@ public class FicheActionModele {
                 Thread.sleep(300);
                 ExcelUtils.setExcelFile(Path, "Input");
                 //ExcelUtils.setCellData1(st, row, 1, Path,"Action");
-                String employer = ExcelUtils.getCellData1(row, 1);
+                String employer = action.getDechlencheur().getName();
                 System.err.println("Employee  is   :   " + employer);
                 FicheActionPage.RechInetervId.sendKeys(employer);
                 Thread.sleep(300);
@@ -531,7 +524,7 @@ public class FicheActionModele {
             FicheActionPage.RefAuditId.isDisplayed();
             ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.RefAuditId);
-            select.selectByVisibleText(ExcelUtils.getCellData(row, 10));
+            select.selectByVisibleText("");
             Common.Exporter_champ_A_masquer("le champ ref audit est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ ref audit est invisible");
@@ -543,7 +536,7 @@ public class FicheActionModele {
             FicheActionPage.PrioriteId.isDisplayed();
             ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.PrioriteId);
-            select.selectByVisibleText(ExcelUtils.getCellData(row, 2));
+            select.selectByVisibleText(action.getPriorite());
             Common.Exporter_champ_A_masquer("le champ priorite est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ priorite est invisible");
@@ -553,9 +546,8 @@ public class FicheActionModele {
     public static void Gravite(int row) throws Throwable {
         try {
             FicheActionPage.GraviteId.isDisplayed();
-            ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.GraviteId);
-            select.selectByVisibleText(ExcelUtils.getCellData(row, 3));
+            select.selectByVisibleText(action.getGravite());
             Common.Exporter_champ_A_masquer("le champ gravite est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ gravite est invisible");
@@ -563,9 +555,10 @@ public class FicheActionModele {
     }
 
     public static void Risque() {
+        Faker faker =new Faker();
         try {
             FicheActionPage.RisqueId.isDisplayed();
-            FicheActionPage.RisqueId.sendKeys("Risque sous action");
+            FicheActionPage.RisqueId.sendKeys("Risque sous action"+faker.lorem().paragraph());
             Common.Exporter_champ_A_masquer("le champ risque est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ risque est invisible");
@@ -573,9 +566,11 @@ public class FicheActionModele {
     }
 
     public static void Cout_Prev() {
+        Faker faker =new Faker();
+
         try {
             FicheActionPage.CoutPrevId.isDisplayed();
-            FicheActionPage.CoutPrevId.sendKeys("1000");
+            FicheActionPage.CoutPrevId.sendKeys(String.valueOf(faker.number().numberBetween(100,10000)));
             Common.Exporter_champ_A_masquer("le champ cout prévisionelle est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ cout prévisionelle est invisible");
@@ -592,15 +587,14 @@ public class FicheActionModele {
         System.out.println("row  desaignation :" + row);
 
         FicheActionPage.designationId.sendKeys(paragraph);
-
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(paragraph, row, 25, Path, "Action");
+action.setDesignation(paragraph);
         informations.add(ExcelUtils.getCellData(row, 25));
     }
 
     public static void saisirCausesPossibles() {
-
-        FicheActionPage.causesPossiblesId.sendKeys("Test Auto");
+Faker faker = new Faker();
+faker.lorem().paragraph();
+        FicheActionPage.causesPossiblesId.sendKeys("Test Auto" + faker.lorem().paragraph());
         informations.add(FicheActionPage.causesPossiblesId.getText());
     }
 
@@ -650,9 +644,7 @@ public class FicheActionModele {
         paragraph = paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
         FicheActionPage.descriptionObjetId.sendKeys(paragraph);
-
-        ExcelUtils.setExcelFile(Path, "Action");
-        ExcelUtils.setCellData1(FicheActionPage.descriptionObjetId.getAttribute("value"), row, 12, Path, "Action");
+action.setDescription(paragraph);
         informations.add(ExcelUtils.getCellData(1, 12));
 
     }

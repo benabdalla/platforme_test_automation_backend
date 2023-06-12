@@ -1,7 +1,6 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
-import com.saphir.platforme.config.WebDriverConfig;
 import com.saphir.platforme.moduleAction.models.FicheActionModele;
 import com.saphir.platforme.moduleAction.models.ModeleActionModel;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
@@ -32,7 +31,7 @@ public class ModeleActionStepdef {
     @PostConstruct
     public void init() {
 
-        driver = WebDriverConfig.driver;
+     //   driver = WebDriverConfig.driver;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, ModeleActionPage.class);
     }
