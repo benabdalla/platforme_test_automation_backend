@@ -22,7 +22,8 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber-reports/action.json", "junit:target/cucumber-reports/action.xml"},
         glue = "com.saphir.platforme",
         //glue = {"com.saphir.platforme"},
-        tags = "@ParemétrageFicheActionDetaille or @FicheActionDetaille",
+        tags = "@SuiviCloture",
+       // @ParemétrageFicheActionDetaille or @FicheActionDetaille or @RealisationAction or @RealisationAction or @SuiviAction or @RealisationActionRetour or @SuiviActionRetour
         //tags ="@ParemétrageFicheActionDetaille or @FicheActionDetaille or @RealisationetSuiviAction or @VérificationActionNonClôturée or @AfficherTracabilite",
 
         dryRun = false
@@ -39,6 +40,5 @@ public class ActionRunner extends AbstractTestNGCucumberTests {
         ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
         reportBuilder.generateReports();
     }
-
 
 }

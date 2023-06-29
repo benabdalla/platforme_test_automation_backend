@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-12T00:49:51 CEST" name="Action" finished-at="2023-06-12T00:52:49 CEST" duration-ms="177757">
+  <suite started-at="2023-06-29T01:51:55 CEST" name="Action" finished-at="2023-06-29T01:52:37 CEST" duration-ms="42070">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-06-12T00:49:51 CEST" name="Test version  fr " finished-at="2023-06-12T00:52:49 CEST" duration-ms="177757">
+    <test started-at="2023-06-29T01:51:55 CEST" name="Test version  fr " finished-at="2023-06-29T01:52:37 CEST" duration-ms="42070">
       <class name="com.saphir.platforme.ActionRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" started-at="2023-06-12T00:49:51 CEST" name="setUpClass" finished-at="2023-06-12T00:49:51 CEST" duration-ms="367" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" started-at="2023-06-29T01:51:55 CEST" name="setUpClass" finished-at="2023-06-29T01:51:55 CEST" duration-ms="64" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@e9bc5cf]]>
+                <![CDATA[org.testng.TestRunner@6e58f629]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" started-at="2023-06-12T00:49:51 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-12T00:51:07 CEST" duration-ms="75499" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" started-at="2023-06-29T01:51:55 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-29T01:52:16 CEST" duration-ms="20497" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Creation fiche Action"]]>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
               </value>
             </param>
             <param index="1">
@@ -34,14 +34,59 @@
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.NoSuchSessionException">
+            <message>
+              <![CDATA[invalid session id
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '10.66.245.84', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.135, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:65130}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 22a288ea0a8d2b67597e519c44da134f
+*** Element info: {Using=tag name, value=tr}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '10.66.245.84', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.135, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:65130}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 22a288ea0a8d2b67597e519c44da134f
+*** Element info: {Using=tag name, value=tr}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+at org.openqa.selenium.remote.RemoteWebElement.findElements(RemoteWebElement.java:204)
+at org.openqa.selenium.remote.RemoteWebElement.findElementsByTagName(RemoteWebElement.java:281)
+at org.openqa.selenium.By$ByTagName.findElements(By.java:312)
+at org.openqa.selenium.remote.RemoteWebElement.findElements(RemoteWebElement.java:177)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+at jdk.proxy4/jdk.proxy4.$Proxy163.findElements(Unknown Source)
+at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_traiter(FicheActionStepDefinition.java:949)
+at ✽.Consulter action a traiter(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/Action.feature:106)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" started-at="2023-06-12T00:51:07 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-12T00:52:48 CEST" duration-ms="100946" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" started-at="2023-06-29T01:52:16 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-29T01:52:36 CEST" duration-ms="20763" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Creation fiche Action"]]>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
               </value>
             </param>
             <param index="1">
@@ -50,21 +95,45 @@
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.NoSuchSessionException">
+            <message>
+              <![CDATA[Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '10.66.245.84', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '10.66.245.84', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: driver.version: RemoteWebDriver
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_responsable_Suivi(FicheActionStepDefinition.java:929)
+at ✽.saisir action  responsable Suivi(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/Action.feature:135)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" started-at="2023-06-12T00:52:48 CEST" name="tearDownClass" finished-at="2023-06-12T00:52:49 CEST" duration-ms="921" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" started-at="2023-06-29T01:52:36 CEST" name="tearDownClass" finished-at="2023-06-29T01:52:37 CEST" duration-ms="744" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.ActionRunner@4e473024]" started-at="2023-06-12T00:52:49 CEST" name="generateReport" finished-at="2023-06-12T00:52:49 CEST" duration-ms="387" status="PASS">
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.ActionRunner@12bc2df6]" started-at="2023-06-29T01:52:37 CEST" name="generateReport" finished-at="2023-06-29T01:52:37 CEST" duration-ms="358" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
       </class> <!-- com.saphir.platforme.ActionRunner -->
     </test> <!-- Test version  fr  -->
   </suite> <!-- Action -->
-  <suite started-at="2023-06-12T00:52:49 CEST" name="Default Suite" finished-at="2023-06-12T00:52:49 CEST" duration-ms="0">
+  <suite started-at="2023-06-29T01:52:38 CEST" name="Default Suite" finished-at="2023-06-29T01:52:38 CEST" duration-ms="0">
     <groups>
     </groups>
   </suite> <!-- Default Suite -->

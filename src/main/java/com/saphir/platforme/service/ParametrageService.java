@@ -3,9 +3,13 @@ package com.saphir.platforme.service;
 import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.dto.ParametrageDto;
 import com.saphir.platforme.entity.Parametrage;
+import com.saphir.platforme.entity.Processus;
+import com.saphir.platforme.entity.Site;
 import com.saphir.platforme.mapper.ParametrageMapper;
 import com.saphir.platforme.repository.IParametreRepository;
 import com.saphir.platforme.repository.ParametreRepository;
+import com.saphir.platforme.repository.ProcessusRepository;
+import com.saphir.platforme.repository.SiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +21,10 @@ public class ParametrageService implements IParametreRepository {
     ParametreRepository parametreRepository;
     @Autowired
     ParametrageMapper parametrageMapper;
+    @Autowired
+    SiteRepository siteRepository;
+    @Autowired
+    ProcessusRepository processusRepository;
 
 
     @Override
@@ -45,5 +53,15 @@ public class ParametrageService implements IParametreRepository {
 
         parametrageDto = parametrageMapper.toDtos(parametreRepository.findAll());
         return parametrageDto;
+    }
+
+    @Override
+    public List<Site> getAllSite() {
+        return siteRepository.findAll();
+    }
+
+    @Override
+    public List<Processus> getAllProcessus() {
+        return processusRepository.findAll();
     }
 }

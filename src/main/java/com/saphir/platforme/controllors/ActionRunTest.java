@@ -6,6 +6,7 @@ import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition;
 import com.saphir.platforme.repository.IActionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.UrlResource;
 import org.springframework.web.bind.annotation.*;
 import org.testng.TestNG;
 import org.testng.xml.XmlSuite;
@@ -14,10 +15,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v2/actions")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -26,24 +33,7 @@ public class ActionRunTest {
     @Autowired
     IActionRepository iActionRepository;
 
-    private static void printLines(String cmd, InputStream ins) throws Exception {
-        String line = null;
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(ins));
-        while ((line = in.readLine()) != null) {
-            System.out.println(cmd + " " + line);
-        }
-    }
-
-    private static void runProcess(String command) throws Exception {
-        Process pro = Runtime.getRuntime().exec(command);
-        printLines(command + " stdout:", pro.getInputStream());
-        printLines(command + " stderr:", pro.getErrorStream());
-        pro.waitFor();
-        System.out.println(command + " exitValue() " + pro.exitValue());
-    }
-
-    @PostMapping()
+    @PostMapping
     @ResponseBody
     public Action addAction(@RequestBody ActionDto action) throws Exception {
 
@@ -70,6 +60,12 @@ public class ActionRunTest {
         }
     }
 
+    @GetMapping(value = "/file", produces = MediaType.TEXT_HTML_VALUE)
+    public String getFileHtml() throws IOException {
+        URL fileUrl = new URL("file:E:/qualipro/trunk/platforme_test_automation_backend/target/cucumber-reports/cucumber-html-reports/overview-features.html");
+        Resource resource = new UrlResource(fileUrl);
+        return new String(resource.getInputStream().readAllBytes());
+    }
 
     @GetMapping("/{id}")
     public void findById(@PathVariable long id) throws Exception {
@@ -104,7 +100,7 @@ public class ActionRunTest {
         iActionRepository.deleteAction(id);
     }
 
-    @PutMapping("update/actiondto")
+    @PutMapping(value="update/actiondto")
     public void updateAction(@PathVariable Action action) throws Exception {
         iActionRepository.updateAction(action);
     }

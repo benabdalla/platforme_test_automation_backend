@@ -3,6 +3,8 @@ package com.saphir.platforme.controllors;
 import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.dto.ParametrageDto;
 import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Processus;
+import com.saphir.platforme.entity.Site;
 import com.saphir.platforme.repository.IActionRepository;
 import com.saphir.platforme.repository.IParametreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class ParametrageController {
     IParametreRepository iParametreRepository;
 
 
+
     @PostMapping()
     @ResponseBody
     public ParametrageDto addParametrage(@RequestBody ParametrageDto parametrageDto) throws Exception {
@@ -36,5 +39,12 @@ public class ParametrageController {
         return iParametreRepository.getAllParametrage();
     }
 
-
+@GetMapping(value = "site")
+    public List<Site> sites(){
+        return iParametreRepository.getAllSite();
+}
+    @GetMapping(value = "processus")
+    public List<Processus> processus(){
+        return iParametreRepository.getAllProcessus();
+    }
 }

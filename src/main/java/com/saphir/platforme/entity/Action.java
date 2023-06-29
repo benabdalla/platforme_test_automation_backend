@@ -3,6 +3,7 @@ package com.saphir.platforme.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,8 +21,11 @@ public class Action implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idScenario;
     private int numFiche;
-//    private int etat;
-//    private String filiale;
+    private int etat;
+    private String filialeDeclencheur;
+    private String filialeRealisation;
+    private String filialeSuivi;
+    private String filialeCloture;
     private String source;
     private String type;
     private String priorite;
@@ -29,11 +33,25 @@ public class Action implements Serializable {
     private String typeCause;
     private String designation;
     private String description;
-    private String site;
-    private String processus;
-    private String activite;
-    private String direction;
-    private String service;
+    @ManyToOne
+    @JoinColumn(name = "idSite")
+    @JsonIgnore
+    private Site site;
+    @ManyToOne
+    @JoinColumn(name = "idProcessus")
+    @JsonIgnore
+    private Processus processus;
+    @ManyToOne
+    @JoinColumn(name = "idActivite")
+    @JsonIgnore
+    private Activite activite;
+    @ManyToOne
+    @JoinColumn(name = "idDirection")
+    @JsonIgnore
+    private Direction direction;
+    @JoinColumn(name = "idService")
+    @JsonIgnore
+    private TabService service;
     private String desiSA;
     private String dateRealisation;
     private String tauxRealisation;

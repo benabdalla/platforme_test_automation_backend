@@ -1042,13 +1042,22 @@ action.setDescription(paragraph);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.WbtnEnrTReal);
         Thread.sleep(500);
-        FicheActionPage.WtauxRealAg.clear();
-        Thread.sleep(500);
-        FicheActionPage.WtauxRealAg.sendKeys(ta);
-        Thread.sleep(500);
-        JavascriptExecutor executor2 = (JavascriptExecutor) driver;
-        executor2.executeScript("arguments[0].click()", FicheActionPage.WbtnVldTReall);
-        Thread.sleep(500);
+        try{
+            FicheActionPage.WtauxRealAg.clear();
+            Thread.sleep(500);
+            FicheActionPage.WtauxRealAg.sendKeys(ta);
+            Thread.sleep(500);
+            JavascriptExecutor executor2 = (JavascriptExecutor) driver;
+            executor2.executeScript("arguments[0].click()", FicheActionPage.WbtnVldTReall);
+            Thread.sleep(500);
+        }
+        catch (NoSuchElementException e){
+            if(Integer.parseInt(ta)<100){
+                Assert.assertTrue(false);
+            }
+        }
+
+;
     }
 
     public static void saisirNumActionSuivre(String num) throws Throwable {
@@ -1100,8 +1109,8 @@ action.setDescription(paragraph);
     }
 
     public static void choixNumActionCloturee(WebDriver driver, int row) throws Exception {
-        ExcelUtils.setExcelFile(Path, "Action");
-        String numAct = ExcelUtils.getCellData(row, 7);
+
+        String numAct =String.valueOf(action.getNumFiche());
         System.err.println("le num action pour le    cloture   est    " + numAct);
         //try{driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView_Cloture_filter")).
         //	findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Cloture_filter\"]/label")).

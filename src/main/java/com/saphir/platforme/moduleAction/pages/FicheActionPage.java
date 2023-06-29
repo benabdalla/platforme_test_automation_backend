@@ -644,6 +644,8 @@ public class FicheActionPage {
     public static WebElement ChxIntervId;
     @FindBy(how = How.ID, using = VLD_INTER_ID)
     public static WebElement VldIntervId;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_Label20")
+    public static WebElement actionRealise;
 
 
 }

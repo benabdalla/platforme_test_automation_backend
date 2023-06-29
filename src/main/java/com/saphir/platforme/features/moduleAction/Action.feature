@@ -7,7 +7,7 @@ Feature: Qualipro- Test fiche Action
     Given Ouvrir le site QualiProWeb
     When Connecter en tant declencheur que de  action
     When cliquer sur ouvrir une session
-    And saisir <Filaile> action filaile
+    And saisir action filaile declencheur
     And saisir <exemple> action
     And consulter  source d'action
     And Ajouter   source d'action
@@ -29,8 +29,8 @@ Feature: Qualipro- Test fiche Action
     And saisir  gravité
     And verifier gravité
     Examples:
-      | exemple | Filaile |
-      | 1       | "Group"   |
+      | exemple |
+      | 1       |
 
   @FicheActionDetaille
   Scenario Outline: Creation fiche Action
@@ -38,7 +38,7 @@ Feature: Qualipro- Test fiche Action
     Given Ouvrir le site QualiProWeb
     When Connecter en tant declencheur que de  action
     When cliquer sur ouvrir une session
-    And saisir <Filaile> action filaile
+    And saisir action filaile declencheur
     When Consulter Action
     And cliquer sur ajouter Action détaillée
     And saisir <exemple> action
@@ -61,7 +61,7 @@ Feature: Qualipro- Test fiche Action
     And choisir un responsable de clôture
     When cliquer sur valider Action
     Then Fiche Action ajouté
-    And Choisir FG responsble réalisation <RespRealise> et  responsble Suivi <respSuivi>
+    And Choisir FG responsble réalisation et responsble Suivi
     When choisir plusieurs responsables de suivi
     Then cliquer sur ajouter sous action
     When saisir désignation sous action
@@ -76,33 +76,80 @@ Feature: Qualipro- Test fiche Action
     When cliquer sur valider sous action
     Then sous action ajouté a la liste des sous actions
     Examples:
-      | exemple | Filaile | declencheur   | module   | RespRealise | respSuivi   |
-      | 1       | "Group" | "declencheur" | "Action" | "Filiale 2" | "Filiale 2" |
+      | exemple |
+      | 1       |
 
 
-  @RealisationetSuiviAction
+  @RealisationAction
   Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
     Given Ouvrir le site QualiProWeb
-    When Connecter en tant que <responsable> de l <exemple> du <module>
+    When Connecter en tant que responsable réalisation
+    When cliquer sur ouvrir une session
     And saisir <exemple> action
-    And saisir <Filaile> action filaile
-    And Saisir A l origine de l action <origine>
+    And saisir action  responsable réalisation
+    And Saisir a l'origine de l'action
     When Consulter action a traiter
-    And Réaliser action avec <A taux realisation>
+    And Réaliser action avec <exemple>
     Then Vérifier etat action realisé
+    Examples:
+      | exemple |
+      | 1       |
+
+  @RealisationActionRetour
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant que responsable réalisation
+    When cliquer sur ouvrir une session
+    And saisir <exemple> action
+    And saisir action  responsable réalisation
+    And Saisir a l'origine de l'action
+    When Consulter action a traiter
+    And Réaliser action avec <exemple>
+    Then Vérifier etat action realisé
+    Examples:
+      | exemple |
+      | 2       |
+
+  @SuiviAction
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant que responsable suivi
+    When cliquer sur ouvrir une session
+    And saisir <exemple> action
+    And saisir action  responsable Suivi
+    And Saisir A l origine de l action
     And Consulter action a suivre
     Then vérifier taux réalisation
-    When suivre action avec <N taux realisation> et <taux suivi>
+    When suivre action avec <exemple>
     Then Vérifier etat action suivi
-    And Clôturée Action
     Examples:
-      | exemple | A taux realisation | N taux realisation | taux suivi | Filaile     | responsable | module   | origine     |
-      | 1       | 50                 | 30                 | 70         | "Filiale 2" | 4           | "Action" | "Groupe"    |
-      | 1       | 80                 | 100                | 100        | "Filiale 2" | 4           | "Action" | "Groupe"    |
-      | 2       | 50                 | 30                 | 70         | "Filiale 1" | 4           | "Action" | "Filiale 1" |
-      | 2       | 80                 | 100                | 100        | "Filiale 1" | 4           | "Action" | "Filiale 1" |
-      | 3       | 50                 | 30                 | 70         | "Filiale 2" | 4           | "Action" | "Filiale 2" |
-      | 3       | 80                 | 100                | 100        | "Filiale 2" | 4           | "Action" | "Filiale 2" |
+      | exemple |
+      | 1       |
+
+  @SuiviActionRetour
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant que responsable suivi
+    When cliquer sur ouvrir une session
+    And saisir <exemple> action
+    And saisir action  responsable Suivi
+    And Saisir A l origine de l action
+    And Consulter action a suivre
+    Then vérifier taux réalisation
+    When suivre action <exemple>
+    Then Vérifier etat action suivi
+   # And Clôturée Action
+    Examples:
+      | exemple |
+      | 2     |
+
+  @SuiviCloture
+  Scenario: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant que responsable cloture
+    When cliquer sur ouvrir une session
+    And Clôturée Action
+
 
 
   @RetourCorrection
