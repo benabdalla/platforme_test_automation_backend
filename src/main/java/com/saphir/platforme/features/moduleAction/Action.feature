@@ -28,6 +28,7 @@ Feature: Qualipro- Test fiche Action
     And ajouter gravité
     And saisir  gravité
     And verifier gravité
+    And Saisir Responsable Cloture
     Examples:
       | exemple |
       | 1       |
@@ -149,6 +150,8 @@ Feature: Qualipro- Test fiche Action
     When Connecter en tant que responsable cloture
     When cliquer sur ouvrir une session
     And Clôturée Action
+    Then Verifier  etat  de  suivi
+
 
 
 

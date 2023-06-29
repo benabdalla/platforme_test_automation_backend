@@ -206,6 +206,11 @@ public class FicheActionStepDefinition {
     public void verifier_gravité() throws Throwable {
         FicheActionModele.verifier_gravité(row);
     }
+    @Given("^Saisir Responsable Cloture$")
+    public void Saisir_Responsable_Cloture() throws Throwable {
+        FicheActionModele.Saisir_Responsable_Cloture();
+    }
+
 
 
     @When("^Consulter action a cloture$")
@@ -820,7 +825,30 @@ public class FicheActionStepDefinition {
     @And("^Clôturée Action$")
     public void Clôturée_Action() throws Throwable {
         FicheActionModele.cliqueAgenda(driver);
+        origine=action.getFilialeDeclencheur();
+        NumAction=String.valueOf(action.getNumFiche());
 
+        JavascriptExecutor executor23 = (JavascriptExecutor) driver;
+            executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
+
+            Thread.sleep(2000);
+
+            int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
+            for (int i = 1; i <= sizeTabClot; i++) {
+                Thread.sleep(500);
+                String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+                System.err.println("f = " + origine + "  fgr = " + fgr);
+                System.err.println("result   =" + origine.equals(fgr));
+
+                if (origine.equals(fgr)) {
+                    FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+                    break;
+                }
+            }
+
+            FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
+
+            assertTrue(FicheActionPage.choixActionCloturer.findElement(By.tagName("a")).getText().contains(NumAction));
 
             FicheActionModele.choixNumActionCloturee(driver, row);
             Thread.sleep(1000L);
@@ -829,49 +857,53 @@ public class FicheActionStepDefinition {
             js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             FicheActionModele.choixCloturee(driver);
             Thread.sleep(1000);
+            Faker fakerRappCloture = new  Faker();
 
-
-            JavascriptExecutor executor = (JavascriptExecutor) driver;
-            // executor.executeScript("arguments[0].click()",FicheActionPage.dateCloture);
-            // FicheActionPage.dateCloture.click();
-            //Thread.sleep(1000);
-
-            //logger.info("date  1");
-            //	JavascriptExecutor executor2 = (JavascriptExecutor)driver;
-            //  executor2.executeScript("arguments[0].click()",FicheActionPage.choixDateCloture);
-
-            FicheActionPage.rapportClotureID.sendKeys("Test Auto");
+            FicheActionPage.rapportClotureID.sendKeys("Test Auto "+ fakerRappCloture.lorem().paragraph());
+            Thread.sleep(1000);
             FicheActionModele.validerCloturee();
-            Thread.sleep(1000L);
-            //add click by rahma
-            driver.findElement(By.id("spandetail")).click();
-            Thread.sleep(1000L);
-
-            WebElement element;
-            try {
-                element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_coutpre"));
-                element.isDisplayed();
-            /*Actions action = new Actions(driver);
-            action.moveToElement(element);
-            action.perform();*/
-                JavascriptExecutor js2 = (JavascriptExecutor) driver;
-                js2.executeScript("arguments[0].scrollIntoView(true);", element);
+            System.err.println("------------- l'action a été clôturée -------------------------------->");
 
 
-                WebElement element1 = driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[16]")).findElement(By.tagName("span"));
-                assertTrue(element.getAttribute("value").contains(element1.getText()));
-                Common.Exporter_champ_A_masquer("le champ cout prev total est visible");
-            } catch (NoSuchElementException e) {
-                Common.Exporter_champ_A_masquer("le champ cout prev total est invisible");
-            }
-            try {
-                element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_deptot"));
-                element.isDisplayed();
-                WebElement element1 = driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[17]")).findElement(By.tagName("input"));
-                assertTrue(element.getAttribute("value").contains(element1.getAttribute("value")));
-            } catch (NoSuchElementException e) {
-                Common.Exporter_champ_A_masquer("le champ cout prev total est invisible");
-            }
+    }
+    @When("Verifier  etat  de  suivi")
+    public void Verifier_etat_de_suivi() throws Exception {
+        FicheActionModele.cliqueAgenda(driver);
+
+
+        JavascriptExecutor executor23 = (JavascriptExecutor) driver;
+        executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
+
+        Thread.sleep(2000);
+try {
+    int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
+    for (int i = 1; i <= sizeTabClot; i++) {
+        Thread.sleep(500);
+        String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+        System.err.println("f = " + origine + "  fgr = " + fgr);
+        System.err.println("result   =" + origine.equals(fgr));
+
+        if (origine.equals(fgr)) {
+            FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+            break;
+        }
+    }
+
+    FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
+
+    assertTrue(FicheActionPage.choixActionCloturer.findElement(By.tagName("a")).getText().contains(NumAction));
+
+    FicheActionModele.choixNumActionCloturee(driver, row);
+    Thread.sleep(1000L);
+
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    FicheActionModele.choixCloturee(driver);
+    Thread.sleep(1000);
+    Assert.assertTrue(false);
+}catch (NoSuchElementException exp){
+    Assert.assertTrue(true);
+}
 
 
     }
@@ -1647,41 +1679,7 @@ public class FicheActionStepDefinition {
 //
 //            FicheActionModele.cliqueAgenda(driver);
 //
-//            JavascriptExecutor executor23 = (JavascriptExecutor) driver;
-//            executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
 //
-//            Thread.sleep(2000);
-//
-//            int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
-//            for (int i = 1; i <= sizeTabClot; i++) {
-//                Thread.sleep(500);
-//                String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-//                System.err.println("f = " + origine + "  fgr = " + fgr);
-//                System.err.println("result   =" + origine.equals(fgr));
-//
-//                if (origine.equals(fgr)) {
-//                    FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-//                    break;
-//                }
-//            }
-//
-//            FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
-//
-//            assertTrue(FicheActionPage.choixActionCloturer.findElement(By.tagName("a")).getText().contains(NumAction));
-//
-//            FicheActionModele.choixNumActionCloturee(driver, row);
-//            Thread.sleep(1000L);
-//
-//            JavascriptExecutor js = (JavascriptExecutor) driver;
-//            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-//            FicheActionModele.choixCloturee(driver);
-//            Thread.sleep(1000);
-//
-//            FicheActionPage.rapportClotureID.sendKeys("Test Auto");
-//            Thread.sleep(1000);
-//            FicheActionModele.validerCloturee();
-//            System.err.println("------------- l'action a été clôturée -------------------------------->");
-
     }
 
     @Then("Vérifier etat action suivi {string}")

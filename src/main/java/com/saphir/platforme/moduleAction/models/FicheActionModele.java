@@ -316,6 +316,11 @@ public class FicheActionModele {
 
     }
 
+    public static void Saisir_Responsable_Cloture() {
+
+
+    }
+
     public static void consulter_Action(WebDriver driver) throws Throwable {
         Thread.sleep(2000L);
         //FicheActionPage.menuID.click();
@@ -340,7 +345,7 @@ public class FicheActionModele {
         Common.Exporter_champ_A_masquer("Nouvelle Fiche Action");
     }
 
-    public static void selectionnerSourceModeleAction( String actionSimpl, WebDriver driver) throws Throwable {
+    public static void selectionnerSourceModeleAction(String actionSimpl, WebDriver driver) throws Throwable {
 
 
         // Select select = new Select(FicheActionPage.sourceId);
@@ -351,19 +356,20 @@ public class FicheActionModele {
 
         informations.add(action.getSource());
         if (actionSimpl == "") {
-            String source =action.getSource();
+            String source = action.getSource();
 //String  getValSource =Common.getValueSelected(select,source);
             selected.selectByVisibleText(source);
             informations.add(action.getSource());
 
-            String option_Selected = action.getSource();;
+            String option_Selected = action.getSource();
+            ;
             System.out.println("option_Selected " + option_Selected);
 
             Assert.assertEquals(option_Selected, option_Selected);
         } else {
             ExcelUtils.setExcelFile(Path, "ActSimpl");
             // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
-            String source =action.getSource().trim();
+            String source = action.getSource().trim();
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
 
             informations.add(action.getSource());
@@ -555,10 +561,10 @@ public class FicheActionModele {
     }
 
     public static void Risque() {
-        Faker faker =new Faker();
+        Faker faker = new Faker();
         try {
             FicheActionPage.RisqueId.isDisplayed();
-            FicheActionPage.RisqueId.sendKeys("Risque sous action"+faker.lorem().paragraph());
+            FicheActionPage.RisqueId.sendKeys("Risque sous action" + faker.lorem().paragraph());
             Common.Exporter_champ_A_masquer("le champ risque est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ risque est invisible");
@@ -566,11 +572,11 @@ public class FicheActionModele {
     }
 
     public static void Cout_Prev() {
-        Faker faker =new Faker();
+        Faker faker = new Faker();
 
         try {
             FicheActionPage.CoutPrevId.isDisplayed();
-            FicheActionPage.CoutPrevId.sendKeys(String.valueOf(faker.number().numberBetween(100,10000)));
+            FicheActionPage.CoutPrevId.sendKeys(String.valueOf(faker.number().numberBetween(100, 10000)));
             Common.Exporter_champ_A_masquer("le champ cout prévisionelle est visible");
         } catch (NoSuchElementException e) {
             Common.Exporter_champ_A_masquer("le champ cout prévisionelle est invisible");
@@ -587,13 +593,13 @@ public class FicheActionModele {
         System.out.println("row  desaignation :" + row);
 
         FicheActionPage.designationId.sendKeys(paragraph);
-action.setDesignation(paragraph);
+        action.setDesignation(paragraph);
         informations.add(ExcelUtils.getCellData(row, 25));
     }
 
     public static void saisirCausesPossibles() {
-Faker faker = new Faker();
-faker.lorem().paragraph();
+        Faker faker = new Faker();
+        faker.lorem().paragraph();
         FicheActionPage.causesPossiblesId.sendKeys("Test Auto" + faker.lorem().paragraph());
         informations.add(FicheActionPage.causesPossiblesId.getText());
     }
@@ -644,7 +650,7 @@ faker.lorem().paragraph();
         paragraph = paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
         FicheActionPage.descriptionObjetId.sendKeys(paragraph);
-action.setDescription(paragraph);
+        action.setDescription(paragraph);
         informations.add(ExcelUtils.getCellData(1, 12));
 
     }
@@ -1042,7 +1048,7 @@ action.setDescription(paragraph);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.WbtnEnrTReal);
         Thread.sleep(500);
-        try{
+        try {
             FicheActionPage.WtauxRealAg.clear();
             Thread.sleep(500);
             FicheActionPage.WtauxRealAg.sendKeys(ta);
@@ -1050,14 +1056,13 @@ action.setDescription(paragraph);
             JavascriptExecutor executor2 = (JavascriptExecutor) driver;
             executor2.executeScript("arguments[0].click()", FicheActionPage.WbtnVldTReall);
             Thread.sleep(500);
-        }
-        catch (NoSuchElementException e){
-            if(Integer.parseInt(ta)<100){
+        } catch (NoSuchElementException e) {
+            if (Integer.parseInt(ta) < 100) {
                 Assert.assertTrue(false);
             }
         }
 
-;
+        ;
     }
 
     public static void saisirNumActionSuivre(String num) throws Throwable {
@@ -1110,7 +1115,7 @@ action.setDescription(paragraph);
 
     public static void choixNumActionCloturee(WebDriver driver, int row) throws Exception {
 
-        String numAct =String.valueOf(action.getNumFiche());
+        String numAct = String.valueOf(action.getNumFiche());
         System.err.println("le num action pour le    cloture   est    " + numAct);
         //try{driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView_Cloture_filter")).
         //	findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Cloture_filter\"]/label")).
@@ -1126,8 +1131,8 @@ action.setDescription(paragraph);
         Thread.sleep(500);
         FicheActionPage.wchoixCloturee.findElement(By.xpath("//*[@id=\"collapseCloture\"]/div/div[1]/div[1]/table/tbody/tr/td[1]")).findElement(By.tagName("input")).click();
 
-        //JavascriptExecutor executor =(JavascriptExecutor)driver;
-        //	executor.executeScript("arguments[0].click()", FicheActionPage.choixCloturee);
+//        JavascriptExecutor executor =(JavascriptExecutor)driver;
+//        	executor.executeScript("arguments[0].click()", FicheActionPage.choixCloturee);
     }
 
     public static void choixDateCloture(WebDriver driver) {
