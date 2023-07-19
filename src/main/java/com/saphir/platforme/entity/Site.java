@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Data
-@Builder
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,8 +18,14 @@ public class Site implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idSite;
+    @Column(length = 500)
+
+
     private String site;
     @OneToMany(mappedBy = "site", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Action> action;
+    @OneToOne
+    @JoinColumn(name = "idSite")
+    private ScenarioSite scenarioSite;
 
 }

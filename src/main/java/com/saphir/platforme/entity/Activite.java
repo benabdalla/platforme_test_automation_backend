@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Data
-@Builder
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,6 +18,7 @@ public class Activite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idActivite;
+    @Column(length = 3000)
     private String activite;
     @OneToMany(mappedBy = "direction", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Action> action;

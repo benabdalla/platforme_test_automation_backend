@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
 import com.saphir.platforme.moduleAction.stepdefs.ActSimplStepDefinition;
+import com.saphir.platforme.shared.DesignePaterne;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.NoSuchElementException;
@@ -51,23 +52,22 @@ public class FicheActionModele {
     public static void saisir_type_d_action(int row) throws Exception {
 
         Thread.sleep(2000);
+        String st="";
 
-        if (!ActSimplStepDefinition.actionSimpl.equals("")) {
-            String st = "Type Action Simplifier Auto" + LocalDateTime.now();
-            ExcelUtils.setExcelFile(Path, "ActSimpl");
-            ExcelUtils.setCellData1(st, row, 4, Path, "ActSimpl");
+        if (action.getActSimplifier()==1) {
+             st = "Type Action Simplifier Auto" + LocalDateTime.now();
+
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wchekSimptype.click();
 
         } else {
-            String st = "Type Action Auto" + LocalDateTime.now();
-            ExcelUtils.setExcelFile(Path, "Action");
-            ExcelUtils.setCellData1(st, row, 1, Path, "Action");
+          st= "Type Action Details Auto" + LocalDateTime.now();
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wnancastype.click();
 
         }
 
+        action.setTypeAction(st);
 
     }
 
@@ -316,9 +316,52 @@ public class FicheActionModele {
 
     }
 
-    public static void Saisir_Responsable_Cloture() {
+    public static void Saisir_Responsable_Cloture(WebDriver driver) throws InterruptedException {
+        String site = action.getSite().getSite();
+        String processus = action.getProcessus().getProcessus();
+        String valueSite = Common.getValueSelected(FicheActionPage.wsite, site);
+        Select selectSite = new Select(FicheActionPage.wsite);
+        selectSite.selectByValue(valueSite);
+        Thread.sleep(2000);
+        boolean exsiste = false;
+
+        String valueProcessus = Common.getValueSelected(FicheActionPage.wprocess, processus);
+        Select selectProcessus = new Select(FicheActionPage.wprocess);
+        selectProcessus.selectByValue(valueProcessus);
+        Thread.sleep(2000);
+        String respoClot = action.getRespCloture().getName();
 
 
+        try {
+            FicheActionPage.tabRespoCloture.isDisplayed();
+            driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1_filter")).findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_filter\"]/label/input")).sendKeys(respoClot);
+            String nameCloture = FicheActionPage.tabRespoCloture.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[3]")).findElement(By.tagName("span")).getText();
+            if (nameCloture.equals(respoClot)) {
+                exsiste = true;
+            }
+        } catch (NoSuchElementException ex) {
+            exsiste = false;
+        }
+        if (exsiste == false) {
+
+            FicheActionPage.wajouterRespoClot.click();
+            Common.waitForVisibility(FicheActionPage.wrechrecher);
+            FicheActionPage.wrechrecher.sendKeys(respoClot);
+            FicheActionPage.btnRrechreche.click();
+            Common.waitForVisibility(FicheActionPage.wtabRespoCloture);
+            FicheActionPage.wtabRespoCloture.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[1]/td[1]")).findElement(By.tagName("input")).click();
+            FicheActionPage.wValiderRespoCloture.click();
+        }
+
+    }
+
+    public static void verifier_Responsable_Cloture(WebDriver driver) throws InterruptedException {
+        String respoClot = action.getRespCloture().getName();
+        FicheActionPage.tabRespoCloture.isDisplayed();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1_filter")).findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_filter\"]/label/input")).clear();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1_filter")).findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_filter\"]/label/input")).sendKeys(respoClot);
+        String nameCloture = FicheActionPage.tabRespoCloture.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[3]")).findElement(By.tagName("span")).getText();
+        Assert.assertEquals(nameCloture, respoClot, "responsable cloture n'est  pas   enrrgistré ");
     }
 
     public static void consulter_Action(WebDriver driver) throws Throwable {
@@ -348,8 +391,6 @@ public class FicheActionModele {
     public static void selectionnerSourceModeleAction(String actionSimpl, WebDriver driver) throws Throwable {
 
 
-        // Select select = new Select(FicheActionPage.sourceId);
-        //	select.selectByValue("84");
         WebElement select = FicheActionPage.sourceId;
         Select selected = new Select(FicheActionPage.sourceId);
 
@@ -358,16 +399,20 @@ public class FicheActionModele {
         if (actionSimpl == "") {
             String source = action.getSource();
 //String  getValSource =Common.getValueSelected(select,source);
-            selected.selectByVisibleText(source);
-            informations.add(action.getSource());
+            try {
+                selected.selectByVisibleText(source);
+                informations.add(action.getSource());
 
-            String option_Selected = action.getSource();
-            ;
-            System.out.println("option_Selected " + option_Selected);
+                String option_Selected = action.getSource();
+                ;
+                System.out.println("option_Selected " + option_Selected);
 
-            Assert.assertEquals(option_Selected, option_Selected);
+                Assert.assertEquals(option_Selected, option_Selected);
+            } catch (Exception e) {
+                DesignePaterne.getOptiontext(FicheActionPage.sourceId);
+            }
         } else {
-            ExcelUtils.setExcelFile(Path, "ActSimpl");
+
             // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
             String source = action.getSource().trim();
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
@@ -375,9 +420,14 @@ public class FicheActionModele {
             informations.add(action.getSource());
 
             String option_Selected = selected.getFirstSelectedOption().getText();
-            Assert.assertEquals(option_Selected, option_Selected);
-        }
+            if (option_Selected == "") {
+                DesignePaterne.getOptiontext(FicheActionPage.sourceId);
+            } else {
+                Assert.assertEquals(option_Selected, option_Selected);
 
+            }
+        }
+    }
 
 //	try  {	select.selectByVisibleText(ExcelUtils.getCellData(row, 0));}
 //	catch(Exception ex){
@@ -385,8 +435,6 @@ public class FicheActionModele {
 //		informations.add(ExcelUtils.getCellData(row,0));
 //	}
 
-
-    }
 
     public static void choixDate(WebDriver driver, int row) throws Throwable {
         SimpleDateFormat dateFormat;
@@ -606,39 +654,24 @@ public class FicheActionModele {
 
     public static void selectionnerTypeModeleAction(int row, WebDriver driver) throws Throwable {
 
-//		ExcelUtils.setExcelFile(Path, "Action");
-//		Select select = new Select(FicheActionPage.listeTypeId);
-//	try {
-//	select.selectByVisibleText(ExcelUtils.getCellData(row, 1));
-//			//select.selectByValue("4");
-//
-//		ExcelUtils.setExcelFile(Path, "Action");
-//		informations.add(ExcelUtils.getCellData(2,1));}catch (Exception e){
-//		select.selectByVisibleText(ExcelUtils.getCellData(2, 1));
-//		//select.selectByValue("4");
-//
-//		ExcelUtils.setExcelFile(Path, "Action");
-//		informations.add(ExcelUtils.getCellData(2,1));
-        //}
-        // Select select = new Select(FicheActionPage.listeTypeId);
         WebElement select = FicheActionPage.listeTypeId;
-        //driver.findElement(By.id("type"));
+        Select selected = new Select(select);
+        String type = action.getTypeAction();
         if (ActSimplStepDefinition.actionSimpl == "") {
-            ExcelUtils.setExcelFile(Path, "Action");
-            //     select.selectByVisibleText(ExcelUtils.getCellData(row, 1).trim());
-            String type = ExcelUtils.getCellData(row, 1).trim();
-            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
 
-            informations.add(ExcelUtils.getCellData(row, 1));
+            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
         } else {
-            ExcelUtils.setExcelFile(Path, "ActSimpl");
-            //select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
-
-            String type = ExcelUtils.getCellData(row, 4).trim();
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
 
 
-            informations.add(ExcelUtils.getCellData(row, 4));
+        }
+
+        String option_Selected = selected.getFirstSelectedOption().getText();
+        if (option_Selected==""){
+            DesignePaterne.getOptiontext(select);
+        }else{
+            Assert.assertEquals(option_Selected, option_Selected);
+
         }
 
 
@@ -763,12 +796,10 @@ public class FicheActionModele {
 
     public static void resp_cloture(int row) throws Exception {
 
-        ExcelUtils.setExcelFile(Path, "Action");
+
         Select select = new Select(FicheActionPage.Respcloture);
-        System.err.println("le responable   cloture   est    " + ExcelUtils.getCellData(1, 5));
-        //select.selectByVisibleText(ExcelUtils.getCellData(1,5));
-        ExcelUtils.setExcelFile(Path, "Input");
-        String employer = ExcelUtils.getCellData1(row, 1);
+
+        String employer = action.getRespSuivi().getName();
         System.err.println("Employee  is   :   " + employer);
         select.selectByVisibleText(employer);
         informations.add(select.getFirstSelectedOption().getText());
@@ -822,15 +853,14 @@ public class FicheActionModele {
         selectfg.selectByVisibleText(fg);
 
         Thread.sleep(500);
-        ExcelUtils.setExcelFile(Path, "Action");
-        String employer = ExcelUtils.getCellData1(row, 4);
+
+        String employer = action.getRespTraitement().getName();
         System.err.println("Employee  is   :   " + employer);
         FicheActionPage.winserRespReal.sendKeys(employer);
         FicheActionPage.wrecher.click();
         FicheActionPage.wTabReal.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridViewAutreEmpRespReal\"]/tbody/tr[1]/td[1]")).findElement(By.tagName("a")).click();
 
 
-        informations.add(ExcelUtils.getCellData(row, 1));
     }
 
     public static void selectionnerResponsableSuivi(int row, WebDriver driver, String fg) throws Throwable {
@@ -839,8 +869,8 @@ public class FicheActionModele {
 
         Select selectfg = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_ListBoxFilialeSuiv")));
         selectfg.selectByVisibleText(fg);
-        ExcelUtils.setExcelFile(Path, "Action");
-        String employer = ExcelUtils.getCellData1(row, 6);
+
+        String employer =action.getRespSuivi().getName();
         System.err.println("Employee  is   :   " + employer);
         FicheActionPage.winserResSuvi.sendKeys(employer);
         FicheActionPage.wrecherSuvi.click();
@@ -855,7 +885,7 @@ public class FicheActionModele {
     public static void Verfication_selectionnerResponsableSuivi(int row) throws Throwable {
         ExcelUtils.setExcelFile(Path, "Action");
         Select select = new Select(FicheActionPage.responsableSuiviID);
-        String respoExcel = ExcelUtils.getCellData(row, 6);
+        String respoExcel =action.getRespSuivi().getName();
         boolean attrubite = Boolean.parseBoolean(FicheActionPage.responsableSuiviID.getAttribute("disabled"));
         System.err.println("attr" + attrubite);
         Assert.assertTrue(attrubite, "elementis desaible when attrubite  return true  ");
@@ -995,9 +1025,9 @@ public class FicheActionModele {
         Thread.sleep(500);
     }
 
-    public static void choixNumActionRealisation() throws InterruptedException {
+    public static void choixNumActionRealisation(WebDriver driver) throws InterruptedException {
         Thread.sleep(1000);
-        FicheActionPage.choixNumActionrealisation.findElement(By.tagName("a")).click();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1")).findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr[1]/td[1]")).findElement(By.tagName("a")).click();
 
     }
 

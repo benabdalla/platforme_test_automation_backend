@@ -10,7 +10,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 
 import static com.saphir.platforme.controllors.ActionRunTest.action;
 
@@ -50,7 +55,7 @@ public class Setup {
 
 
     @After
-    public void after(io.cucumber.java.Scenario scenario) throws InterruptedException {
+    public void after(io.cucumber.java.Scenario scenario) throws InterruptedException, IOException {
         int i = 0;
         String screenshotName = "";
         Action actions;
@@ -93,9 +98,38 @@ public class Setup {
             //driver.close();
 
         }
+        try {
+            DeleteFilesInFolder();
+        } catch (Exception e) {
+            System.out.println("not  found  files ");
+        }}
+
+
+        public void DeleteFilesInFolder () {
+            String folderPath ="E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Download\\";
+
+
+            File folder = new File(folderPath);
+
+            if (folder.exists() && folder.isDirectory()) {
+                File[] files = folder.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        if (file.isFile()) {
+                            if (file.delete()) {
+                                System.out.println("Deleted file: " + file.getName());
+                            } else {
+                                System.out.println("Failed to delete file: " + file.getName());
+                            }
+                        }
+                    }
+                } else {
+                    System.out.println("The folder is empty.");
+                }
+            } else {
+                System.out.println("The folder does not exist or is not a directory.");
+            }
+        }
 
 
     }
-
-
-}

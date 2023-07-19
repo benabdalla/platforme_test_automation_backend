@@ -1,5 +1,7 @@
 package com.saphir.platforme.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.mapper.ActionMapper;
@@ -24,15 +26,16 @@ public class ActionService implements IActionRepository {
 
     @Override
     public Action addAction(ActionDto actiondto) {
-
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         Action act = actionMapper.toEntity(actiondto);
 
         return actionRepository.save(act);
     }
 
     @Override
-    public List<ActionDto> getAllAction() {
-        List<Action> action = actionRepository.findAll();
+    public List<ActionDto> getAllAction(int id) {
+        List<Action> action = actionRepository.findByActSimplifier(id);
         List<ActionDto> actionDtos = actionMapper.toDtos(action);
 
         return actionDtos;
@@ -48,6 +51,13 @@ public class ActionService implements IActionRepository {
     public ActionDto getActionByIDScenario(Long id) {
         Action action = actionRepository.getById(id);
         ActionDto actionDto = actionMapper.toDto(action);
+        return actionDto;
+
+    }
+    @Override
+    public List<ActionDto> getAllActionSimplifier(int id) {
+        List<Action> action =actionRepository.findByActSimplifier(id);
+        List<ActionDto> actionDto = actionMapper.toDtos(action);
         return actionDto;
 
     }

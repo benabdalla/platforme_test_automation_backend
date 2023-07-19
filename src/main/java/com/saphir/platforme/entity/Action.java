@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
-@Builder
+
+
 @AllArgsConstructor
 @NoArgsConstructor
-@SuppressWarnings("unused")
 @Getter
 @Setter
 @Entity
@@ -22,16 +21,28 @@ public class Action implements Serializable {
     private long idScenario;
     private int numFiche;
     private int etat;
+    private int actSimplifier;
+    @Column(length = 3000)
     private String filialeDeclencheur;
+    @Column(length = 3000)
     private String filialeRealisation;
+    @Column(length = 3000)
     private String filialeSuivi;
+    @Column(length = 3000)
     private String filialeCloture;
+    @Column(length = 3000)
     private String source;
-    private String type;
+    @Column(length = 3000)
+    private String  typeAction;
+    @Column(length = 3000)
     private String priorite;
+    @Column(length = 3000)
     private String gravite;
+    @Column(length = 3000)
     private String typeCause;
+    @Column(length = 3000)
     private String designation;
+    @Column(length = 3000)
     private String description;
     @ManyToOne
     @JoinColumn(name = "idSite")
@@ -52,12 +63,19 @@ public class Action implements Serializable {
     @JoinColumn(name = "idService")
     @JsonIgnore
     private TabService service;
+    @Column(length = 3000)
     private String desiSA;
+    @Column(length = 3000)
     private String dateRealisation;
+    @Column(length = 3000)
     private String tauxRealisation;
+    @Column(length = 3000)
     private String dateSuivi;
+    @Column(length = 3000)
     private String tauxSuivi;
+    @Column(length = 3000)
     private String dateCreation;
+    @Column(length = 3000)
     private String produit;
     @ManyToOne
     @JoinColumn(name = "dechlencheur", referencedColumnName = "idUser")

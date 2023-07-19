@@ -67,14 +67,6 @@ public class FicheActionStepDefinition {
     private boolean Etatcloture;
     private final Common common = new Common();
 
-//    @PostConstruct
-//    public void init() {
-//        driver = Setup.driver;
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        PageFactory.initElements(driver, AuthentificationPage.class);
-//        PageFactory.initElements(driver, FicheActionPage.class);
-//
-//    }
     public FicheActionStepDefinition(){
         action=  ActionRunTest.action;
         driver = Setup.driver;
@@ -196,6 +188,16 @@ public class FicheActionStepDefinition {
     public void ajouter_gravité() throws Throwable {
         FicheActionModele.ajouter_gravité(driver);
     }
+    @Given("^ajouter Responsable Cloture$")
+    public void ajouter_Responsable_Cloture() throws Throwable {
+        Thread.sleep(2000L);
+        //FicheActionPage.menuID.click();
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click()", FicheActionPage.menuID);
+        Thread.sleep(200L);
+        Common.AccéderModule(2, 0, 0, driver);
+        Common.AccéderModule(2, 5, 0, driver);
+   }
 
     @Given("^saisir  gravité$")
     public void saisir_gravité() throws Throwable {
@@ -208,7 +210,11 @@ public class FicheActionStepDefinition {
     }
     @Given("^Saisir Responsable Cloture$")
     public void Saisir_Responsable_Cloture() throws Throwable {
-        FicheActionModele.Saisir_Responsable_Cloture();
+        FicheActionModele.Saisir_Responsable_Cloture(driver);
+    }
+    @Given("^verifier Responsable Cloture$")
+    public void verifier_Responsable_Cloture() throws Throwable {
+        FicheActionModele.verifier_Responsable_Cloture(driver);
     }
 
 
@@ -482,7 +488,7 @@ public class FicheActionStepDefinition {
 
     @Then("Choisir FG responsble réalisation et responsble Suivi$")
     public void choisir_fg_responsble_réalisation_et_responsble_suivi() {
-        fgRespReal = action.getFilialeRealisation();
+       fgRespReal = action.getFilialeRealisation();
         fgRespSuivi = action.getFilialeSuivi();
     }
 
@@ -528,8 +534,7 @@ public class FicheActionStepDefinition {
         executor.executeScript("arguments[0].click()", driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadioButtonList3_0")));
         Select seulRespo = new Select(FicheActionPage.wrespoSuivi);
         Thread.sleep(800);
-        ExcelUtils.setExcelFile(Path, "Action");
-        String respoSuivi = ExcelUtils.getCellData1(row, 6);
+        String respoSuivi = action.getRespSuivi().getName();
         seulRespo.selectByVisibleText(respoSuivi);
 
         Common.SaisirDate(driver, "ctl00_ContentPlaceHolder1_TextBox17");
@@ -789,7 +794,7 @@ public class FicheActionStepDefinition {
 
         FicheActionModele.rechercherNumActionRealisation(driver);
         Thread.sleep(1000L);
-        FicheActionModele.choixNumActionRealisation();
+        FicheActionModele.choixNumActionRealisation(driver);
         Thread.sleep(1000L);
         FicheActionModele.saisirTauxRealisation();
         FicheActionModele.saisirDepenses();
@@ -1006,7 +1011,7 @@ try {
         System.out.println("444");
         Thread.sleep(1000);
         //FicheActionPage.wbtnClosAct.findElement(By.tagName("a")).click();
-        FicheActionModele.choixNumActionRealisation();
+        FicheActionModele.choixNumActionRealisation(driver);
 
         Thread.sleep(1000L);
     }
@@ -1014,14 +1019,12 @@ try {
     @When("^Réaliser action avec (\\d+)$")
     public void réaliser_action_avec(int arg1) throws Throwable {
         if (arg1==1){
-            taux=action.getTauxRealisation();
-            Predicate<String> isNotEmptyOrNull = (str) -> str == null || str.isEmpty();
 
-            if (isNotEmptyOrNull.test(taux)) {
+
                 Faker faker =new Faker();
                 taux=String.valueOf(faker.number().numberBetween(5,97));
                 action.setTauxRealisation(taux);
-            }
+
 
         }else {
             taux="100";
@@ -1124,13 +1127,8 @@ try {
     @When("suivre action avec {int}")
     public void suivre_action_avec_et_et(Integer int1) throws Exception {
         if (int1==1){
-            taux=action.getTauxRealisation();
-            Predicate<String> isNotEmptyOrNull = (str) -> str == null || str.isEmpty();
-
-            if (isNotEmptyOrNull.test(taux)) {
                 Faker faker =new Faker();
                 taux=String.valueOf(faker.number().numberBetween(5,97));
-            }
 
         }else {
             taux="100";
@@ -1285,7 +1283,7 @@ try {
         FicheActionModele.saisirNumActionRealisation(arg1, driver);
         FicheActionModele.rechercherNumActionRealisation(driver);
         Thread.sleep(100L);
-        FicheActionModele.choixNumActionRealisation();
+        FicheActionModele.choixNumActionRealisation(driver);
         Thread.sleep(1000L);
     }
 
@@ -1334,8 +1332,8 @@ try {
 
     @When("^Consulter fiche action$")
     public void consulter_fiche_action() throws Throwable {
-        ExcelUtils.setExcelFile(Path, "Action");
-        String NumAction = ExcelUtils.getCellData(row, 7);
+
+        String NumAction = String.valueOf(action.getNumFiche());
 
         FicheActionModele.consulter_fiche(NumAction, driver);
     }
@@ -1427,26 +1425,26 @@ try {
     @Then("^Vérifier les donnes de traçabilite$")
     public void Vérifier_les_donnes_de_traçabilite() throws Throwable {
 
-        String path = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement\\CrystalReportViewer1.rtf";
+        String path = "E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Download\\CrystalReportViewer1.rtf";
         String fileData = null;
         Thread.sleep(5000);
         //fileData = RTFUtil.ReadRTFFile(path);
         System.out.println("********************************TRACABILITE**************************************" + fileData);
 
         ExcelUtils.setExcelFile(Path, "Action");
-        String RespReal = ExcelUtils.getCellData1(row, 4);
+        String RespReal = action.getRespTraitement().getName();
         Thread.sleep(500);
         System.err.println("RespReal" + RespReal);
         System.out.println("Existe: RespReal " + Common.ExisteWord(path, RespReal));
         assertTrue(Common.ExisteWord(path, RespReal));
 
-        String RespSuivi = ExcelUtils.getCellData1(row, 6);
+        String RespSuivi = action.getRespSuivi().getName();
         Thread.sleep(500);
         System.err.println("RespSuivi" + RespSuivi);
         System.out.println("Existe:  RespSuivi" + Common.ExisteWord(path, RespSuivi));
         assertTrue(Common.ExisteWord(path, RespSuivi));
 
-        String DateReal = ExcelUtils.getCellDate1(row, 19, "fr");
+        String DateReal =action.getDateRealisation();
         DateTimeFormatter formatter_1 = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate local_date_1 = LocalDate.parse(DateReal, formatter_1);
 
@@ -1461,56 +1459,21 @@ try {
         System.out.println("Existe: DateReal" + Common.ExisteWord(path, date_string));
         assertTrue(Common.ExisteWord(path, date_string));
 
-        String tauxReal = ExcelUtils.getCellData1(row, 20);
+        String tauxReal = action.getTauxRealisation();
         Thread.sleep(500);
         System.err.println("tauxReal" + tauxReal);
         System.out.println("Existe tauxReal: " + Common.ExisteWord(path, tauxReal));
         assertTrue(Common.ExisteWord(path, tauxReal));
 
-        String DateSuivi = ExcelUtils.getCellDate1(row, 21, "fr");
+        String DateSuivi =action.getDateSuivi();
 
         DateTimeFormatter formatter_2 = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
-
-        LocalDate local_date_2 = LocalDate.parse(DateSuivi, formatter_2);
-
-        // print date in the specified format
-        String date_string2 = formatter_2.format(local_date_2);
-
-        System.out.println(date_string2);
-
-        Thread.sleep(500);
-        System.err.println("DateSuivi" + DateSuivi);
-        System.out.println("Existe DateSuivi: " + Common.ExisteWord(path, date_string2));
-        assertTrue(Common.ExisteWord(path, date_string2));
-
-        String TauxSuivi = ExcelUtils.getCellData1(row, 22);
+        String TauxSuivi = action.getTauxSuivi();
         Thread.sleep(500);
         System.err.println("TauxSuivi" + TauxSuivi);
         System.out.println("Existe TauxSuivi: " + Common.ExisteWord(path, TauxSuivi));
         assertTrue(Common.ExisteWord(path, TauxSuivi));
-
-
-        System.out.println("Existe rapport efficacité: " + Common.ExisteWord(path, "rapport efficacité"));
-        assertTrue(Common.ExisteWord(path, "rapport efficacité"));
-
-        System.out.println("Existe nécessite verification: " + Common.ExisteWord(path, "nécessite verification"));
-        assertTrue(Common.ExisteWord(path, "nécessite verification"));
-
-        System.out.println("Existe test auto: " + Common.ExisteWord(path, "test auto"));
-        assertTrue(Common.ExisteWord(path, "test auto"));
-
-        System.out.println("Existe : " + Common.ExisteWord(path, "70"));
-        assertTrue(Common.ExisteWord(path, "70"));
-
-        System.out.println("Existe : " + Common.ExisteWord(path, "30"));
-        assertTrue(Common.ExisteWord(path, "30"));
-
-        System.out.println("Existe : " + Common.ExisteWord(path, "80"));
-        assertTrue(Common.ExisteWord(path, "80"));
-
-        System.out.println("Existe : " + Common.ExisteWord(path, "50"));
-        assertTrue(Common.ExisteWord(path, "50"));
 
 
         driver.navigate().back();

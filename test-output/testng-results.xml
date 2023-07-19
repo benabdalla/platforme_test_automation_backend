@@ -1,27 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="0" failed="8" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-29T02:54:31 CEST" name="Action" finished-at="2023-06-29T02:59:03 CEST" duration-ms="272372">
+  <suite started-at="2023-07-11T09:15:49 CEST" name="actionSimplifier" finished-at="2023-07-11T09:19:04 CEST" duration-ms="194284">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@7b3874d9]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-06-29T02:54:31 CEST" name="Test version  fr " finished-at="2023-06-29T02:59:03 CEST" duration-ms="272372">
-      <class name="com.saphir.platforme.ActionRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.ActionRunner@7b3874d9]" started-at="2023-06-29T02:54:31 CEST" name="setUpClass" finished-at="2023-06-29T02:54:31 CEST" duration-ms="483" status="PASS">
+    <test started-at="2023-07-11T09:15:49 CEST" name="Test version  fr " finished-at="2023-07-11T09:19:04 CEST" duration-ms="194284">
+      <class name="com.saphir.platforme.ActionSimplifierRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:15:49 CEST" name="setUpClass" finished-at="2023-07-11T09:15:50 CEST" duration-ms="501" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@272f7fe4]]>
+                <![CDATA[org.testng.TestRunner@6c11ec53]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@7b3874d9]" started-at="2023-06-29T02:54:31 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-06-29T02:59:02 CEST" duration-ms="271019" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:15:50 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:18:13 CEST" duration-ms="143072" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Creation fiche Action"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='ctl00_ContentPlaceHolder1_GridView_Employe_filter']/label/input"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '192.168.249.2', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:58733}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c57fe2a797eca0ddec17a159665a2849
+*** Element info: {Using=xpath, value=//div[@id='ctl00_ContentPlaceHolder1_GridView_Employe_filter']/label/input}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='ctl00_ContentPlaceHolder1_GridView_Employe_filter']/label/input"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '192.168.249.2', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:58733}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c57fe2a797eca0ddec17a159665a2849
+*** Element info: {Using=xpath, value=//div[@id='ctl00_ContentPlaceHolder1_GridView_Employe_filter']/label/input}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy4/jdk.proxy4.$Proxy170.sendKeys(Unknown Source)
+at com.saphir.platforme.moduleAction.models.FicheActionModele.clique_sur_valider(FicheActionModele.java:82)
+at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.clique_sur_valider(FicheActionStepDefinition.java:111)
+at ✽.clique   sur   valider(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:21)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:18:13 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="49736" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action Simplifiée"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.JavascriptException">
+            <message>
+              <![CDATA[javascript error: Cannot read properties of null (reading 'click')
+  (Session info: chrome=114.0.5735.199)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '192.168.249.2', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:58889}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2d9b8da0141277778398efa909c9d612]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.JavascriptException: javascript error: Cannot read properties of null (reading 'click')
+  (Session info: chrome=114.0.5735.199)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'PC-DEV15', ip: '192.168.249.2', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:58889}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2d9b8da0141277778398efa909c9d612
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:489)
+at com.saphir.platforme.moduleAction.models.ActSimplModel.consulterFiltreActionsSimplifiée(ActSimplModel.java:27)
+at com.saphir.platforme.moduleAction.stepdefs.ActSimplStepDefinition.cliquer_sur_action_simplifiée(ActSimplStepDefinition.java:63)
+at ✽.cliquer sur action simplifiée(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:34)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.JavascriptException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="2" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -34,21 +148,713 @@
               </value>
             </param>
           </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.ActionRunner@7b3874d9]" started-at="2023-06-29T02:59:02 CEST" name="tearDownClass" finished-at="2023-06-29T02:59:03 CEST" duration-ms="843" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="1" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="3" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="2" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="2" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-07-11T09:19:03 CEST" duration-ms="2" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.core.backend.CucumberBackendException">
+            <message>
+              <![CDATA[No test instance]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:214)
+at io.cucumber.spring.TestContextAdaptor.stop(TestContextAdaptor.java:176)
+at io.cucumber.spring.SpringFactory.stop(SpringFactory.java:127)
+at io.cucumber.core.runner.Runner.disposeBackendWorlds(Runner.java:156)
+at io.cucumber.core.runner.Runner.runPickle(Runner.java:78)
+at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:151)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.base/java.lang.Thread.run(Thread.java:833)
+Suppressed: io.cucumber.core.backend.CucumberBackendException: No test instance
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:227)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestExecution(TestContextAdaptor.java:220)
+... 79 more
+Caused by: java.lang.IllegalStateException: No test instance
+at org.springframework.util.Assert.state(Assert.java:76)
+at org.springframework.test.context.support.DefaultTestContext.getTestInstance(DefaultTestContext.java:160)
+at io.cucumber.spring.TestContextAdaptor.notifyTestContextManagerAboutAfterTestMethod(TestContextAdaptor.java:207)
+... 79 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.core.backend.CucumberBackendException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:03 CEST" name="tearDownClass" finished-at="2023-07-11T09:19:04 CEST" duration-ms="929" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.ActionRunner@7b3874d9]" started-at="2023-06-29T02:59:03 CEST" name="generateReport" finished-at="2023-06-29T02:59:04 CEST" duration-ms="627" status="PASS">
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.ActionSimplifierRunner@12623e90]" started-at="2023-07-11T09:19:04 CEST" name="generateReport" finished-at="2023-07-11T09:19:04 CEST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-      </class> <!-- com.saphir.platforme.ActionRunner -->
+      </class> <!-- com.saphir.platforme.ActionSimplifierRunner -->
     </test> <!-- Test version  fr  -->
-  </suite> <!-- Action -->
-  <suite started-at="2023-06-29T02:59:04 CEST" name="Default Suite" finished-at="2023-06-29T02:59:04 CEST" duration-ms="0">
+  </suite> <!-- actionSimplifier -->
+  <suite started-at="2023-07-11T09:19:04 CEST" name="Default Suite" finished-at="2023-07-11T09:19:04 CEST" duration-ms="0">
     <groups>
     </groups>
   </suite> <!-- Default Suite -->

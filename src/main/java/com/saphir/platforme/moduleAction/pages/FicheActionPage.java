@@ -159,6 +159,7 @@ public class FicheActionPage {
     final static String ACTION_A_SUIVIRE_XPATH = "ctl00_ContentPlaceHolder1_num3";
     final static String NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_textBoxNAct2";
     final static String CHOIX_NUM_ACTION_A_REALISATION_ID = "//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[1]";
+
     final static String RECHERCHER_NUM_ACTION_A_REALISATION_ID = "ctl00_ContentPlaceHolder1_LinkButton38";
     final static String RECHERCHER_ACTION_A_CLOTURER_XPATH = "ctl00_ContentPlaceHolder1_GridView_Cloture_filter";
     final static String TAUX_REALISATION_ID = "ctl00_ContentPlaceHolder1_Taux1";
@@ -646,6 +647,25 @@ public class FicheActionPage {
     public static WebElement VldIntervId;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_Label20")
     public static WebElement actionRealise;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_ListBox1")
+    public static WebElement wsite;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_ListBoxProcessus")
+    public static WebElement wprocess ;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_Ajouter_rc")
+    public static WebElement wajouterRespoClot ;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_TextBox8")
+    public static WebElement wrechrecher ;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_lk_rechercher")
+    public static WebElement btnRrechreche ;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridVghj")
+    public static WebElement  wtabRespoCloture;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_LinkButton11")
+    public static WebElement  wValiderRespoCloture;
+    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridView1")
+    public static WebElement  tabRespoCloture ;
+//    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridView1")
+//    public static WebElement  tabRespoCloture ;
+
 
 
 }

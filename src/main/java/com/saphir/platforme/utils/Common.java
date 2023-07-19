@@ -4,6 +4,7 @@ package com.saphir.platforme.utils;
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +21,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static com.saphir.platforme.utils.Setup.driver;
 import static org.testng.Assert.assertTrue;
 
 public class Common {
@@ -279,17 +281,17 @@ public class Common {
     public static Boolean ExisteWord(String path, String info) throws BadLocationException, IOException {
         Boolean Existe = false;
 
-//        String fileData;
-//        try {
-//            fileData = RTFUtil.ReadRTFFile(path).trim();
-//            if (fileData.contains(info)) {
-//                Existe = true;
-//
-//            }
-//        } catch (FileNotFoundException e) {
-//
-//            e.printStackTrace();
-//        }
+        String fileData;
+        try {
+            fileData = RTFUtil.ReadRTFFile(path).trim();
+            if (fileData.contains(info)) {
+                Existe = true;
+
+            }
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        }
         return Existe;
     }
 
@@ -904,7 +906,7 @@ public class Common {
             String selectionn = option.get(i).getText().trim();
             System.err.println("value option " + option.get(i).getText().trim());
             System.err.println("value option " + option.get(i).getAttribute("value"));
-            if (selectionn.trim().equals(text)) {
+            if (selectionn.trim().contains(text)) {
                 value = option.get(i).getAttribute("value");
                 System.err.println("value option " + option.get(i).getAttribute("value"));
             }
@@ -1037,6 +1039,9 @@ public class Common {
 //        Actions act = new Actions(AbstractPage.driver);
 
         // act.doubleClick(wE);
+    }
+    public static void waitForVisibility(WebElement element) throws Error {
+        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(element));
     }
 
 }

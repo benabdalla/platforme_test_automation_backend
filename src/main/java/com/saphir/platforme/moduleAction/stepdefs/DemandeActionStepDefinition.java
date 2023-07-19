@@ -3,6 +3,7 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 
+import com.saphir.platforme.config.CucumberSpringContextConfig;
 import com.saphir.platforme.moduleAction.models.DemandeActionModel;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
@@ -23,7 +24,8 @@ import java.util.concurrent.TimeUnit;
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.origine;
 
 
-@Test
+import org.springframework.test.context.ContextConfiguration;
+
 public class DemandeActionStepDefinition {
     public static String lan;
     public static int row = 0;

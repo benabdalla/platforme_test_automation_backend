@@ -1,12 +1,11 @@
 package com.saphir.platforme.mapper;
 
 import com.saphir.platforme.dto.ParametrageDto;
-import com.saphir.platforme.dto.UtilisateurDto;
 import com.saphir.platforme.entity.Parametrage;
-import com.saphir.platforme.entity.Utilisateur;
 import org.mapstruct.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper(componentModel = "spring", uses = {ParametrageMapper.class})
 public interface ParametrageMapper {

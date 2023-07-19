@@ -1,8 +1,14 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
+import com.saphir.platforme.authentification.pages.AuthentificationPage;
+import com.saphir.platforme.config.CucumberSpringContextConfig;
+import com.saphir.platforme.controllors.ActionRunTest;
+import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.moduleAction.models.ActSimplModel;
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
+import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -17,45 +23,43 @@ import org.testng.annotations.Test;
 import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
+import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.action;
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.fgRespSuivi;
 
+import org.springframework.test.context.ContextConfiguration;
 
-@Test
 public class ActSimplStepDefinition {
     public static String lan;
     public static int row = 0;
     public static String module = "";
     public static int seulRespo = 0;
     public static String actionSimpl = "";
+    static Action action;
+    public static WebDriver driver;
     private static final String Path = "src/main/resources/testData/TestData.xlsx";
-    public String numActSim;
-    @Autowired
-    protected WebDriver driver;
-    @Autowired
-    protected WebDriverWait wait;
-    @Autowired
-    protected JavascriptExecutor javascriptExecutor;
 
-    @PostConstruct
-    public void init() {
-
-      //  driver=Setup.driver;
-
+    public ActSimplStepDefinition(){
+        action=  ActionRunTest.action;
+        driver = Setup.driver;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        PageFactory.initElements(driver, ActSimplPage.class);
+        PageFactory.initElements(driver, AuthentificationPage.class);
+        PageFactory.initElements(driver, FicheActionPage.class);
+    }
+
+
+    @When("cliquer sur action simplifiée parametrage")
+    public void cliquer_sur_action_simplifiée_parametrage() throws InterruptedException {
+
+        if(action.getActSimplifier()==1) {
+            actionSimpl = "action_simplifiée";
+        }
 
     }
 
-    @When("cliquer sur action simplifiée {string} parametrage")
-    public void cliquer_sur_action_simplifiée_parametrage(String string) throws InterruptedException {
-        actionSimpl = string;
-
-
-    }
-
-    @When("cliquer sur action simplifiée {string}")
-    public void cliquer_sur_action_simplifiée(String string) throws InterruptedException {
-        actionSimpl = string;
+    @When("cliquer sur action simplifiée")
+    public void cliquer_sur_action_simplifiée() throws InterruptedException {
+        if (action.getActSimplifier()==1){
+        actionSimpl = "action_simplifiée";}
         ActSimplModel.consulterFiltreActionsSimplifiée(driver);
     }
 

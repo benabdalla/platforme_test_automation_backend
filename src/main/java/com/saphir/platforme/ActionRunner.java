@@ -11,7 +11,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static com.saphir.platforme.controllors.ActionRunTest.action;
 
@@ -19,26 +21,41 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
 @CucumberOptions(
         features = {"src/main/java/com/saphir/platforme/features/moduleAction/Action.feature"},
         monochrome = true,
-        plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber-reports/action.json", "junit:target/cucumber-reports/action.xml"},
+        plugin = {"pretty", "html:target/Reporting/action-cucumber-reports/cucumber-html-report", "json:target/Reporting/action-cucumber-reports/action.json", "junit:target/Reporting/action-cucumber-reports/action.xml"},
         glue = "com.saphir.platforme",
-        //glue = {"com.saphir.platforme"},
-        tags = "@SuiviCloture",
-       // @ParemétrageFicheActionDetaille or @FicheActionDetaille or @RealisationAction or @RealisationAction or @SuiviAction or @RealisationActionRetour or @SuiviActionRetour
-        //tags ="@ParemétrageFicheActionDetaille or @FicheActionDetaille or @RealisationetSuiviAction or @VérificationActionNonClôturée or @AfficherTracabilite",
-
         dryRun = false
 )
 //@ContextConfiguration
 //@ComponentScan("classpath:com.saphir.platforme")
 public class ActionRunner extends AbstractTestNGCucumberTests {
-    @Autowired
-    IActionRepository iActionRepository;
+
 
     @AfterSuite
     public void generateReport() {
-        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");
-        ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
+
+        String outputDirectory = "target/Reporting/action-cucumber-reports";
+        String reportName = "action-cucumber-reports";
+
+        // Add cucumber JSON report files to the list
+        File reportOutputDirectory = new File(outputDirectory);
+        File[] jsonFiles = reportOutputDirectory.listFiles((dir, name) -> name.endsWith(".json"));
+
+        // Convert array of File objects to List of Strings
+        List<String> jsonFilePaths = new ArrayList<>();
+        for (File file : jsonFiles) {
+            jsonFilePaths.add(file.getAbsolutePath());
+        }
+
+        // Generate the cucumber report with a specific name
+        Configuration configuration = new Configuration(reportOutputDirectory, reportName);
+        ReportBuilder reportBuilder = new ReportBuilder(jsonFilePaths, configuration);
         reportBuilder.generateReports();
+
+
+
+//        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");
+//        ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
+//        reportBuilder.generateReports();
     }
 
 }
