@@ -54,9 +54,10 @@ public class ActionService implements IActionRepository {
         return actionDto;
 
     }
+
     @Override
     public List<ActionDto> getAllActionSimplifier(int id) {
-        List<Action> action =actionRepository.findByActSimplifier(id);
+        List<Action> action = actionRepository.findByActSimplifier(id);
         List<ActionDto> actionDto = actionMapper.toDtos(action);
         return actionDto;
 

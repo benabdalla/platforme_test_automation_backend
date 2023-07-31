@@ -2,8 +2,6 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
-
-import com.saphir.platforme.config.CucumberSpringContextConfig;
 import com.saphir.platforme.moduleAction.models.DemandeActionModel;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
@@ -16,21 +14,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.origine;
 
-
-import org.springframework.test.context.ContextConfiguration;
-
 public class DemandeActionStepDefinition {
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public static String lan;
     public static int row = 0;
     public static String module = "";
-    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public String NewUser = "TESTAUTO2";
     @Autowired
     protected WebDriver driver;
@@ -39,7 +33,7 @@ public class DemandeActionStepDefinition {
     @PostConstruct
     public void init() {
 
-    //    driver = WebDriverConfig.driver;
+        //    driver = WebDriverConfig.driver;
 
 
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

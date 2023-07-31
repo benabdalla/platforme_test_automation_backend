@@ -1,12 +1,14 @@
 package com.saphir.platforme.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
-
 
 
 @AllArgsConstructor
@@ -21,5 +23,7 @@ public class Processus implements Serializable {
     @Column(length = 500)
     private String processus;
     @OneToMany(mappedBy = "processus", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action;
+
 }

@@ -24,12 +24,11 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
 
 public class FicheActionModele {
 
+    private static final String Path = "resources/testData/TestData.xlsx";
     public static List<String> informations = new ArrayList<String>();
     public static HashMap<String, String> filtre_repor = new HashMap<>();
     //private static String Path = "resources/testData/TestData2.xlsx";
     static int i = 1;
-    private static final String Path = "resources/testData/TestData.xlsx";
-
 
     public static void consulter_types_d_action(WebDriver driver) throws Exception {
         Thread.sleep(1000L);
@@ -52,16 +51,16 @@ public class FicheActionModele {
     public static void saisir_type_d_action(int row) throws Exception {
 
         Thread.sleep(2000);
-        String st="";
+        String st = "";
 
-        if (action.getActSimplifier()==1) {
-             st = "Type Action Simplifier Auto" + LocalDateTime.now();
+        if (action.getActSimplifier() == 1) {
+            st = "Type Action Simplifier Auto" + LocalDateTime.now();
 
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wchekSimptype.click();
 
         } else {
-          st= "Type Action Details Auto" + LocalDateTime.now();
+            st = "Type Action Details Auto" + LocalDateTime.now();
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wnancastype.click();
 
@@ -342,7 +341,7 @@ public class FicheActionModele {
         } catch (NoSuchElementException ex) {
             exsiste = false;
         }
-        if (exsiste == false) {
+        if (!exsiste) {
 
             FicheActionPage.wajouterRespoClot.click();
             Common.waitForVisibility(FicheActionPage.wrechrecher);
@@ -404,7 +403,6 @@ public class FicheActionModele {
                 informations.add(action.getSource());
 
                 String option_Selected = action.getSource();
-                ;
                 System.out.println("option_Selected " + option_Selected);
 
                 Assert.assertEquals(option_Selected, option_Selected);
@@ -667,9 +665,9 @@ public class FicheActionModele {
         }
 
         String option_Selected = selected.getFirstSelectedOption().getText();
-        if (option_Selected==""){
+        if (option_Selected == "") {
             DesignePaterne.getOptiontext(select);
-        }else{
+        } else {
             Assert.assertEquals(option_Selected, option_Selected);
 
         }
@@ -870,7 +868,7 @@ public class FicheActionModele {
         Select selectfg = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_ListBoxFilialeSuiv")));
         selectfg.selectByVisibleText(fg);
 
-        String employer =action.getRespSuivi().getName();
+        String employer = action.getRespSuivi().getName();
         System.err.println("Employee  is   :   " + employer);
         FicheActionPage.winserResSuvi.sendKeys(employer);
         FicheActionPage.wrecherSuvi.click();
@@ -885,7 +883,7 @@ public class FicheActionModele {
     public static void Verfication_selectionnerResponsableSuivi(int row) throws Throwable {
         ExcelUtils.setExcelFile(Path, "Action");
         Select select = new Select(FicheActionPage.responsableSuiviID);
-        String respoExcel =action.getRespSuivi().getName();
+        String respoExcel = action.getRespSuivi().getName();
         boolean attrubite = Boolean.parseBoolean(FicheActionPage.responsableSuiviID.getAttribute("disabled"));
         System.err.println("attr" + attrubite);
         Assert.assertTrue(attrubite, "elementis desaible when attrubite  return true  ");
@@ -995,7 +993,7 @@ public class FicheActionModele {
             String NumSousActSeulRespo = "";
 
             NumSousActSeulRespo = FicheActionPage.wGridSousActSeulRespo.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView5_wrapper\"]/div[2]/div/table/tbody/tr/td[3]")).getText();
-            Assert.assertFalse(NumSousActSeulRespo.equals(""));
+            Assert.assertNotEquals(NumSousActSeulRespo, "");
         }
     }
 
@@ -1088,11 +1086,10 @@ public class FicheActionModele {
             Thread.sleep(500);
         } catch (NoSuchElementException e) {
             if (Integer.parseInt(ta) < 100) {
-                Assert.assertTrue(false);
+                Assert.fail();
             }
         }
 
-        ;
     }
 
     public static void saisirNumActionSuivre(String num) throws Throwable {

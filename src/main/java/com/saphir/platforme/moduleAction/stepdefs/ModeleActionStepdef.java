@@ -20,18 +20,18 @@ import static org.testng.Assert.assertTrue;
 
 
 public class ModeleActionStepdef {
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public static String lan;
     public static int row = 0;
     public static String module = "";
-    private static final String Path = "src/main/resources/testData/TestData.xlsx";
+    private final Common common = new Common();
     public WebDriver driver;
     public String Num_Modele;
-    private final Common common = new Common();
 
     @PostConstruct
     public void init() {
 
-     //   driver = WebDriverConfig.driver;
+        //   driver = WebDriverConfig.driver;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, ModeleActionPage.class);
     }

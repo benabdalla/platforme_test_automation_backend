@@ -2,7 +2,6 @@ package com.saphir.platforme.mapper;
 
 import com.saphir.platforme.dto.ProcessusDto;
 import com.saphir.platforme.entity.Processus;
-import com.saphir.platforme.entity.Processus;
 import org.mapstruct.Mapper;
 
 import java.util.List;

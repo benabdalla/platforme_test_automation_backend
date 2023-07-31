@@ -10,9 +10,14 @@ public interface IActionRepository {
     Action addAction(ActionDto action);
 
     List<ActionDto> getAllAction(int id);
+
     Action findActionByIDScenario(Long id);
+
     ActionDto getActionByIDScenario(Long id);
+
     ResponseEntity<Action> updateAction(Action action);
-    ResponseEntity<Action>  deleteAction(Long idSceanrio);
-    List<ActionDto>  getAllActionSimplifier(int actSimplifier);
+
+    ResponseEntity<Action> deleteAction(Long idSceanrio);
+
+    List<ActionDto> getAllActionSimplifier(int actSimplifier);
 }

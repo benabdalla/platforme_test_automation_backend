@@ -1,22 +1,19 @@
 package com.saphir.platforme.controllors;
 
 import com.saphir.platforme.dto.*;
-import com.saphir.platforme.entity.Action;
-import com.saphir.platforme.entity.Parametrage;
-import com.saphir.platforme.entity.Processus;
-import com.saphir.platforme.entity.Site;
-import com.saphir.platforme.mapper.ActiviteMapper;
-import com.saphir.platforme.mapper.DirectionMapper;
-import com.saphir.platforme.mapper.ParametrageMapper;
-import com.saphir.platforme.mapper.TabServiceMapper;
-import com.saphir.platforme.repository.*;
+import com.saphir.platforme.entity.*;
+import com.saphir.platforme.repository.IActiviteRepository;
+import com.saphir.platforme.repository.IDirectionRepository;
+import com.saphir.platforme.repository.IParametreRepository;
+import com.saphir.platforme.repository.ITabServiceRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.testng.TestNG;
+import org.testng.xml.XmlSuite;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -24,17 +21,17 @@ import java.util.List;
 @RequestMapping("/api/v3/paremetrage")
 public class ParametrageController {
 
+    public static ScenarioProcessus scenarioProcessus;
+    public static ScenarioActivite scenarioActivite;
+    public static ScenarioSite scenarioSite;
     @Autowired
     IParametreRepository iParametreRepository;
-
-
     @Autowired
     ITabServiceRepository itabServiceRepository;
     @Autowired
     IDirectionRepository directionRepository;
     @Autowired
     IActiviteRepository activiteRepository;
-
 
     @PostMapping()
     @ResponseBody
@@ -62,11 +59,32 @@ public class ParametrageController {
     public List<ParametrageDto> parametrages() {
         return iParametreRepository.getAllParametrage();
     }
+
     @GetMapping(value = "get/scenariosite")
-    public List<ScenarioSiteDto> getScenrioSite(){
+    public List<ScenarioSiteDto> getScenrioSite() {
         return iParametreRepository.getSecenarioSite();
+
     }
 
+    @GetMapping(value = "get/scenarioactivite")
+    public List<ScenarioActiviteDto> getScenrioActivite() {
+        return iParametreRepository.getScenarioActivite();
+    }
+
+    @GetMapping(value = "get/scenarioprocessus")
+    public List<ScenarioPrcocessDto> getScenrioProcessus() {
+        return iParametreRepository.getScenarioPocessus();
+    }
+
+    @GetMapping(value = "get/scenarioservice")
+    public List<ScenarioServiceDto> getScenrioScervice() {
+        return iParametreRepository.getScenarioServices();
+    }
+
+    @GetMapping(value = "get/scenariodirection")
+    public List<ScenarioDirectionDto> getScenrioDirectionDtos() {
+        return iParametreRepository.getScenarioDirection();
+    }
 
 
     @GetMapping(value = "findpram/{id}")
@@ -91,20 +109,28 @@ public class ParametrageController {
         return activiteRepository.getActivites();
 
     }
+
     @DeleteMapping("delete/site/{id}")
     public void deletesite(@PathVariable long id) throws Exception {
         iParametreRepository.deleteSite(id);
-    } @DeleteMapping("delete/processus/{id}")
+    }
+
+    @DeleteMapping("delete/processus/{id}")
     public void deleteProcesus(@PathVariable long id) throws Exception {
         iParametreRepository.deleteProcessus(id);
-    } @DeleteMapping("delete/activite/{id}")
+    }
+
+    @DeleteMapping("delete/activite/{id}")
     public void deleteActivite(@PathVariable long id) throws Exception {
         iParametreRepository.deleteActivite(id);
     }
+
     @DeleteMapping("delete/direction/{id}")
     public void deleteDirection(@PathVariable long id) throws Exception {
         iParametreRepository.deleteDirection(id);
-    } @DeleteMapping("delete/service/{id}")
+    }
+
+    @DeleteMapping("delete/service/{id}")
     public void deleteServices(@PathVariable long id) throws Exception {
         iParametreRepository.deleteServices(id);
     }
@@ -114,36 +140,105 @@ public class ParametrageController {
     @ResponseBody
     public ScenarioSiteDto addSite(@RequestBody ScenarioSiteDto site) throws Exception {
 
-        return iParametreRepository.addSite( site);
+        return iParametreRepository.addSite(site);
     }
+
     @PostMapping("add/processus")
     @ResponseBody
-    public ProcessusDto addProcessus(@RequestBody ProcessusDto processusDto) throws Exception {
+    public ScenarioPrcocessDto addProcessus(@RequestBody ScenarioPrcocessDto processusDto) throws Exception {
 
         return iParametreRepository.addprocessus(processusDto);
     }
+
     @PostMapping("add/activite")
     @ResponseBody
-    public ActiviteDto addActivite(@RequestBody ActiviteDto activiteDto) throws Exception {
+    public ScenarioActiviteDto addActivite(@RequestBody ScenarioActiviteDto activiteDto) throws Exception {
 
         return iParametreRepository.acdactivite(activiteDto);
     }
+
     @PostMapping("add/direction")
     @ResponseBody
-    public DirectionDto addDiretion(@RequestBody DirectionDto directionDto) throws Exception {
+    public ScenarioDirectionDto addDiretion(@RequestBody ScenarioDirectionDto directionDto) throws Exception {
 
         return iParametreRepository.addDirection(directionDto);
     }
+
     @PostMapping("add/service")
     @ResponseBody
-    public TabServiceDto addService(@RequestBody TabServiceDto tabServiceDto) throws Exception {
+    public ScenarioServiceDto addService(@RequestBody ScenarioServiceDto tabServiceDto) throws Exception {
 
         return iParametreRepository.addService(tabServiceDto);
     }
 
 
+    @GetMapping(value = "find/scenariosite/{idScenrio}")
+    public String findById(@PathVariable long idScenrio) {
 
+        scenarioSite = iParametreRepository.getSecenarioSite(idScenrio);
+        System.err.println("tesssssst" + idScenrio);
+        //  System.err.println("list  =" + actionList.get(0));
+        // Create TestNG object
+        TestNG testng = new TestNG();
 
+        // Create a list of XML suites to run
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        XmlSuite suite = new XmlSuite();
+        suite.setSuiteFiles(Collections.singletonList("parametrage/site.xml"));
+        suites.add(suite);
 
+        // Set the list of suites to TestNG object
+        testng.setXmlSuites(suites);
+
+        // Run the tests
+        testng.run();
+return "ok";
+    }
+
+    @GetMapping(value = "find/scenarioprocessus")
+    public void getScenrioProcessus(Long idScenrio) {
+
+        scenarioProcessus = iParametreRepository.getSecenarioProcessus(idScenrio);
+        System.err.println("tesssssst" + idScenrio);
+        //  System.err.println("list  =" + actionList.get(0));
+        // Create TestNG object
+        TestNG testng = new TestNG();
+
+        // Create a list of XML suites to run
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        XmlSuite suite = new XmlSuite();
+        suite.setSuiteFiles(Collections.singletonList("parametrage/processus.xml"));
+        suites.add(suite);
+
+        // Set the list of suites to TestNG object
+        testng.setXmlSuites(suites);
+
+        // Run the tests
+        testng.run();
+
+    }
+
+    @GetMapping(value = "find/scenarioActivite")
+    public void getScenrioActivite(Long idScenrio) {
+
+        scenarioActivite = iParametreRepository.getSecenarioActivite(idScenrio);
+        System.err.println("tesssssst" + idScenrio);
+        //  System.err.println("list  =" + actionList.get(0));
+        // Create TestNG object
+        TestNG testng = new TestNG();
+
+        // Create a list of XML suites to run
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        XmlSuite suite = new XmlSuite();
+        suite.setSuiteFiles(Collections.singletonList("parametrage/activite.xml"));
+        suites.add(suite);
+
+        // Set the list of suites to TestNG object
+        testng.setXmlSuites(suites);
+
+        // Run the tests
+        testng.run();
+
+    }
 
 }

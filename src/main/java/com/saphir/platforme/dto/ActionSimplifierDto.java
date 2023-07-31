@@ -1,11 +1,6 @@
 package com.saphir.platforme.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.saphir.platforme.entity.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
-
-import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

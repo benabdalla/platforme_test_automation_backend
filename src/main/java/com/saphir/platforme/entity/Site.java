@@ -1,12 +1,14 @@
 package com.saphir.platforme.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
-
 
 
 @AllArgsConstructor
@@ -19,13 +21,10 @@ public class Site implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idSite;
     @Column(length = 500)
-
-
     private String site;
+
     @OneToMany(mappedBy = "site", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action;
-    @OneToOne
-    @JoinColumn(name = "idSite")
-    private ScenarioSite scenarioSite;
 
 }

@@ -942,6 +942,10 @@ public class Common {
         return false;
     }
 
+    public static void waitForVisibility(WebElement element) throws Error {
+        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(element));
+    }
+
     public void scrollerPage() throws Throwable {
 
         for (int second = 0; ; second++) {
@@ -1039,9 +1043,6 @@ public class Common {
 //        Actions act = new Actions(AbstractPage.driver);
 
         // act.doubleClick(wE);
-    }
-    public static void waitForVisibility(WebElement element) throws Error {
-        new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(element));
     }
 
 }

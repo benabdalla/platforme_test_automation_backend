@@ -1,11 +1,14 @@
 package com.saphir.platforme.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
 
 
 @AllArgsConstructor
@@ -18,8 +21,8 @@ public class TabService implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idService;
     @Column(length = 500)
-
-    private String  service;
+    private String service;
     @OneToMany(mappedBy = "direction", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action;
 }

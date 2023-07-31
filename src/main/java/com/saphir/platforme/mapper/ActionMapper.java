@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UtilisateurMapper.class,ActiviteMapper.class, DirectionMapper.class, SiteMapper.class, TabServiceMapper.class, ProcessusMapper.class})
+@Mapper(componentModel = "spring", uses = {UtilisateurMapper.class, ActiviteMapper.class, DirectionMapper.class, SiteMapper.class, TabServiceMapper.class, ProcessusMapper.class})
 public interface ActionMapper {
     ActionDto toDto(Action action);
 

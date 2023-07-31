@@ -14,9 +14,9 @@ import java.util.Random;
 
 
 public class ModeleActionModel {
+    private static final String Path = "resources/testData/TestData.xlsx";
     public static int del_rea, del_suivi;
     static int val1;
-    private static final String Path = "resources/testData/TestData.xlsx";
 
     public static void consulter_Modele_Action(WebDriver driver) throws Throwable {
         //ModeleActionPage.menuID.click();

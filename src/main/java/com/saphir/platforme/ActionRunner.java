@@ -7,12 +7,10 @@ import io.cucumber.testng.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.saphir.platforme.controllors.ActionRunTest.action;
@@ -29,10 +27,14 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
 //@ComponentScan("classpath:com.saphir.platforme")
 public class ActionRunner extends AbstractTestNGCucumberTests {
 
+    @Autowired
+    IActionRepository iActionRepository;
 
     @AfterSuite
     public void generateReport() {
-
+        Action actions;
+        actions = action;
+        iActionRepository.updateAction(actions);
         String outputDirectory = "target/Reporting/action-cucumber-reports";
         String reportName = "action-cucumber-reports";
 
@@ -50,7 +52,6 @@ public class ActionRunner extends AbstractTestNGCucumberTests {
         Configuration configuration = new Configuration(reportOutputDirectory, reportName);
         ReportBuilder reportBuilder = new ReportBuilder(jsonFilePaths, configuration);
         reportBuilder.generateReports();
-
 
 
 //        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");

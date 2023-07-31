@@ -27,7 +27,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,11 +41,11 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class FicheActionStepDefinition {
 
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public static int row;
     public static String origine = "";
     public static String fgRespReal = "";
@@ -54,21 +53,20 @@ public class FicheActionStepDefinition {
     public static WebDriver driver;
     public static String lan;
     public static String module = "";
-    private static final String Path = "src/main/resources/testData/TestData.xlsx";
+    static Action action;
+    private final Common common = new Common();
     public String NumAction = "";
     public String taux;
     public String filaile = "";
-    static Action action;
     @Autowired
     ActionService actionService;
     List<Utilisateur> connexionDTOList;
     @Autowired
     UtilisateurService utilisateurService;
     private boolean Etatcloture;
-    private final Common common = new Common();
 
-    public FicheActionStepDefinition(){
-        action=  ActionRunTest.action;
+    public FicheActionStepDefinition() {
+        action = ActionRunTest.action;
         driver = Setup.driver;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
@@ -85,7 +83,6 @@ public class FicheActionStepDefinition {
         AuthentificationModel.saisirPW(action.getDechlencheur().getPassword());
 
     }
-
 
 
     @Given("consulter  types d'action")
@@ -188,6 +185,7 @@ public class FicheActionStepDefinition {
     public void ajouter_gravité() throws Throwable {
         FicheActionModele.ajouter_gravité(driver);
     }
+
     @Given("^ajouter Responsable Cloture$")
     public void ajouter_Responsable_Cloture() throws Throwable {
         Thread.sleep(2000L);
@@ -197,7 +195,7 @@ public class FicheActionStepDefinition {
         Thread.sleep(200L);
         Common.AccéderModule(2, 0, 0, driver);
         Common.AccéderModule(2, 5, 0, driver);
-   }
+    }
 
     @Given("^saisir  gravité$")
     public void saisir_gravité() throws Throwable {
@@ -208,15 +206,16 @@ public class FicheActionStepDefinition {
     public void verifier_gravité() throws Throwable {
         FicheActionModele.verifier_gravité(row);
     }
+
     @Given("^Saisir Responsable Cloture$")
     public void Saisir_Responsable_Cloture() throws Throwable {
         FicheActionModele.Saisir_Responsable_Cloture(driver);
     }
+
     @Given("^verifier Responsable Cloture$")
     public void verifier_Responsable_Cloture() throws Throwable {
         FicheActionModele.verifier_Responsable_Cloture(driver);
     }
-
 
 
     @When("^Consulter action a cloture$")
@@ -278,7 +277,7 @@ public class FicheActionStepDefinition {
         Thread.sleep(1000L);
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-         executor.executeScript("arguments[0].click()",FicheActionPage.actionRealise);
+        executor.executeScript("arguments[0].click()", FicheActionPage.actionRealise);
         int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
         for (int i = 1; i <= sizeTabClot; i++) {
             Thread.sleep(500);
@@ -315,20 +314,20 @@ public class FicheActionStepDefinition {
     }
 
 
-
-
     @And("saisir action filaile declencheur$")
     public void saisir_action_filaile_declencheur() throws InterruptedException {
-        filaile =action.getFilialeDeclencheur();
-        if(!filaile.equals("Mono")){
-        Thread.sleep(2000);
-        Select selectOpTGF = new Select((driver.findElement(By.id("ctl00_DDLFiliale"))));
-        String gf = selectOpTGF.getFirstSelectedOption().getText();
-        if (!filaile.equals(gf)) {
-            selectOpTGF.selectByVisibleText(filaile);
-        }}
+        filaile = action.getFilialeDeclencheur();
+        if (!filaile.equals("Mono")) {
+            Thread.sleep(2000);
+            Select selectOpTGF = new Select((driver.findElement(By.id("ctl00_DDLFiliale"))));
+            String gf = selectOpTGF.getFirstSelectedOption().getText();
+            if (!filaile.equals(gf)) {
+                selectOpTGF.selectByVisibleText(filaile);
+            }
+        }
 
     }
+
     @And("saisir {string} action filaile")
     public void saisir_action_filaile(String string) throws InterruptedException {
         filaile = string;
@@ -344,7 +343,7 @@ public class FicheActionStepDefinition {
 
     @When("^Saisir a l'origine de l'action$")
     public void saisir_a_l_origine_de_l_action() {
-        origine =action.getFilialeDeclencheur();
+        origine = action.getFilialeDeclencheur();
     }
 
 
@@ -479,16 +478,16 @@ public class FicheActionStepDefinition {
         Common.Exporter_visibilité("Fiche Action:" + Num);
         Common.Exporter_champ_A_masquer("Fiche Action: " + Num);
 
-        assertFalse(Num.equals(""));
+        assertNotEquals(Num, "");
         NumAction = Num;
-       action.setNumFiche(Integer.parseInt(Num));
+        action.setNumFiche(Integer.parseInt(Num));
         Common.Exporter_numFiche(" num Action   " + Num);
 
     }
 
     @Then("Choisir FG responsble réalisation et responsble Suivi$")
     public void choisir_fg_responsble_réalisation_et_responsble_suivi() {
-       fgRespReal = action.getFilialeRealisation();
+        fgRespReal = action.getFilialeRealisation();
         fgRespSuivi = action.getFilialeSuivi();
     }
 
@@ -830,14 +829,58 @@ public class FicheActionStepDefinition {
     @And("^Clôturée Action$")
     public void Clôturée_Action() throws Throwable {
         FicheActionModele.cliqueAgenda(driver);
-        origine=action.getFilialeDeclencheur();
-        NumAction=String.valueOf(action.getNumFiche());
+        origine = action.getFilialeDeclencheur();
+        NumAction = String.valueOf(action.getNumFiche());
 
         JavascriptExecutor executor23 = (JavascriptExecutor) driver;
-            executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
+        executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
 
-            Thread.sleep(2000);
+        Thread.sleep(2000);
 
+        int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
+        for (int i = 1; i <= sizeTabClot; i++) {
+            Thread.sleep(500);
+            String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+            System.err.println("f = " + origine + "  fgr = " + fgr);
+            System.err.println("result   =" + origine.equals(fgr));
+
+            if (origine.equals(fgr)) {
+                FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+                break;
+            }
+        }
+
+        FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
+
+        assertTrue(FicheActionPage.choixActionCloturer.findElement(By.tagName("a")).getText().contains(NumAction));
+
+        FicheActionModele.choixNumActionCloturee(driver, row);
+        Thread.sleep(1000L);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        FicheActionModele.choixCloturee(driver);
+        Thread.sleep(1000);
+        Faker fakerRappCloture = new Faker();
+
+        FicheActionPage.rapportClotureID.sendKeys("Test Auto " + fakerRappCloture.lorem().paragraph());
+        Thread.sleep(1000);
+        FicheActionModele.validerCloturee();
+        System.err.println("------------- l'action a été clôturée -------------------------------->");
+
+
+    }
+
+    @When("Verifier  etat  de  suivi")
+    public void Verifier_etat_de_suivi() throws Exception {
+        FicheActionModele.cliqueAgenda(driver);
+
+
+        JavascriptExecutor executor23 = (JavascriptExecutor) driver;
+        executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
+
+        Thread.sleep(2000);
+        try {
             int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
             for (int i = 1; i <= sizeTabClot; i++) {
                 Thread.sleep(500);
@@ -862,56 +905,14 @@ public class FicheActionStepDefinition {
             js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             FicheActionModele.choixCloturee(driver);
             Thread.sleep(1000);
-            Faker fakerRappCloture = new  Faker();
-
-            FicheActionPage.rapportClotureID.sendKeys("Test Auto "+ fakerRappCloture.lorem().paragraph());
-            Thread.sleep(1000);
-            FicheActionModele.validerCloturee();
-            System.err.println("------------- l'action a été clôturée -------------------------------->");
-
-
-    }
-    @When("Verifier  etat  de  suivi")
-    public void Verifier_etat_de_suivi() throws Exception {
-        FicheActionModele.cliqueAgenda(driver);
-
-
-        JavascriptExecutor executor23 = (JavascriptExecutor) driver;
-        executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
-
-        Thread.sleep(2000);
-try {
-    int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
-    for (int i = 1; i <= sizeTabClot; i++) {
-        Thread.sleep(500);
-        String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-        System.err.println("f = " + origine + "  fgr = " + fgr);
-        System.err.println("result   =" + origine.equals(fgr));
-
-        if (origine.equals(fgr)) {
-            FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-            break;
+            Assert.fail();
+        } catch (NoSuchElementException exp) {
+            Assert.assertTrue(true);
         }
-    }
-
-    FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
-
-    assertTrue(FicheActionPage.choixActionCloturer.findElement(By.tagName("a")).getText().contains(NumAction));
-
-    FicheActionModele.choixNumActionCloturee(driver, row);
-    Thread.sleep(1000L);
-
-    JavascriptExecutor js = (JavascriptExecutor) driver;
-    js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-    FicheActionModele.choixCloturee(driver);
-    Thread.sleep(1000);
-    Assert.assertTrue(false);
-}catch (NoSuchElementException exp){
-    Assert.assertTrue(true);
-}
 
 
     }
+
     @When("Connecter en tant que responsable réalisation")
     public void connecter_en_tant_que_responsable_réalisation() throws Exception {
         action = ActionRunTest.action;
@@ -919,6 +920,7 @@ try {
         Thread.sleep(200L);
         AuthentificationModel.saisirPW(action.getRespTraitement().getPassword());
     }
+
     @When("Connecter en tant que responsable suivi")
     public void connecter_en_tant_que_responsable_suivi() throws Exception {
         action = ActionRunTest.action;
@@ -926,6 +928,7 @@ try {
         Thread.sleep(200L);
         AuthentificationModel.saisirPW(action.getRespSuivi().getPassword());
     }
+
     @When("Connecter en tant que responsable cloture")
     public void connecter_en_tant_que_responsable_cloture() throws Exception {
         action = ActionRunTest.action;
@@ -933,10 +936,11 @@ try {
         Thread.sleep(200L);
         AuthentificationModel.saisirPW(action.getRespCloture().getPassword());
     }
+
     @When("saisir action  responsable réalisation")
     public void saisir_action_responsable_réalisation() throws InterruptedException {
-        filaile =action.getFilialeRealisation();
-        if(!filaile.equals("Mono")){
+        filaile = action.getFilialeRealisation();
+        if (!filaile.equals("Mono")) {
             Thread.sleep(3000);
 
             WebElement dropdown = driver.findElement(By.id("ctl00_DDLFiliale"));
@@ -946,7 +950,7 @@ try {
 
             // Select the desired option by value using JavaScript
 
-            ((JavascriptExecutor)driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", dropdown, filaile);
+            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", dropdown, filaile);
 
         }
 
@@ -955,8 +959,8 @@ try {
 
     @When("saisir action  responsable Suivi")
     public void saisir_action_responsable_Suivi() throws InterruptedException {
-        filaile =action.getFilialeSuivi();
-        if(!filaile.equals("Mono")){
+        filaile = action.getFilialeSuivi();
+        if (!filaile.equals("Mono")) {
             Thread.sleep(3000);
 
             WebElement dropdown = driver.findElement(By.id("ctl00_DDLFiliale"));
@@ -966,12 +970,11 @@ try {
 
             // Select the desired option by value using JavaScript
 
-            ((JavascriptExecutor)driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", dropdown, filaile);
+            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", dropdown, filaile);
 
         }
 
     }
-
 
 
     @When("^Consulter action a traiter$")
@@ -985,23 +988,23 @@ try {
         Thread.sleep(1000L);
 
         String NumAction = String.valueOf(action.getNumFiche());
-                System.out.println("Action" + NumAction);
+        System.out.println("Action" + NumAction);
         Thread.sleep(1000);
 
-            System.out.println("2222");
-            FicheActionPage.ActionRealisationXpath.click();
+        System.out.println("2222");
+        FicheActionPage.ActionRealisationXpath.click();
+        Thread.sleep(500);
+
+        for (int i = 1; i <= sizeTab; i++) {
             Thread.sleep(500);
+            String fgr = FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+            System.err.println("f = " + origine + "  fgr = " + fgr);
+            System.err.println("result   =" + origine.equals(fgr));
 
-            for (int i = 1; i <= sizeTab; i++) {
-                Thread.sleep(500);
-                String fgr = FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-                System.err.println("f = " + origine + "  fgr = " + fgr);
-                System.err.println("result   =" + origine.equals(fgr));
-
-                if (origine.equals(fgr)) {
-                    FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                    break;
-                }
+            if (origine.equals(fgr)) {
+                FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+                break;
+            }
 
 
         }
@@ -1018,16 +1021,16 @@ try {
 
     @When("^Réaliser action avec (\\d+)$")
     public void réaliser_action_avec(int arg1) throws Throwable {
-        if (arg1==1){
+        if (arg1 == 1) {
 
 
-                Faker faker =new Faker();
-                taux=String.valueOf(faker.number().numberBetween(5,97));
-                action.setTauxRealisation(taux);
+            Faker faker = new Faker();
+            taux = String.valueOf(faker.number().numberBetween(5, 97));
+            action.setTauxRealisation(taux);
 
 
-        }else {
-            taux="100";
+        } else {
+            taux = "100";
             action.setTauxRealisation(taux);
         }
         final DateFormat dateFormat;
@@ -1059,11 +1062,11 @@ try {
 
         FicheActionModele.validerRealisationAction(driver);
         Thread.sleep(500);
-        try{
-        FicheActionModele.EnrTauxReal(driver, taux);}
-        catch (NoSuchElementException e){
-            if(Integer.parseInt(taux)<100){
-                Assert.assertTrue(false);
+        try {
+            FicheActionModele.EnrTauxReal(driver, taux);
+        } catch (NoSuchElementException e) {
+            if (Integer.parseInt(taux) < 100) {
+                Assert.fail();
             }
         }
 
@@ -1073,11 +1076,7 @@ try {
 
     @When("^Consulter action a suivre$")
     public void consulter_action_a_suivre() throws Throwable {
-        origine=action.getFilialeDeclencheur();
-
-
-
-
+        origine = action.getFilialeDeclencheur();
 
 
         Thread.sleep(1000L);
@@ -1100,10 +1099,10 @@ try {
         }
         Thread.sleep(1000L);
 
-        String NumAction =String.valueOf(action.getNumFiche());
+        String NumAction = String.valueOf(action.getNumFiche());
         Thread.sleep(2000);
 
-            FicheActionModele.saisirNumActionSuivre(NumAction);
+        FicheActionModele.saisirNumActionSuivre(NumAction);
 
         FicheActionModele.rechercherNumActionSuivre(driver);
         Thread.sleep(1000L);
@@ -1114,7 +1113,7 @@ try {
 
     @Then("^vérifier taux réalisation$")
     public void vérifier_taux_réalisation() throws Throwable {
-        String tauxReal=action.getTauxRealisation();
+        String tauxReal = action.getTauxRealisation();
         System.out.println(tauxReal);
         Thread.sleep(1000);
         System.out.println(FicheActionPage.AffTxReaId.getAttribute("value"));
@@ -1126,12 +1125,12 @@ try {
 
     @When("suivre action avec {int}")
     public void suivre_action_avec_et_et(Integer int1) throws Exception {
-        if (int1==1){
-                Faker faker =new Faker();
-                taux=String.valueOf(faker.number().numberBetween(5,97));
+        if (int1 == 1) {
+            Faker faker = new Faker();
+            taux = String.valueOf(faker.number().numberBetween(5, 97));
 
-        }else {
-            taux="100";
+        } else {
+            taux = "100";
         }
         action.setTauxSuivi(taux);
         Thread.sleep(1000);
@@ -1173,7 +1172,7 @@ try {
         FicheActionPage.TauxEffiID.sendKeys(taux);
         Thread.sleep(500L);
 
-  action.setTauxSuivi(taux);
+        action.setTauxSuivi(taux);
         Thread.sleep(500L);
 
         FicheActionPage.rapportEffiID.clear();
@@ -1192,17 +1191,17 @@ try {
     @When("^suivre action avec (\\d+) et (\\d+)$")
     public void suivre_action_avec_et(int arg1, int arg2) throws Throwable {
 
-        if (arg1==1){
-            taux=action.getTauxRealisation();
+        if (arg1 == 1) {
+            taux = action.getTauxRealisation();
             Predicate<String> isNotEmptyOrNull = (str) -> str == null || str.isEmpty();
 
             if (isNotEmptyOrNull.test(taux)) {
-                Faker faker =new Faker();
-                taux=String.valueOf(faker.number().numberBetween(5,97));
+                Faker faker = new Faker();
+                taux = String.valueOf(faker.number().numberBetween(5, 97));
             }
 
-        }else {
-            taux="100";
+        } else {
+            taux = "100";
         }
 
         taux = Integer.toString(arg1);
@@ -1444,7 +1443,7 @@ try {
         System.out.println("Existe:  RespSuivi" + Common.ExisteWord(path, RespSuivi));
         assertTrue(Common.ExisteWord(path, RespSuivi));
 
-        String DateReal =action.getDateRealisation();
+        String DateReal = action.getDateRealisation();
         DateTimeFormatter formatter_1 = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate local_date_1 = LocalDate.parse(DateReal, formatter_1);
 
@@ -1465,7 +1464,7 @@ try {
         System.out.println("Existe tauxReal: " + Common.ExisteWord(path, tauxReal));
         assertTrue(Common.ExisteWord(path, tauxReal));
 
-        String DateSuivi =action.getDateSuivi();
+        String DateSuivi = action.getDateSuivi();
 
         DateTimeFormatter formatter_2 = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
@@ -1544,7 +1543,7 @@ try {
                 Thread.sleep(2000L);
                 assertTrue(FicheActionPage.ActionRealiserId.findElement(By.tagName("a")).getText().contains(NumAction));
             } catch (NoSuchElementException e) {
-                Assert.assertTrue(false);
+                Assert.fail();
             }
 
         } else {
@@ -1554,7 +1553,7 @@ try {
                 Thread.sleep(1000L);
 
                 assertTrue(driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td")).getText().contains("Aucun élément à afficher") || driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td")).getText().contains("No matching records found"));
-          Assert.assertTrue(false);
+                Assert.fail();
             } catch (NoSuchElementException e) {
 
                 System.out.println("aucun element n'est afficher");
@@ -1567,7 +1566,7 @@ try {
     public void suivre_action(int arg1) throws Throwable {
 //        FicheActionPage.ActionSuivreXpath.click();
         Thread.sleep(1000L);
-        taux ="100";
+        taux = "100";
         action.setTauxSuivi(taux);
         FicheActionPage.TauxEffiID.clear();
         FicheActionPage.TauxEffiID.sendKeys(taux);
@@ -1593,7 +1592,7 @@ try {
         //FicheActionPage.ActionSuivreXpath.click();
         Thread.sleep(1000L);
         ExcelUtils.setExcelFile(Path, "Action");
-        String NumAction =String.valueOf(action.getNumFiche());
+        String NumAction = String.valueOf(action.getNumFiche());
         try {
             int sizeTab = FicheActionPage.wtabFGS.findElements(By.tagName("tr")).size();
             for (int i = 1; i <= sizeTab; i++) {
@@ -1613,12 +1612,11 @@ try {
             Thread.sleep(1000L);
 
             assertTrue(FicheActionPage.choixNumActionSuivre.getText().contains(NumAction));
-        }catch (NoSuchElementException exp){
-            if(Integer.parseInt(taux) < 100){
-                Assert.assertTrue(false);
+        } catch (NoSuchElementException exp) {
+            if (Integer.parseInt(taux) < 100) {
+                Assert.fail();
             }
         }
-
 
 
 //

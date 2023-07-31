@@ -1,6 +1,10 @@
 package com.saphir.platforme.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,22 +21,22 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
     @Column(length = 500)
-
     private String name;
     @Column(length = 500)
-
     private String login;
     @Column(length = 500)
-
     private String password;
-
     @OneToMany(mappedBy = "dechlencheur", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action1;
     @OneToMany(mappedBy = "respTraitement", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action2;
     @OneToMany(mappedBy = "respCloture", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action3;
     @OneToMany(mappedBy = "respSuivi", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Action> action4;
 
 

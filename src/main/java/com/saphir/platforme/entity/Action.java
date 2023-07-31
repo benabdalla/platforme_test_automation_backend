@@ -1,13 +1,14 @@
 package com.saphir.platforme.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Cascade;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
 
 
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class Action implements Serializable {
     @Column(length = 3000)
     private String source;
     @Column(length = 3000)
-    private String  typeAction;
+    private String typeAction;
     @Column(length = 3000)
     private String priorite;
     @Column(length = 3000)

@@ -8,27 +8,55 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface IParametreRepository {
-    public ParametrageDto addParametrage(ParametrageDto parametrageDto);
+    ParametrageDto addParametrage(ParametrageDto parametrageDto);
 
-    public ParametrageDto modifiyParametrage(ParametrageDto parametrageDto) throws NotFoundException;
+    ParametrageDto modifiyParametrage(ParametrageDto parametrageDto) throws NotFoundException;
 
-    public ParametrageDto deleteParametrage(ParametrageDto parametrageDto);
+    ParametrageDto deleteParametrage(ParametrageDto parametrageDto);
 
-    public List<ParametrageDto> getAllParametrage();
-    public List<Site> getAllSite();
-    public List<Processus> getAllProcessus();
-    public ParametrageDto getParametrage(Long id );
-    public ScenarioSiteDto addSite(ScenarioSiteDto  site);
-    public List<ScenarioSiteDto> getSecenarioSite();
-    public ProcessusDto addprocessus(ProcessusDto processusDto);
-    public ActiviteDto acdactivite(ActiviteDto activiteDto);
-    public TabServiceDto addService(TabServiceDto tabServiceDto);
-    public DirectionDto addDirection(DirectionDto directionDto);
-    ResponseEntity<Site> deleteSite(Long idSceanrio);
-    ResponseEntity<Processus> deleteProcessus(Long idSceanrio);
-    ResponseEntity<Activite> deleteActivite(Long idSceanrio);
-    ResponseEntity<Direction> deleteDirection(Long idSceanrio);
-    ResponseEntity<TabService>  deleteServices(Long idSceanrio);
+    List<ParametrageDto> getAllParametrage();
+
+    List<Site> getAllSite();
+
+    List<Processus> getAllProcessus();
+
+    ParametrageDto getParametrage(Long id);
+
+    ScenarioSiteDto addSite(ScenarioSiteDto site);
+
+    List<ScenarioSiteDto> getSecenarioSite();
+
+    ScenarioPrcocessDto addprocessus(ScenarioPrcocessDto processusDto);
+
+    ScenarioActiviteDto acdactivite(ScenarioActiviteDto activiteDto);
+
+    ScenarioServiceDto addService(ScenarioServiceDto tabServiceDto);
+
+    ScenarioDirectionDto addDirection(ScenarioDirectionDto directionDto);
+
+    ResponseEntity<ScenarioSite> deleteSite(Long idSceanrio);
+
+    List<ScenarioPrcocessDto> getScenarioPocessus();
+
+    List<ScenarioActiviteDto> getScenarioActivite();
+
+    List<ScenarioDirectionDto> getScenarioDirection();
+
+    List<ScenarioServiceDto> getScenarioServices();
+
+    ResponseEntity<ScenarioProcessus> deleteProcessus(Long idSceanrio);
+
+    ResponseEntity<ScenarioActivite> deleteActivite(Long idSceanrio);
+
+    ResponseEntity<ScenarioDirection> deleteDirection(Long idSceanrio);
+
+    ResponseEntity<ScenarioService> deleteServices(Long idSceanrio);
+
+    ScenarioSite getSecenarioSite(Long idScenrio);
+
+    ScenarioProcessus getSecenarioProcessus(Long idScenrio);
+
+    ScenarioActivite getSecenarioActivite(Long idScenrio);
 
 
 }

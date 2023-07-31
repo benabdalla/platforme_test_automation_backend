@@ -1,14 +1,12 @@
 package com.saphir.platforme.mapper;
 
 import com.saphir.platforme.dto.ScenarioSiteDto;
-import com.saphir.platforme.dto.SiteDto;
 import com.saphir.platforme.entity.ScenarioSite;
-import com.saphir.platforme.entity.Site;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UtilisateurMapper.class,SiteMapper.class})
+@Mapper(componentModel = "spring", uses = {UtilisateurMapper.class, SiteMapper.class})
 
 public interface ScenarioSiteMapper {
     ScenarioSiteDto toDto(ScenarioSite site);

@@ -1,24 +1,14 @@
-
 package com.saphir.platforme;
 
-        import com.saphir.platforme.entity.Action;
-        import com.saphir.platforme.repository.IActionRepository;
-        import io.cucumber.testng.AbstractTestNGCucumberTests;
-        import io.cucumber.testng.CucumberOptions;
-        import net.masterthought.cucumber.Configuration;
-        import net.masterthought.cucumber.ReportBuilder;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.context.annotation.ComponentScan;
-        import org.springframework.test.context.ContextConfiguration;
-        import org.testng.annotations.AfterClass;
-        import org.testng.annotations.AfterSuite;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import net.masterthought.cucumber.Configuration;
+import net.masterthought.cucumber.ReportBuilder;
+import org.testng.annotations.AfterSuite;
 
-        import java.io.File;
-        import java.util.ArrayList;
-        import java.util.Collections;
-        import java.util.List;
-
-        import static com.saphir.platforme.controllors.ActionRunTest.action;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @CucumberOptions(
@@ -29,7 +19,7 @@ package com.saphir.platforme;
         //glue = {"com.saphir.platforme"},
         //    tags = "@ @FicheActionDetaille, @RealisationAction, @RealisationAction@SuiviCloture",
         // @FicheActionDetaille or @RealisationAction or @RealisationAction or @SuiviAction or @RealisationActionRetour or @SuiviActionRetour
-        tags ="@FicheActionDetaille or @RealisationAction or @RealisationAction or @SuiviAction or @RealisationActionRetour or @SuiviActionRetour or @AfficherTracabilite",
+        tags = "@FicheActionDetaille or @RealisationAction or @RealisationAction or @SuiviAction or @RealisationActionRetour or @SuiviActionRetour or @AfficherTracabilite",
 //tags = "@AfficherTracabilite",
         dryRun = false
 )
@@ -57,7 +47,6 @@ public class SpecfiqueActionRunner extends AbstractTestNGCucumberTests {
         Configuration configuration = new Configuration(reportOutputDirectory, reportName);
         ReportBuilder reportBuilder = new ReportBuilder(jsonFilePaths, configuration);
         reportBuilder.generateReports();
-
 
 
 //        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");

@@ -20,8 +20,8 @@ import java.util.*;
 public class ReportingModel {
 
 
-    public static HashMap<String, String> filtre_repor = new HashMap<>();
     private static final String Path = "resources/testData/TestData.xlsx";
+    public static HashMap<String, String> filtre_repor = new HashMap<>();
     private static String regroup = "";
 
     public static void consulter_reporting_Nombre_d_actions_par_type(WebDriver driver) throws InterruptedException {

@@ -20,11 +20,11 @@ import java.util.List;
 
 
 public class DemandeActionModel {
+    /* Public methods */
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public static String NumDemande;
     public static List<String> responsable;
     public static String Cpt_agenda;
-    /* Public methods */
-    private static final String Path = "src/main/resources/testData/TestData.xlsx";
 
     public static void consulter_Demande(WebDriver driver) throws Throwable {
 
@@ -276,7 +276,7 @@ public class DemandeActionModel {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", DemandeActionPage.BoutonValideID);
         String NumDemanedeAction = driver.findElement(By.id("ctl00_ContentPlaceHolder1_nact")).getText();
-        Assert.assertFalse(NumDemanedeAction.equals(""));
+        Assert.assertNotEquals(NumDemanedeAction, "");
 
 
     }

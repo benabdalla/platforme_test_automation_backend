@@ -5,5 +5,5 @@ import com.saphir.platforme.dto.ActiviteDto;
 import java.util.List;
 
 public interface IActiviteRepository {
-    public List<ActiviteDto> getActivites();
+    List<ActiviteDto> getActivites();
 }

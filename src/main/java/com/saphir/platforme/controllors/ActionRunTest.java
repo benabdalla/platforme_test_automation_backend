@@ -7,24 +7,14 @@ import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition;
 import com.saphir.platforme.repository.IActionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.UrlResource;
 import org.springframework.web.bind.annotation.*;
 import org.testng.TestNG;
-import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 
-import java.io.*;
-import java.net.URL;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.springframework.core.io.Resource;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.testng.xml.XmlTest;
 
 @RestController
 @RequestMapping("/api/v2/actions")
@@ -41,7 +31,7 @@ public class ActionRunTest {
         return iActionRepository.addAction(action);
     }
 
-    @RequestMapping(value ="all/{id}")
+    @RequestMapping(value = "all/{id}")
     public List<ActionDto> getallAction(@PathVariable int id) {
         return iActionRepository.getAllAction(id);
 
@@ -50,9 +40,11 @@ public class ActionRunTest {
     @GetMapping("close/{id}")
     public void closeDriver(@PathVariable long id) throws Exception {
         if (FicheActionStepDefinition.driver != null) {
-           try{ FicheActionStepDefinition.driver.close();
-            FicheActionStepDefinition.driver.quit();}catch (Exception ep){
-           }
+            try {
+                FicheActionStepDefinition.driver.close();
+                FicheActionStepDefinition.driver.quit();
+            } catch (Exception ep) {
+            }
             try {
                 // Execute the taskkill command to kill all ChromeDriver processes
                 Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
@@ -65,7 +57,7 @@ public class ActionRunTest {
 
     @GetMapping("/report")
     public ReportDto runReportAction() throws IOException {
-        String  url= "Reporting/action-cucumber-reports/cucumber-html-reports/overview-tags.html";
+        String url = "Reporting/action-cucumber-reports/cucumber-html-reports/overview-tags.html";
         ReportDto report = new ReportDto();
         report.setSrcFrame(url);
         return report;
@@ -80,7 +72,7 @@ public class ActionRunTest {
 
         //20002
         action = iActionRepository.findActionByIDScenario(id);
-        if(action.getEtat()==1){
+        if (action.getEtat() == 1) {
             System.err.println("tesssssst" + id);
             //  System.err.println("list  =" + actionList.get(0));
             // Create TestNG object
@@ -98,9 +90,7 @@ public class ActionRunTest {
             // Run the tests
             testng.run();
 
-    }
-
-        else{
+        } else {
             System.err.println("tesssssst" + id);
             //  System.err.println("list  =" + actionList.get(0));
             // Create TestNG object
@@ -123,6 +113,7 @@ public class ActionRunTest {
 
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }
+
     @GetMapping("run/simplifier/{id}")
     public void actionSimplifier(@PathVariable long id) throws Exception {
         // public static List<Action> actionList;
@@ -131,7 +122,7 @@ public class ActionRunTest {
 
         //20002
         action = iActionRepository.findActionByIDScenario(id);
-        if(action.getEtat()==0){
+        if (action.getEtat() == 0) {
 
             System.err.println("tesssssst" + id);
             //  System.err.println("list  =" + actionList.get(0));
@@ -150,9 +141,7 @@ public class ActionRunTest {
             // Run the tests
             testng.run();
 
-    }
-
-        else{
+        } else {
             System.err.println("tesssssst" + id);
             //  System.err.println("list  =" + actionList.get(0));
             // Create TestNG object
@@ -181,13 +170,14 @@ public class ActionRunTest {
         iActionRepository.deleteAction(id);
     }
 
-    @PutMapping(value="update/actiondto")
+    @PutMapping(value = "update/actiondto")
     public void updateAction(@PathVariable Action action) throws Exception {
         iActionRepository.updateAction(action);
     }
+
     @GetMapping("get/action/{id}")
     public ActionDto getAction(@PathVariable long id) throws Exception {
-     return iActionRepository.getActionByIDScenario(id);
+        return iActionRepository.getActionByIDScenario(id);
     }
 
 }

@@ -21,16 +21,16 @@ import java.util.List;
 
 public class ReportingStepDef {
 
+    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public static String lan;
     public static int row = 0;
     public static String module = "";
-    private static final String Path = "src/main/resources/testData/TestData.xlsx";
     public WebDriver driver;
 
 
     @PostConstruct
     private void init() {
- //       driver = WebDriverConfig.driver;
+        //       driver = WebDriverConfig.driver;
         PageFactory.initElements(driver, FicheActionPage.class);
         // PageFactory.initElements(driver, PageSommerAgenda.class);
         PageFactory.initElements(driver, ReportingPage.class);

@@ -4,7 +4,6 @@ package com.saphir.platforme.authentification.stepdefs;
 import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
 import com.saphir.platforme.dto.ParametrageDto;
-import com.saphir.platforme.entity.Parametrage;
 import com.saphir.platforme.service.ParametrageService;
 import com.saphir.platforme.utils.ExcelUtils;
 import com.saphir.platforme.utils.Setup;
@@ -24,18 +23,16 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-
-
 public class AuthentificationStepDefinition {
 
 
-    public static List<ParametrageDto> parametrageList;
-    static WebDriver driver;
     //	protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
     private static final String Path = "src/main/resources/testData/TestData.xlsx";
+    public static List<ParametrageDto> parametrageList;
+    public static String lan = "";
+    static WebDriver driver;
     public int row = 1;
     public String module = "Action";
-    public static  String  lan="";
     @Autowired
     ParametrageService parametrageService;
 
@@ -52,11 +49,11 @@ public class AuthentificationStepDefinition {
 
     @Given("^Ouvrir le site QualiProWeb$")
     public void ouvrirQualiProWeb() throws Throwable {
-         System.err.println("site = " + parametrageList.get(0).getUrl());
+        System.err.println("site = " + parametrageList.get(0).getUrl());
         ExcelUtils.getCellData(1, 0);
-         driver.get(parametrageList.get(0).getUrl());
+        driver.get(parametrageList.get(0).getUrl());
         Thread.sleep(1000L);
-        lan=parametrageList.get(0).getVerssion();
+        lan = parametrageList.get(0).getVerssion();
         System.out.println("lang :  " + lan);
         Cookie cookie = new Cookie("lan", lan);
         driver.manage().addCookie(cookie);

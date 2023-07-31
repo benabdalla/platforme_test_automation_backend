@@ -8,14 +8,14 @@
     <parameter name="browsername" value="CHROME"/>
     <parameter name="excludegroups" value="Comma"/>
     <classes>
-      <class name="com.saphir.platforme.ActionSimplifierRunner">
+      <class name="com.saphir.platforme.ProcessusRunner">
         <methods>
           <include name="setUpClass"/>
-          <include name="generateReport"/>
           <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="0 1 2 3 4 5 6 7"/>
+          <include name="runScenario" invocation-numbers="0"/>
+          <include name="generateReport"/>
         </methods>
-      </class> <!-- com.saphir.platforme.ActionSimplifierRunner -->
+      </class> <!-- com.saphir.platforme.ProcessusRunner -->
     </classes>
   </test> <!-- Test version  fr (failed) -->
 </suite> <!-- Failed suite [Action] -->

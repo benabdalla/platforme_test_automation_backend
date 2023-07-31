@@ -4,8 +4,6 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterSuite;
 
 import java.io.File;

@@ -650,22 +650,21 @@ public class FicheActionPage {
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_ListBox1")
     public static WebElement wsite;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_ListBoxProcessus")
-    public static WebElement wprocess ;
+    public static WebElement wprocess;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_Ajouter_rc")
-    public static WebElement wajouterRespoClot ;
+    public static WebElement wajouterRespoClot;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_TextBox8")
-    public static WebElement wrechrecher ;
+    public static WebElement wrechrecher;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_lk_rechercher")
-    public static WebElement btnRrechreche ;
+    public static WebElement btnRrechreche;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridVghj")
-    public static WebElement  wtabRespoCloture;
+    public static WebElement wtabRespoCloture;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_LinkButton11")
-    public static WebElement  wValiderRespoCloture;
+    public static WebElement wValiderRespoCloture;
     @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridView1")
-    public static WebElement  tabRespoCloture ;
+    public static WebElement tabRespoCloture;
 //    @FindBy(how = How.ID, using = "ctl00_ContentPlaceHolder1_GridView1")
 //    public static WebElement  tabRespoCloture ;
-
 
 
 }

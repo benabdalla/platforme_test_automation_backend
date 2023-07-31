@@ -1,11 +1,7 @@
 package com.saphir.platforme.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.saphir.platforme.entity.Site;
-import com.saphir.platforme.entity.Utilisateur;
 import lombok.*;
 
-import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

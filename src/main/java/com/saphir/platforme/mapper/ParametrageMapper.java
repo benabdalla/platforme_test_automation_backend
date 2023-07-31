@@ -5,7 +5,6 @@ import com.saphir.platforme.entity.Parametrage;
 import org.mapstruct.Mapper;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mapper(componentModel = "spring", uses = {ParametrageMapper.class})
 public interface ParametrageMapper {
