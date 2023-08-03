@@ -6,11 +6,15 @@ import com.saphir.platforme.dto.ReportDto;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition;
 import com.saphir.platforme.repository.IActionRepository;
+import com.saphir.platforme.utils.Setup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.testng.TestNG;
 import org.testng.xml.XmlSuite;
 
+import javax.servlet.AsyncContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,20 +42,34 @@ public class ActionRunTest {
     }
 
     @GetMapping("close/{id}")
-    public void closeDriver(@PathVariable long id) throws Exception {
-        if (FicheActionStepDefinition.driver != null) {
-            try {
-                FicheActionStepDefinition.driver.close();
-                FicheActionStepDefinition.driver.quit();
-            } catch (Exception ep) {
-            }
-            try {
-                // Execute the taskkill command to kill all ChromeDriver processes
-                Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
-            } catch (IOException e) {
-                e.printStackTrace();
+    public void closeDriver(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        AsyncContext asyncContext = request.startAsync(); // Start asynchronous context
+        // Perform your API logic here (e.g., database queries, calculations)
+
+        // Check for cancelation signal (e.g., using request.isAsyncStarted())
+        if (request.isAsyncStarted()) {
+            // API request is canceled by the client
+            if (Setup.driver != null) {
+                try {
+                    Setup.driver.close();
+                    Setup.driver.quit();
+                } catch (Exception ep) {
+                }
+                try {
+                    // Execute the taskkill command to kill all ChromeDriver processes
+                    Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+        // Send the API response
+        response.getWriter().println("API response");
+        asyncContext.complete(); // Complete the asynchronous context
+
+
     }
 
 

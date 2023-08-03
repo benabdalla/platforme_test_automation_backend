@@ -1,13 +1,17 @@
 package com.saphir.platforme.controllors;
 
-import com.saphir.platforme.entity.Role;
 import com.saphir.platforme.entity.User;
 import com.saphir.platforme.payload.request.LoginRequest;
 import com.saphir.platforme.payload.request.SignupRequest;
 import com.saphir.platforme.payload.response.JwtResponse;
-import com.saphir.platforme.repository.RoleRepository;
 import com.saphir.platforme.repository.UserRepository;
 import com.saphir.platforme.service.UserDetailsImpl;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import com.saphir.platforme.service.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +20,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -34,8 +37,7 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
+
 
     @Autowired
     PasswordEncoder encoder;
@@ -69,18 +71,15 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 
-
+        signUpRequest.setRole("User");
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
-
-        Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
-
-
-        user.setRoles(roles);
-        userRepository.save(user);
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getRole());
+        try{
+        userRepository.save(user);}catch (Exception e){
+            return ResponseEntity.ok("User not registered is  duplcated!");
+        }
 
         return ResponseEntity.ok("User registered successfully!");
     }
