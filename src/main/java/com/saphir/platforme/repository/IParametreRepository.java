@@ -57,6 +57,9 @@ public interface IParametreRepository {
     ScenarioProcessus getSecenarioProcessus(Long idScenrio);
 
     ScenarioActivite getSecenarioActivite(Long idScenrio);
+    ScenarioService getSecenarioService(Long idScenrio);
+
+    ScenarioDirection getSecenarioDirection(Long idScenrio);
 
 
 }

@@ -1,6 +1,6 @@
 package com.saphir.platforme.controllors;
 
-import com.saphir.platforme.entity.Employee;
+import com.saphir.platforme.entity.User;
 import com.saphir.platforme.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,27 +17,27 @@ public class UserController {
     private  IEmployeeService employeeService;
 
     @GetMapping("employee/find/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
-        Employee employee = employeeService.findEmployeeById(id);
+    public ResponseEntity<User> getEmployeeById(@PathVariable("id") Long id) {
+        User employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @GetMapping("employee/all")
-    public ResponseEntity<List<Employee>> getAllEmployees() {
-        List<Employee> employees = employeeService.findAllEmployees();
+    public ResponseEntity<List<User>> getAllEmployees() {
+        List<User> employees = employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @PostMapping("employee/add")
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-        Employee newEmployee = employeeService.addEmployee(employee);
+    public ResponseEntity<User> addEmployee(@RequestBody User employee) {
+        User newEmployee = employeeService.addEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
     @PutMapping("employee/update")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
-        Employee updateEmployee = employeeService.updateEmployee(employee);
-        return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
+    public ResponseEntity<User> updateEmployee(@RequestBody User employee) {
+     employeeService.updateEmployee(employee);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @DeleteMapping("employee/delete/{id}")

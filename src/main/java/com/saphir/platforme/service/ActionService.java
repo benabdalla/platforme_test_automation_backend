@@ -1,12 +1,13 @@
 package com.saphir.platforme.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.Utilisateur;
 import com.saphir.platforme.mapper.ActionMapper;
+import com.saphir.platforme.mapper.UtilisateurMapper;
 import com.saphir.platforme.repository.ActionRepository;
 import com.saphir.platforme.repository.IActionRepository;
+import com.saphir.platforme.repository.UtilisateurQualiproRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,21 +16,41 @@ import java.util.List;
 
 @Service
 public class ActionService implements IActionRepository {
-    private final ActionMapper actionMapper;
+    private ActionMapper actionMapper;
+    private UtilisateurMapper utilisateurMapper;
     @Autowired
     ActionRepository actionRepository;
+    @Autowired
+    UtilisateurQualiproRepository utilisateurQualiproRepository;
+
 
     @Autowired
-    public ActionService(ActionMapper actionMapper) {
+    public ActionService(ActionMapper actionMapper, UtilisateurMapper utilisateurMapper) {
         this.actionMapper = actionMapper;
+        this.utilisateurMapper = utilisateurMapper;
     }
 
     @Override
     public Action addAction(ActionDto actiondto) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        Utilisateur user, user1, user2, user3;
         Action act = actionMapper.toEntity(actiondto);
+        if (actiondto.getDechlencheur().getIdUser() != null) {
+            user = utilisateurQualiproRepository.findById(actiondto.getDechlencheur().getIdUser()).orElse(null);
+            act.setDechlencheur(user);
+        }
 
+        if (actiondto.getRespSuivi().getIdUser() != null) {
+            user1 = utilisateurQualiproRepository.findById(actiondto.getRespSuivi().getIdUser()).orElse(null);
+            act.setRespSuivi(user1);
+        }
+        if (actiondto.getRespSuivi().getIdUser() != null) {
+            user2 = utilisateurQualiproRepository.findById(actiondto.getRespTraitement().getIdUser()).orElse(null);
+            act.setRespTraitement(user2);
+        }
+        if (actiondto.getRespSuivi().getIdUser() != null) {
+            user3 = utilisateurQualiproRepository.findById(actiondto.getRespCloture().getIdUser()).orElse(null);
+            act.setRespCloture(user3);
+        }
         return actionRepository.save(act);
     }
 
@@ -76,11 +97,10 @@ public class ActionService implements IActionRepository {
     }
 
     @Override
-    public ResponseEntity<Action> deleteAction(Long idSceanrio) {
+    public void deleteAction(Long idSceanrio) {
         if (idSceanrio != null) {
             actionRepository.deleteById(idSceanrio);
         }
-        return ResponseEntity.ok().build();
     }
 
 

@@ -3,11 +3,7 @@
 
 <suite name="site" parallel="none">
     <test name="Test version  fr " >
-        <parameter name="myName" value="true"/>
-        <parameter name="excludegroups" value="Comma"/>
-        <parameter name="groups" value="Comma"/>
-        <parameter name="language" value="fr-FR"/>
-        <parameter name="browsername" value="CHROME"/>
+
         <classes>
             <class name="com.saphir.platforme.SiteRunner"></class>
         </classes>

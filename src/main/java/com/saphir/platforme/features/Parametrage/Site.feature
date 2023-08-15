@@ -30,3 +30,23 @@ Feature:  creation et  verfication  de  parametrage GRH
     And  Consulter  GRH activite
     And  Ajouter   activite
     Then Vérifier  activite à éte ajouter
+
+  @ServiceParameter
+  Scenario: creation de test  de service
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant declencheur que de  service
+    When cliquer sur ouvrir une session
+    And saisir service filaile declencheur
+    And  Consulter  GRH service
+    And  Ajouter   service
+    Then Vérifier  service à éte ajouter
+
+  @Direction
+  Scenario: creation de test  de direction
+    Given Ouvrir le site QualiProWeb
+    When Connecter en tant declencheur que de  direction
+    When cliquer sur ouvrir une session
+    And saisir direction filaile declencheur
+    And  Consulter  GRH direction
+    And  Ajouter   direction
+    Then Vérifier  direction à éte ajouter

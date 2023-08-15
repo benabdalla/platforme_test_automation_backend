@@ -22,8 +22,5 @@ public class Processus implements Serializable {
     private long idProcessus;
     @Column(length = 500)
     private String processus;
-    @OneToMany(mappedBy = "processus", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action;
 
 }

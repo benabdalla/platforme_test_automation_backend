@@ -1,43 +1,52 @@
 package com.saphir.platforme.service;
 
 import com.saphir.platforme.config.UserNotFoundException;
-import com.saphir.platforme.entity.Employee;
-import com.saphir.platforme.repository.EmployeeRepository;
+import com.saphir.platforme.entity.User;
+import com.saphir.platforme.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class EmployeeService implements IEmployeeService {
     @Autowired
-    EmployeeRepository employeeRepository;
+    UserRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(UserRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public Employee addEmployee(Employee employee) {
-        employee.setEmployeeCode(UUID.randomUUID().toString());
+    public User addEmployee(User employee) {
+      //  employee.setId(UUID.randomUUID().toString());
         return employeeRepository.save(employee);
     }
 
     @Override
-    public List<Employee> findAllEmployees() {
-        return employeeRepository.findAll();
+    public List<User> findAllEmployees() {
+        return employeeRepository.findByRoleNot("ADMIN");
     }
 
     @Override
-    public Employee updateEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public User updateEmployee(User employee) {
+       return employeeRepository.findById(employee.getId()).map(
+               (emp)->{
+                   emp.setUsername(employee.getUsername());
+                   emp.setEmail(employee.getEmail());
+                   emp.setPhone(employee.getPhone());
+                   emp.setJobTitle(employee.getJobTitle());
+                   return employeeRepository.save(emp);
+               }
+       ).orElse(null);
+
+
     }
 
     @Override
-    public Employee findEmployeeById(Long id) {
+    public User findEmployeeById(Long id) {
         return employeeRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }

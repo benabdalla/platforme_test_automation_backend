@@ -55,7 +55,7 @@ public class ParametrageService implements IParametreRepository, IDirectionRepos
     @Autowired
     ScenarioDirectionMapper scenarioDirectionMapper;
     @Autowired
-    ScenrioDirectionRepository scenrioDirectionRepository;
+    ScenrioDirectionRepository  scenrioDirectionRepository;
 
     @Autowired
     ProcessusMapper processusMapper;
@@ -133,6 +133,16 @@ public class ParametrageService implements IParametreRepository, IDirectionRepos
     @Override
     public ScenarioActivite getSecenarioActivite(Long idScenrio) {
         return scenrioActiviteepository.findById(idScenrio).orElse(null);
+    }
+
+    @Override
+    public ScenarioService getSecenarioService(Long idScenrio) {
+        return scenrioServiceRepository.findById(idScenrio).orElse(null);
+    }
+
+    @Override
+    public ScenarioDirection getSecenarioDirection(Long idScenrio) {
+        return scenrioDirectionRepository.findById(idScenrio).orElse(null);
     }
 
 

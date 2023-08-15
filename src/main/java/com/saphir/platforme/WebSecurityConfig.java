@@ -11,12 +11,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -50,8 +52,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+
+
+        http
+                .headers()
+                .frameOptions().disable() // Disable X-Frame-Options header
+                .and().authorizeRequests()
                 .antMatchers("/auth/signin").permitAll() // Allow access to /login without authentication
+                .antMatchers("/target/Reporting/**").permitAll() // Allow access to /login without authentication
                 // .anyRequest().authenticated() // Require authentication for all other URLs
                 .and()
                 .formLogin()
@@ -60,7 +68,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/signout") // Specify your custom logout URL if needed
                 .and()
-                .csrf().disable();
+                .csrf().disable().authorizeRequests()
+                .anyRequest().permitAll(); // Update this to apply your own security rules
+
+        http.cors();
         /*http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
@@ -77,4 +88,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //configure the firewall instance....
         web.httpFirewall(firewall);
     }
+
+    // CORS configuration
+
+
 }

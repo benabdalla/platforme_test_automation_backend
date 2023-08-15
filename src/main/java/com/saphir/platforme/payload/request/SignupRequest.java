@@ -17,10 +17,15 @@ public class SignupRequest {
 
     @Size(max = 50)
     private String role;
+    @Size(max = 50)
+    private String jobTitle;
+    @Size(max = 50)
+    private String phone;
 
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
 
     public String getUsername() {
         return username;
@@ -48,6 +53,22 @@ public class SignupRequest {
 
     public String getRole() {
         return role;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setRole(String role) {

@@ -26,18 +26,4 @@ public class Utilisateur implements Serializable {
     private String login;
     @Column(length = 500)
     private String password;
-    @OneToMany(mappedBy = "dechlencheur", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action1;
-    @OneToMany(mappedBy = "respTraitement", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action2;
-    @OneToMany(mappedBy = "respCloture", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action3;
-    @OneToMany(mappedBy = "respSuivi", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action4;
-
-
 }

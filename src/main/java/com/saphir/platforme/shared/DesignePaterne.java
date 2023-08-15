@@ -47,6 +47,10 @@ public class DesignePaterne {
     }
 
     public static boolean verfierAjoute(String idchamp, String idBtnRechrech, String idGrid, String mots, WebDriver driver) throws InterruptedException {
+
+        boolean verif = false, verif2 = false;
+        String text = "";
+        int size = 0;
         WebElement champ = driver.findElement(By.id(idchamp));
         WebElement btnrechrech = driver.findElement(By.id(idBtnRechrech));
         WebElement grid = driver.findElement(By.id(idGrid));
@@ -54,13 +58,32 @@ public class DesignePaterne {
         champ.sendKeys(mots);
         Thread.sleep(1000);
         btnrechrech.click();
-        boolean verif = false;
+
+        mots = mots.replaceAll("\\s+", " ");
 
         try {
-            String text = driver.findElement(By.id(idGrid)).findElement(By.xpath("//*[@id=" + "'" + idGrid + "'" + "]/tbody/tr[1]/td[2]")).findElement(By.tagName("a")).getText();
-            verif = text.equals(mots);
+            size = driver.findElement(By.id(idGrid)).findElements(By.tagName("tr")).size();
+            verif2 = true;
         } catch (NoSuchElementException exp) {
-            verif = false;
+            verif2 = false;
+        }
+        mots = removeTrailingSpaces(mots);
+        if (verif2) {
+            for (int i = 1; i <= size; i++) {
+                try {
+                    //*[@id="ctl00_ContentPlaceHolder1_GridView1"]/tbody
+                    text = driver.findElement(By.id(idGrid)).findElement(By.xpath("//*[@id=" + "'" + idGrid + "'" + "]/tbody/tr[" + i + "]/td[2]")).findElement(By.tagName("a")).getText().replaceAll("\\s+", " ");
+                    ;
+                    text = removeTrailingSpaces(text);
+                    verif = text.equals(mots);
+                    if (verif) {
+                        break;
+                    }
+                } catch (NoSuchElementException exp) {
+                    verif = false;
+                }
+
+            }
         }
         return verif;
 
@@ -82,5 +105,20 @@ public class DesignePaterne {
 
     }
 
+    public static String removeTrailingSpaces(String input) {
+        int endIndex = input.length() - 1;
 
+        // Find the index of the last non-space character
+        while (endIndex >= 0 && Character.isWhitespace(input.charAt(endIndex))) {
+            endIndex--;
+        }
+
+        // If all characters are spaces, return an empty string
+        if (endIndex < 0) {
+            return "";
+        }
+
+        // Return the substring without trailing spaces
+        return input.substring(0, endIndex + 1);
+    }
 }

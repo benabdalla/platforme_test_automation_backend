@@ -22,9 +22,4 @@ public class Site implements Serializable {
     private long idSite;
     @Column(length = 500)
     private String site;
-
-    @OneToMany(mappedBy = "site", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action;
-
 }

@@ -22,11 +22,7 @@ public class Direction implements Serializable {
     private long idDrirection;
     @Column(length = 3000)
     private String direction;
-    @OneToMany(mappedBy = "direction", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Action> action;
     @OneToOne
     @JoinColumn(name = "idDrirection")
     private ScenarioDirection scenarioDirection;
-
-
 }

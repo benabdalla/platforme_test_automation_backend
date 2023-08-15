@@ -22,8 +22,6 @@ public class Activite implements Serializable {
     private Long idActivite;
     @Column(length = 3000)
     private String activite;
-    @OneToMany(mappedBy = "direction", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Action> action;
 
     @OneToOne
     @JoinColumn(name = "idActivite")

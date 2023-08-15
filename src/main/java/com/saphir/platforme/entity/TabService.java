@@ -22,7 +22,4 @@ public class TabService implements Serializable {
     private long idService;
     @Column(length = 500)
     private String service;
-    @OneToMany(mappedBy = "direction", targetEntity = Action.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Action> action;
 }

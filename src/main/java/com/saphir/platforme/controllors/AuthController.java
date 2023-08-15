@@ -69,18 +69,18 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    public User registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 
-        signUpRequest.setRole("User");
+        signUpRequest.setRole("USER");
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()), signUpRequest.getRole());
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getRole(), signUpRequest.getJobTitle(), signUpRequest.getPhone());
         try{
-        userRepository.save(user);}catch (Exception e){
-            return ResponseEntity.ok("User not registered is  duplcated!");
+       return userRepository.save(user);
+        }catch (Exception e){
+            return null;
         }
 
-        return ResponseEntity.ok("User registered successfully!");
     }
 }

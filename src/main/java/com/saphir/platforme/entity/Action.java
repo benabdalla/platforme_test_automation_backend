@@ -19,10 +19,10 @@ import java.io.Serializable;
 public class Action implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idScenario;
-    private int numFiche;
-    private int etat;
-    private int actSimplifier;
+    private Long idScenario;
+    private Integer numFiche;
+    private Integer etat;
+    private Integer actSimplifier;
     @Column(length = 3000)
     private String filialeDeclencheur;
     @Column(length = 3000)
@@ -45,6 +45,20 @@ public class Action implements Serializable {
     private String designation;
     @Column(length = 3000)
     private String description;
+    @Column(length = 3000)
+    private String desiSA;
+    @Column(length = 3000)
+    private String dateRealisation;
+    @Column(length = 3000)
+    private String tauxRealisation;
+    @Column(length = 3000)
+    private String dateSuivi;
+    @Column(length = 3000)
+    private String tauxSuivi;
+    @Column(length = 3000)
+    private String dateCreation;
+    @Column(length = 3000)
+    private String produit;
     @ManyToOne
     @JoinColumn(name = "idSite")
     @JsonIgnore
@@ -64,20 +78,6 @@ public class Action implements Serializable {
     @JoinColumn(name = "idService")
     @JsonIgnore
     private TabService service;
-    @Column(length = 3000)
-    private String desiSA;
-    @Column(length = 3000)
-    private String dateRealisation;
-    @Column(length = 3000)
-    private String tauxRealisation;
-    @Column(length = 3000)
-    private String dateSuivi;
-    @Column(length = 3000)
-    private String tauxSuivi;
-    @Column(length = 3000)
-    private String dateCreation;
-    @Column(length = 3000)
-    private String produit;
     @ManyToOne
     @JoinColumn(name = "dechlencheur", referencedColumnName = "idUser")
     @JsonIgnore

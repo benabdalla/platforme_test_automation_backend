@@ -17,7 +17,7 @@ public interface IActionRepository {
 
     ResponseEntity<Action> updateAction(Action action);
 
-    ResponseEntity<Action> deleteAction(Long idSceanrio);
+    void deleteAction(Long idSceanrio);
 
     List<ActionDto> getAllActionSimplifier(int actSimplifier);
 }

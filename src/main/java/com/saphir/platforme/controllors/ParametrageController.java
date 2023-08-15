@@ -8,10 +8,13 @@ import com.saphir.platforme.repository.IParametreRepository;
 import com.saphir.platforme.repository.ITabServiceRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.testng.TestNG;
 import org.testng.xml.XmlSuite;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +26,8 @@ public class ParametrageController {
 
     public static ScenarioProcessus scenarioProcessus;
     public static ScenarioActivite scenarioActivite;
+    public static ScenarioDirection scenarioDirection;
+    public static ScenarioService scenarioAService;
     public static ScenarioSite scenarioSite;
     @Autowired
     IParametreRepository iParametreRepository;
@@ -116,7 +121,7 @@ public class ParametrageController {
     }
 
     @DeleteMapping("delete/processus/{id}")
-    public void deleteProcesus(@PathVariable long id) throws Exception {
+    public void deleteProcesus(@PathVariable Long id) throws Exception {
         iParametreRepository.deleteProcessus(id);
     }
 
@@ -192,11 +197,11 @@ public class ParametrageController {
 
         // Run the tests
         testng.run();
-return "ok";
+        return "ok";
     }
 
-    @GetMapping(value = "find/scenarioprocessus")
-    public void getScenrioProcessus(Long idScenrio) {
+    @GetMapping(value = "find/scenarioprocessus/{idScenrio}")
+    public String getScenrioProcessus(@PathVariable long idScenrio) {
 
         scenarioProcessus = iParametreRepository.getSecenarioProcessus(idScenrio);
         System.err.println("tesssssst" + idScenrio);
@@ -215,11 +220,57 @@ return "ok";
 
         // Run the tests
         testng.run();
-
+        return "ok";
     }
 
-    @GetMapping(value = "find/scenarioActivite")
-    public void getScenrioActivite(Long idScenrio) {
+    @GetMapping(value = "find/scenarioservice/{idScenrio}")
+    public String getScenrioService(@PathVariable long idScenrio) {
+
+        scenarioAService = iParametreRepository.getSecenarioService(idScenrio);
+        System.err.println("tesssssst" + idScenrio);
+        //  System.err.println("list  =" + actionList.get(0));
+        // Create TestNG object
+        TestNG testng = new TestNG();
+
+        // Create a list of XML suites to run
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        XmlSuite suite = new XmlSuite();
+        suite.setSuiteFiles(Collections.singletonList("parametrage/service.xml"));
+        suites.add(suite);
+
+        // Set the list of suites to TestNG object
+        testng.setXmlSuites(suites);
+
+        // Run the tests
+        testng.run();
+        return "ok";
+    }
+
+    @GetMapping(value = "find/scenariodirection/{idScenrio}")
+    public String getScenrioDirection(@PathVariable long idScenrio) {
+
+        scenarioDirection = iParametreRepository.getSecenarioDirection(idScenrio);
+        System.err.println("tesssssst" + idScenrio);
+        //  System.err.println("list  =" + actionList.get(0));
+        // Create TestNG object
+        TestNG testng = new TestNG();
+
+        // Create a list of XML suites to run
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        XmlSuite suite = new XmlSuite();
+        suite.setSuiteFiles(Collections.singletonList("parametrage/direction.xml"));
+        suites.add(suite);
+
+        // Set the list of suites to TestNG object
+        testng.setXmlSuites(suites);
+
+        // Run the tests
+        testng.run();
+        return "ok";
+    }
+
+    @GetMapping(value = "find/scenarioActivite/{idScenrio}")
+    public String getScenrioActivite(@PathVariable long idScenrio) {
 
         scenarioActivite = iParametreRepository.getSecenarioActivite(idScenrio);
         System.err.println("tesssssst" + idScenrio);
@@ -238,7 +289,47 @@ return "ok";
 
         // Run the tests
         testng.run();
-
+        return "ok";
     }
+
+    @GetMapping("/report/site/{name}")
+    public ReportDto runReportAction(@PathVariable String name) throws IOException {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Frame-Options", "SAMEORIGIN");
+
+        // Replace the responseEntity with the actual content of the overview-tags.html
+        ResponseEntity<String> responseEntity = ResponseEntity.ok()
+                .headers(headers)
+                .body("Your HTML content here");
+        String url = "";
+        switch (name) {
+            case "site":
+                url = "Reporting/site-cucumber-reports/cucumber-html-reports/overview-tags.html";
+                break;
+            case "processus":
+                url = "Reporting/processus-cucumber-reports/cucumber-html-reports/overview-tags.html";
+                break;
+            case "direction":
+                url = "Reporting/direction-cucumber-reports/cucumber-html-reports/overview-tags.html";
+                break;
+            case "service":
+                url = "Reporting/service-cucumber-reports/cucumber-html-reports/overview-tags.html";
+                break;
+            case "activite":
+                url = "Reporting/activite-cucumber-reports/cucumber-html-reports/overview-tags.html";
+                break;
+            default:
+                url = "";
+
+                break;
+
+
+        }
+        ReportDto report = new ReportDto();
+        report.setSrcFrame(url);
+        return report;
+    }
+
 
 }

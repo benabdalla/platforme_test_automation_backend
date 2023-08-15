@@ -4,15 +4,15 @@ package com.saphir.platforme.controllors;
 import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.dto.ReportDto;
 import com.saphir.platforme.entity.Action;
-import com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition;
 import com.saphir.platforme.repository.IActionRepository;
 import com.saphir.platforme.utils.Setup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.testng.TestNG;
 import org.testng.xml.XmlSuite;
 
-import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -42,14 +42,9 @@ public class ActionRunTest {
     }
 
     @GetMapping("close/{id}")
-    public void closeDriver(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String closeDriver(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        AsyncContext asyncContext = request.startAsync(); // Start asynchronous context
-        // Perform your API logic here (e.g., database queries, calculations)
 
-        // Check for cancelation signal (e.g., using request.isAsyncStarted())
-        if (request.isAsyncStarted()) {
-            // API request is canceled by the client
             if (Setup.driver != null) {
                 try {
                     Setup.driver.close();
@@ -63,12 +58,12 @@ public class ActionRunTest {
                     e.printStackTrace();
                 }
             }
-        }
+
 
         // Send the API response
-        response.getWriter().println("API response");
-        asyncContext.complete(); // Complete the asynchronous context
-
+      //  response.getWriter().println("API response");
+       // asyncContext.complete(); // Complete the asynchronous context
+return "Ok";
 
     }
 
@@ -80,10 +75,17 @@ public class ActionRunTest {
         report.setSrcFrame(url);
         return report;
     }
+    @GetMapping("/report/simplifier")
+    public ReportDto reportActionsimplifier() throws IOException {
+        String url = "Reporting/simplifier-cucumber-reports/cucumber-html-reports/overview-tags.html";
+        ReportDto report = new ReportDto();
+        report.setSrcFrame(url);
+        return report;
+    }
 
 
     @GetMapping("/{id}")
-    public void findById(@PathVariable long id) throws Exception {
+    public String  findById(@PathVariable long id) throws Exception {
         // public static List<Action> actionList;
         //actionList = serviceAction.getAllAction();
         action = new Action();
@@ -127,13 +129,12 @@ public class ActionRunTest {
             testng.run();
 
         }
-
-
+        return "OK";
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }
 
     @GetMapping("run/simplifier/{id}")
-    public void actionSimplifier(@PathVariable long id) throws Exception {
+    public String actionSimplifier(@PathVariable long id) throws Exception {
         // public static List<Action> actionList;
         //actionList = serviceAction.getAllAction();
         action = new Action();
@@ -178,14 +179,14 @@ public class ActionRunTest {
             testng.run();
 
         }
-
-
+        return "Ok";
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }
 
     @DeleteMapping("delete/{id}")
-    public void deleteById(@PathVariable long id) throws Exception {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) throws Exception {
         iActionRepository.deleteAction(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(value = "update/actiondto")

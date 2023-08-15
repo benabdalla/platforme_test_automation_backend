@@ -10,6 +10,12 @@ public class SitePage {
     public static WebElement textSite;
     @FindBy(id = "ctl00_ContentPlaceHolder1_textboxAbrev")
     public static WebElement textAbrevation;
+    @FindBy(id = "ctl00_ContentPlaceHolder1_TextBox_abrev")
+    public static WebElement textAbrevationService;
+
+    @FindBy(id = "ctl00_ContentPlaceHolder1_TextBox3")
+    public static WebElement textAbrevationActivite;
+
     @FindBy(id = "ctl00_ContentPlaceHolder1_LinkButton11")
     public static WebElement btnValider;
     @FindBy(id = "ctl00_ContentPlaceHolder1_LinkButton12")

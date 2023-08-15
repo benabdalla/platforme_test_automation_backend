@@ -1,18 +1,18 @@
 package com.saphir.platforme.service;
 
-import com.saphir.platforme.entity.Employee;
+import com.saphir.platforme.entity.User;
 
 import java.util.List;
 
 public interface IEmployeeService {
 
-    Employee addEmployee(Employee employee);
+    User addEmployee(User employee);
 
-    List<Employee> findAllEmployees();
+    List<User> findAllEmployees();
 
-    Employee updateEmployee(Employee employee);
+    User updateEmployee(User employee);
 
-    Employee findEmployeeById(Long id);
+    User findEmployeeById(Long id);
 
     void deleteEmployee(Long id);
 }
