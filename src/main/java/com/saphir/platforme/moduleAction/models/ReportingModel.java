@@ -190,8 +190,8 @@ public class ReportingModel {
                 DemandeActionModel.Acceder_Demande(driver, FicheActionStepDefinition.origine);
                 String comments = Common.paragraphe(8, 8);
                 Thread.sleep(1000);
-                ExcelUtils.setExcelFile(Path, "DemandeAction");
-                ExcelUtils.setCellData1(comments, 1, 16, Path, "DemandeAction");
+                ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
+                ExcelUtils.setCellData1(comments, 1, 16, Path, "DemandeActionSpec.xml");
                 DemandeActionPage.wCommentRefusse.sendKeys(comments);
                 DemandeActionPage.wBtnrefusse.click();
             }
@@ -233,7 +233,7 @@ public class ReportingModel {
     public static void verifier_le_demande_Action_dans_reporting_historique_demandes_refusées(WebDriver driver, int row) throws Throwable {
 
         String name1 = "Demande_Action";
-        ExcelUtils.setExcelFile(Path, "DemandeAction");
+        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
         List<String> data = new ArrayList<String>();
 
         // Num demande

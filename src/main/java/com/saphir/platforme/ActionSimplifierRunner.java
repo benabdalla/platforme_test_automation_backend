@@ -22,7 +22,7 @@ import java.util.List;
 @CucumberOptions(
         features = {"src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature"},
         monochrome = true,
-        plugin = {"pretty", "html:target/Reporting/action-cucumber-reports/cucumber-html-report", "json:target/Reporting/action-cucumber-reports/action.json", "junit:target/Reporting/action-cucumber-reports/action.xml"},
+        plugin = {"pretty", "html:target/Reporting/simplifier-cucumber-reports/cucumber-html-report", "json:target/Reporting/simplifier-cucumber-reports/simplifier.json", "junit:target/Reporting/simplifier-cucumber-reports/simplifier.xml"},
         glue = "com.saphir.platforme",
         dryRun = false)
 public class ActionSimplifierRunner extends AbstractTestNGCucumberTests {
@@ -31,8 +31,8 @@ public class ActionSimplifierRunner extends AbstractTestNGCucumberTests {
     @AfterSuite
     public void generateReport() {
 
-        String outputDirectory = "target/Reporting/action-simplifier-cucumber-reports";
-        String reportName = "action-simplifier-cucumber-reports";
+        String outputDirectory = "target/Reporting/simplifier-cucumber-reports";
+        String reportName = "simplifier-cucumber-reports";
         //
         // Add cucumber JSON report files to the list
         File reportOutputDirectory = new File(outputDirectory);
@@ -47,12 +47,7 @@ public class ActionSimplifierRunner extends AbstractTestNGCucumberTests {
         // Generate the cucumber report with a specific name
         Configuration configuration = new Configuration(reportOutputDirectory, reportName);
         ReportBuilder reportBuilder = new ReportBuilder(jsonFilePaths, configuration);
-        //reportBuilder.generateReports();
-
-
-//        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");
-//        ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
-//        reportBuilder.generateReports();
+        reportBuilder.generateReports();
     }
 
 }

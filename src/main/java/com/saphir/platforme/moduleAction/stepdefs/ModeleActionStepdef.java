@@ -28,7 +28,7 @@ public class ModeleActionStepdef {
     public WebDriver driver;
     public String Num_Modele;
 
-    @PostConstruct
+
     public void init() {
 
         //   driver = WebDriverConfig.driver;

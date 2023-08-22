@@ -2,9 +2,17 @@ package com.saphir.platforme.moduleAction.stepdefs;
 
 
 import com.saphir.platforme.authentification.models.AuthentificationModel;
+import com.saphir.platforme.authentification.pages.AuthentificationPage;
+import com.saphir.platforme.controllors.ActionRunTest;
+import com.saphir.platforme.controllors.DemandeActionController;
+import com.saphir.platforme.entity.DemandeAction;
 import com.saphir.platforme.moduleAction.models.DemandeActionModel;
+import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.shared.DesignePaterne;
+import com.saphir.platforme.utils.Common;
+import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -12,12 +20,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
 import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
+import static com.saphir.platforme.controllors.DemandeActionController.demandeAction;
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.origine;
 
 public class DemandeActionStepDefinition {
@@ -25,20 +35,32 @@ public class DemandeActionStepDefinition {
     public static String lan;
     public static int row = 0;
     public static String module = "";
-    public String NewUser = "TESTAUTO2";
-    @Autowired
-    protected WebDriver driver;
+
+    public static WebDriver driver;
     String Demandeur, NACTION;
-
-    @PostConstruct
-    public void init() {
-
-        //    driver = WebDriverConfig.driver;
+    public static DemandeAction demandeAction;
 
 
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        PageFactory.initElements(driver, DemandeActionPage.class);
+    public DemandeActionStepDefinition() {
+        demandeAction = DemandeActionController.demandeAction;
+        driver = Setup.driver;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);
+        PageFactory.initElements(driver, ActSimplPage.class);
+        PageFactory.initElements(driver, DemandeActionPage.class);
+
+    }
+
+    @When("Connecter en tant declencheur que de demande action")
+    public void connecter_en_tant_declencheur_que_de_demande_action() throws Exception {
+
+        AuthentificationModel.saisirLogin(demandeAction.getDechlencheur().getLogin());
+
+
+        Thread.sleep(200L);
+        AuthentificationModel.saisirPW(demandeAction.getDechlencheur().getPassword());
 
     }
 
@@ -357,4 +379,83 @@ public class DemandeActionStepDefinition {
         driver.findElement(By.id("theBttnbobjid_1547214709695_dialog_submitBtn")).click();
 
     }
+
+
+    @When("consulter liste de  validateur")
+    public void consulter_liste_de_validateur() throws Exception {
+
+        Thread.sleep(2000L);
+        //FicheActionPage.menuID.click();
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click()", FicheActionPage.menuID);
+        Thread.sleep(200L);
+        Common.AccéderModule(2, 0, 0, driver);
+        Common.AccéderModule(2, 4, 0, driver);
+    }
+
+    @When("Saisir site et processus de validateur")
+    public void saisir_site_et_processus_de_validateur() throws InterruptedException {
+        String site = demandeAction.getSite().getSite();
+        String processus = demandeAction.getProcessus().getProcessus();
+        String valSite = Common.getValueSelected(DemandeActionPage.idSiteRespValidation, site);
+        Select slectSite = new Select(DemandeActionPage.idSiteRespValidation);
+        slectSite.selectByValue(valSite);
+        Thread.sleep(1000);
+        Select slectProcesus = new Select(DemandeActionPage.idProcessusRespValidation);
+        String valProcessus = Common.getValueSelected(DemandeActionPage.idProcessusRespValidation, processus);
+        slectProcesus.selectByValue(valProcessus);
+
+    }
+
+    @When("ajouter validateur")
+    public void ajouter_validateur() throws InterruptedException {
+        DemandeActionPage.idBtnAjouterRespValidation.click();
+        Thread.sleep(500);
+        String name = demandeAction.getRespTraitement().getName();
+
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton15")).click();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_TextBox8")).sendKeys();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_lk_rechercher")).click();
+        WebElement tab = driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridVghj"));
+        int size = tab.findElements(By.tagName("tr")).size();
+        for (int i = 1; i <= size; i++) {
+            Thread.sleep(500);
+            String text = tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[" + i + "]/td[2]")).findElement(By.tagName("span")).getText();
+            if (text.equals(name)) {
+                tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[" + i + "]/td[1]")).click();
+            }
+
+        }
+
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_num")).sendKeys("0");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton11")).sendKeys("0");
+        Thread.sleep(1000);
+
+    }
+
+    @Then("verifier validateur")
+    public void verifier_validateur() {
+        int size = driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1")).findElements(By.tagName("tr")).size();
+        Assert.assertTrue(size > 0);
+
+
+    }
+
+
+    @When("saisir demande action filaile declencheur")
+    public void saisir_demande_action_filaile_declencheur() {
+
+    }
+
+    @When("Choisir FG responsble réalisation {string} et  responsble Suivi {string}")
+    public void choisir_fg_responsble_réalisation_et_responsble_suivi(String string, String string2) {
+
+    }
+
+    @Then("Saisir A l origine de l action {string}")
+    public void saisir_a_l_origine_de_l_action(String string) {
+
+    }
+
+
 }

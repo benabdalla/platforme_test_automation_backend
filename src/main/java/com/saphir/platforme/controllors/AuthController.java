@@ -1,9 +1,9 @@
 package com.saphir.platforme.controllors;
 
 import com.saphir.platforme.entity.User;
-import com.saphir.platforme.payload.request.LoginRequest;
-import com.saphir.platforme.payload.request.SignupRequest;
-import com.saphir.platforme.payload.response.JwtResponse;
+import com.saphir.platforme.controllors.payload.request.LoginRequest;
+import com.saphir.platforme.controllors.payload.request.SignupRequest;
+import com.saphir.platforme.controllors.payload.response.JwtResponse;
 import com.saphir.platforme.repository.UserRepository;
 import com.saphir.platforme.service.UserDetailsImpl;
 

@@ -48,13 +48,13 @@ public class DemandeActionModel {
     }
 
     public static void Selectionner_Source(int arg1) throws Throwable {
-        ExcelUtils.setExcelFile(Path, "DemandeAction");
+        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
         Select select = new Select(DemandeActionPage.SourceID);
         select.selectByVisibleText(ExcelUtils.getCellData(arg1, 0));
     }
 
     public static void Selectionner_Type(int arg1) throws Throwable {
-        ExcelUtils.setExcelFile(Path, "DemandeAction");
+        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
         Select select = new Select(DemandeActionPage.TypeID);
         select.selectByVisibleText(ExcelUtils.getCellData(arg1, 1));
     }
@@ -75,7 +75,7 @@ public class DemandeActionModel {
 
     public static void Ajouter_Type_Cause(int arg1, WebDriver driver) throws Throwable {
         try {
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             DemandeActionPage.AjoutTypeCauseID.isDisplayed();
             //DemandeActionPage.AjoutTypeCauseID.click();
             JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -125,8 +125,8 @@ public class DemandeActionModel {
         System.out.println(paragraph);
 
         DemandeActionPage.DesignationID.sendKeys(paragraph);
-        ExcelUtils.setExcelFile(Path, "DemandeAction");
-        ExcelUtils.setCellData1(paragraph, 1, 15, Path, "DemandeAction");
+        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
+        ExcelUtils.setCellData1(paragraph, 1, 15, Path, "DemandeActionSpec.xml");
     }
 
     public static void Saisir_Description() {
@@ -176,7 +176,7 @@ public class DemandeActionModel {
 
             }
             Thread.sleep(1000);
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.SiteID);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 3));
         } catch (NoSuchElementException e) {
@@ -198,7 +198,7 @@ public class DemandeActionModel {
 
             }
             Thread.sleep(1000);
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.ProcessusID);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 4));
         } catch (NoSuchElementException e) {
@@ -219,7 +219,7 @@ public class DemandeActionModel {
 
             }
             Thread.sleep(1000);
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.ActiviteID);
             select.selectByVisibleText(ExcelUtils.getCellData(1, 5));
         } catch (NoSuchElementException e) {
@@ -240,7 +240,7 @@ public class DemandeActionModel {
                 Common.Exporter_visibilité("la direction n'est pas obligatoire");
 
             }
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.DirectionID);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 6));
         } catch (NoSuchElementException e) {
@@ -259,7 +259,7 @@ public class DemandeActionModel {
             } else {
                 Common.Exporter_visibilité("le service n'est pas obligatoire");
             }
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.ServiceID);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 7));
         } catch (NoSuchElementException e) {
@@ -342,7 +342,7 @@ public class DemandeActionModel {
     public static void Priorite(int arg1) throws Throwable {
         try {
             DemandeActionPage.PrioriteId.isDisplayed();
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.PrioriteId);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 9));
             Common.Exporter_champ_A_masquer("le champ priorite est visible");
@@ -354,7 +354,7 @@ public class DemandeActionModel {
     public static void Gravite(int arg1) throws Throwable {
         try {
             DemandeActionPage.GraviteId.isDisplayed();
-            ExcelUtils.setExcelFile(Path, "DemandeAction");
+            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.GraviteId);
             select.selectByVisibleText(ExcelUtils.getCellData(arg1, 8));
             Common.Exporter_champ_A_masquer("le champ gravite est visible");
@@ -396,8 +396,8 @@ public class DemandeActionModel {
         Common.Exporter_visibilité("Fiche Demande Action:" + NumDemande);
         Common.Exporter_champ_A_masquer("Fiche Demande Action: " + NumDemande);
         System.out.println("demande N:" + NumDemande + "est Ajoute");
-        ExcelUtils.setExcelFile(Path, "DemandeAction");
-        ExcelUtils.setCellData1(NumDemande, 1, 14, Path, "DemandeAction");
+        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
+        ExcelUtils.setCellData1(NumDemande, 1, 14, Path, "DemandeActionSpec.xml");
         asserttrue(NumDemande != "");
 
     }

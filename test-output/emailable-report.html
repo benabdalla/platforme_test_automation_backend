@@ -8,15 +8,15 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">actionSimplifier</th></tr>
-<tr><td><a href="#t0">Test version  fr </a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">8</td><td class="num">23 675</td><td></td><td></td></tr>
 <tr><th colspan="8">Default Suite</th></tr>
+<tr><th colspan="8">Demande Action</th></tr>
+<tr><td><a href="#t0">Test version  fr </a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">51 059</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">actionSimplifier</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test version  fr  &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.saphir.platforme.ActionSimplifierRunner</td><td><a href="#m0">generateReport</a></td><td rowspan="1">1692040907481</td><td rowspan="1">0</td></tr><tr><th colspan="4">Test version  fr  &#8212; failed</th></tr><tr class="failedeven"><td rowspan="8">com.saphir.platforme.ActionSimplifierRunner</td><td><a href="#m1">runScenario</a></td><td rowspan="8">1692040901163</td><td rowspan="8">2839</td></tr><tr class="failedeven"><td><a href="#m2">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m3">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m4">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m5">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m6">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m7">runScenario</a></td></tr><tr class="failedeven"><td><a href="#m8">runScenario</a></td></tr></tbody>
-<tbody><tr><th colspan="4">Default Suite</th></tr></tbody></table>
-<h2>Test version  fr </h2><h3 id="m0">com.saphir.platforme.ActionSimplifierRunner#generateReport</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot read the array length because &quot;&lt;local6&gt;&quot; is null
-	at com.saphir.platforme.ActionSimplifierRunner.generateReport(ActionSimplifierRunner.java:43)
-	at com.saphir.platforme.controllors.ActionRunTest.actionSimplifier(ActionRunTest.java:161)
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default Suite</th></tr></tbody><tbody><tr><th colspan="4">Demande Action</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test version  fr  &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.saphir.platforme.DemandeActionRunner</td><td><a href="#m0">generateReport</a></td><td rowspan="1">1692727823129</td><td rowspan="1">1</td></tr><tr><th colspan="4">Test version  fr  &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">com.saphir.platforme.DemandeActionRunner</td><td><a href="#m1">runScenario</a></td><td rowspan="2">1692727772550</td><td rowspan="2">24431</td></tr><tr class="failedeven"><td><a href="#m2">runScenario</a></td></tr></tbody>
+</table>
+<h2>Test version  fr </h2><h3 id="m0">com.saphir.platforme.DemandeActionRunner#generateReport</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;com.saphir.platforme.repository.IActionRepository.updateAction(com.saphir.platforme.entity.Action)&quot; because &quot;this.iActionRepository&quot; is null
+	at com.saphir.platforme.DemandeActionRunner.generateReport(DemandeActionRunner.java:37)
+	at com.saphir.platforme.controllors.DemandeActionController.findById(DemandeActionController.java:123)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
@@ -103,77 +103,14 @@
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 ... Removed 21 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:135)
+<h3 id="m1">com.saphir.platforme.DemandeActionRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Creation fiche Action&quot;</td><td>&quot;Creation de Demande Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;com.saphir.platforme.entity.Action.getFilialeDeclencheur()&quot; because &quot;com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.action&quot; is null
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile_declencheur(FicheActionStepDefinition.java:317)
+	at ✽.saisir action filaile declencheur(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/DemandeAction.feature:9)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:118)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:71)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:103)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Creation fiche Action&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:7)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- Test fiche Action Simplifiée&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:29)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m7">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:87)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m8">com.saphir.platforme.ActionSimplifierRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l&apos;action&quot;</td><td>&quot;Qualipro- Test fiche Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at com.saphir.platforme.authentification.stepdefs.AuthentificationStepDefinition.ouvrirQualiProWeb(AuthentificationStepDefinition.java:52)
-	at ✽.Ouvrir le site QualiProWeb(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:144)
+<h3 id="m2">com.saphir.platforme.DemandeActionRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Creation fiche Action&quot;</td><td>&quot;Creation de Demande Action&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because the return value of &quot;com.saphir.platforme.entity.DemandeAction.getSource()&quot; is null
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.selectionnerSourceModeleAction(FicheActionModele.java:417)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.ajouter_Source(FicheActionStepDefinition.java:357)
+	at ✽.Ajouter Source(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/DemandeAction.feature:39)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

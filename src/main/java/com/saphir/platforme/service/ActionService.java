@@ -43,15 +43,17 @@ public class ActionService implements IActionRepository {
             user1 = utilisateurQualiproRepository.findById(actiondto.getRespSuivi().getIdUser()).orElse(null);
             act.setRespSuivi(user1);
         }
-        if (actiondto.getRespSuivi().getIdUser() != null) {
+        if (actiondto.getRespTraitement().getIdUser() != null) {
             user2 = utilisateurQualiproRepository.findById(actiondto.getRespTraitement().getIdUser()).orElse(null);
             act.setRespTraitement(user2);
         }
-        if (actiondto.getRespSuivi().getIdUser() != null) {
+        if (actiondto.getRespCloture().getIdUser() != null) {
             user3 = utilisateurQualiproRepository.findById(actiondto.getRespCloture().getIdUser()).orElse(null);
             act.setRespCloture(user3);
         }
-        return actionRepository.save(act);
+
+        act=actionRepository.save(act);
+        return act;
     }
 
     @Override

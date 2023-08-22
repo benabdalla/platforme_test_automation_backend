@@ -2,6 +2,7 @@ package com.saphir.platforme.moduleAction.models;
 
 import com.saphir.platforme.moduleAction.pages.ActSimplPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.shared.DesignePaterne;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.By;
@@ -10,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import static com.saphir.platforme.controllors.ActionRunTest.action;
 
 
 public class ActSimplModel {
@@ -38,9 +41,10 @@ public class ActSimplModel {
 
     public static void resp_cloture(int row) throws Exception {
 
-        ExcelUtils.setExcelFile(Path, "Action");
+
         Select select = new Select(ActSimplPage.Respcloture);
-        select.selectByVisibleText(ExcelUtils.getCellData(row, 5));
+        String value= Common.getValueSelected(ActSimplPage.Respcloture,action.getRespCloture().getName());
+        select.selectByValue(value);
     }
 
     public static void validationActSimpl(WebDriver driver) throws InterruptedException {
@@ -78,8 +82,8 @@ public class ActSimplModel {
 
         Select selectfg = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_ListBoxFiliale_AutreEmpSeulRespSuivi")));
         selectfg.selectByVisibleText(fg);
-        ExcelUtils.setExcelFile(Path, "Action");
-        String employer = ExcelUtils.getCellData1(row, 6);
+
+        String employer = action.getRespSuivi().getName();
         System.err.println("Employee  is   :   " + employer);
         FicheActionPage.winserSeulResSuvi.sendKeys(employer);
         FicheActionPage.wrecherSeulRespoSuvi.click();
@@ -118,7 +122,7 @@ public class ActSimplModel {
         System.out.println(FicheActionPage.SeulresponsableSuiviIDSous.getAttribute("value"));
         String respoSuivi = FicheActionPage.SeulresponsableSuiviIDSous.getAttribute("value");
         ExcelUtils.setExcelFile(Path, "Action");
-        String employer = ExcelUtils.getCellData1(row, 6);
+        String employer = action.getRespSuivi().getName();
         System.out.println("row = " + row);
         Assert.assertEquals(employer, respoSuivi);
         System.err.println("Employee  is   :   " + employer);

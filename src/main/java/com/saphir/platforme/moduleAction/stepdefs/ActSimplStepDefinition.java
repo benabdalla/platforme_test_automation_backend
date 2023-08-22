@@ -1,6 +1,7 @@
 package com.saphir.platforme.moduleAction.stepdefs;
 
 
+import com.saphir.platforme.authentification.models.AuthentificationModel;
 import com.saphir.platforme.authentification.pages.AuthentificationPage;
 import com.saphir.platforme.controllors.ActionRunTest;
 import com.saphir.platforme.entity.Action;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.saphir.platforme.controllors.DemandeActionController.demandeAction;
 import static com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.fgRespSuivi;
 
 public class ActSimplStepDefinition {
@@ -35,6 +37,7 @@ public class ActSimplStepDefinition {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         PageFactory.initElements(driver, AuthentificationPage.class);
         PageFactory.initElements(driver, FicheActionPage.class);
+        PageFactory.initElements(driver, ActSimplPage.class);
     }
 
 
