@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Demande Action]" guice-stage="DEVELOPMENT">
+<suite name="Failed suite [Action]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test version  fr (failed)">
+    <parameter name="myName" value="true"/>
+    <parameter name="groups" value="Comma"/>
+    <parameter name="language" value="fr-FR"/>
+    <parameter name="browsername" value="CHROME"/>
+    <parameter name="excludegroups" value="Comma"/>
     <classes>
-      <class name="com.saphir.platforme.DemandeActionRunner">
+      <class name="com.saphir.platforme.ActionRunner">
         <methods>
           <include name="setUpClass"/>
           <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="0 1"/>
+          <include name="runScenario" invocation-numbers="1 2 3 5 6 7"/>
           <include name="generateReport"/>
         </methods>
-      </class> <!-- com.saphir.platforme.DemandeActionRunner -->
+      </class> <!-- com.saphir.platforme.ActionRunner -->
     </classes>
   </test> <!-- Test version  fr (failed) -->
-</suite> <!-- Failed suite [Demande Action] -->
+</suite> <!-- Failed suite [Action] -->

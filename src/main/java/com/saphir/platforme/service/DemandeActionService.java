@@ -78,7 +78,7 @@ public class DemandeActionService implements IDemandeActionRepository {
 
     @Override
     public ResponseEntity<DemandeAction> updateAction(DemandeAction action) {
-        //Action action = actionMapper.toEntity(actiondto);
+        //Action action = actionMapper.toEntity(action);
         if (actionRepository.existsById(action.getIdScenario())) {
             actionRepository.save(action);
         } else {

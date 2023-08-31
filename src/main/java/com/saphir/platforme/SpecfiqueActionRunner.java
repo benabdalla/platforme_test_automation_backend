@@ -49,9 +49,7 @@ public class SpecfiqueActionRunner extends AbstractTestNGCucumberTests {
         reportBuilder.generateReports();
 
 
-//        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");
-//        ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
-//        reportBuilder.generateReports();
+
     }
 
 }

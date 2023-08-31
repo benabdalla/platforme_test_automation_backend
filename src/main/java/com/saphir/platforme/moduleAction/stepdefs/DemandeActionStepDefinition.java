@@ -15,10 +15,7 @@ import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.Setup;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -409,12 +406,34 @@ public class DemandeActionStepDefinition {
 
     @When("ajouter validateur")
     public void ajouter_validateur() throws InterruptedException {
-        DemandeActionPage.idBtnAjouterRespValidation.click();
-        Thread.sleep(500);
-        String name = demandeAction.getRespTraitement().getName();
 
+        String name = demandeAction.getRespTraitement().getName();
+        boolean ok=false;
+try{
+    if(driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1")).isDisplayed()){
+       int  size= driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1")).findElements(By.tagName("tr")).size();
+       WebElement tab=driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridView1"));
+        for (int i = 1; i <= size; i++) {
+            Thread.sleep(500);
+            String text = tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr[" + i + "]/td[3]")).findElement(By.tagName("span")).getText();
+            if (text.equals(name)) {
+                ok=true;
+                break;
+            }
+
+            }
+
+
+    }
+}catch (NoSuchElementException exp){
+    ok=false;
+
+}
+if(!ok){
+    DemandeActionPage.idBtnAjouterRespValidation.click();
+    Thread.sleep(500);
         driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton15")).click();
-        driver.findElement(By.id("ctl00_ContentPlaceHolder1_TextBox8")).sendKeys();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_TextBox8")).sendKeys(name);
         driver.findElement(By.id("ctl00_ContentPlaceHolder1_lk_rechercher")).click();
         WebElement tab = driver.findElement(By.id("ctl00_ContentPlaceHolder1_GridVghj"));
         int size = tab.findElements(By.tagName("tr")).size();
@@ -422,13 +441,15 @@ public class DemandeActionStepDefinition {
             Thread.sleep(500);
             String text = tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[" + i + "]/td[2]")).findElement(By.tagName("span")).getText();
             if (text.equals(name)) {
-                tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[" + i + "]/td[1]")).click();
+                tab.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridVghj\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+                break;
             }
 
         }
 
         driver.findElement(By.id("ctl00_ContentPlaceHolder1_num")).sendKeys("0");
-        driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton11")).sendKeys("0");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_LinkButton11")).click();
+}
         Thread.sleep(1000);
 
     }

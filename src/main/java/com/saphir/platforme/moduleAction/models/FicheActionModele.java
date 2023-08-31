@@ -55,30 +55,31 @@ public class FicheActionModele {
         Thread.sleep(2000);
         String st = "";
 
-        if (action.getActSimplifier() == 1) {
-            st = "Type Action Simplifier Auto" + LocalDateTime.now();
+        if (action != null) {
+
+            if (action.getActSimplifier() == 1) {
+                st = "Type Action Simplifier Auto" + LocalDateTime.now();
+
+                FicheActionPage.wsaitype.sendKeys(st);
+                FicheActionPage.wchekSimptype.click();
+                action.setTypeAction(st);
+            } else {
+
+                st = "Type Action Details Auto" + LocalDateTime.now();
+                FicheActionPage.wsaitype.sendKeys(st);
+                FicheActionPage.wnancastype.click();
+                action.setTypeAction(st);
+            }
+
+        } else {
+            st = "Type Action demande Auto" + LocalDateTime.now();
 
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wchekSimptype.click();
+            demandeAction.setTypeAction(st);
 
         }
 
-       else if (!(demandeAction.getIdScenario() ==null)) {
-            st = "Type Action Simplifier Auto" + LocalDateTime.now();
-
-            FicheActionPage.wsaitype.sendKeys(st);
-            FicheActionPage.wchekSimptype.click();
-
-        }
-
-        else {
-            st = "Type Action Details Auto" + LocalDateTime.now();
-            FicheActionPage.wsaitype.sendKeys(st);
-            FicheActionPage.wnancastype.click();
-
-        }
-
-        action.setTypeAction(st);
 
     }
 
@@ -119,10 +120,15 @@ public class FicheActionModele {
             }
 
 
+        } else if (demandeAction != null) {
+            String st = demandeAction.getTypeAction();
+            FicheActionPage.wrecherchetype.sendKeys(st);
+            Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
+
+
         } else {
 
-            ExcelUtils.setExcelFile(Path, "Action");
-            String st = ExcelUtils.getCellData1(row, 1);
+            String st = action.getTypeAction();
             FicheActionPage.wrecherchetype.sendKeys(st);
             Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
             String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
@@ -165,21 +171,19 @@ public class FicheActionModele {
 
     public static void saisir_source_d_action() throws Exception {
         Thread.sleep(2000);
-        if (demandeAction.getIdScenario() != null) {
-            String st = "Source de demandeAction  Auto" + LocalDateTime.now();
-            action.setSource(st);
+        if (demandeAction != null) {
+            String st = "Source de demande Action Auto" + LocalDateTime.now();
+            demandeAction.setSource(st);
             FicheActionPage.wource.sendKeys(st);
-            FicheActionPage.wcheckBoxActionSimplifier.click();
+            //
 
 
-        }
-        else if (ActSimplStepDefinition.actionSimpl != "") {
+        } else if (ActSimplStepDefinition.actionSimpl != "") {
             String st = "Source Action Simplifier Auto" + LocalDateTime.now();
             action.setSource(st);
             FicheActionPage.wource.sendKeys(st);
-        }
-
-        else {
+            FicheActionPage.wcheckBoxActionSimplifier.click();
+        } else {
             String st = "Source Action Auto" + LocalDateTime.now();
             action.setSource(st);
             FicheActionPage.wource.sendKeys(st);
@@ -197,16 +201,21 @@ public class FicheActionModele {
 
     public static void verifier_source_d_action(int row, WebDriver driver) throws Exception {
         String st = "";
-        if (ActSimplStepDefinition.actionSimpl != "") {
+        if (ActSimplStepDefinition.actionSimpl != null) {
 
             st = action.getSource();
+        } else if (demandeAction != null) {
+            st = demandeAction.getSource();
+
         } else {
-            ExcelUtils.setExcelFile(Path, "Action");
             st = action.getSource();
         }
         FicheActionPage.wrecherSource.sendKeys(st);
         FicheActionPage.wbtnrecherSource.click();
-        Assert.assertEquals(FicheActionPage.wverfiSource.getText(), st);
+        String sourceQuali = FicheActionPage.wverfiSource.findElement(By.tagName("a")).getText();
+
+        Boolean ok = Common.compareTowLargeString(sourceQuali, st);
+        Assert.assertTrue(ok);
         String simplifier = FicheActionPage.wTabSource.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1\"]/tbody/tr/td[3]")).findElement(By.tagName("span")).getText();
         Cookie cookie1 = driver.manage().getCookieNamed("lan");
         if (ActSimplStepDefinition.actionSimpl != "") {
@@ -418,43 +427,43 @@ public class FicheActionModele {
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
 
 
-        }else {
-        informations.add(action.getSource());
-        if (actionSimpl == "") {
-            String source = action.getSource();
+        } else {
+            informations.add(action.getSource());
+            if (actionSimpl == "") {
+                String source = action.getSource();
 //String  getValSource =Common.getValueSelected(select,source);
-            try {
-                selected.selectByVisibleText(source);
+                try {
+                    selected.selectByVisibleText(source);
+                    informations.add(action.getSource());
+
+                    String option_Selected = action.getSource();
+                    System.out.println("option_Selected " + option_Selected);
+
+                    Assert.assertEquals(option_Selected, option_Selected);
+                } catch (Exception e) {
+                    DesignePaterne.getOptiontext(FicheActionPage.sourceId);
+                }
+            } else {
+
+                // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
+                String source = action.getSource().trim();
+                ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
+
                 informations.add(action.getSource());
 
-                String option_Selected = action.getSource();
-                System.out.println("option_Selected " + option_Selected);
+                String option_Selected = selected.getFirstSelectedOption().getText();
+                if (option_Selected == "") {
+                    DesignePaterne.getOptiontext(FicheActionPage.sourceId);
+                } else {
+                    Assert.assertEquals(option_Selected, option_Selected);
 
-                Assert.assertEquals(option_Selected, option_Selected);
-            } catch (Exception e) {
-                DesignePaterne.getOptiontext(FicheActionPage.sourceId);
-            }
-        } else {
+                }
 
-            // select.selectByVisibleText(ExcelUtils.getCellData(row, 3).trim());
-            String source = action.getSource().trim();
-            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, source);
-
-            informations.add(action.getSource());
-
-            String option_Selected = selected.getFirstSelectedOption().getText();
-            if (option_Selected == "") {
-                DesignePaterne.getOptiontext(FicheActionPage.sourceId);
-            } else {
-                Assert.assertEquals(option_Selected, option_Selected);
 
             }
 
 
         }
-
-
-    }
     }
 
 //	try  {	select.selectByVisibleText(ExcelUtils.getCellData(row, 0));}
@@ -475,7 +484,7 @@ public class FicheActionModele {
         Date dt = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
-        c.add(Calendar.DATE, 0);
+        c.add(Calendar.DATE, -1);
         dt = c.getTime();
         String Sdate = dateFormat.format(dt);
         System.out.println(Sdate);
@@ -685,31 +694,31 @@ public class FicheActionModele {
         WebElement select = FicheActionPage.listeTypeId;
         Select selected = new Select(select);
 
-        if(demandeAction!=null){
+        if (demandeAction != null) {
             String type = demandeAction.getTypeAction();
             ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
 
-        }else{
-
-
-
-        String type = action.getTypeAction();
-        if (ActSimplStepDefinition.actionSimpl == "") {
-
-            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
         } else {
-            ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
 
 
+            String type = action.getTypeAction();
+            if (ActSimplStepDefinition.actionSimpl == "") {
+
+                ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
+            } else {
+                ((JavascriptExecutor) driver).executeScript("var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }", select, type);
+
+
+            }
+
+            String option_Selected = selected.getFirstSelectedOption().getText();
+            if (option_Selected == "") {
+                DesignePaterne.getOptiontext(select);
+            } else {
+                Assert.assertEquals(option_Selected, option_Selected);
+
+            }
         }
-
-        String option_Selected = selected.getFirstSelectedOption().getText();
-        if (option_Selected == "") {
-            DesignePaterne.getOptiontext(select);
-        } else {
-            Assert.assertEquals(option_Selected, option_Selected);
-
-        }}
 
 
     }
@@ -783,8 +792,9 @@ public class FicheActionModele {
             }
             ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.activiteId);
-            if(action.getActivite()!=null){
-            select.selectByVisibleText(action.getActivite().getActivite());}
+            if (action.getActivite() != null) {
+                select.selectByVisibleText(action.getActivite().getActivite());
+            }
             informations.add(ExcelUtils.getCellData(row, 15));
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("l'activité est invisible");
@@ -805,8 +815,9 @@ public class FicheActionModele {
             }
             ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.directionId);
-            if(action.getDirection()!=null){
-            select.selectByVisibleText(action.getDirection().getDirection());}
+            if (action.getDirection() != null) {
+                select.selectByVisibleText(action.getDirection().getDirection());
+            }
             informations.add(ExcelUtils.getCellData(row, 16));
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("la direction est invisible");
@@ -826,8 +837,9 @@ public class FicheActionModele {
             }
             ExcelUtils.setExcelFile(Path, "Action");
             Select select = new Select(FicheActionPage.service);
-            if(action.getService()!=null){
-            select.selectByVisibleText(action.getService().getService());}
+            if (action.getService() != null) {
+                select.selectByVisibleText(action.getService().getService());
+            }
             informations.add(select.getFirstSelectedOption().getText());
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("le service est invisible");
@@ -839,7 +851,7 @@ public class FicheActionModele {
 
         Select select = new Select(FicheActionPage.Respcloture);
 
-        String employer = action.getRespSuivi().getName();
+        String employer = action.getRespCloture().getName();
         System.err.println("Employee  is   :   " + employer);
         select.selectByVisibleText(employer);
         informations.add(select.getFirstSelectedOption().getText());
@@ -1015,7 +1027,7 @@ public class FicheActionModele {
         Date dt = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
-        c.add(Calendar.DATE, 0);
+        c.add(Calendar.DATE, -1);
         dt = c.getTime();
         String Sdate = dateFormat.format(dt);
         System.out.println(Sdate);

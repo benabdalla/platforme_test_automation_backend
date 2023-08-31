@@ -2,6 +2,7 @@ package com.saphir.platforme;
 
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.repository.IActionRepository;
+import com.saphir.platforme.shared.DesignePaterne;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
@@ -32,9 +33,8 @@ public class ActionRunner extends AbstractTestNGCucumberTests {
 
     @AfterSuite
     public void generateReport() {
-        Action actions;
-        actions = action;
-        iActionRepository.updateAction(actions);
+
+      //  DesignePaterne.deleteFilesInDirectory("E:\\qualipro\\trunk\\platforme_test_automation_backend\\target\\Reporting\\action-cucumber-reports\\cucumber-html-reports");
         String outputDirectory = "target/Reporting/action-cucumber-reports";
         String reportName = "action-cucumber-reports";
 
@@ -54,9 +54,6 @@ public class ActionRunner extends AbstractTestNGCucumberTests {
         reportBuilder.generateReports();
 
 
-//        Configuration configuration = new Configuration(new File("target/cucumber-reports"), "Your Project Name");
-//        ReportBuilder reportBuilder = new ReportBuilder(Collections.singletonList("target/cucumber-reports/action.json"), configuration);
-//        reportBuilder.generateReports();
     }
 
 }

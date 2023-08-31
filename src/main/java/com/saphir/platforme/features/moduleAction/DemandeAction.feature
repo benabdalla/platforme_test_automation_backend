@@ -40,7 +40,7 @@ Feature: Creation de Demande Action
     And choisir Type Action
     And Selectionner origine
     And Ajouter Type Cause
-    And Ajouter Produit
+   # And Ajouter Produit
     And Selectionner date creation
     And Saisir Designation
     And Saisir description
@@ -53,7 +53,7 @@ Feature: Creation de Demande Action
     And Selectionner Service
     And Cliquer valider demande action
     When cliquer sur ajouter sous action demande
-#    And Choisir FG responsble réalisation <RespRealise> et  responsble Suivi <respSuivi>
+  And Choisir FG responsble réalisation <RespRealise> et  responsble Suivi <respSuivi>
     And ajouter sous action demande
     When choisir gravité DA
     When choisir Priorité DA

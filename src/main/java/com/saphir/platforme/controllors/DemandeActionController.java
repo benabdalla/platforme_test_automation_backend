@@ -123,6 +123,8 @@ return "Ok";
             testng.run();
 
         }
+        iActionRepository.updateAction(demandeAction);
+
         return "OK";
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }

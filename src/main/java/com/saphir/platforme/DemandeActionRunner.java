@@ -1,7 +1,9 @@
 package com.saphir.platforme;
 
 import com.saphir.platforme.entity.Action;
+import com.saphir.platforme.entity.DemandeAction;
 import com.saphir.platforme.repository.IActionRepository;
+import com.saphir.platforme.repository.IDemandeActionRepository;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.saphir.platforme.controllors.ActionRunTest.action;
+import static com.saphir.platforme.moduleAction.stepdefs.DemandeActionStepDefinition.demandeAction;
 
 
 @CucumberOptions(
@@ -28,12 +31,12 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
 public class DemandeActionRunner extends AbstractTestNGCucumberTests {
 
     @Autowired
-    IActionRepository iActionRepository;
+    IDemandeActionRepository iActionRepository;
 
     @AfterSuite
     public void generateReport() {
-        Action actions;
-        actions = action;
+        DemandeAction actions;
+        actions = demandeAction;
         iActionRepository.updateAction(actions);
         String outputDirectory = "target/Reporting/demande-cucumber-reports";
         String reportName = "demande-cucumber-reports";

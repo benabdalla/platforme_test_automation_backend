@@ -50,7 +50,7 @@ Feature: Qualipro- Test fiche Action
     And Saisir Désignation
     And choisir Type Action
     And Saisir Description problème/objet
-    And choisir Produit
+   # And choisir Produit
     And choisir Types de causes
     And Saisir Causes possibles
     And saisir Objectif

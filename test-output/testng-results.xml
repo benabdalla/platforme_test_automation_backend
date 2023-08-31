@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-22T20:10:23 CEST" name="Default Suite" finished-at="2023-08-22T20:10:23 CEST" duration-ms="0">
-    <groups>
-    </groups>
-  </suite> <!-- Default Suite -->
-  <suite started-at="2023-08-22T20:09:32 CEST" name="Demande Action" finished-at="2023-08-22T20:10:23 CEST" duration-ms="51059">
+  <suite started-at="2023-08-29T15:55:41 CEST" name="Action" finished-at="2023-08-29T16:06:05 CEST" duration-ms="624028">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-08-22T20:09:32 CEST" name="Test version  fr " finished-at="2023-08-22T20:10:23 CEST" duration-ms="51059">
-      <class name="com.saphir.platforme.DemandeActionRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" started-at="2023-08-22T20:09:32 CEST" name="setUpClass" finished-at="2023-08-22T20:09:32 CEST" duration-ms="473" status="PASS">
+    <test started-at="2023-08-29T15:55:41 CEST" name="Test version  fr " finished-at="2023-08-29T16:06:05 CEST" duration-ms="624028">
+      <class name="com.saphir.platforme.ActionRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T15:55:41 CEST" name="setUpClass" finished-at="2023-08-29T15:55:41 CEST" duration-ms="500" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@72d1e15c]]>
+                <![CDATA[org.testng.TestRunner@192a93ca]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" started-at="2023-08-22T20:09:32 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-22T20:09:56 CEST" duration-ms="24431" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T15:55:41 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T15:57:45 CEST" duration-ms="123671" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -34,25 +30,14 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA["Creation de Demande Action"]]>
+                <![CDATA["Qualipro- Test fiche Action"]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "com.saphir.platforme.entity.Action.getFilialeDeclencheur()" because "com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.action" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.saphir.platforme.entity.Action.getFilialeDeclencheur()" because "com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.action" is null
-at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.saisir_action_filaile_declencheur(FicheActionStepDefinition.java:317)
-at ✽.saisir action filaile declencheur(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/DemandeAction.feature:9)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" started-at="2023-08-22T20:09:56 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-22T20:10:22 CEST" duration-ms="25238" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T15:57:45 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T15:59:18 CEST" duration-ms="92555" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -61,151 +46,122 @@ at ✽.saisir action filaile declencheur(file:///E:/qualipro/trunk/platforme_tes
             </param>
             <param index="1">
               <value>
-                <![CDATA["Creation de Demande Action"]]>
+                <![CDATA["Qualipro- Test fiche Action"]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "String.trim()" because the return value of "com.saphir.platforme.entity.DemandeAction.getSource()" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "String.trim()" because the return value of "com.saphir.platforme.entity.DemandeAction.getSource()" is null
-at com.saphir.platforme.moduleAction.models.FicheActionModele.selectionnerSourceModeleAction(FicheActionModele.java:417)
-at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.ajouter_Source(FicheActionStepDefinition.java:357)
-at ✽.Ajouter Source(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/DemandeAction.feature:39)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" started-at="2023-08-22T20:10:22 CEST" name="tearDownClass" finished-at="2023-08-22T20:10:23 CEST" duration-ms="885" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T15:59:18 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:00:18 CEST" duration-ms="60250" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:00:18 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:01:41 CEST" duration-ms="82899" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:01:41 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:02:47 CEST" duration-ms="65802" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:02:47 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:04:08 CEST" duration-ms="81742" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:04:08 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:04:59 CEST" duration-ms="50252" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:04:59 CEST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-08-29T16:06:04 CEST" duration-ms="65372" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Qualipro- Test fiche Action"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:06:04 CEST" name="tearDownClass" finished-at="2023-08-29T16:06:05 CEST" duration-ms="958" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.DemandeActionRunner@1961ab67]" started-at="2023-08-22T20:10:23 CEST" name="generateReport" finished-at="2023-08-22T20:10:23 CEST" duration-ms="1" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "com.saphir.platforme.repository.IActionRepository.updateAction(com.saphir.platforme.entity.Action)" because "this.iActionRepository" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.saphir.platforme.repository.IActionRepository.updateAction(com.saphir.platforme.entity.Action)" because "this.iActionRepository" is null
-at com.saphir.platforme.DemandeActionRunner.generateReport(DemandeActionRunner.java:37)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:404)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1251)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at com.saphir.platforme.controllors.DemandeActionController.findById(DemandeActionController.java:123)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
-at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:113)
-at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
-at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
-at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
-at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
-at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
-at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at com.saphir.platforme.service.jwt.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:46)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
-at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
-at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
-at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
-at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
-at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
-at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
-at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
-at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
-at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
-at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
-at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-at java.base/java.lang.Thread.run(Thread.java:833)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:com.saphir.platforme.ActionRunner@3b0a769b]" started-at="2023-08-29T16:06:05 CEST" name="generateReport" finished-at="2023-08-29T16:06:06 CEST" duration-ms="941" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-      </class> <!-- com.saphir.platforme.DemandeActionRunner -->
+      </class> <!-- com.saphir.platforme.ActionRunner -->
     </test> <!-- Test version  fr  -->
-  </suite> <!-- Demande Action -->
+  </suite> <!-- Action -->
+  <suite started-at="2023-08-29T16:06:06 CEST" name="Default Suite" finished-at="2023-08-29T16:06:06 CEST" duration-ms="0">
+    <groups>
+    </groups>
+  </suite> <!-- Default Suite -->
 </testng-results>

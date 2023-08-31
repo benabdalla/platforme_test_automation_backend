@@ -132,6 +132,32 @@ public class Common {
         }
 
     }
+    public static void SaisirDateInferuerDate(WebDriver driver, String id) throws Throwable {
+        //ReclamationClientPage.DateLivraisonId.click();
+        //ReclamationClientPage.CldrLivId.click();
+        final DateFormat dateFormat;
+        Cookie cookie1 = driver.manage().getCookieNamed("lan");
+        if (cookie1.getValue().equals("en-US")) {
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        } else {
+            dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        }
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, -1);
+        dt = c.getTime();
+        String Sdate = dateFormat.format(dt);
+        System.out.println(Sdate);
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("arguments[1].value = arguments[0];", Sdate, driver.findElement(By.id(id)));
+            Thread.sleep(500);
+        } catch (Exception ex) {
+            System.out.println("element of date not Found");
+        }
+
+    }
 
 
     public static boolean verfierfile(String name) {
@@ -896,13 +922,14 @@ public class Common {
 
     }
 
-    public static String getValueSelected(WebElement elm, String text) {
+    public static String getValueSelected(WebElement elm, String text) throws InterruptedException {
         Select select = new Select(elm);
         text = text.trim();
         List<WebElement> option = select.getOptions();
         String value = "";
         System.err.println("text  " + text);
         for (int i = 0; i < option.size(); i++) {
+            Thread.sleep(600);
             String selectionn = option.get(i).getText().trim();
             System.err.println("value option " + option.get(i).getText().trim());
             System.err.println("value option " + option.get(i).getAttribute("value"));

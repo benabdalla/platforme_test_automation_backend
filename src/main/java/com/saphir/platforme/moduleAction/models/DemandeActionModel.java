@@ -4,6 +4,7 @@ package com.saphir.platforme.moduleAction.models;
 import com.github.javafaker.Faker;
 import com.saphir.platforme.moduleAction.pages.DemandeActionPage;
 import com.saphir.platforme.moduleAction.pages.FicheActionPage;
+import com.saphir.platforme.shared.DesignePaterne;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.*;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static com.saphir.platforme.controllors.DemandeActionController.demandeAction;
 
 
 public class DemandeActionModel {
@@ -112,7 +115,7 @@ public class DemandeActionModel {
 
     public static void Selectionner_Date_Creation(WebDriver driver) throws Throwable {
 
-        Common.SaisirDate(driver, "ctl00_ContentPlaceHolder1_datcrea");
+        Common.SaisirDateInferuerDate(driver, "ctl00_ContentPlaceHolder1_datcrea");
 
     }
 
@@ -123,10 +126,9 @@ public class DemandeActionModel {
         String paragraph = faker.lorem().paragraph();
         paragraph = "désignation de demande  action " + paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
-
+        demandeAction.setDesignation(paragraph);
         DemandeActionPage.DesignationID.sendKeys(paragraph);
-        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
-        ExcelUtils.setCellData1(paragraph, 1, 15, Path, "DemandeActionSpec.xml");
+
     }
 
     public static void Saisir_Description() {
@@ -136,7 +138,7 @@ public class DemandeActionModel {
         String paragraph = faker.lorem().paragraph();
         paragraph = "description demande action " + paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
-
+        demandeAction.setDescription(paragraph);
         DemandeActionPage.DescriptionID.sendKeys(paragraph);
     }
 
@@ -145,6 +147,7 @@ public class DemandeActionModel {
         String paragraph = faker.lorem().paragraph();
         paragraph = "Cause demande action" + paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
+
         DemandeActionPage.CauseID.sendKeys(paragraph);
     }
 
@@ -178,7 +181,8 @@ public class DemandeActionModel {
             Thread.sleep(1000);
             ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.SiteID);
-            select.selectByVisibleText(ExcelUtils.getCellData(arg1, 3));
+            String value = Common.getValueSelected(DemandeActionPage.SiteID, demandeAction.getSite().getSite());
+            select.selectByValue(value);
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("le site est invisible");
         }
@@ -200,7 +204,8 @@ public class DemandeActionModel {
             Thread.sleep(1000);
             ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
             Select select = new Select(DemandeActionPage.ProcessusID);
-            select.selectByVisibleText(ExcelUtils.getCellData(arg1, 4));
+            String value = Common.getValueSelected(DemandeActionPage.ProcessusID, demandeAction.getProcessus().getProcessus());
+            select.selectByValue(value);
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("le processus est invisible");
         }
@@ -219,9 +224,11 @@ public class DemandeActionModel {
 
             }
             Thread.sleep(1000);
-            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
-            Select select = new Select(DemandeActionPage.ActiviteID);
-            select.selectByVisibleText(ExcelUtils.getCellData(1, 5));
+
+
+            if(demandeAction.getActivite()!=null){
+                Select select = new Select(DemandeActionPage.ActiviteID);
+            select.selectByVisibleText(demandeAction.getActivite().getActivite());}
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("l'activité est invisible");
         }
@@ -240,9 +247,12 @@ public class DemandeActionModel {
                 Common.Exporter_visibilité("la direction n'est pas obligatoire");
 
             }
-            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
-            Select select = new Select(DemandeActionPage.DirectionID);
-            select.selectByVisibleText(ExcelUtils.getCellData(arg1, 6));
+            if(demandeAction.getDirection()!=null){
+                Select select = new Select(DemandeActionPage.DirectionID);
+                select.selectByVisibleText(demandeAction.getDirection().getDirection());
+
+            }
+
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("la direction est invisible");
         }
@@ -259,9 +269,14 @@ public class DemandeActionModel {
             } else {
                 Common.Exporter_visibilité("le service n'est pas obligatoire");
             }
-            ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
-            Select select = new Select(DemandeActionPage.ServiceID);
-            select.selectByVisibleText(ExcelUtils.getCellData(arg1, 7));
+
+
+            if(demandeAction.getService()!=null){
+
+                Select select = new Select(DemandeActionPage.ServiceID);
+                select.selectByVisibleText(demandeAction.getService().getService());
+
+            }
         } catch (NoSuchElementException e) {
             Common.Exporter_visibilité("le service est invisible");
         }
@@ -277,6 +292,7 @@ public class DemandeActionModel {
         executor.executeScript("arguments[0].click()", DemandeActionPage.BoutonValideID);
         String NumDemanedeAction = driver.findElement(By.id("ctl00_ContentPlaceHolder1_nact")).getText();
         Assert.assertNotEquals(NumDemanedeAction, "");
+        demandeAction.setNumFiche(Integer.valueOf(NumDemanedeAction));
 
 
     }

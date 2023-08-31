@@ -129,6 +129,7 @@ return "Ok";
             testng.run();
 
         }
+        iActionRepository.updateAction(action);
         return "OK";
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }
@@ -179,6 +180,7 @@ return "Ok";
             testng.run();
 
         }
+        iActionRepository.updateAction(action);
         return "Ok";
         // runProcess("java -cp target/myapp.jar com.swtestacademy.springbootselenium.cucumber.RunCucumberTest.java --testngXmlFile=RunTest.xml");
     }

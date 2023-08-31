@@ -221,6 +221,7 @@ public class FicheActionPage {
     static final String recherSource = "ctl00_ContentPlaceHolder1_TextBox1";
     static final String btnrecherSource = "ctl00_ContentPlaceHolder1_Label49";
     static final String verfiSource = "//table[@id='ctl00_ContentPlaceHolder1_GridView1']/tbody/tr/td[2]";
+    //*[@id="ctl00_ContentPlaceHolder1_GridView1_ctl02_LinkButton1"]
     static final String Ajouttype = "ctl00_ContentPlaceHolder1_Ajouter";
     static final String saitype = "ctl00_ContentPlaceHolder1_TextBox2";
     static final String chekSimptype = "ctl00_ContentPlaceHolder1_ch_act_simp";
