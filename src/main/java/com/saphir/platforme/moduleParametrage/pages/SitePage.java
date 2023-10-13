@@ -11,6 +11,9 @@ public class SitePage {
     @FindBy(id = "ctl00_ContentPlaceHolder1_textboxAbrev")
     public static WebElement textAbrevation;
     @FindBy(id = "ctl00_ContentPlaceHolder1_TextBox_abrev")
+    public static WebElement directionAbrevation;
+
+    @FindBy(id = "ctl00_ContentPlaceHolder1_TextBox_abrev")
     public static WebElement textAbrevationService;
 
     @FindBy(id = "ctl00_ContentPlaceHolder1_TextBox3")

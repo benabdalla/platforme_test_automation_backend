@@ -122,12 +122,15 @@ public class DemandeActionModel {
     public static void Saisir_Designation() throws Exception {
 
         Thread.sleep(2000);
-        Faker faker = new Faker();
+        if(demandeAction.getDesignation()==null){
+            Faker faker = new Faker();
         String paragraph = faker.lorem().paragraph();
         paragraph = "désignation de demande  action " + paragraph + Common.paragraphe(8, 1);
         System.out.println(paragraph);
         demandeAction.setDesignation(paragraph);
-        DemandeActionPage.DesignationID.sendKeys(paragraph);
+        DemandeActionPage.DesignationID.sendKeys(paragraph);}else{
+            DemandeActionPage.DesignationID.sendKeys(demandeAction.getDesignation());
+        }
 
     }
 
@@ -412,8 +415,6 @@ public class DemandeActionModel {
         Common.Exporter_visibilité("Fiche Demande Action:" + NumDemande);
         Common.Exporter_champ_A_masquer("Fiche Demande Action: " + NumDemande);
         System.out.println("demande N:" + NumDemande + "est Ajoute");
-        ExcelUtils.setExcelFile(Path, "DemandeActionSpec.xml");
-        ExcelUtils.setCellData1(NumDemande, 1, 14, Path, "DemandeActionSpec.xml");
         asserttrue(NumDemande != "");
 
     }
@@ -479,20 +480,24 @@ public class DemandeActionModel {
         Thread.sleep(1000L);
         //DemandeActionPage.MenuAgDaID.click();
         executor.executeScript("arguments[0].click()", DemandeActionPage.MenuAgDaID);
-        int sizeTab = FicheActionPage.wtabFGDemandAction.findElements(By.tagName("tr")).size();
-        Thread.sleep(1000);
-        for (int i = 1; i <= sizeTab - 1; i++) {
-            Thread.sleep(1000);
-            String fgr = FicheActionPage.wtabFGDemandAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionDemande\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-            System.err.println("f = " + origine + "  fgr = " + fgr);
-            System.err.println("result   =" + origine.equals(fgr));
 
-            if (origine.equals(fgr)) {
-                FicheActionPage.wtabFGDemandAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionDemande\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                break;
-            }
 
-        }
+        Common.agendaFG("ctl00_ContentPlaceHolder1_GridView_ActionDemande",demandeAction.getFilialeDeclencheur());
+
+//        int sizeTab = FicheActionPage.wtabFGDemandAction.findElements(By.tagName("tr")).size();
+//        Thread.sleep(1000);
+//        for (int i = 1; i <= sizeTab - 1; i++) {
+//            Thread.sleep(1000);
+//            String fgr = FicheActionPage.wtabFGDemandAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionDemande\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+//            System.err.println("f = " + origine + "  fgr = " + fgr);
+//            System.err.println("result   =" + origine.equals(fgr));
+//
+//            if (origine.equals(fgr)) {
+//                FicheActionPage.wtabFGDemandAction.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionDemande\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+//                break;
+//            }
+//
+//        }
 
 
         String demandID1 = NumDemande;

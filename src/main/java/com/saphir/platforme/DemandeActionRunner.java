@@ -35,9 +35,7 @@ public class DemandeActionRunner extends AbstractTestNGCucumberTests {
 
     @AfterSuite
     public void generateReport() {
-        DemandeAction actions;
-        actions = demandeAction;
-        iActionRepository.updateAction(actions);
+
         String outputDirectory = "target/Reporting/demande-cucumber-reports";
         String reportName = "demande-cucumber-reports";
 

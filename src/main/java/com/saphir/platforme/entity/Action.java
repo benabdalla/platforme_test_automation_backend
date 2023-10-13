@@ -75,6 +75,7 @@ public class Action implements Serializable {
     @JoinColumn(name = "idDirection")
     @JsonIgnore
     private Direction direction;
+    @ManyToOne
     @JoinColumn(name = "idService")
     @JsonIgnore
     private TabService service;

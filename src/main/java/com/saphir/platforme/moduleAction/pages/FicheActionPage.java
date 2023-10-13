@@ -131,13 +131,14 @@ public class FicheActionPage {
     final static String DESCRIPTION_OBJET_ID = "ctl00_ContentPlaceHolder1_descrip";
     final static String CAUSES_POSSIBLES_ID = "ctl00_ContentPlaceHolder1_cause";
     final static String SITE_ID = "ctl00_ContentPlaceHolder1_Listsite";
+
     final static String PROCESSUS_ID = "ctl00_ContentPlaceHolder1_lBProcessus_";
     final static String ACTIVITE_ID = "ctl00_ContentPlaceHolder1_lBDomaine_";
     final static String DIRECTION_ID = "ctl00_ContentPlaceHolder1_ListBox_Direction";
     final static String service_ID = "ctl00_ContentPlaceHolder1_lBService_";
     final static String Resp_cloture_ID = "ctl00_ContentPlaceHolder1_ListBox_cloture";
     final static String BOUTTON_VALIDER_ID = "ctl00_ContentPlaceHolder1_LinkButton17_Valider";
-    final static String AGENDA_ACTION_ID = "ctl00_lb_act";
+    final static String AGENDA_ACTION_ID = "ctl00_LKB_badge_act";
     final static String AGENDA_ACTION2_ID = "//*[@id=\"ctl00_lb_act\"]/span";
     final static String BOUTTON_AJOUTER_LISTE_DES_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_LinkButton3pm";
     final static String DESIGNATION_SOUS_ACTION_ID = "ctl00_ContentPlaceHolder1_TextBox5";

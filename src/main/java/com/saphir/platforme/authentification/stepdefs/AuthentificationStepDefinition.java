@@ -13,6 +13,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,36 +57,19 @@ public class AuthentificationStepDefinition {
         lan = parametrageList.get(0).getVerssion();
         System.out.println("lang :  " + lan);
         Cookie cookie = new Cookie("lan", lan);
+        try{
         driver.manage().addCookie(cookie);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         String txt = "document.cookie='lan=" + lan + "'";
         jse.executeScript(txt);
-        System.out.println(driver.manage().getCookieNamed("lan").getValue());
+        System.out.println(driver.manage().getCookieNamed("lan").getValue());}catch (NoSuchSessionException exp){
+
+        }
 
 
         //   AuthentificationModel.ouvrirQualiProWeb(driver);
     }
 
-    @When("^saisir Login et PW$")
-    public void saisirLoginPW() throws Throwable {
-
-
-    }
-
-    @When("saisir Login et PW1")
-
-
-    @When("^saisir Login \"([^\"]*)\"$")
-    public void saisir_Login(String arg1) throws Throwable {
-        AuthentificationModel.saisirLogin1(arg1);
-        Thread.sleep(200L);
-    }
-
-    @When("^saisir password \"([^\"]*)\"$")
-    public void saisir_password(String arg1) throws Throwable {
-        AuthentificationModel.sasirpw1(arg1);
-        Thread.sleep(200L);
-    }
 
     @When("^cliquer sur ouvrir une session$")
     public void clickOuvrirSession() throws Throwable {
@@ -96,30 +80,7 @@ public class AuthentificationStepDefinition {
 
     }
 
-    @When("^Connecter en tant que (\\d+) de l (\\d+) du \"([^\"]*)\"$")
-    public void connecter_en_tant_que_de_l_du(String arg1, int arg2, String arg3) throws Throwable {
-//        row = arg2;
-//       // ExcelUtils.setExcelFile(Path, module);
-//        String username ="test";
-//        //ExcelUtils.getCellData(row, col);
-//       //=authentificationQualipro.connextionParModule(arg3,arg1,arg2);
-//        System.err.println("login  :  " +connexionDTOList.get(0).getLogin());
-//        System.err.println("password  :  " +connexionDTOList.get(0).getPassword());
-//
-////        System.err.println("user name  is   :  " +username);
-////        if (!(username.equals(""))) {
-////            ExcelUtils.setExcelFile(Path, "Input");
-////            int RowNum = ExcelUtils.GetLigneData(username);
-//            //System.out.println("num ligne"+RowNum);
-//            AuthentificationModel.saisirLogin(connexionDTOList.get(0).getLogin());
-//            AuthentificationModel.saisirPW(connexionDTOList.get(0).getPassword());
-//            AuthentificationModel.clickOuvrirSession(driver);
-//       // }
-//        Thread.sleep(5000L);
-//
-//                    //AuthentificationModel.Changer_Compte(arg3, arg1, arg2, driver);
-//        module = arg3;
-    }
+
 
     @And("^changer la langue en anglais$")
     public void changer_la_langue_en_anglais() throws Throwable {

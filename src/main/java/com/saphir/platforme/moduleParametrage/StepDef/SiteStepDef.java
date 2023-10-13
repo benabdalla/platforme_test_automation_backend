@@ -66,8 +66,8 @@ public class SiteStepDef {
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click()", FicheActionPage.menuID);
             Thread.sleep(200L);
-            Common.AccéderModule(5, 0, 0, driver);
-            Common.AccéderModule(5, 1, 4, driver);
+            Common.AccéderModule(6, 0, 0, driver);
+            Common.AccéderModule(6, 1, 4, driver);
 
         }
 

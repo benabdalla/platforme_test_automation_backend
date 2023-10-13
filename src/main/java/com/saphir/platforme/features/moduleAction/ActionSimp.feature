@@ -9,6 +9,9 @@ Feature: Qualipro- Test fiche Action
     When cliquer sur ouvrir une session
     And saisir action filaile declencheur
     And saisir <exemple> action
+    And ajouter Responsable Cloture
+    And Saisir Responsable Cloture
+    Then verifier Responsable Cloture
     And cliquer sur action simplifiée parametrage
     And consulter  source d'action
     And Ajouter   source d'action

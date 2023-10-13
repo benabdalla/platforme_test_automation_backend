@@ -65,8 +65,8 @@ public class DirectionStepDef {
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click()", FicheActionPage.menuID);
             Thread.sleep(200L);
-            Common.AccéderModule(5, 0, 0, driver);
-            Common.AccéderModule(5, 1, 7, driver);
+            Common.AccéderModule(6, 0, 0, driver);
+            Common.AccéderModule(6, 1, 7, driver);
 
         }
     }
@@ -81,8 +81,9 @@ public class DirectionStepDef {
             DesignePaterne.javascriptSendKyes(direction, SitePage.textSite);
             //    SitePage.textSite.sendKeys(site);
             Faker faker = new Faker();
-            SitePage.textAbrevation.sendKeys(faker.lorem().word());
-            DesignePaterne.javascriptSendKyes(faker.lorem().word(), SitePage.textAbrevation);
+
+            SitePage.directionAbrevation.sendKeys(faker.lorem().word());
+            DesignePaterne.javascriptSendKyes(faker.lorem().word(), SitePage.directionAbrevation);
             SitePage.btnValider.click();
             SitePage.btnRetour.click();
 

@@ -19,6 +19,7 @@ import java.util.List;
         dryRun = false, tags = "@Activite"
 )
 
+
 public class ActiviteRunner extends AbstractTestNGCucumberTests {
 
     @AfterSuite

@@ -69,7 +69,7 @@ public class ChromeDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
-        String downloadFilepath = "E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Download";
+        String downloadFilepath = "E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Telechargement";
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 
         chromePrefs.put("profile.default_content_settings.popups", 0);

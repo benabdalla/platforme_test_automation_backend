@@ -11,6 +11,7 @@ import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -31,6 +32,7 @@ public class FicheActionModele {
     public static HashMap<String, String> filtre_repor = new HashMap<>();
     //private static String Path = "resources/testData/TestData2.xlsx";
     static int i = 1;
+    static  boolean typeOk=false;
 
     public static void consulter_types_d_action(WebDriver driver) throws Exception {
         Thread.sleep(1000L);
@@ -45,7 +47,10 @@ public class FicheActionModele {
 
 
     public static void ajouter_types_d_action() {
+
         FicheActionPage.wAjouttype.click();
+
+
 
     }
 
@@ -58,25 +63,49 @@ public class FicheActionModele {
         if (action != null) {
 
             if (action.getActSimplifier() == 1) {
-                st = "Type Action Simplifier Auto" + LocalDateTime.now();
+                if(action.getEtat()==1){
 
-                FicheActionPage.wsaitype.sendKeys(st);
-                FicheActionPage.wchekSimptype.click();
-                action.setTypeAction(st);
+                    FicheActionPage.wsaitype.sendKeys(action.getTypeAction());
+                    FicheActionPage.wchekSimptype.click();
+                }else{
+                    st = "Type Action Simplifier Auto" + LocalDateTime.now();
+
+                    FicheActionPage.wsaitype.sendKeys(st);
+
+                    action.setTypeAction(st);
+                }
+
             } else {
 
-                st = "Type Action Details Auto" + LocalDateTime.now();
-                FicheActionPage.wsaitype.sendKeys(st);
-                FicheActionPage.wnancastype.click();
-                action.setTypeAction(st);
+                if(action.getEtat()==1){
+                    FicheActionPage.wsaitype.sendKeys(action.getTypeAction());
+                    FicheActionPage.wnancastype.click();
+                }else {
+                    st = "Type Action Details Auto" + LocalDateTime.now();
+                    FicheActionPage.wsaitype.sendKeys(st);
+                    FicheActionPage.wnancastype.click();
+                    action.setTypeAction(st);
+                }
+
             }
 
         } else {
+            if(demandeAction.getEtat()==1){
+               // st = "Type Action demande Auto" + LocalDateTime.now();
+
+                FicheActionPage.wsaitype.sendKeys(demandeAction.getTypeAction());
+                FicheActionPage.wchekSimptype.click();
+
+
+            }else{
             st = "Type Action demande Auto" + LocalDateTime.now();
 
             FicheActionPage.wsaitype.sendKeys(st);
             FicheActionPage.wchekSimptype.click();
             demandeAction.setTypeAction(st);
+
+
+            }
 
         }
 
@@ -84,12 +113,21 @@ public class FicheActionModele {
     }
 
 
-    public static void clique_sur_valider(int row) throws Exception {
+    public static void clique_sur_valider(WebDriver driver) throws Exception {
         FicheActionPage.btnValiderSousAction.click();
+
+        try{
+            driver.findElement(By.id("ctl00_ContentPlaceHolder1_lblErreur")).isDisplayed();
+
+        }catch (Exception exp){
+            typeOk=true;
+        }
+
+if(typeOk){
         FicheActionPage.EditTxReaId.click();
-        ExcelUtils.setExcelFile(Path, "Input");
-        //ExcelUtils.setCellData1(st, row, 1, Path,"Action");
-        String employer = ExcelUtils.getCellData1(row, 1);
+
+
+        String employer =action.getDechlencheur().getName();
         System.err.println("Employee  is   :   " + employer);
         FicheActionPage.wrecheperson.sendKeys(employer);
         List<WebElement> rows = FicheActionPage.wtabpersonne.findElements(By.tagName("tr"));
@@ -97,54 +135,55 @@ public class FicheActionModele {
             FicheActionPage.wtabpersonne.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_Employe_wrapper\"]/div[2]/div/table/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("input")).click();
         }
         FicheActionPage.wvalidetpreson.click();
-        FicheActionPage.wretourSource.click();
+        FicheActionPage.wretourSource.click();}
     }
 
 
     public static void verifier_type_d_action(int row, WebDriver driver) throws Exception {
-        Cookie cookie1 = driver.manage().getCookieNamed("lan");
-        if (!ActSimplStepDefinition.actionSimpl.equals("")) {
+        if(typeOk) {
+            Cookie cookie1 = driver.manage().getCookieNamed("lan");
+            if (!ActSimplStepDefinition.actionSimpl.equals("")) {
 
-            String st = action.getTypeAction();
-            FicheActionPage.wrecherchetype.sendKeys(st);
-            Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
-            String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
-            String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
-            if (cookie1.getValue().equals("en-US")) {
-                Assert.assertEquals("Yes", acttionSimpl);
-                Assert.assertEquals(cause, "No");
+                String st = action.getTypeAction();
+                FicheActionPage.wrecherchetype.sendKeys(st);
+                Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
+                String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
+                String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
+                if (cookie1.getValue().equals("en-US")) {
+                    Assert.assertEquals("Yes", acttionSimpl);
+                    Assert.assertEquals(cause, "No");
+                } else {
+                    Assert.assertEquals("OUI", acttionSimpl);
+                    Assert.assertEquals(cause, "NON");
+
+                }
+
+
+            } else if (demandeAction != null) {
+                String st = demandeAction.getTypeAction();
+                FicheActionPage.wrecherchetype.sendKeys(st);
+                Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
+
+
             } else {
-                Assert.assertEquals("OUI", acttionSimpl);
-                Assert.assertEquals(cause, "NON");
+
+                String st = action.getTypeAction();
+                FicheActionPage.wrecherchetype.sendKeys(st);
+                Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
+                String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
+                String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
+                if (cookie1.getValue().equals("en-US")) {
+                    Assert.assertEquals(acttionSimpl, "No");
+                    Assert.assertEquals(cause, "Yes");
+                } else {
+                    Assert.assertEquals(cause, "OUI");
+                    Assert.assertEquals(acttionSimpl, "NON");
+                }
+
 
             }
-
-
-        } else if (demandeAction != null) {
-            String st = demandeAction.getTypeAction();
-            FicheActionPage.wrecherchetype.sendKeys(st);
-            Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
-
-
-        } else {
-
-            String st = action.getTypeAction();
-            FicheActionPage.wrecherchetype.sendKeys(st);
-            Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
-            String acttionSimpl = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[3]")).getText();
-            String cause = FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[4]")).getText();
-            if (cookie1.getValue().equals("en-US")) {
-                Assert.assertEquals(acttionSimpl, "No");
-                Assert.assertEquals(cause, "Yes");
-            } else {
-                Assert.assertEquals(cause, "OUI");
-                Assert.assertEquals(acttionSimpl, "NON");
-            }
-
 
         }
-
-
         Thread.sleep(1000);
 
     }
@@ -171,22 +210,34 @@ public class FicheActionModele {
 
     public static void saisir_source_d_action() throws Exception {
         Thread.sleep(2000);
-        if (demandeAction != null) {
+        if (demandeAction != null ) {
+            if(demandeAction.getEtat()==0){
             String st = "Source de demande Action Auto" + LocalDateTime.now();
             demandeAction.setSource(st);
-            FicheActionPage.wource.sendKeys(st);
+            FicheActionPage.wource.sendKeys(st);}
+            else{
+                FicheActionPage.wource.sendKeys(demandeAction.getSource());
+            }
             //
 
 
         } else if (ActSimplStepDefinition.actionSimpl != "") {
+            if(action.getEtat()==1){
+
+                FicheActionPage.wource.sendKeys(action.getSource());
+            }else{
             String st = "Source Action Simplifier Auto" + LocalDateTime.now();
             action.setSource(st);
-            FicheActionPage.wource.sendKeys(st);
+            FicheActionPage.wource.sendKeys(st);}
             FicheActionPage.wcheckBoxActionSimplifier.click();
         } else {
+            if(action.getEtat()==1){
+
+                FicheActionPage.wource.sendKeys(action.getSource());
+            }else{
             String st = "Source Action Auto" + LocalDateTime.now();
             action.setSource(st);
-            FicheActionPage.wource.sendKeys(st);
+            FicheActionPage.wource.sendKeys(st);}
 
         }
     }
@@ -201,10 +252,7 @@ public class FicheActionModele {
 
     public static void verifier_source_d_action(int row, WebDriver driver) throws Exception {
         String st = "";
-        if (ActSimplStepDefinition.actionSimpl != null) {
-
-            st = action.getSource();
-        } else if (demandeAction != null) {
+        if (demandeAction != null) {
             st = demandeAction.getSource();
 
         } else {
@@ -252,10 +300,14 @@ public class FicheActionModele {
 
 
     public static void saisir_type_de_causes(int row) throws Throwable {
+        if(action.getEtat()==1){
+
+            FicheActionPage.wtypecaus.sendKeys(action.getTypeCause());
+        }else{
         Thread.sleep(2000);
         String st = "type de causes auto" + LocalDateTime.now();
         action.setTypeCause(st);
-        FicheActionPage.wtypecaus.sendKeys(st);
+        FicheActionPage.wtypecaus.sendKeys(st);}
         FicheActionPage.btnValiderSousAction.click();
 
 
@@ -264,6 +316,8 @@ public class FicheActionModele {
 
     public static void verifier_type_de_causes(int row) throws Throwable {
         FicheActionPage.wretourSource.click();
+
+
         String st = action.getTypeCause();
         FicheActionPage.wrecherchetype.sendKeys(st);
         Assert.assertEquals(FicheActionPage.gridActionRealisation.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText(), st);
@@ -288,9 +342,16 @@ public class FicheActionModele {
     public static void saisir_priorité(int row) throws Throwable {
 
         Thread.sleep(2000);
-        String st = "Priorité" + LocalDateTime.now();
-        action.setPriorite(st);
-        FicheActionPage.wtypecaus.sendKeys(st);
+
+        if(action.getEtat()==1){
+
+            FicheActionPage.wtypecaus.sendKeys(action.getPriorite());
+        }else{
+            String st = "Priorité" + LocalDateTime.now();
+            action.setPriorite(st);
+            FicheActionPage.wtypecaus.sendKeys(st);
+        }
+
         FicheActionPage.btnValiderSousAction.click();
 
 
@@ -300,7 +361,6 @@ public class FicheActionModele {
     public static void verifier_priorité(int row) throws Throwable {
         FicheActionPage.wretourSource.click();
 
-        ExcelUtils.setExcelFile(Path, "Action");
         String st = action.getPriorite();
         FicheActionPage.wrecherchetype.sendKeys(st);
         Assert.assertEquals(st, FicheActionPage.wtabtypeAct.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView1_wrapper\"]/div[2]/div/table/tbody/tr[1]/td[2]")).getText());
@@ -324,9 +384,14 @@ public class FicheActionModele {
 
     public static void saisir_gravité(int row) throws Throwable {
         Thread.sleep(2000);
+        if(action.getEtat()==1){
+            FicheActionPage.wsaitype.sendKeys(action.getGravite());
+
+        }else{
         String st = "Gravité " + LocalDateTime.now();
         action.setGravite(st);
         FicheActionPage.wsaitype.sendKeys(st);
+        }
         FicheActionPage.wValidSource.click();
 
     }
@@ -392,14 +457,19 @@ public class FicheActionModele {
     }
 
     public static void consulter_Action(WebDriver driver) throws Throwable {
-        Thread.sleep(2000L);
+        try {
+            Thread.sleep(2000);
+        }catch (InterruptedException e){
+            Thread.currentThread().interrupt(); // restore interrupted status
+
+        }
         //FicheActionPage.menuID.click();
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.menuID);
-        Thread.sleep(200L);
+        Thread.sleep(200);
         Common.AccéderModule(2, 0, 0, driver);
         Common.AccéderModule(2, 1, 0, driver);
-        Thread.sleep(200L);
+        Thread.sleep(200);
 
     }
 
@@ -669,17 +739,21 @@ public class FicheActionModele {
     }
 
     public static void designationModeleAction(int row) throws Throwable {
-
         Thread.sleep(2000);
-        Faker faker = new Faker();
-        String paragraph = faker.lorem().paragraph();
-        paragraph = "désignation de modele action " + paragraph + Common.paragraphe(8, 1);
-        System.out.println(paragraph);
-        System.out.println("row  desaignation :" + row);
+        if(action.getEtat()==1){
+            FicheActionPage.designationId.sendKeys(action.getDesignation());
+        }else{
+            Faker faker = new Faker();
+            String paragraph = faker.lorem().paragraph();
+            paragraph = "désignation de  action " + paragraph + Common.paragraphe(8, 1);
+            System.out.println(paragraph);
+            System.out.println("row  desaignation :" + row);
 
-        FicheActionPage.designationId.sendKeys(paragraph);
-        action.setDesignation(paragraph);
-        informations.add(ExcelUtils.getCellData(row, 25));
+            FicheActionPage.designationId.sendKeys(paragraph);
+            action.setDesignation(paragraph);
+        }
+
+
     }
 
     public static void saisirCausesPossibles() {
@@ -874,13 +948,18 @@ public class FicheActionModele {
         executor.executeScript("arguments[0].click()", FicheActionPage.btnValiderActionId);
     }
 
-    public static void cliqueAgenda(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-        // wait.until(ExpectedConditions.visibilityOf(FicheActionPage.agendatActionId));
+    public static void cliqueAgenda(WebDriver driver) throws InterruptedException {
+//        WebDriverWait wait = new WebDriverWait(driver, 4000);
+//        wait.until(ExpectedConditions.visibilityOf(FicheActionPage.agendatActionId));
+        Thread.sleep(5000);
+
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", FicheActionPage.agendatActionId);
+//       List<WebElement> list= driver.findElement(By.id("cssmenu")).findElement(By.tagName("ul")).findElements(By.tagName("li"));
+//       list.get(1).findElement(By.id("ctl00_lb_act")).click();
         //FicheActionPage.agendatActionId.click();
         //FicheActionPage.agendatAction2Id.click();
+        Thread.sleep(5000);
     }
 
     public static void clickAjouterSousActionModeleAction(WebDriver driver) {
@@ -1027,7 +1106,7 @@ public class FicheActionModele {
         Date dt = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(dt);
-        c.add(Calendar.DATE, -1);
+        c.add(Calendar.DATE, 0);
         dt = c.getTime();
         String Sdate = dateFormat.format(dt);
         System.out.println(Sdate);

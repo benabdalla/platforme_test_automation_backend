@@ -1,5 +1,5 @@
 Feature:  creation et  verfication  de  parametrage GRH
-
+#Scénario de parametrage Site
   @Site
   Scenario: creation de test  de site
     Given Ouvrir le site QualiProWeb
@@ -9,7 +9,7 @@ Feature:  creation et  verfication  de  parametrage GRH
     And  Consulter  GRH site
     And  Ajouter   site
     Then Vérifier  site à éte ajouter
-
+#Scénario de parametrage processus
   @Processus
   Scenario: creation de test  de processus
     Given Ouvrir le site QualiProWeb
@@ -20,7 +20,7 @@ Feature:  creation et  verfication  de  parametrage GRH
     And  Ajouter   processus
     Then Vérifier  processus à éte ajouter
 
-
+#Scénario de parametrage activite
   @Activite
   Scenario: creation de test  de activite
     Given Ouvrir le site QualiProWeb
@@ -30,7 +30,7 @@ Feature:  creation et  verfication  de  parametrage GRH
     And  Consulter  GRH activite
     And  Ajouter   activite
     Then Vérifier  activite à éte ajouter
-
+#Scénario de parametrage service
   @ServiceParameter
   Scenario: creation de test  de service
     Given Ouvrir le site QualiProWeb

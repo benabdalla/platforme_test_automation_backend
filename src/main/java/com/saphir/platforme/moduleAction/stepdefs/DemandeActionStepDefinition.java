@@ -175,8 +175,18 @@ public class DemandeActionStepDefinition {
     @When("^ajouter sous action demande$")
     public void ajouter_sous_action_demande() throws Throwable {
         DemandeActionModel.saisirDesignationSAD(driver);
-        DemandeActionModel.selectionnerResponsableRealisationSAD(row);
-        DemandeActionModel.selectionnerResponsableSuiviSAD(row);
+//        DemandeActionModel.selectionnerResponsableRealisationSAD(row);
+//        DemandeActionModel.selectionnerResponsableSuiviSAD(row);
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtEditRR")).sendKeys(demandeAction.getRespTraitement().getName());
+        Thread.sleep(4000);
+        for(int i=0;i<8;i++){
+            try {
+                driver.findElement(By.id("ctl00_ContentPlaceHolder1_div_txtEditRS")).findElement(By.id("ctl00_ContentPlaceHolder1_txtEditRS")).sendKeys(demandeAction.getRespSuivi().getName());
+                break;
+            }catch (Exception exp){
+
+            }
+        }
         DemandeActionModel.choixDateSAD(driver);
     }
 
@@ -242,7 +252,9 @@ public class DemandeActionStepDefinition {
 
     @Then("^Verifier fiche Demande Action ajoute$")
     public void Verifier_fiche_Demande_Action_ajoute() throws Throwable {
+
         DemandeActionModel.Verifier_Demande_Ajout();
+      //  demandeAction.setNumFiche(Integer.valueOf(DemandeActionPage.NumeroDemandeID.getText()));
         Demandeur = DemandeActionPage.DemandeurID.getText();
     }
 
@@ -464,14 +476,20 @@ if(!ok){
 
 
     @When("saisir demande action filaile declencheur")
-    public void saisir_demande_action_filaile_declencheur() {
+    public void saisir_demande_action_filaile_declencheur() throws InterruptedException {
+      String  filaile = demandeAction.getFilialeDeclencheur();
+        if (!filaile.equals("Mono")) {
+            Thread.sleep(2000);
+            Select selectOpTGF = new Select((driver.findElement(By.id("ctl00_DDLFiliale"))));
+            String gf = selectOpTGF.getFirstSelectedOption().getText();
+            if (!filaile.equals(gf)) {
+                selectOpTGF.selectByVisibleText(filaile);
+            }
+        }
 
     }
 
-    @When("Choisir FG responsble réalisation {string} et  responsble Suivi {string}")
-    public void choisir_fg_responsble_réalisation_et_responsble_suivi(String string, String string2) {
 
-    }
 
     @Then("Saisir A l origine de l action {string}")
     public void saisir_a_l_origine_de_l_action(String string) {

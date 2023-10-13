@@ -3,7 +3,7 @@ Feature: Qualipro- Test fiche Action
   En tant que utilisateur je souhaite remplir une fiche Action
 
   @ParemétrageFicheActionDetaille
-  Scenario Outline: Creation fiche Action
+  Scenario Outline: Création Parametrage de fiche action
     Given Ouvrir le site QualiProWeb
     When Connecter en tant declencheur que de  action
     When cliquer sur ouvrir une session
@@ -34,7 +34,6 @@ Feature: Qualipro- Test fiche Action
     Examples:
       | exemple |
       | 1       |
-
   @FicheActionDetaille
   Scenario Outline: Creation fiche Action
     Given Ouvrir le site QualiProWeb
@@ -80,10 +79,8 @@ Feature: Qualipro- Test fiche Action
     Examples:
       | exemple |
       | 1       |
-
-
   @RealisationAction
-  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter  l action avec des taux différents
     Given Ouvrir le site QualiProWeb
     When Connecter en tant que responsable réalisation
     When cliquer sur ouvrir une session
@@ -96,10 +93,8 @@ Feature: Qualipro- Test fiche Action
     Examples:
       | exemple |
       | 1       |
-
-
   @SuiviAction
-  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite  suivre l action avec des taux différents
     Given Ouvrir le site QualiProWeb
     When Connecter en tant que responsable suivi
     When cliquer sur ouvrir une session
@@ -113,9 +108,8 @@ Feature: Qualipro- Test fiche Action
     Examples:
       | exemple |
       | 1       |
-
   @RealisationActionRetour
-  Scenario Outline: Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents
+  Scenario Outline: Qualipro- En tant que responsable, je souhaite  retourne traiter et suivre l action avec des taux différents
     Given Ouvrir le site QualiProWeb
     When Connecter en tant que responsable réalisation
     When cliquer sur ouvrir une session
@@ -153,7 +147,6 @@ Feature: Qualipro- Test fiche Action
     When cliquer sur ouvrir une session
     And Clôturée Action
     Then Verifier  etat  de  suivi
-
 
   @AfficherTracabilite
   Scenario: Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action

@@ -7,8 +7,10 @@ import com.saphir.platforme.entity.DemandeAction;
 import com.saphir.platforme.dto.ReportDto;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.repository.IDemandeActionRepository;
+import com.saphir.platforme.shared.DesignePaterne;
 import com.saphir.platforme.utils.Setup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,9 @@ public class DemandeActionController {
     public static DemandeAction demandeAction;
     @Autowired
     IDemandeActionRepository iActionRepository;
+
+    @Value("${file.report}")
+    private String filePath;
 
     @PostMapping
     @ResponseBody
@@ -72,8 +77,13 @@ return "Ok";
     @GetMapping("/report")
     public ReportDto runReportAction() throws IOException {
         String url = "Reporting/demande-cucumber-reports/cucumber-html-reports/overview-tags.html";
+        String  filesPath=filePath+url;
         ReportDto report = new ReportDto();
-        report.setSrcFrame(url);
+        if(DesignePaterne.fileExists(filesPath)){
+            report.setSrcFrame(url);
+        }else{
+            report.setSrcFrame("404");
+        }
         return report;
     }
 
@@ -95,7 +105,7 @@ return "Ok";
             // Create a list of XML suites to run
             List<XmlSuite> suites = new ArrayList<XmlSuite>();
             XmlSuite suite = new XmlSuite();
-            suite.setSuiteFiles(Collections.singletonList("DemandeActionSpec.xml.xml"));
+            suite.setSuiteFiles(Collections.singletonList("DemandeActionSpec.xml"));
             suites.add(suite);
 
             // Set the list of suites to TestNG object
@@ -113,7 +123,7 @@ return "Ok";
             // Create a list of XML suites to run
             List<XmlSuite> suites = new ArrayList<XmlSuite>();
             XmlSuite suite = new XmlSuite();
-            suite.setSuiteFiles(Collections.singletonList("DemandeActionSpec.xml"));
+            suite.setSuiteFiles(Collections.singletonList("DemandeAction.xml"));
             suites.add(suite);
 
             // Set the list of suites to TestNG object

@@ -21,15 +21,7 @@ public class EmployerController {
     public List<Utilisateur> getAllEmploye() throws Exception {
         return utilisateurService.getAllUser();
     }
-//
-//    @GetMapping("/{id}")
-//    public List<UtilisateurQualipro> getAllEmploye(@PathVariable Long id) throws Exception {
-//        return utilisateurService.getAllUser();
-//    }
-//    @PostMapping()
-//    public List<UtilisateurQualipro> getAllEmploye(@RequestBody Long throws Exception {
-//        return utilisateurService.getAllUser();
-//    }
+
 
 }
 

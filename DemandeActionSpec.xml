@@ -6,7 +6,7 @@
 
 
         <classes>
-            <class name="com.saphir.platforme.DemandeActionRunner"></class>
+            <class name="com.saphir.platforme.DemandeActionRunnerSpecifique"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

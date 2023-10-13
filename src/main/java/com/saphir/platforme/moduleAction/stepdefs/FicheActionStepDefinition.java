@@ -61,13 +61,13 @@ public class FicheActionStepDefinition {
 
     private boolean Etatcloture;
 
-            public FicheActionStepDefinition() {
-                action = ActionRunTest.action;
-                driver = Setup.driver;
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                PageFactory.initElements(driver, AuthentificationPage.class);
-                PageFactory.initElements(driver, FicheActionPage.class);
-            }
+    public FicheActionStepDefinition() {
+        action = ActionRunTest.action;
+        driver = Setup.driver;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        PageFactory.initElements(driver, AuthentificationPage.class);
+        PageFactory.initElements(driver, FicheActionPage.class);
+    }
 
     @When("Connecter en tant declencheur que de  action")
     public void connecter_en_tant_declencheur_que_de_action() throws Exception {
@@ -101,7 +101,7 @@ public class FicheActionStepDefinition {
 
     @Given("clique   sur   valider")
     public void clique_sur_valider() throws Exception {
-        FicheActionModele.clique_sur_valider(row);
+        FicheActionModele.clique_sur_valider(driver);
     }
 
 
@@ -303,7 +303,6 @@ public class FicheActionStepDefinition {
         FicheActionModele.consulter_Action(driver);
         Thread.sleep(2000L);
     }
-
 
 
     @When("^saisir (\\d+) action$")
@@ -834,19 +833,7 @@ public class FicheActionStepDefinition {
         executor23.executeScript("arguments[0].click();", FicheActionPage.ActionCloturerXpath);
 
         Thread.sleep(2000);
-
-        int sizeTabClot = FicheActionPage.wtabFGC.findElements(By.tagName("tr")).size();
-        for (int i = 1; i <= sizeTabClot; i++) {
-            Thread.sleep(500);
-            String fgr = FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-            System.err.println("f = " + origine + "  fgr = " + fgr);
-            System.err.println("result   =" + origine.equals(fgr));
-
-            if (origine.equals(fgr)) {
-                FicheActionPage.wtabFGC.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                break;
-            }
-        }
+        Common.agendaFG("ctl00_ContentPlaceHolder1_GridView_tab_ActionCloture", origine);
 
         FicheActionPage.rechercherActionCloturerXpath.findElement(By.tagName("input")).sendKeys(NumAction);
 
@@ -980,7 +967,15 @@ public class FicheActionStepDefinition {
         Thread.sleep(1000);
         FicheActionModele.cliqueAgenda(driver);
         Thread.sleep(1000L);
-        int sizeTab = FicheActionPage.wtabFGR.findElements(By.tagName("tr")).size();
+        int sizeTab;
+        try {
+            sizeTab = FicheActionPage.wtabFGR.findElements(By.tagName("tr")).size();
+        } catch (Exception exp) {
+            Thread.sleep(1000);
+            FicheActionModele.cliqueAgenda(driver);
+            Thread.sleep(1000L);
+            sizeTab = FicheActionPage.wtabFGR.findElements(By.tagName("tr")).size();
+        }
 
 
         Thread.sleep(1000L);
@@ -993,19 +988,9 @@ public class FicheActionStepDefinition {
         FicheActionPage.ActionRealisationXpath.click();
         Thread.sleep(500);
 
-        for (int i = 1; i <= sizeTab; i++) {
-            Thread.sleep(500);
-            String fgr = FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-            System.err.println("f = " + origine + "  fgr = " + fgr);
-            System.err.println("result   =" + origine.equals(fgr));
 
-            if (origine.equals(fgr)) {
-                FicheActionPage.wtabFGR.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_ActionRealise\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                break;
-            }
+        Common.agendaFG("ctl00_ContentPlaceHolder1_GridView_ActionRealise", origine);
 
-
-        }
         FicheActionModele.saisirNumActionRealisation(NumAction, driver);
         System.out.println("333");
         FicheActionModele.rechercherNumActionRealisation(driver);
@@ -1077,24 +1062,29 @@ public class FicheActionStepDefinition {
         origine = action.getFilialeDeclencheur();
 
 
-        Thread.sleep(1000L);
+        Thread.sleep(1000);
         FicheActionModele.cliqueAgenda(driver);
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click()", FicheActionPage.ActionSuivreXpath);
-        int sizeTab = FicheActionPage.wtabFGS.findElements(By.tagName("tr")).size();
-        for (int i = 1; i <= sizeTab; i++) {
-            Thread.sleep(500);
-            String fgr = FicheActionPage.wtabFGS.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-            System.err.println("f = " + origine + "  fgr = " + fgr);
-            System.err.println("result   =" + origine.equals(fgr));
+        Thread.sleep(1000L);
+        int sizeTab;
+        try {
 
-            if (origine.contains(fgr)) {
-                Thread.sleep(500);
-                FicheActionPage.wtabFGS.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                break;
-            }
-
+            Thread.sleep(2000);
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click()", FicheActionPage.ActionSuivreXpath);
+            sizeTab = FicheActionPage.wtabFGS.findElements(By.tagName("tr")).size();
+        } catch (Exception exp) {
+            Thread.sleep(1000L);
+            FicheActionModele.cliqueAgenda(driver);
+            Thread.sleep(2000);
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click()", FicheActionPage.ActionSuivreXpath);
+            sizeTab = FicheActionPage.wtabFGS.findElements(By.tagName("tr")).size();
         }
+
+
+        Common.agendaFG("ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre", origine);
+
+
         Thread.sleep(1000L);
 
         String NumAction = String.valueOf(action.getNumFiche());
@@ -1422,7 +1412,7 @@ public class FicheActionStepDefinition {
     @Then("^Vérifier les donnes de traçabilite$")
     public void Vérifier_les_donnes_de_traçabilite() throws Throwable {
 
-        String path = "E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Download\\CrystalReportViewer1.rtf";
+        String path = "E:\\qualipro\\trunk\\platforme_test_automation_backend\\resources\\Telechargement\\CrystalReportViewer1.rtf";
         String fileData = null;
         Thread.sleep(5000);
         //fileData = RTFUtil.ReadRTFFile(path);
@@ -1541,7 +1531,7 @@ public class FicheActionStepDefinition {
                 Thread.sleep(2000L);
                 assertTrue(FicheActionPage.ActionRealiserId.findElement(By.tagName("a")).getText().contains(NumAction));
             } catch (NoSuchElementException e) {
-              //  Assert.fail();
+                //  Assert.fail();
             }
 
         } else {
@@ -1592,18 +1582,8 @@ public class FicheActionStepDefinition {
         ExcelUtils.setExcelFile(Path, "Action");
         String NumAction = String.valueOf(action.getNumFiche());
         try {
-            int sizeTab = FicheActionPage.wtabFGS.findElements(By.tagName("tr")).size();
-            for (int i = 1; i <= sizeTab; i++) {
-                Thread.sleep(500);
-                String fgr = FicheActionPage.wtabFGS.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
-                System.err.println("f = " + origine + "  fgr = " + fgr);
-                System.err.println("result   =" + origine.equals(fgr));
+            Common.agendaFG("ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre", origine);
 
-                if (origine.equals(fgr)) {
-                    FicheActionPage.wtabFGS.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre\"]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
-                    break;
-                }
-            }
 
             FicheActionModele.saisirNumActionSuivre(NumAction);
             FicheActionModele.rechercherNumActionSuivre(driver);

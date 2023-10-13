@@ -26,64 +26,7 @@ import static org.testng.Assert.assertTrue;
 
 public class Common {
 
-    //   protected static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
 
-
-
-    /*
-     * design pattern for exception  check all  element  is desaibled
-     * created  by mootez
-     * */
-
-    public static void verifiVisibilityChamp(WebDriver driver, String NomObeject, String Path) throws IOException {
-//        JSONParser parser = new JSONParser();
-//        Object object = parser.parse(new FileReader(Path));
-//        JSONObject jasonObject = (JSONObject) object;
-//        JSONArray features = (JSONArray) jasonObject.get(NomObeject);
-//        System.err.println(features);
-//        for (Object o : features) {
-//            JSONObject obj = (JSONObject) o;
-//            String id = (String) obj.get("id");
-//            Boolean find = false;
-//            WebElement elm = null;
-//
-//            try {
-//                Thread.sleep(100);
-//                System.out.println(id);
-//
-//                elm = driver.findElement(By.id(id));
-//
-//                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", elm);
-//
-//                find = true;
-//            } catch (Exception exp) {
-//                find = false;
-//            }
-//            System.out.println("find === " + find);
-//            if (find) {
-//                String readonly = elm.getAttribute("readonly");
-//                String desaibled = elm.getAttribute("disabled");
-//                String classDesaibled = elm.getAttribute("class");
-//
-//                if (readonly != null) {
-//                    Assert.assertTrue(true);
-//                    System.out.println("class = " + readonly);
-//                } else if (desaibled != null) {
-//                    Assert.assertTrue(true);
-//                    System.out.println("class = " + desaibled);
-//                } else if (classDesaibled.contains("aspNetDisabled")) {
-//                    System.out.println("class = " + classDesaibled);
-//                    Assert.assertTrue(true);
-//                } else {
-//                    Assert.assertTrue(false);
-//
-//                }
-//
-//            }
-//
-//        }
-
-    }
     /*
      * design pattern for exception  StaleElementReferenceException
      * created  by mootez
@@ -768,13 +711,6 @@ public class Common {
 
     }
 
-    /*
-     * Get the text content from a DOM-element found by given selector. Make sure
-     * the element you want to request the text from is interactable; otherwise you
-     * will get an empty string as return value. If the element is disabled or not
-     * visible and you still want to receive the text content use
-     * utilisateur=DemandeFormationPage.UtilisateurID.getAttribute("innerText");
-     */
 
     public static String RenommerFichier1(String name, String file1, String file2) throws Throwable {
         String path = "E:\\qualipro\\trunk\\AutomatisationTQualiPro_prod231\\resources\\Telechargement\\CrystalReportViewer1.rtf";
@@ -972,104 +908,34 @@ public class Common {
     public static void waitForVisibility(WebElement element) throws Error {
         new WebDriverWait(driver, 60).until(ExpectedConditions.visibilityOf(element));
     }
+    public static void agendaFG(String idTab, String filaile) throws InterruptedException {
+        String f2=filaile+"e";
+        int sizeAuditeur = driver.findElement(By.id(idTab)).findElements(By.tagName("tr")).size();
+        System.out.println("list auditeur  apres filter :" + sizeAuditeur);
+        for (int i = 1; i <= sizeAuditeur - 1; i++) {
+            Thread.sleep(1000L);
+            String filiale2 = driver.findElement(By.id(idTab)).findElement(By.xpath("//*[@id=" + "'" + idTab + "'" + "]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).getText();
+            System.out.println("filiale ====> " + filiale2);
+            System.out.println("fg ====> " + filaile);
+            System.out.println("assert ====> " + filaile.contains(filiale2));
+            if (filaile.contains(filiale2)||f2.contains((filiale2))) {
+                driver.findElement(By.id(idTab)).findElement(By.xpath("//*[@id=" + "'" + idTab + "'" + "]/tbody/tr[" + i + "]/td[1]")).findElement(By.tagName("a")).click();
+                break;
+            }
+        }
 
-    public void scrollerPage() throws Throwable {
+
+    }
+
+
+    public static void scrollerPage() throws Throwable {
 
         for (int second = 0; ; second++) {
             if (second >= 60) {
                 break;
             }
-            // ((JavascriptExecutor) AbstractPage.driver).executeScript("window.scrollBy(0,400)", "");
+            ((JavascriptExecutor) AbstractPage.driver).executeScript("window.scrollBy(0,400)", "");
 
         }
     }
-
-    /**
-     * Scroll the page up when x is positive and y is negative and down when both
-     * are positive.
-     */
-    public void scrollToTop() {
-        //  JavascriptExecutor javascriptExecutor = (JavascriptExecutor) AbstractPage.driver;
-        //javascriptExecutor.executeScript("window.scrollTo(" + 0 + "," + 0 + ")", "");
-    }
-
-    // Go back
-    public void goBack() throws Throwable {
-
-        //AbstractPage.driver.navigate().back();
-    }
-
-    // Refresh browser
-    public void refreshBrowser() throws Throwable {
-
-        //   AbstractPage.driver.navigate().refresh();
-    }
-
-    /**
-     * Drag And Drop
-     */
-    public void DragAndDrop() {
-
-//        WebElement source = AbstractPage.driver.findElement(By.xpath(""));
-//        WebElement target = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions actions = new Actions(AbstractPage.driver);
-//        actions.dragAndDrop(source, target).perform();
-
-    }
-
-    public void TabHandling() {
-//
-//        String parentWindowsHandle = AbstractPage.driver.getWindowHandle();
-//        System.out.println("parentWindowsHandle" + parentWindowsHandle);
-//
-//        for (String childTab : AbstractPage.driver.getWindowHandles()) {
-//            AbstractPage.driver.switchTo().window(childTab);
-//        }
-    }
-
-    /**
-     * handle alert pop-up
-     */
-
-    public void handleAlertPopUp() {
-
-//        String mainPage = AbstractPage.driver.getWindowHandle();
-//
-//        Alert alt = AbstractPage.driver.switchTo().alert(); // to move control to alert popup
-//
-//        alt.accept(); // to click on ok.
-//
-//        alt.dismiss(); // to click on cancel.
-//
-//        // Then move the control back to main web page-
-//
-//        AbstractPage.driver.switchTo().window(mainPage); // to switch back to main page.
-
-    }
-
-    /**
-     * right Click
-     */
-    public void rightClick() {
-
-//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions act = new Actions(AbstractPage.driver); // where driver is WebDriver type
-//
-//        act.moveToElement(wE).perform();
-//
-//        act.contextClick().perform();
-    }
-
-    /**
-     * Double Click
-     */
-
-    public void doubleClick() {
-//
-//        WebElement wE = AbstractPage.driver.findElement(By.xpath(""));
-//        Actions act = new Actions(AbstractPage.driver);
-
-        // act.doubleClick(wE);
-    }
-
 }

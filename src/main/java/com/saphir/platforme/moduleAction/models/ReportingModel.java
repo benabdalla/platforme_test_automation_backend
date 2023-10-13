@@ -9,6 +9,8 @@ import com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition;
 import com.saphir.platforme.utils.Common;
 import com.saphir.platforme.utils.ExcelUtils;
 import org.openqa.selenium.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -23,6 +25,10 @@ public class ReportingModel {
     private static final String Path = "resources/testData/TestData.xlsx";
     public static HashMap<String, String> filtre_repor = new HashMap<>();
     private static String regroup = "";
+
+
+
+
 
     public static void consulter_reporting_Nombre_d_actions_par_type(WebDriver driver) throws InterruptedException {
 

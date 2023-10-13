@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test version  fr </h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/8/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Aug 25 01:56:22 CEST 2023</td>
+<td>Started on:</td><td>Fri Oct 13 03:55:36 CEST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>516 seconds (516339 ms)</td>
+<tr><td>Total time:</td><td>563 seconds (563152 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,45 +76,442 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>54</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_LinkButton2&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61941}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bd65c170963ed303632fc21b6cdd680d
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_LinkButton2}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.click(Unknown Source)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.clique_sur_valider(FicheActionModele.java:114)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.clique_sur_valider(FicheActionStepDefinition.java:104)
+	at ✽.clique   sur   valider(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:24)
+... Removed 5 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1651395486", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1651395486'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_LinkButton2&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61941}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bd65c170963ed303632fc21b6cdd680d
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_LinkButton2}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.click(Unknown Source)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.clique_sur_valider(FicheActionModele.java:114)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.clique_sur_valider(FicheActionStepDefinition.java:104)
+	at ✽.clique   sur   valider(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:24)
+</pre></div></td>
+<td>91</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
 <tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>88</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>75</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>50</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>67</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- Test fiche Action Simplifiée", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>63</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action", "Qualipro- Test fiche Action"</td>
-<td></td>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action", "Qualipro- Test fiche Action"</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Vérifier_les_donnes_de_traçabilite(FicheActionStepDefinition.java:1448)
+	at ✽.Vérifier les donnes de traçabilite(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:154)
+... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace122800369", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace122800369'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertTrue(Assert.java:56)
+	at org.testng.Assert.assertTrue(Assert.java:66)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Vérifier_les_donnes_de_traçabilite(FicheActionStepDefinition.java:1448)
+	at ✽.Vérifier les donnes de traçabilite(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:154)
+</pre></div></td>
 <td>69</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
 <tr>
-<td title='com.saphir.platforme.ActionSimplifierRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>46</td>
-<td>com.saphir.platforme.ActionSimplifierRunner@6d99b7d1</td></tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- Test fiche Action Simplifiée", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_select_respsv0&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62104}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0284b46e26ec4532abe77e104c1657a5
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_select_respsv0}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.click(Unknown Source)
+	at com.saphir.platforme.moduleAction.models.ActSimplModel.ResponsableSuivi(ActSimplModel.java:80)
+	at com.saphir.platforme.moduleAction.stepdefs.ActSimplStepDefinition.saisir_un_seul_responsable_de_suivi(ActSimplStepDefinition.java:80)
+	at ✽.saisir un seul responsable de suivi(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:52)
+... Removed 5 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1752609028", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1752609028'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_select_respsv0&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62104}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0284b46e26ec4532abe77e104c1657a5
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_select_respsv0}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.click(Unknown Source)
+	at com.saphir.platforme.moduleAction.models.ActSimplModel.ResponsableSuivi(ActSimplModel.java:80)
+	at com.saphir.platforme.moduleAction.stepdefs.ActSimplStepDefinition.saisir_un_seul_responsable_de_suivi(ActSimplStepDefinition.java:80)
+	at ✽.saisir un seul responsable de suivi(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:52)
+</pre></div></td>
+<td>112</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;a&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62713}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cde74c4221a3f78912beaf8b3f7b8e5b
+*** Element info: {Using=tag name, value=a}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByTagName(RemoteWebElement.java:277)
+	at org.openqa.selenium.By$ByTagName.findElement(By.java:320)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Clôturée_Action(FicheActionStepDefinition.java:841)
+	at ✽.Clôturée Action(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:141)
+... Removed 9 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1196705856", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1196705856'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;a&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62713}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cde74c4221a3f78912beaf8b3f7b8e5b
+*** Element info: {Using=tag name, value=a}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByTagName(RemoteWebElement.java:277)
+	at org.openqa.selenium.By$ByTagName.findElement(By.java:320)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Clôturée_Action(FicheActionStepDefinition.java:841)
+	at ✽.Clôturée Action(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:141)
+</pre></div></td>
+<td>51</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_GridView1&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62488}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 900bd325a83290febca95550c0344ba4
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_GridView1}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.choixNumActionRealisation(FicheActionModele.java:1142)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_traiter(FicheActionStepDefinition.java:1004)
+	at ✽.Consulter action a traiter(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:112)
+... Removed 5 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace945831429", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace945831429'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_GridView1&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62488}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 900bd325a83290febca95550c0344ba4
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_GridView1}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.choixNumActionRealisation(FicheActionModele.java:1142)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_traiter(FicheActionStepDefinition.java:1004)
+	at ✽.Consulter action a traiter(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:112)
+</pre></div></td>
+<td>61</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62598}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 00ff43f2f84d50549ae04f60ea391f2f
+*** Element info: {Using=xpath, value=//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:261)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_suivre(FicheActionStepDefinition.java:1099)
+	at ✽.Consulter action a suivre(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:127)
+... Removed 9 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1361931722", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1361931722'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62598}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 00ff43f2f84d50549ae04f60ea391f2f
+*** Element info: {Using=xpath, value=//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:261)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_suivre(FicheActionStepDefinition.java:1099)
+	at ✽.Consulter action a suivre(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:127)
+</pre></div></td>
+<td>60</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62392}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 16a8ed06a42bea9cba38218c30ffe424
+*** Element info: {Using=xpath, value=//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:261)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_suivre(FicheActionStepDefinition.java:1099)
+	at ✽.Consulter action a suivre(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:96)
+... Removed 9 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1897403668", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1897403668'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62392}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 16a8ed06a42bea9cba38218c30ffe424
+*** Element info: {Using=xpath, value=//*[@id=&quot;ctl00_ContentPlaceHolder1_GridView_tab_agenda_ActionSuivre&quot;]/tbody/tr[4]/td[1]}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:185)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:261)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:181)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy3/jdk.proxy3.$Proxy207.findElement(Unknown Source)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_suivre(FicheActionStepDefinition.java:1099)
+	at ✽.Consulter action a suivre(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:96)
+</pre></div></td>
+<td>53</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionSimplifierSpecRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionSimplifierSpecRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_GridView1&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62283}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 98fc5768c9d966c7ffe78d6d14494b01
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_GridView1}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.choixNumActionRealisation(FicheActionModele.java:1142)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_traiter(FicheActionStepDefinition.java:1004)
+	at ✽.Consulter action a traiter(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:80)
+... Removed 5 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace920305815", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace920305815'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ctl00_ContentPlaceHolder1_GridView1&quot;}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;PC-DEV15&apos;, ip: &apos;192.168.249.2&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.6&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 117.0.5938.92 (67649b10b92b..., userDataDir: C:\Users\MOOTAZ~1.BEN\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62283}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 98fc5768c9d966c7ffe78d6d14494b01
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_GridView1}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.saphir.platforme.moduleAction.models.FicheActionModele.choixNumActionRealisation(FicheActionModele.java:1142)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.consulter_action_a_traiter(FicheActionStepDefinition.java:1004)
+	at ✽.Consulter action a traiter(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/ActionSimp.feature:80)
+</pre></div></td>
+<td>60</td>
+<td>com.saphir.platforme.ActionSimplifierSpecRunner@77bc0b2c</td></tr>
 </table><p>
 </body>
 </html>

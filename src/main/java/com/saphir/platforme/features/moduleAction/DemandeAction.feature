@@ -53,7 +53,6 @@ Feature: Creation de Demande Action
     And Selectionner Service
     And Cliquer valider demande action
     When cliquer sur ajouter sous action demande
-  And Choisir FG responsble réalisation <RespRealise> et  responsble Suivi <respSuivi>
     And ajouter sous action demande
     When choisir gravité DA
     When choisir Priorité DA

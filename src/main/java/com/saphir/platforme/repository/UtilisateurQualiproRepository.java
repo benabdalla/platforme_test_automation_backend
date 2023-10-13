@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface UtilisateurQualiproRepository extends JpaRepository<Utilisateur, Long> {
-    @Query(value = "select u.id_user,u.login,u.password,u.name from utilisateur_qualipro u  where u.name=:name", nativeQuery = true)
-    List<Utilisateur> findByName(@Param("name") String name);
+  //  @Query(value = "select u.id_user,u.login,u.password,u.name from utilisateur_qualipro u  where u.name=:name", nativeQuery = true)
+    Utilisateur findByName(String name);
 
 }

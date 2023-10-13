@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UtilisateurService {
     @Autowired
     UtilisateurQualiproRepository utilisateurQualiproRepository;
 
 
-    public List<Utilisateur> getLoginPaswword(String name) {
+    public Utilisateur getUser(String name) {
 
         return utilisateurQualiproRepository.findByName(name);
         //utilisateurQualiproRepository.findByName(name);

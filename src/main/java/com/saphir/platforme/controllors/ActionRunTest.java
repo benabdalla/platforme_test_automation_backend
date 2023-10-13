@@ -5,8 +5,10 @@ import com.saphir.platforme.dto.ActionDto;
 import com.saphir.platforme.dto.ReportDto;
 import com.saphir.platforme.entity.Action;
 import com.saphir.platforme.repository.IActionRepository;
+import com.saphir.platforme.shared.DesignePaterne;
 import com.saphir.platforme.utils.Setup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,8 @@ public class ActionRunTest {
     public static Action action;
     @Autowired
     IActionRepository iActionRepository;
+    @Value("${file.report}")
+    private String filePath;
 
     @PostMapping
     @ResponseBody
@@ -71,15 +75,28 @@ return "Ok";
     @GetMapping("/report")
     public ReportDto runReportAction() throws IOException {
         String url = "Reporting/action-cucumber-reports/cucumber-html-reports/overview-tags.html";
+        String  filesPath=filePath+url;
         ReportDto report = new ReportDto();
-        report.setSrcFrame(url);
+        if(DesignePaterne.fileExists(filePath+url)){
+            report.setSrcFrame(url);
+        }else{
+            report.setSrcFrame("404");
+        }
+
+
+
         return report;
     }
     @GetMapping("/report/simplifier")
     public ReportDto reportActionsimplifier() throws IOException {
         String url = "Reporting/simplifier-cucumber-reports/cucumber-html-reports/overview-tags.html";
+        String  filesPath=filePath+url;
         ReportDto report = new ReportDto();
-        report.setSrcFrame(url);
+        if(DesignePaterne.fileExists(filesPath)){
+            report.setSrcFrame(url);
+        }else{
+            report.setSrcFrame("404");
+        }
         return report;
     }
 
@@ -142,7 +159,7 @@ return "Ok";
 
         //20002
         action = iActionRepository.findActionByIDScenario(id);
-        if (action.getEtat() == 0) {
+        if (action.getEtat() == 1) {
 
             System.err.println("tesssssst" + id);
             //  System.err.println("list  =" + actionList.get(0));
@@ -152,7 +169,7 @@ return "Ok";
             // Create a list of XML suites to run
             List<XmlSuite> suites = new ArrayList<XmlSuite>();
             XmlSuite suite = new XmlSuite();
-            suite.setSuiteFiles(Collections.singletonList("ActionSimplifier.xml"));
+            suite.setSuiteFiles(Collections.singletonList("ActionSimplifierSpec.xml"));
             suites.add(suite);
 
             // Set the list of suites to TestNG object

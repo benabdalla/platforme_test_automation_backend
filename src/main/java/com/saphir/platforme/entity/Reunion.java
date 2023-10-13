@@ -19,6 +19,7 @@ public class Reunion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idScenario;
     private int numFiche;
+    private int etat;
     @Column(length = 3000)
     private String  datePrevue;
     @Column(length = 3000)
@@ -43,13 +44,12 @@ public class Reunion implements Serializable {
     @JoinColumn(name = "idDirection")
     @JsonIgnore
     private Direction direction;
+    @ManyToOne
     @JoinColumn(name = "idService")
     @JsonIgnore
     private TabService service;
-    @ManyToOne
-    @JoinColumn(name = "dechlencheur", referencedColumnName = "idUser")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "typeReunion", referencedColumnName = "idType")
     @JsonIgnore
-    private Utilisateur participant;
-
-
+    private TypeReunion typeReunion;
 }

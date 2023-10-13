@@ -11,8 +11,8 @@
       <class name="com.saphir.platforme.ActionRunner">
         <methods>
           <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="7"/>
           <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="1 2 3 5 6 7"/>
           <include name="generateReport"/>
         </methods>
       </class> <!-- com.saphir.platforme.ActionRunner -->

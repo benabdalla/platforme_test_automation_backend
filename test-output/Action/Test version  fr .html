@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test version  fr </h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>7/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Aug 29 15:55:41 CEST 2023</td>
+<td>Started on:</td><td>Fri Oct 13 08:31:36 CEST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>624 seconds (624028 ms)</td>
+<tr><td>Total time:</td><td>729 seconds (729168 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,31 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action", "Qualipro- Test fiche Action"</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Vérifier_les_donnes_de_traçabilite(FicheActionStepDefinition.java:1426)
+	at ✽.Vérifier les donnes de traçabilite(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/Action.feature:160)
+... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1114748591", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1114748591'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertTrue(Assert.java:56)
+	at org.testng.Assert.assertTrue(Assert.java:66)
+	at com.saphir.platforme.moduleAction.stepdefs.FicheActionStepDefinition.Vérifier_les_donnes_de_traçabilite(FicheActionStepDefinition.java:1426)
+	at ✽.Vérifier les donnes de traçabilite(file:///E:/qualipro/trunk/platforme_test_automation_backend/src/main/java/com/saphir/platforme/features/moduleAction/Action.feature:160)
+</pre></div></td>
+<td>70</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,45 +101,40 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>60</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>50</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>82</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
 <td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>92</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>65</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro-En tant que responsable, je souhaite afficher la tracabilite de l'action", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>65</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Creation fiche Action", "Qualipro- Test fiche Action"</td>
-<td></td>
-<td>123</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
-<tr>
-<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
 <td></td>
 <td>81</td>
-<td>com.saphir.platforme.ActionRunner@3b0a769b</td></tr>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter  l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>90</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Création Parametrage de fiche action", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>120</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite  suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>98</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>100</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite  retourne traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>94</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
+<tr>
+<td title='com.saphir.platforme.ActionRunner.runScenario()'><b>runScenario</b><br>Test class: com.saphir.platforme.ActionRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Qualipro- En tant que responsable, je souhaite traiter et suivre l action avec des taux différents", "Qualipro- Test fiche Action"</td>
+<td></td>
+<td>70</td>
+<td>com.saphir.platforme.ActionRunner@4e0a0d1b</td></tr>
 </table><p>
 </body>
 </html>

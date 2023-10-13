@@ -28,8 +28,7 @@ import static com.saphir.platforme.controllors.ActionRunTest.action;
 //@ComponentScan("classpath:com.saphir.platforme")
 public class ActionRunner extends AbstractTestNGCucumberTests {
 
-    @Autowired
-    IActionRepository iActionRepository;
+
 
     @AfterSuite
     public void generateReport() {
